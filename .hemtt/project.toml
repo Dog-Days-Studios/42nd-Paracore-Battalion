@@ -1,0 +1,27 @@
+name = "42nd Paracore Battalion"
+author = "HoundaCivic"
+prefix = "42nd"
+mainprefix = "42nd_para"
+
+[version]
+path = "addons/main/script_version.hpp"
+git_hash = 0
+
+[files]
+include = [
+    "mod.cpp",
+]
+exclude = []
+
+[properties]
+author = "HoundaCivic"
+
+[hemtt.check]
+pdrive = "ignore"
+
+[hemtt.build]
+pdrive = "ignore"
+
+[hemtt.release]
+pdrive = "ignore"
+archive = false
