@@ -82,7 +82,7 @@ class 42nd_CPLTL_P2_Helmet: 42nd_Helmet_base
     scope = 2;
     scopeArsenal = 2;
     author = "HoundaCivic";
-    displayName = "42nd Platoon Lead P2 Helmet";
+    displayName = "[42nd] Platoon Lead P2 Helmet";
     hiddenSelectionsTextures[] = {
         "\42nd_para\42nd\addons\Bluefor\42nd_Helmets\CPLTL\42nd_Platoon_Lead_Helmet.paa",
         "\42nd_para\42nd\addons\Bluefor\42nd_Helmets\CPLTL\42nd_Platoon_Lead_Helmet.paa"
@@ -94,7 +94,7 @@ class 42nd_CSGT_P2_Helmet: 42nd_Helmet_base
     scope = 2;
     scopeArsenal = 2;
     author = "HoundaCivic";
-    displayName = "42nd Squad Lead P2 Helmet";
+    displayName = "[42nd] Squad Lead P2 Helmet";
     hiddenSelectionsTextures[] = {
         "\42nd_para\42nd\addons\Bluefor\42nd_Helmets\CSGT\42nd_Squad_Lead_Helmet_co.paa",
         "\42nd_para\42nd\addons\Bluefor\42nd_Helmets\CSGT\42nd_Squad_Lead_Helmet_co.paa"
@@ -106,7 +106,7 @@ class 42nd_CST_P2_Helmet: 42nd_Helmet_base
     scope = 2;
     scopeArsenal = 2;
     author = "HoundaCivic";
-    displayName = "42nd Senior Trooper P2 Helmet";
+    displayName = "[42nd] Senior Trooper P2 Helmet";
     hiddenSelectionsTextures[] = {
         "\42nd_para\42nd\addons\Bluefor\42nd_Helmets\CST\42nd_CST_Helmet_co.paa",
         "\42nd_para\42nd\addons\Bluefor\42nd_Helmets\CST\42nd_CST_Helmet_co.paa"
@@ -118,7 +118,7 @@ class 42nd_CT_P2_Helmet: 42nd_Helmet_base
     scope = 2;
     scopeArsenal = 2;
     author = "HoundaCivic";
-    displayName = "42nd P2 Helmet";
+    displayName = "[42nd] P2 Helmet";
     hiddenSelectionsTextures[] = {
         "\42nd_para\42nd\addons\Bluefor\42nd_Helmets\CT\42nd_CT_Helmet.paa",
         "\42nd_para\42nd\addons\Bluefor\42nd_Helmets\CT\42nd_CT_Helmet.paa"
@@ -130,7 +130,7 @@ class 42nd_ARF_Helmet: 42nd_Arf_Helmet_base
     scope = 2;
     scopeArsenal = 2;
     author = "HoundaCivic";
-    displayName = "42nd ARF Helmet";
+    displayName = "[42nd] ARF Helmet";
     hiddenSelectionsTextures[] = {
         "\42nd_para\42nd\addons\Bluefor\42nd_Helmets\CT_ARF\42nd_ARF_Helmet_co.paa",
         "\JLTS_AE\Data\BaseTextures\ARF\Plates_CO.paa",
@@ -143,7 +143,7 @@ class 42nd_Medic_P2_Helmet: 42nd_Helmet_base
     scope = 2;
     scopeArsenal = 2;
     author = "HoundaCivic";
-    displayName = "42nd P2 Medic Helmet";
+    displayName = "[42nd] P2 Medic Helmet";
     hiddenSelectionsTextures[] = {
         "\42nd_para\42nd\addons\Bluefor\42nd_Helmets\CT_Medic\42nd_CT_Medic_Helmet_co.paa",
         "\42nd_para\42nd\addons\Bluefor\42nd_Helmets\CT_Medic\42nd_CT_Medic_Helmet_co.paa"
@@ -155,7 +155,7 @@ class 42nd_Rose_P2_Helmet: 42nd_Helmet_base
     scope = 2;
     scopeArsenal = 2;
     author = "HoundaCivic";
-    displayName = "42nd Rose's' Helmet";
+    displayName = "[42nd] Rose's' Helmet";
     hiddenSelectionsTextures[] = {
         "\42nd_para\42nd\addons\Bluefor\42nd_Helmets\Customs\42nd_Rose_Helmet_co.paa",
         "\42nd_para\42nd\addons\Bluefor\42nd_Helmets\Customs\42nd_Rose_Helmet_co.paa"
@@ -167,7 +167,7 @@ class 42nd_CVT_P2_Helmet: 42nd_Helmet_base
     scope = 2;
     scopeArsenal = 2;
     author = "HoundaCivic";
-    displayName = "42nd CVT P2 Helmet";
+    displayName = "[42nd] CVT P2 Helmet";
     hiddenSelectionsTextures[] = {
         "\42nd_para\42nd\addons\Bluefor\42nd_Helmets\CVT\42nd_CVT_Helmet_co.paa",
         "\42nd_para\42nd\addons\Bluefor\42nd_Helmets\CVT\42nd_CVT_Helmet_co.paa"
@@ -179,9 +179,10 @@ class 42nd_NCO_P2_Helmet: 42nd_Helmet_base
     scope = 2;
     scopeArsenal = 2;
     author = "HoundaCivic";
-    displayName = "42nd NCO P2 Helmet";
+    displayName = "[42nd] NCO P2 Helmet";
     hiddenSelectionsTextures[] = {
         "\42nd_para\42nd\addons\Bluefor\42nd_Helmets\NCO\42nd_NCO_Helmet_co.paa",
         "\42nd_para\42nd\addons\Bluefor\42nd_Helmets\NCO\42nd_NCO_Helmet_co.paa"
     };
 };
+

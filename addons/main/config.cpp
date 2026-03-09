@@ -9,7 +9,12 @@ class CfgPatches {
             "42nd_medic_Trooper",
             "42nd_Rose_Trooper",
             "42nd_CVT_Trooper",
-            "42nd_NCO_Trooper"
+            "42nd_NCO_Trooper",
+            "42nd_LAAT",
+            "42nd_Gozanti_Republic",
+            "42nd_Arsenal_Box",
+            "42nd_Arsenal_Supply",
+            "42nd_Arsenal_Weapon_Crate"
         };
         weapons[] = {
             "42nd_CT_P2_Helmet",
@@ -95,7 +100,25 @@ class CfgWeapons
 class CfgVehicles
 {
 #include "/addons/Bluefor/42nd_Uniforms/cfgVehicles.hpp"
-//#include /addons/42nd_Bluefor/42nd_backpacks/42nd_backpacks.hpp
-//#include /addons/42nd_Bluefor/42nd_Weapons/42nd_weapons.hpp
+#include "/addons/main/objects/arsenal_box/cfgVehicles.hpp"
+#include "/addons/Vehicles/42nd_Gozanti/cfgvehicles.hpp"
+#include "/addons/Vehicles/42nd_LAAT/cfgvehicles.hpp"
 };
 
+class Extended_InitPost_EventHandlers
+{
+    class 42nd_Gozanti_Republic
+    {
+        class para42_gozantiSpawner
+        {
+            init = "[_this select 0] execVM '\42nd_para\42nd\addons\Modules\42nd_Scripts\gozanti_spawner'";
+        };
+    };
+    class 42nd_LAAT
+    {
+        class para42_laatColumnDrop
+        {
+            init = "[_this select 0] execVM '\42nd_para\42nd\addons\Modules\42nd_Scripts\laat_column_drop'";
+        };
+    };
+};

@@ -1,0 +1,328 @@
+/*
+    Usage on the Gozanti's init:
+    [this] execVM "\42nd_para\42nd\addons\Modules\42nd_Scripts\gozanti_spawner";
+*/
+
+params [["_gozanti", objNull, [objNull]]];
+if (isNull _gozanti) exitWith {};
+
+if (isNil "para42_gozantiCargoOffsets") then {
+    para42_gozantiCargoOffsets = [
+        [-4, -7, -4.5],
+        [0, -7, -4.5],
+        [4, -7, -4.5],
+        [-4, -13, -4.5],
+        [0, -13, -4.5],
+        [4, -13, -4.5]
+    ];
+};
+
+if (isNil "para42_fnc_gozantiNotify") then {
+    para42_fnc_gozantiNotify = {
+        params ["_unit", "_message"];
+        if (isNull _unit) exitWith {};
+        [_message] remoteExecCall ["hint", owner _unit];
+    };
+};
+
+if (isNil "para42_fnc_gozantiGetLoadedVehicles") then {
+    para42_fnc_gozantiGetLoadedVehicles = {
+        params [["_transport", objNull, [objNull]]];
+        if (isNull _transport) exitWith {[]};
+
+        private _loadedVehicles = _transport getVariable ["42nd_loadedVehicles", []];
+        _loadedVehicles = _loadedVehicles select {
+            !isNull _x && {attachedTo _x isEqualTo _transport}
+        };
+
+        _transport setVariable ["42nd_loadedVehicles", _loadedVehicles, true];
+        _loadedVehicles
+    };
+};
+
+if (isNil "para42_fnc_gozantiFindLoadCandidates") then {
+    para42_fnc_gozantiFindLoadCandidates = {
+        params [["_transport", objNull, [objNull]]];
+        if (isNull _transport) exitWith {[]};
+
+        private _candidates = nearestObjects [_transport, ["LandVehicle", "Car", "Tank", "Boat"], 30];
+        _candidates select {
+            alive _x &&
+            {_x != _transport} &&
+            {isNull attachedTo _x} &&
+            {crew _x isEqualTo []} &&
+            {(getPosATL _x select 2) < 3}
+        }
+    };
+};
+
+if (isNil "para42_fnc_gozantiLoadCargo") then {
+    para42_fnc_gozantiLoadCargo = {
+        params [
+            ["_transport", objNull, [objNull]],
+            ["_cargo", objNull, [objNull]]
+        ];
+
+        if (isNull _transport || {isNull _cargo}) exitWith {false};
+
+        private _loadedVehicles = [_transport] call para42_fnc_gozantiGetLoadedVehicles;
+        private _slotIndex = count _loadedVehicles;
+
+        if (_slotIndex >= count para42_gozantiCargoOffsets) exitWith {false};
+
+        private _attachOffset = para42_gozantiCargoOffsets select _slotIndex;
+
+        _cargo engineOn false;
+        _cargo allowDamage false;
+        _cargo enableSimulationGlobal false;
+        _cargo setVelocity [0, 0, 0];
+        _cargo attachTo [_transport, _attachOffset];
+
+        _loadedVehicles pushBack _cargo;
+        _transport setVariable ["42nd_loadedVehicles", _loadedVehicles, true];
+
+        true
+    };
+};
+
+if (isNil "para42_fnc_gozantiDropCargo") then {
+    para42_fnc_gozantiDropCargo = {
+        params [
+            ["_transport", objNull, [objNull]],
+            ["_cargo", objNull, [objNull]]
+        ];
+
+        if (isNull _transport || {isNull _cargo}) exitWith {false};
+
+        detach _cargo;
+        _cargo enableSimulationGlobal true;
+
+        private _dropPos = _transport modelToWorld [0, -12, -6];
+        _cargo setPosATL _dropPos;
+
+        private _parachute = createVehicle ["B_Parachute_02_F", _dropPos, [], 0, "CAN_COLLIDE"];
+        _parachute setPosATL _dropPos;
+        _parachute setDir getDir _transport;
+        _parachute setVelocity velocity _transport;
+
+        _cargo attachTo [_parachute, [0, 0, -1.5]];
+
+        [_cargo, _parachute] spawn {
+            params ["_cargo", "_parachute"];
+
+            waitUntil {
+                sleep 0.25;
+                isNull _cargo || isNull _parachute || {(getPosATL _cargo select 2) < 3}
+            };
+
+            if (isNull _cargo) exitWith {};
+
+            detach _cargo;
+            _cargo setVelocity [0, 0, 0];
+            _cargo allowDamage true;
+
+            if (!isNull _parachute) then {
+                deleteVehicle _parachute;
+            };
+        };
+
+        true
+    };
+};
+
+if (isNil "para42_fnc_gozantiLoadVehicle") then {
+    para42_fnc_gozantiLoadVehicle = {
+        params [["_transport", objNull, [objNull]], ["_caller", objNull, [objNull]]];
+
+        if (!isServer) exitWith {
+            [_transport, _caller] remoteExecCall ["para42_fnc_gozantiLoadVehicle", 2];
+        };
+
+        if (isNull _transport || {isNull _caller}) exitWith {};
+
+        private _loadedVehicles = [_transport] call para42_fnc_gozantiGetLoadedVehicles;
+        private _maxVehicles = count para42_gozantiCargoOffsets;
+        if ((count _loadedVehicles) >= _maxVehicles) exitWith {
+            [_caller, format ["Cargo bay full (%1/%2).", count _loadedVehicles, _maxVehicles]] call para42_fnc_gozantiNotify;
+        };
+
+        private _candidates = [_transport] call para42_fnc_gozantiFindLoadCandidates;
+        if (_candidates isEqualTo []) exitWith {
+            [_caller, "No empty vehicle is close enough to load."] call para42_fnc_gozantiNotify;
+        };
+
+        private _cargo = _candidates select 0;
+        if ([_transport, _cargo] call para42_fnc_gozantiLoadCargo) then {
+            private _cargoName = getText (configOf _cargo >> "displayName");
+            if (_cargoName isEqualTo "") then {
+                _cargoName = typeOf _cargo;
+            };
+
+            private _count = count ([_transport] call para42_fnc_gozantiGetLoadedVehicles);
+            [_caller, format ["Loaded %1 (%2/%3).", _cargoName, _count, _maxVehicles]] call para42_fnc_gozantiNotify;
+        };
+    };
+};
+
+if (isNil "para42_fnc_gozantiLoadAllVehicles") then {
+    para42_fnc_gozantiLoadAllVehicles = {
+        params [["_transport", objNull, [objNull]], ["_caller", objNull, [objNull]]];
+
+        if (!isServer) exitWith {
+            [_transport, _caller] remoteExecCall ["para42_fnc_gozantiLoadAllVehicles", 2];
+        };
+
+        if (isNull _transport || {isNull _caller}) exitWith {};
+
+        private _loadedVehicles = [_transport] call para42_fnc_gozantiGetLoadedVehicles;
+        private _maxVehicles = count para42_gozantiCargoOffsets;
+        private _freeSlots = _maxVehicles - (count _loadedVehicles);
+
+        if (_freeSlots <= 0) exitWith {
+            [_caller, format ["Cargo bay full (%1/%2).", count _loadedVehicles, _maxVehicles]] call para42_fnc_gozantiNotify;
+        };
+
+        private _candidates = [_transport] call para42_fnc_gozantiFindLoadCandidates;
+        if (_candidates isEqualTo []) exitWith {
+            [_caller, "No empty vehicles are close enough to load."] call para42_fnc_gozantiNotify;
+        };
+
+        private _loadedCount = 0;
+        for "_i" from 0 to ((count _candidates) - 1) do {
+            if (_loadedCount >= _freeSlots) exitWith {};
+
+            if ([_transport, _candidates select _i] call para42_fnc_gozantiLoadCargo) then {
+                _loadedCount = _loadedCount + 1;
+            };
+        };
+
+        private _newCount = count ([_transport] call para42_fnc_gozantiGetLoadedVehicles);
+        [_caller, format ["Loaded %1 vehicle(s) (%2/%3).", _loadedCount, _newCount, _maxVehicles]] call para42_fnc_gozantiNotify;
+    };
+};
+
+if (isNil "para42_fnc_gozantiDropVehicle") then {
+    para42_fnc_gozantiDropVehicle = {
+        params [["_transport", objNull, [objNull]], ["_caller", objNull, [objNull]]];
+
+        if (!isServer) exitWith {
+            [_transport, _caller] remoteExecCall ["para42_fnc_gozantiDropVehicle", 2];
+        };
+
+        if (isNull _transport || {isNull _caller}) exitWith {};
+
+        private _loadedVehicles = [_transport] call para42_fnc_gozantiGetLoadedVehicles;
+        if (_loadedVehicles isEqualTo []) exitWith {
+            [_caller, "There is no loaded vehicle to drop."] call para42_fnc_gozantiNotify;
+        };
+
+        private _cargo = _loadedVehicles deleteAt ((count _loadedVehicles) - 1);
+        _transport setVariable ["42nd_loadedVehicles", _loadedVehicles, true];
+
+        if ([_transport, _cargo] call para42_fnc_gozantiDropCargo) then {
+            [_caller, format ["Vehicle dropped (%1 remaining).", count _loadedVehicles]] call para42_fnc_gozantiNotify;
+        };
+    };
+};
+
+if (isNil "para42_fnc_gozantiDropAllVehicles") then {
+    para42_fnc_gozantiDropAllVehicles = {
+        params [["_transport", objNull, [objNull]], ["_caller", objNull, [objNull]]];
+
+        if (!isServer) exitWith {
+            [_transport, _caller] remoteExecCall ["para42_fnc_gozantiDropAllVehicles", 2];
+        };
+
+        if (isNull _transport || {isNull _caller}) exitWith {};
+        if (_transport getVariable ["42nd_dropAllInProgress", false]) exitWith {
+            [_caller, "Airdrop all is already in progress."] call para42_fnc_gozantiNotify;
+        };
+
+        private _loadedVehicles = +([_transport] call para42_fnc_gozantiGetLoadedVehicles);
+        if (_loadedVehicles isEqualTo []) exitWith {
+            [_caller, "There are no loaded vehicles to drop."] call para42_fnc_gozantiNotify;
+        };
+
+        _transport setVariable ["42nd_dropAllInProgress", true, true];
+        _transport setVariable ["42nd_loadedVehicles", [], true];
+
+        [_transport, _caller, _loadedVehicles] spawn {
+            params ["_transport", "_caller", "_loadedVehicles"];
+
+            for "_i" from ((count _loadedVehicles) - 1) to 0 step -1 do {
+                [_transport, _loadedVehicles select _i] call para42_fnc_gozantiDropCargo;
+                [_caller, format ["Airdropped %1/%2 vehicle(s).", (count _loadedVehicles) - _i, count _loadedVehicles]] call para42_fnc_gozantiNotify;
+
+                if (_i > 0) then {
+                    sleep 2;
+                };
+            };
+
+            _transport setVariable ["42nd_dropAllInProgress", false, true];
+        };
+    };
+};
+
+_gozanti setVariable ["42nd_loadedVehicles", _gozanti getVariable ["42nd_loadedVehicles", []], true];
+_gozanti setVariable ["42nd_dropAllInProgress", _gozanti getVariable ["42nd_dropAllInProgress", false], true];
+
+if (!hasInterface) exitWith {};
+if (_gozanti getVariable ["42nd_gozantiActionsAdded", false]) exitWith {};
+
+_gozanti setVariable ["42nd_gozantiActionsAdded", true];
+
+_gozanti addAction [
+    "<t color='#9fd3ff'>Load Nearby Vehicle</t>",
+    {
+        params ["_target", "_caller"];
+        [_target, _caller] remoteExecCall ["para42_fnc_gozantiLoadVehicle", 2];
+    },
+    nil,
+    1.5,
+    true,
+    true,
+    "",
+    "alive _target && alive _this && vehicle _this isEqualTo _target && driver _target isEqualTo _this && !(_target getVariable ['42nd_dropAllInProgress', false]) && count (_target getVariable ['42nd_loadedVehicles', []]) < 6"
+];
+
+_gozanti addAction [
+    "<t color='#9fd3ff'>Load All Nearby Vehicles</t>",
+    {
+        params ["_target", "_caller"];
+        [_target, _caller] remoteExecCall ["para42_fnc_gozantiLoadAllVehicles", 2];
+    },
+    nil,
+    1.5,
+    true,
+    true,
+    "",
+    "alive _target && alive _this && vehicle _this isEqualTo _target && driver _target isEqualTo _this && !(_target getVariable ['42nd_dropAllInProgress', false]) && count (_target getVariable ['42nd_loadedVehicles', []]) < 6"
+];
+
+_gozanti addAction [
+    "<t color='#9fd3ff'>Airdrop Loaded Vehicle</t>",
+    {
+        params ["_target", "_caller"];
+        [_target, _caller] remoteExecCall ["para42_fnc_gozantiDropVehicle", 2];
+    },
+    nil,
+    1.5,
+    true,
+    true,
+    "",
+    "alive _target && alive _this && vehicle _this isEqualTo _target && driver _target isEqualTo _this && !(_target getVariable ['42nd_dropAllInProgress', false]) && count (_target getVariable ['42nd_loadedVehicles', []]) > 0"
+];
+
+_gozanti addAction [
+    "<t color='#9fd3ff'>Airdrop All Vehicles</t>",
+    {
+        params ["_target", "_caller"];
+        [_target, _caller] remoteExecCall ["para42_fnc_gozantiDropAllVehicles", 2];
+    },
+    nil,
+    1.5,
+    true,
+    true,
+    "",
+    "alive _target && alive _this && vehicle _this isEqualTo _target && driver _target isEqualTo _this && !(_target getVariable ['42nd_dropAllInProgress', false]) && count (_target getVariable ['42nd_loadedVehicles', []]) > 0"
+];
