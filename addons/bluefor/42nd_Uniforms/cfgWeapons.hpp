@@ -76,6 +76,36 @@ class 42nd_medic_Trooper_Uniform: IDA_Clone_Uniform
     };
 };
 
+class 42nd_CVT_Medic_Trooper_Uniform: IDA_Clone_Uniform
+{
+    author = "Hound";
+    scope = 2;
+    scopecurator = 2;
+    displayName = "[42nd] CVT Medic Uniform";
+    class ItemInfo: uniformItem
+    {
+        uniformModel = "-";
+        uniformClass = "42nd_CVT_Medic_Trooper";
+        containerClass = "Supply250";
+        mass = 40;
+    };
+};
+
+class 42nd_Squad_Medic_Trooper_Uniform: IDA_Clone_Uniform
+{
+    author = "Hound";
+    scope = 2;
+    scopecurator = 2;
+    displayName = "[42nd] Squad Medic Uniform";
+    class ItemInfo: uniformItem
+    {
+        uniformModel = "-";
+        uniformClass = "42nd_Squad_Medic_Trooper";
+        containerClass = "Supply250";
+        mass = 40;
+    };
+};
+
 class 42nd_Rose_Trooper_Uniform: IDA_Clone_Uniform
 {
     author = "Hound";
