@@ -195,6 +195,28 @@ class 42nd_Rose_Trooper: IDA_Clone_DC15S
     respawnLinkedItems[] = {"","42nd_Rose_P2_Helmet","SWLB_clone_commander_binocular","ItemMap","ItemGPS","ls_comlink_aur","ItemCompass"};
 };
 
+class 42nd_Hound_Trooper: IDA_Clone_DC15S
+{
+    author = "Hound";
+    scope = 2;
+    scopecurator = 2;
+    displayName = "[42nd] Hound";
+    faction = "Fac42nd";
+    editorSubcategory = "Sub42ndCustom";
+    uniformclass = "42nd_Hound_Trooper_Uniform";
+    identityTypes[] = {"LanguageENG_F","42nd_Clone_Face","NoGlasses"};
+    hiddenSelectionsTextures[] = {
+        "\42nd_para\42nd\addons\Bluefor\42nd_Uniforms\customs\42nd_Hound_Upper_CO.paa",
+        "\42nd_para\42nd\addons\Bluefor\42nd_Uniforms\customs\42nd_Hound_Lower_CO.paa"
+    };
+    hiddenSelectionsMaterials[] = {
+        "\42nd_para\42nd\addons\Bluefor\42nd_Uniforms\customs\42nd_Hound_Upper.rvmat",
+        "\42nd_para\42nd\addons\Bluefor\42nd_Uniforms\customs\42nd_Hound_Lower.rvmat"
+    };
+    linkedItems[] = {"","42nd_Hound_P2_Helmet","SWLB_clone_commander_binocular","ItemMap","ItemGPS","ls_comlink_aur","ItemCompass"};
+    respawnLinkedItems[] = {"","42nd_Hound_P2_Helmet","SWLB_clone_commander_binocular","ItemMap","ItemGPS","ls_comlink_aur","ItemCompass"};
+};
+
 class 42nd_CVT_Trooper: IDA_Clone_DC15S
 {
     author = "Hound";

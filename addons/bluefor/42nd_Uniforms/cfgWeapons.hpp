@@ -121,6 +121,21 @@ class 42nd_Rose_Trooper_Uniform: IDA_Clone_Uniform
     };
 };
 
+class 42nd_Hound_Trooper_Uniform: IDA_Clone_Uniform
+{
+    author = "Hound";
+    scope = 2;
+    scopecurator = 2;
+    displayName = "[42nd] Hound Uniform";
+    class ItemInfo: uniformItem
+    {
+        uniformModel = "-";
+        uniformClass = "42nd_Hound_Trooper";
+        containerClass = "Supply250";
+        mass = 40;
+    };
+};
+
 class 42nd_CVT_Trooper_Uniform: IDA_Clone_Uniform
 {
     author = "Hound";

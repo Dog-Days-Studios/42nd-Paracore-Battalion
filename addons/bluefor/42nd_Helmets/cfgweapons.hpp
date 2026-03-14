@@ -1,8 +1,7 @@
 class IDA_P2_Helmet;
 class SEA_Helmet_ARF_base;
-class ls_cloneHelmet_phase2Pilot;
+class ls_gar_phase2Pilot_helmet;
 class HeadgearItem;
-class ItemInfo;
 class 42nd_Helmet_base: IDA_P2_Helmet
 {
     scope = 1;
@@ -42,7 +41,7 @@ class 42nd_Helmet_base: IDA_P2_Helmet
         };
     };
 };
-class 42nd_Pilot_Helmet_base: ls_cloneHelmet_phase2Pilot
+class 42nd_Pilot_Helmet_base: ls_gar_phase2Pilot_helmet
 {
     scope = 1;
     scopeArsenal = 1;
@@ -50,12 +49,6 @@ class 42nd_Pilot_Helmet_base: ls_cloneHelmet_phase2Pilot
     ace_hearing_protection = 0.95;
     ace_hearing_lowervolume = 0.2;
     displayName = "[42nd] Pilot Helmet";
-    hiddenSelections[] = {"camo1","camo2"};
-    class ItemInfo: ItemInfo
-    {
-        uniformModel = "\ls\core\addons\characters_clone\helmets\phase2Pilot\ls_helmet_clone_pilotPhase2.p3d";
-        hiddenSelections[] = {"camo1","camo2"};
-    };
 };
 class 42nd_Arf_Helmet_base: SEA_Helmet_ARF_base
 {
@@ -153,7 +146,7 @@ class 42nd_Trainee_Pilot_Helmet: 42nd_Pilot_Helmet_base
     hiddenSelectionsTextures[] =
     {
         "\42nd_para\42nd\addons\Bluefor\42nd_Helmets\Pilot\42nd_Trainee_Pilot_Helmet.paa",
-        "\ls\core\addons\characters_clone\helmets\phase2Pilot\data\camo2_co.paa"
+        "\ls\core\addons\characters_clone_legacy\helmets\phase2Pilot\data\visor_co.paa"
     };
 };
 
@@ -166,7 +159,7 @@ class 42nd_WO1_Pilot_Helmet: 42nd_Pilot_Helmet_base
     hiddenSelectionsTextures[] =
     {
         "\42nd_para\42nd\addons\Bluefor\42nd_Helmets\Pilot\42nd_Wo1_Pilot_Helmet_co.paa",
-        "\ls\core\addons\characters_clone\helmets\phase2Pilot\data\camo2_co.paa"
+        "\ls\core\addons\characters_clone_legacy\helmets\phase2Pilot\data\visor_co.paa"
     };
 };
 
@@ -179,7 +172,7 @@ class 42nd_WO2_Pilot_Helmet: 42nd_Pilot_Helmet_base
     hiddenSelectionsTextures[] =
     {
         "\42nd_para\42nd\addons\Bluefor\42nd_Helmets\Pilot\42nd_wo2_Pilot_Helmet_co.paa",
-        "\ls\core\addons\characters_clone\helmets\phase2Pilot\data\camo2_co.paa"
+        "\ls\core\addons\characters_clone_legacy\helmets\phase2Pilot\data\visor_co.paa"
     };
 };
 
@@ -192,7 +185,7 @@ class 42nd_WO3_Pilot_Helmet: 42nd_Pilot_Helmet_base
     hiddenSelectionsTextures[] =
     {
         "\42nd_para\42nd\addons\Bluefor\42nd_Helmets\Pilot\42nd_W03_Pilot_Helmet_co.paa",
-        "\ls\core\addons\characters_clone\helmets\phase2Pilot\data\camo2_co.paa"
+        "\ls\core\addons\characters_clone_legacy\helmets\phase2Pilot\data\visor_co.paa"
     };
 };
 
@@ -254,6 +247,22 @@ class 42nd_Rose_P2_Helmet: 42nd_Helmet_base
     hiddenSelectionsTextures[] = {
         "\42nd_para\42nd\addons\Bluefor\42nd_Helmets\Customs\42nd_Rose_Helmet_co.paa",
         "\42nd_para\42nd\addons\Bluefor\42nd_Helmets\Customs\42nd_Rose_Helmet_co.paa"
+    };
+};
+
+class 42nd_Hound_P2_Helmet: 42nd_Helmet_base
+{
+    scope = 2;
+    scopeArsenal = 2;
+    author = "HoundaCivic";
+    displayName = "[42nd] Hound Helmet";
+    hiddenSelectionsTextures[] = {
+        "\42nd_para\42nd\addons\Bluefor\42nd_Helmets\Customs\42nd_Hound_Helmet_CO.paa",
+        "\42nd_para\42nd\addons\Bluefor\42nd_Helmets\Customs\42nd_Hound_Helmet_CO.paa"
+    };
+    hiddenSelectionsMaterials[] = {
+        "\42nd_para\42nd\addons\Bluefor\42nd_Helmets\Customs\42nd_Hound_Helmet.rvmat",
+        "\42nd_para\42nd\addons\Bluefor\42nd_Helmets\Customs\42nd_Hound_Helmet.rvmat"
     };
 };
 

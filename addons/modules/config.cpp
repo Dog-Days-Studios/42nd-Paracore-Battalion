@@ -5,14 +5,26 @@ class CfgPatches
         name = "42nd Modules";
         author = "HoundaCivic";
         requiredVersion = 2.10;
-        requiredAddons[] = {"Aux_42nd", "cba_main", "cba_settings", "cba_keybinding", "cba_xeh", "A3_UI_F", "A3_Data_F"};
-        units[] = {};
+        requiredAddons[] = {"Aux_42nd", "cba_main", "cba_settings", "cba_keybinding", "cba_xeh", "A3_UI_F", "A3_Data_F", "A3_Modules_F", "ls_props_staticships"};
+        units[] = {"Para42_Module_CapitalShipJumpIn"};
         weapons[] = {};
     };
 };
 
 class CfgFunctions
 {
+    class Para42
+    {
+        class Modules
+        {
+            file = "\42nd_para\42nd\addons\modules\42nd_Scripts";
+            class getCapitalShipJumpSettings {};
+            class moduleCapitalShipJumpIn {};
+            class playCapitalShipJumpInLocal {};
+            class spawnCapitalShipJumpInServer {};
+        };
+    };
+
     class CTHUD
     {
         class Main
@@ -39,6 +51,268 @@ class CfgFunctions
     };
 };
 
+class CfgFactionClasses
+{
+    class NO_CATEGORY;
+    class Para42_Modules: NO_CATEGORY
+    {
+        displayName = "[42nd] Modules";
+    };
+};
+
+class Logic;
+class Module_F: Logic
+{
+    class ModuleDescription;
+};
+
+class CfgVehicles
+{
+    class Para42_Module_CapitalShipJumpIn: Module_F
+    {
+        author = "HoundaCivic";
+        scope = 2;
+        scopeCurator = 2;
+        displayName = "[42nd] Capital Ship Jump-In";
+        category = "Para42_Modules";
+        model = "\a3\Modules_F_Curator\Ordnance\surfaceMortar.p3d";
+        icon = "\a3\Modules_F_Curator\Data\portraitSmoke_ca.paa";
+        portrait = "\a3\Modules_F_Curator\Data\portraitSmoke_ca.paa";
+        simulation = "house";
+        function = "Para42_fnc_moduleCapitalShipJumpIn";
+        functionPriority = 1;
+        isGlobal = 0;
+        isTriggerActivated = 0;
+        isDisposable = 1;
+        curatorCanAttach = 0;
+        canSetArea = 0;
+        canSetAreaShape = 0;
+        canSetAreaHeight = 0;
+
+        class Arguments
+        {
+            class ShipClass
+            {
+                displayName = "Capital Ship";
+                description = "Ship variant to spawn at this module position.";
+                typeName = "STRING";
+
+                class values
+                {
+                    class RepublicVenatorZeus
+                    {
+                        name = "[Republic] Venator (Zeus)";
+                        value = "ls_staticShip_venator_zeus";
+                        default = 1;
+                    };
+                    class RepublicVenatorClosed
+                    {
+                        name = "[Republic] Venator";
+                        value = "ls_staticShip_venator";
+                    };
+                    class RepublicVenatorClosedHollow
+                    {
+                        name = "[Republic] Venator Hollow";
+                        value = "ls_staticShip_venator_hollow";
+                    };
+                    class RepublicVenatorFullHollow
+                    {
+                        name = "[Republic] Venator Full Hollow";
+                        value = "ls_staticShip_venator_fullHollow";
+                    };
+                    class RepublicVenatorOpen
+                    {
+                        name = "[Republic] Venator Open";
+                        value = "ls_staticShip_venator_open";
+                    };
+                    class RepublicVenatorOpenHollow
+                    {
+                        name = "[Republic] Venator Open Hollow";
+                        value = "ls_staticShip_venator_open_hollow";
+                    };
+                    class RepublicVenatorOpenFullHollow
+                    {
+                        name = "[Republic] Venator Open Full Hollow";
+                        value = "ls_staticShip_venator_open_fullHollow";
+                    };
+                    class RepublicAcclamator
+                    {
+                        name = "[Republic] Acclamator";
+                        value = "ls_staticShip_acclamator";
+                    };
+                    class RepublicAcclamatorHollow
+                    {
+                        name = "[Republic] Acclamator Hollow";
+                        value = "ls_staticShip_acclamator_hollow";
+                    };
+                    class RepublicC9LightCruiser
+                    {
+                        name = "[Republic] C-9 Light Cruiser";
+                        value = "ls_staticShip_c9LightCruiser_republic";
+                    };
+                    class RepublicFg40SupportFrigate
+                    {
+                        name = "[Republic] FG-40 Support Frigate";
+                        value = "ls_staticShip_fg40SupportFrigate";
+                    };
+                    class RepublicQuasar
+                    {
+                        name = "[Republic] Quasar";
+                        value = "ls_staticShip_quasar";
+                    };
+                    class RepublicMandator
+                    {
+                        name = "[Republic] Mandator";
+                        value = "ls_staticShip_mandator";
+                    };
+                    class CisProvidenceZeus
+                    {
+                        name = "[CIS] Providence (Zeus)";
+                        value = "ls_staticShip_providence_zeus";
+                    };
+                    class CisProvidence
+                    {
+                        name = "[CIS] Providence";
+                        value = "ls_staticShip_providence";
+                    };
+                    class CisProvidenceHollow
+                    {
+                        name = "[CIS] Providence Hollow";
+                        value = "ls_staticShip_providence_hollow";
+                    };
+                    class CisProvidenceDreadnoughtZeus
+                    {
+                        name = "[CIS] Providence Dreadnought (Zeus)";
+                        value = "ls_staticShip_providence_dreadnought_zeus";
+                    };
+                    class CisProvidenceDreadnought
+                    {
+                        name = "[CIS] Providence Dreadnought";
+                        value = "ls_staticShip_providence_dreadnought";
+                    };
+                    class CisProvidenceDreadnoughtHollow
+                    {
+                        name = "[CIS] Providence Dreadnought Hollow";
+                        value = "ls_staticShip_providence_dreadnought_hollow";
+                    };
+                    class CisRecusantZeus
+                    {
+                        name = "[CIS] Recusant (Zeus)";
+                        value = "ls_staticShip_recusant_zeus";
+                    };
+                    class CisRecusant
+                    {
+                        name = "[CIS] Recusant";
+                        value = "ls_staticShip_recusant";
+                    };
+                    class CisRecusantDreadnoughtZeus
+                    {
+                        name = "[CIS] Recusant Dreadnought (Zeus)";
+                        value = "ls_staticShip_recusant_zeus_dreadnought";
+                    };
+                    class CisRecusantDreadnought
+                    {
+                        name = "[CIS] Recusant Dreadnought";
+                        value = "ls_staticShip_recusant_dreadnought";
+                    };
+                    class CisMunificent
+                    {
+                        name = "[CIS] Munificent";
+                        value = "ls_staticShip_munificent";
+                    };
+                    class CisLucrehulk
+                    {
+                        name = "[CIS] Lucrehulk";
+                        value = "ls_staticShip_lucrehulk";
+                    };
+                    class CisHardcell
+                    {
+                        name = "[CIS] Hardcell";
+                        value = "ls_staticShip_hardcell";
+                    };
+                    class CisCoreShip
+                    {
+                        name = "[CIS] Core Ship";
+                        value = "ls_staticShip_coreShip";
+                    };
+                    class CisDiamondCruiser
+                    {
+                        name = "[CIS] Diamond-Class Cruiser";
+                        value = "ls_staticShip_diamondClassCruiser_cis";
+                    };
+                    class CisDby827
+                    {
+                        name = "[CIS] DBY-827";
+                        value = "ls_staticShip_dby827";
+                    };
+                    class CisSubjugator
+                    {
+                        name = "[CIS] Subjugator";
+                        value = "ls_staticShip_subjugator";
+                    };
+                    class CisStealthShip
+                    {
+                        name = "[CIS] SDS Stealth Ship";
+                        value = "ls_staticShip_sdsStealthShip";
+                    };
+                };
+            };
+
+            class SpawnHeight
+            {
+                displayName = "Spawn Height";
+                description = "Meters above the module position where the ship will settle after the jump-in.";
+                typeName = "NUMBER";
+                defaultValue = 2000;
+            };
+
+            class Heading
+            {
+                displayName = "Heading";
+                description = "Facing in degrees. Use -1 to inherit the module rotation.";
+                typeName = "NUMBER";
+                defaultValue = -1;
+            };
+
+            class CruiseSpeed
+            {
+                displayName = "Cruise Speed";
+                description = "Forward movement speed in meters per second after the jump-in. Set to 0 to hold position.";
+                typeName = "NUMBER";
+                defaultValue = 40;
+            };
+
+            class MoveForever
+            {
+                displayName = "Move Forever";
+                description = "If enabled, the ship keeps cruising along its facing direction indefinitely.";
+                typeName = "NUMBER";
+                class values
+                {
+                    class Disabled
+                    {
+                        name = "Disabled";
+                        value = 0;
+                        default = 1;
+                    };
+                    class Enabled
+                    {
+                        name = "Enabled";
+                        value = 1;
+                    };
+                };
+            };
+        };
+
+        class ModuleDescription: ModuleDescription
+        {
+            position = 1;
+            direction = 1;
+            description = "Spawns a Republic or CIS Legion Studios capital ship at the chosen altitude, plays a local jump-in approach into the module position, then leaves a persistent ship holding or cruising in the chosen direction.";
+        };
+    };
+};
+
 class Extended_PreInit_EventHandlers
 {
     class CTHUD_PreInit
@@ -52,10 +326,6 @@ class Extended_PostInit_EventHandlers
     class CTHUD_PostInit
     {
         init = "call compile preprocessFileLineNumbers '\42nd_para\42nd\addons\modules\42nd_Scripts\CloneTrooperHUD_Addon\CloneTrooperHUD_Addon\functions\fn_postInit.sqf'";
-    };
-    class Para42_VenatorSpawner_PostInit
-    {
-        init = "[] execVM '\42nd_para\42nd\addons\modules\42nd_Scripts\venator_spawner.sqf'";
     };
 };
 
