@@ -110,8 +110,6 @@ class CfgMagazines
 
 class CfgWeapons
 {
-    class Default;
-    class ACE_ItemCore;
     class ACE_fieldDressing;
     class ACE_personalAidKit;
     class ACE_plasmaIV;
@@ -190,7 +188,7 @@ class CfgWeapons
         descriptionShort = "Expanded plasma IV bag for large-volume clone trauma response.";
         class ItemInfo: CBA_MiscItem_ItemInfo
         {
-            mass = 15;
+            mass = 8;
         };
     };
 
@@ -202,14 +200,13 @@ class CfgWeapons
         descriptionShort = "Maximum-capacity plasma IV bag for extended stabilization.";
         class ItemInfo: CBA_MiscItem_ItemInfo
         {
-            mass = 20;
+            mass = 10;
         };
     };
 };
 
 class CfgVehicles
 {
-    class Item_Base_F;
     class ACE_fieldDressingItem;
     class ACE_personalAidKitItem;
     class ACE_plasmaIVItem;

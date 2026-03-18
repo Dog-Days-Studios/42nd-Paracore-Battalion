@@ -266,6 +266,18 @@ class 42nd_Hound_P2_Helmet: 42nd_Helmet_base
     };
 };
 
+class 42nd_Walker_P2_Helmet: 42nd_Helmet_base
+{
+    scope = 2;
+    scopeArsenal = 2;
+    author = "HoundaCivic";
+    displayName = "[42nd] Walker Helmet";
+    hiddenSelectionsTextures[] = {
+        "\42nd_para\42nd\addons\Bluefor\42nd_Helmets\Customs\42nd_Walker_Helmet_co.paa",
+        "\42nd_para\42nd\addons\Bluefor\42nd_Helmets\Customs\42nd_Walker_Helmet_co.paa"
+    };
+};
+
 class 42nd_CVT_P2_Helmet: 42nd_Helmet_base
 {
     scope = 2;
@@ -287,5 +299,29 @@ class 42nd_NCO_P2_Helmet: 42nd_Helmet_base
     hiddenSelectionsTextures[] = {
         "\42nd_para\42nd\addons\Bluefor\42nd_Helmets\NCO\42nd_NCO_Helmet_co.paa",
         "\42nd_para\42nd\addons\Bluefor\42nd_Helmets\NCO\42nd_NCO_Helmet_co.paa"
+    };
+};
+
+class 42nd_EOD_P2_Helmet: 42nd_Helmet_base
+{
+    scope = 2;
+    scopeArsenal = 2;
+    author = "HoundaCivic";
+    displayName = "[42nd] EOD P2 Helmet";
+    hiddenSelectionsTextures[] = {
+        "\42nd_para\42nd\addons\Bluefor\42nd_Helmets\EOD\42nd_EOD_Helmet_co.paa",
+        "\42nd_para\42nd\addons\Bluefor\42nd_Helmets\EOD\42nd_EOD_Helmet_co.paa"
+    };
+};
+
+class 42nd_EOD_Vet_Helmet: 42nd_Helmet_base
+{
+    scope = 2;
+    scopeArsenal = 2;
+    author = "HoundaCivic";
+    displayName = "[42nd] EOD Veteran Helmet";
+    hiddenSelectionsTextures[] = {
+        "\42nd_para\42nd\addons\Bluefor\42nd_Helmets\EOD\42nd_EOD_Vet_Helmet.paa",
+        "\42nd_para\42nd\addons\Bluefor\42nd_Helmets\EOD\42nd_EOD_Vet_Helmet.paa"
     };
 };

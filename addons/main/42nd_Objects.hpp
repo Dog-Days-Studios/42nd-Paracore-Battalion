@@ -1,9 +1,5 @@
     class ls_carrybox_base;
 	class b_supplyCrate_F;
-	class ls_flag_republic;
-	class ls_flag_republicDamaged;
-	class ls_flag_republic_vertical;
-	class ls_flag_republicDamaged_vertical;
     class 3as_Small_Box_9_Prop;
 
 	class 42nd_Arsenal_Box: ls_carrybox_base     // full arsenal box

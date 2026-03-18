@@ -415,6 +415,15 @@ if (isNil "para42_fnc_gozantiDropPassengerLocal") then {
         _chute setVelocity velocity _transport;
 
         _unit moveInDriver _chute;
+        if (vehicle _unit != _chute) then {
+            [_unit, _chute] spawn {
+                params ["_unit", "_chute"];
+                sleep 0.25;
+                if (alive _unit && !isNull _chute && {vehicle _unit != _chute}) then {
+                    _unit moveInDriver _chute;
+                };
+            };
+        };
 
         [_unit, _chute, _savedState] spawn {
             params ["_unit", "_chute", "_savedState"];
