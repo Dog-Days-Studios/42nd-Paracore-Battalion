@@ -59,6 +59,13 @@ class 42nd_GL_Muzzle: JLTS_stun_muzzle
         {
             "Single"
         };
+        class EventHandlers
+        {
+            class Para42_GrappleRound
+            {
+                Fired = "_this call Para42_fnc_handleGrappleRoundFired;";
+            };
+        };
         class Single: Mode_SemiAuto
         {
             sounds[]=
@@ -556,3 +563,4 @@ class 42nd_3AS_FusionCutter_F: 3AS_FusionCutter_F
 	baseWeapon = "42nd_3AS_FusionCutter_F";
 };
  
+

@@ -15,3 +15,4 @@ class CfgPatches
 };
 
 #include "xtd_weapons.hpp"
+

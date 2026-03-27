@@ -277,6 +277,7 @@ class 42nd_EOD_Trooper: IDA_Clone_DC15S
     editorSubcategory = "Sub42ndMen";
     uniformClass = "42nd_EOD_Trooper_Uniform";
     identityTypes[] = {"LanguageENG_F","42nd_Clone_Face","NoGlasses"};
+    backpack = "42nd_Grenade_rig";
     hiddenSelectionsTextures[] = {"\42nd_para\42nd\addons\Bluefor\42nd_Uniforms\EOD\42nd_EOD_Upper_co.paa","\42nd_para\42nd\addons\Bluefor\42nd_Uniforms\EOD\42nd_EOD_Lower_co.paa"};
     linkedItems[] = {"","42nd_EOD_P2_Helmet","SWLB_clone_commander_binocular","ItemMap","ItemGPS","ls_comlink_aur","ItemCompass"};
     respawnLinkedItems[] = {"","42nd_EOD_P2_Helmet","SWLB_clone_commander_binocular","ItemMap","ItemGPS","ls_comlink_aur","ItemCompass"};
@@ -292,7 +293,124 @@ class 42nd_EOD_Vet_Trooper: IDA_Clone_DC15S
     editorSubcategory = "Sub42ndMen";
     uniformClass = "42nd_EOD_Vet_Trooper_Uniform";
     identityTypes[] = {"LanguageENG_F","42nd_Clone_Face","NoGlasses"};
+    backpack = "42nd_Grenade_rig";
     hiddenSelectionsTextures[] = {"\42nd_para\42nd\addons\Bluefor\42nd_Uniforms\EOD\42nd_EOD_Vet_Upper.paa","\42nd_para\42nd\addons\Bluefor\42nd_Uniforms\EOD\42nd_EOD_Vet_Lower.paa"};
     linkedItems[] = {"","42nd_EOD_Vet_Helmet","SWLB_clone_commander_binocular","ItemMap","ItemGPS","ls_comlink_aur","ItemCompass"};
     respawnLinkedItems[] = {"","42nd_EOD_Vet_Helmet","SWLB_clone_commander_binocular","ItemMap","ItemGPS","ls_comlink_aur","ItemCompass"};
+};
+
+class 42nd_EOD_Squad_Trooper: IDA_Clone_DC15S
+{
+    author = "Hound";
+    scope = 2;
+    scopecurator = 2;
+    displayName = "[42nd] EOD Squad";
+    faction = "Fac42nd";
+    editorSubcategory = "Sub42ndMen";
+    uniformClass = "42nd_EOD_Squad_Trooper_Uniform";
+    identityTypes[] = {"LanguageENG_F","42nd_Clone_Face","NoGlasses"};
+    backpack = "42nd_Grenade_rig";
+    hiddenSelectionsTextures[] = {"\42nd_para\42nd\addons\Bluefor\42nd_Uniforms\EOD\42nd_EOD_Squad_Upper_co.paa","\42nd_para\42nd\addons\Bluefor\42nd_Uniforms\EOD\42nd_EOD_Squad_Lower_co.paa"};
+    linkedItems[] = {"","42nd_EOD_Squad_Helmet","SWLB_clone_commander_binocular","ItemMap","ItemGPS","ls_comlink_aur","ItemCompass"};
+    respawnLinkedItems[] = {"","42nd_EOD_Squad_Helmet","SWLB_clone_commander_binocular","ItemMap","ItemGPS","ls_comlink_aur","ItemCompass"};
+};
+
+class 42nd_EOD_Senior_Trooper: IDA_Clone_DC15S
+{
+    author = "Hound";
+    scope = 2;
+    scopecurator = 2;
+    displayName = "[42nd] EOD Senior";
+    faction = "Fac42nd";
+    editorSubcategory = "Sub42ndMen";
+    uniformClass = "42nd_EOD_Senior_Trooper_Uniform";
+    identityTypes[] = {"LanguageENG_F","42nd_Clone_Face","NoGlasses"};
+    backpack = "42nd_Grenade_rig";
+    hiddenSelectionsTextures[] = {"\42nd_para\42nd\addons\Bluefor\42nd_Uniforms\EOD\42nd_EOD_Senior_Upper_co.paa","\42nd_para\42nd\addons\Bluefor\42nd_Uniforms\EOD\42nd_EOD_Senior_Lower_co.paa"};
+    linkedItems[] = {"","42nd_EOD_Senior_Helmet","SWLB_clone_commander_binocular","ItemMap","ItemGPS","ls_comlink_aur","ItemCompass"};
+    respawnLinkedItems[] = {"","42nd_EOD_Senior_Helmet","SWLB_clone_commander_binocular","ItemMap","ItemGPS","ls_comlink_aur","ItemCompass"};
+};
+
+class 42nd_Marksman_Trooper: IDA_Clone_DC15S
+{
+    author = "Hound";
+    scope = 2;
+    scopecurator = 2;
+    displayName = "[42nd] Marksman";
+    faction = "Fac42nd";
+    editorSubcategory = "Sub42ndMen";
+    role = "Marksman";
+    uniformClass = "42nd_Marksman_Trooper_Uniform";
+    identityTypes[] = {"LanguageENG_F","42nd_Clone_Face","NoGlasses"};
+    backpack = "42nd_Standard_Backpack";
+    hiddenSelectionsTextures[] = {"\42nd_para\42nd\addons\Bluefor\42nd_Uniforms\Marksman\42nd_Marksman_upper_co.paa","\42nd_para\42nd\addons\Bluefor\42nd_Uniforms\Marksman\42nd_Marksman_lower_co.paa"};
+    linkedItems[] = {"","42nd_Marksman_P2_Helmet","SWLB_clone_commander_binocular","ItemMap","ItemGPS","ls_comlink_aur","ItemCompass"};
+    respawnLinkedItems[] = {"","42nd_Marksman_P2_Helmet","SWLB_clone_commander_binocular","ItemMap","ItemGPS","ls_comlink_aur","ItemCompass"};
+    weapons[] = {"42nd_DC15X","Throw","Put"};
+    respawnWeapons[] = {"42nd_DC15X","Throw","Put"};
+    magazines[] = {mag_6("42nd_Sniper_Cell_10Round_Blue"),"IDA_grenade_Smoke_Green_mag","IDA_grenade_Smoke_Blue_mag","IDA_grenade_Smoke_Red_mag","IDA_grenade_Smoke_mag","IDA_grenade_Detonator_mag"};
+    respawnMagazines[] = {mag_6("42nd_Sniper_Cell_10Round_Blue"),"IDA_grenade_Smoke_Green_mag","IDA_grenade_Smoke_Blue_mag","IDA_grenade_Smoke_Red_mag","IDA_grenade_Smoke_mag","IDA_grenade_Detonator_mag"};
+};
+
+class 42nd_Marksman_Vet_Trooper: IDA_Clone_DC15S
+{
+    author = "Hound";
+    scope = 2;
+    scopecurator = 2;
+    displayName = "[42nd] Marksman Veteran";
+    faction = "Fac42nd";
+    editorSubcategory = "Sub42ndMen";
+    role = "Marksman";
+    uniformClass = "42nd_Marksman_Vet_Trooper_Uniform";
+    identityTypes[] = {"LanguageENG_F","42nd_Clone_Face","NoGlasses"};
+    backpack = "42nd_Standard_Backpack";
+    hiddenSelectionsTextures[] = {"\42nd_para\42nd\addons\Bluefor\42nd_Uniforms\Marksman\42nd_marksman_vet_upper_co.paa","\42nd_para\42nd\addons\Bluefor\42nd_Uniforms\Marksman\42nd_Marksman_vet_lower_co.paa"};
+    linkedItems[] = {"","42nd_Marksman_Vet_Helmet","SWLB_clone_commander_binocular","ItemMap","ItemGPS","ls_comlink_aur","ItemCompass"};
+    respawnLinkedItems[] = {"","42nd_Marksman_Vet_Helmet","SWLB_clone_commander_binocular","ItemMap","ItemGPS","ls_comlink_aur","ItemCompass"};
+    weapons[] = {"42nd_DC15X","Throw","Put"};
+    respawnWeapons[] = {"42nd_DC15X","Throw","Put"};
+    magazines[] = {mag_6("42nd_Sniper_Cell_10Round_Blue"),"IDA_grenade_Smoke_Green_mag","IDA_grenade_Smoke_Blue_mag","IDA_grenade_Smoke_Red_mag","IDA_grenade_Smoke_mag","IDA_grenade_Detonator_mag"};
+    respawnMagazines[] = {mag_6("42nd_Sniper_Cell_10Round_Blue"),"IDA_grenade_Smoke_Green_mag","IDA_grenade_Smoke_Blue_mag","IDA_grenade_Smoke_Red_mag","IDA_grenade_Smoke_mag","IDA_grenade_Detonator_mag"};
+};
+
+class 42nd_Marksman_Squad_Trooper: IDA_Clone_DC15S
+{
+    author = "Hound";
+    scope = 2;
+    scopecurator = 2;
+    displayName = "[42nd] Marksman Squad";
+    faction = "Fac42nd";
+    editorSubcategory = "Sub42ndMen";
+    role = "Marksman";
+    uniformClass = "42nd_Marksman_Squad_Trooper_Uniform";
+    identityTypes[] = {"LanguageENG_F","42nd_Clone_Face","NoGlasses"};
+    backpack = "42nd_Standard_Backpack";
+    hiddenSelectionsTextures[] = {"\42nd_para\42nd\addons\Bluefor\42nd_Uniforms\Marksman\42nd_Marksman_Squad_Upper_co.paa","\42nd_para\42nd\addons\Bluefor\42nd_Uniforms\Marksman\42nd_Marksman_Squad_Lower_co.paa"};
+    linkedItems[] = {"","42nd_Marksman_Squad_Helmet","SWLB_clone_commander_binocular","ItemMap","ItemGPS","ls_comlink_aur","ItemCompass"};
+    respawnLinkedItems[] = {"","42nd_Marksman_Squad_Helmet","SWLB_clone_commander_binocular","ItemMap","ItemGPS","ls_comlink_aur","ItemCompass"};
+    weapons[] = {"42nd_DC15X","Throw","Put"};
+    respawnWeapons[] = {"42nd_DC15X","Throw","Put"};
+    magazines[] = {mag_6("42nd_Sniper_Cell_10Round_Blue"),"IDA_grenade_Smoke_Green_mag","IDA_grenade_Smoke_Blue_mag","IDA_grenade_Smoke_Red_mag","IDA_grenade_Smoke_mag","IDA_grenade_Detonator_mag"};
+    respawnMagazines[] = {mag_6("42nd_Sniper_Cell_10Round_Blue"),"IDA_grenade_Smoke_Green_mag","IDA_grenade_Smoke_Blue_mag","IDA_grenade_Smoke_Red_mag","IDA_grenade_Smoke_mag","IDA_grenade_Detonator_mag"};
+};
+
+class 42nd_Marksman_Senior_Trooper: IDA_Clone_DC15S
+{
+    author = "Hound";
+    scope = 2;
+    scopecurator = 2;
+    displayName = "[42nd] Marksman Senior";
+    faction = "Fac42nd";
+    editorSubcategory = "Sub42ndMen";
+    role = "Marksman";
+    uniformClass = "42nd_Marksman_Senior_Trooper_Uniform";
+    identityTypes[] = {"LanguageENG_F","42nd_Clone_Face","NoGlasses"};
+    backpack = "42nd_Standard_Backpack";
+    hiddenSelectionsTextures[] = {"\42nd_para\42nd\addons\Bluefor\42nd_Uniforms\Marksman\42nd_Marksman_Senior_Upper_co.paa","\42nd_para\42nd\addons\Bluefor\42nd_Uniforms\Marksman\42nd_Marksman_Senior_Lower_co.paa"};
+    linkedItems[] = {"","42nd_Marksman_Senior_Helmet","SWLB_clone_commander_binocular","ItemMap","ItemGPS","ls_comlink_aur","ItemCompass"};
+    respawnLinkedItems[] = {"","42nd_Marksman_Senior_Helmet","SWLB_clone_commander_binocular","ItemMap","ItemGPS","ls_comlink_aur","ItemCompass"};
+    weapons[] = {"42nd_DC15X","Throw","Put"};
+    respawnWeapons[] = {"42nd_DC15X","Throw","Put"};
+    magazines[] = {mag_6("42nd_Sniper_Cell_10Round_Blue"),"IDA_grenade_Smoke_Green_mag","IDA_grenade_Smoke_Blue_mag","IDA_grenade_Smoke_Red_mag","IDA_grenade_Smoke_mag","IDA_grenade_Detonator_mag"};
+    respawnMagazines[] = {mag_6("42nd_Sniper_Cell_10Round_Blue"),"IDA_grenade_Smoke_Green_mag","IDA_grenade_Smoke_Blue_mag","IDA_grenade_Smoke_Red_mag","IDA_grenade_Smoke_mag","IDA_grenade_Detonator_mag"};
 };

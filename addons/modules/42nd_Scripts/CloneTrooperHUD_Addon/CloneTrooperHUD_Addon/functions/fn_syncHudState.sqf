@@ -5,38 +5,8 @@ private _hudEnabled = missionNamespace getVariable ["CTHUD_enabled", true];
 private _runtimeEnabled = missionNamespace getVariable ["CTHUD_runtimeEnabled", false];
 private _hasHelmet = call CTHUD_fnc_hasHudHelmet;
 private _useInteriorVisor = missionNamespace getVariable ["CTHUD_showInteriorVisor", true];
-private _overlayClass = "ls_clone_phase2_hud";
-private _currentFacewear = goggles player;
 private _wantsOverlay = _hudEnabled && _runtimeEnabled && _hasHelmet && _useInteriorVisor;
-
-if (_wantsOverlay) then
-{
-    if (_currentFacewear != _overlayClass) then
-    {
-        if (_currentFacewear != "") then
-        {
-            player setVariable ["CTHUD_savedFacewear", _currentFacewear];
-            removeGoggles player;
-        };
-
-        player addGoggles _overlayClass;
-    };
-}
-else
-{
-    if (_currentFacewear == _overlayClass) then
-    {
-        removeGoggles player;
-
-        private _savedFacewear = player getVariable ["CTHUD_savedFacewear", ""];
-        if (_savedFacewear != "") then
-        {
-            player addGoggles _savedFacewear;
-        };
-
-        player setVariable ["CTHUD_savedFacewear", ""];
-    };
-};
+private _overlayTexture = "\42nd_para\42nd\addons\modules\42nd_Scripts\CloneTrooperHUD_Addon\CloneTrooperHUD_Addon\ui\p2_hud_ca.paa";
 
 private _shouldShowHud = call CTHUD_fnc_canShowHUD;
 private _display = uiNamespace getVariable ["CTHUD_Display", displayNull];
@@ -65,6 +35,12 @@ if (_shouldShowHud) then
     if (isNull _display) then
     {
         cutRsc ["CTHUD_Main", "PLAIN"];
+    }
+    else
+    {
+        private _visorCtrl = _display displayCtrl 9001;
+        _visorCtrl ctrlSetText _overlayTexture;
+        _visorCtrl ctrlShow _wantsOverlay;
     };
 }
 else

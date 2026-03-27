@@ -82,7 +82,7 @@ if (!isNil "CBA_fnc_addSetting") then
 [
     "CTHUD_showInteriorVisor",
     "CHECKBOX",
-    ["Show Interior Visor", "Applies the clone visor facewear while the HUD is active."],
+    ["Show Interior Visor", "Displays the clone visor overlay texture while the HUD is active."],
     ["Clone Trooper HUD", "Layout"],
     true,
     1

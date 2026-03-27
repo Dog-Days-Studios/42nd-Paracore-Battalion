@@ -8,5 +8,6 @@ class 42nd_Gozanti_Republic: 3as_gozanti_republic
     displayName = "[42nd] Gozanti Cruiser";
     faction = "Fac42nd";
     editorSubcategory = "SUB42ndAir";
-    crew = "42nd_Trooper";
+    crew = "42nd_WO1_Pilot";
 };
+

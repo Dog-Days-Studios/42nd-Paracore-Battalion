@@ -210,3 +210,93 @@ class 42nd_EOD_Vet_Trooper_Uniform: IDA_Clone_Uniform
         mass = 40;
     };
 };
+
+class 42nd_EOD_Squad_Trooper_Uniform: IDA_Clone_Uniform
+{
+    author = "Hound";
+    scope = 2;
+    scopecurator = 2;
+    displayName = "[42nd] EOD Squad Uniform";
+    class ItemInfo: uniformItem
+    {
+        uniformModel = "-";
+        uniformClass = "42nd_EOD_Squad_Trooper";
+        containerClass = "Supply250";
+        mass = 40;
+    };
+};
+
+class 42nd_EOD_Senior_Trooper_Uniform: IDA_Clone_Uniform
+{
+    author = "Hound";
+    scope = 2;
+    scopecurator = 2;
+    displayName = "[42nd] EOD Senior Uniform";
+    class ItemInfo: uniformItem
+    {
+        uniformModel = "-";
+        uniformClass = "42nd_EOD_Senior_Trooper";
+        containerClass = "Supply250";
+        mass = 40;
+    };
+};
+
+class 42nd_Marksman_Trooper_Uniform: IDA_Clone_Uniform
+{
+    author = "Hound";
+    scope = 2;
+    scopecurator = 2;
+    displayName = "[42nd] Marksman Uniform";
+    class ItemInfo: uniformItem
+    {
+        uniformModel = "-";
+        uniformClass = "42nd_Marksman_Trooper";
+        containerClass = "Supply250";
+        mass = 40;
+    };
+};
+
+class 42nd_Marksman_Vet_Trooper_Uniform: IDA_Clone_Uniform
+{
+    author = "Hound";
+    scope = 2;
+    scopecurator = 2;
+    displayName = "[42nd] Marksman Veteran Uniform";
+    class ItemInfo: uniformItem
+    {
+        uniformModel = "-";
+        uniformClass = "42nd_Marksman_Vet_Trooper";
+        containerClass = "Supply250";
+        mass = 40;
+    };
+};
+
+class 42nd_Marksman_Squad_Trooper_Uniform: IDA_Clone_Uniform
+{
+    author = "Hound";
+    scope = 2;
+    scopecurator = 2;
+    displayName = "[42nd] Marksman Squad Uniform";
+    class ItemInfo: uniformItem
+    {
+        uniformModel = "-";
+        uniformClass = "42nd_Marksman_Squad_Trooper";
+        containerClass = "Supply250";
+        mass = 40;
+    };
+};
+
+class 42nd_Marksman_Senior_Trooper_Uniform: IDA_Clone_Uniform
+{
+    author = "Hound";
+    scope = 2;
+    scopecurator = 2;
+    displayName = "[42nd] Marksman Senior Uniform";
+    class ItemInfo: uniformItem
+    {
+        uniformModel = "-";
+        uniformClass = "42nd_Marksman_Senior_Trooper";
+        containerClass = "Supply250";
+        mass = 40;
+    };
+};

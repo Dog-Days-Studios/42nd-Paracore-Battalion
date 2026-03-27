@@ -1,4 +1,7 @@
 class ls_vehicle_laati;
+class AnimationSources;
+class Turrets;
+class Copilot;
 
     class 42nd_LAAT: ls_vehicle_laati
     {
@@ -61,3 +64,218 @@ class ls_vehicle_laati;
         };
         textureList[] = {"Base42ndLAAT",1};
     };
+
+class 3AS_LAAT_Mk1;
+class 3AS_LAAT_Mk1Lights;
+class 3AS_LAAT_Mk2;
+class 3AS_LAAT_Mk2Lights;
+class 42nd_3as_LAAT_Mk1: 3AS_LAAT_Mk1
+{
+    author = "HoundaCivic";
+    scope = 2;
+    scopeCurator = 2;
+    displayName = "[42nd] LAAT/I MK1";
+    faction = "Fac42nd";
+    editorSubcategory = "SUB42ndAir";
+    crew = "42nd_Trooper";
+    hiddenSelectionsTextures[] = {
+        "\42nd_para\42nd\addons\Vehicles\42nd_LAAT\42nd_3as_LAAT_Hull_co.paa",
+        "\42nd_para\42nd\addons\Vehicles\42nd_LAAT\42nd_3as_Laat_Wings.paa",
+        "\3AS\3AS_Laat\LAATI\data\Weapons_CO.paa",
+        "\3AS\3AS_Laat\LAATI\data\Weapon_Details_CO.paa",
+        "\3AS\3AS_Laat\LAATI\data\Interior_CO.paa"
+    };
+    class TextureSources
+    {
+        class Base42nd3asLAAT
+        {
+            displayName = "[42nd] Base";
+            scope = 2;
+            author = "HoundaCivic";
+            textures[] = {
+                "\42nd_para\42nd\addons\Vehicles\42nd_LAAT\42nd_3as_LAAT_Hull_co.paa",
+                "\42nd_para\42nd\addons\Vehicles\42nd_LAAT\42nd_3as_Laat_Wings.paa",
+                "\3AS\3AS_Laat\LAATI\data\Weapons_CO.paa",
+                "\3AS\3AS_Laat\LAATI\data\Weapon_Details_CO.paa",
+                "\3AS\3AS_Laat\LAATI\data\Interior_CO.paa"
+            };
+            factions[] = {"Fac42nd"};
+        };
+    };
+    textureList[] = {"Base42nd3asLAAT",1};
+};
+
+class 42nd_3as_LAAT_Mk1Lights: 3AS_LAAT_Mk1Lights
+{
+    author = "HoundaCivic";
+    scope = 2;
+    scopeCurator = 2;
+    displayName = "[42nd] LAAT/I MK1 (Lamps)";
+    faction = "Fac42nd";
+    editorSubcategory = "SUB42ndAir";
+    crew = "42nd_Trooper";
+    hiddenSelectionsTextures[] = {
+        "\42nd_para\42nd\addons\Vehicles\42nd_LAAT\42nd_3as_LAAT_Hull_co.paa",
+        "\42nd_para\42nd\addons\Vehicles\42nd_LAAT\42nd_3as_Laat_Wings.paa",
+        "\3AS\3AS_Laat\LAATI\data\Weapons_CO.paa",
+        "\3AS\3AS_Laat\LAATI\data\Weapon_Details_CO.paa",
+        "\3AS\3AS_Laat\LAATI\data\Interior_CO.paa"
+    };
+    class TextureSources
+    {
+        class Base42nd3asLAAT
+        {
+            displayName = "[42nd] Base";
+            scope = 2;
+            author = "HoundaCivic";
+            textures[] = {
+                "\42nd_para\42nd\addons\Vehicles\42nd_LAAT\42nd_3as_LAAT_Hull_co.paa",
+                "\42nd_para\42nd\addons\Vehicles\42nd_LAAT\42nd_3as_Laat_Wings.paa",
+                "\3AS\3AS_Laat\LAATI\data\Weapons_CO.paa",
+                "\3AS\3AS_Laat\LAATI\data\Weapon_Details_CO.paa",
+                "\3AS\3AS_Laat\LAATI\data\Interior_CO.paa"
+            };
+            factions[] = {"Fac42nd"};
+        };
+    };
+    textureList[] = {"Base42nd3asLAAT",1};
+};
+
+class 42nd_3as_LAAT: 3AS_LAAT_Mk2
+{
+    author = "HoundaCivic";
+    scope = 2;
+    scopeCurator = 2;
+    displayName = "[42nd] LAAT/I MK2";
+    faction = "Fac42nd";
+    editorSubcategory = "SUB42ndAir";
+    crew = "42nd_Trooper";
+    hiddenSelectionsTextures[] = {
+        "\42nd_para\42nd\addons\Vehicles\42nd_LAAT\42nd_3as_LAAT_Hull_co.paa",
+        "\42nd_para\42nd\addons\Vehicles\42nd_LAAT\42nd_3as_Laat_Wings.paa",
+        "\3AS\3AS_Laat\LAATI\data\Weapons_CO.paa",
+        "\3AS\3AS_Laat\LAATI\data\Weapon_Details_CO.paa",
+        "\3AS\3AS_Laat\LAATI\data\Interior_CO.paa"
+    };
+    class TextureSources
+    {
+        class Base42nd3asLAAT
+        {
+            displayName = "[42nd] Base";
+            scope = 2;
+            author = "HoundaCivic";
+            textures[] = {
+                "\42nd_para\42nd\addons\Vehicles\42nd_LAAT\42nd_3as_LAAT_Hull_co.paa",
+                "\42nd_para\42nd\addons\Vehicles\42nd_LAAT\42nd_3as_Laat_Wings.paa",
+                "\3AS\3AS_Laat\LAATI\data\Weapons_CO.paa",
+                "\3AS\3AS_Laat\LAATI\data\Weapon_Details_CO.paa",
+                "\3AS\3AS_Laat\LAATI\data\Interior_CO.paa"
+            };
+            factions[] = {"Fac42nd"};
+        };
+    };
+    textureList[] = {"Base42nd3asLAAT",1};
+};
+
+class 42nd_3as_LAAT_Mk2Lights: 3AS_LAAT_Mk2Lights
+{
+    author = "HoundaCivic";
+    scope = 2;
+    scopeCurator = 2;
+    displayName = "[42nd] LAAT/I MK2 (Lamps)";
+    faction = "Fac42nd";
+    editorSubcategory = "SUB42ndAir";
+    crew = "42nd_Trooper";
+    hiddenSelectionsTextures[] = {
+        "\42nd_para\42nd\addons\Vehicles\42nd_LAAT\42nd_3as_LAAT_Hull_co.paa",
+        "\42nd_para\42nd\addons\Vehicles\42nd_LAAT\42nd_3as_Laat_Wings.paa",
+        "\3AS\3AS_Laat\LAATI\data\Weapons_CO.paa",
+        "\3AS\3AS_Laat\LAATI\data\Weapon_Details_CO.paa",
+        "\3AS\3AS_Laat\LAATI\data\Interior_CO.paa"
+    };
+    class TextureSources
+    {
+        class Base42nd3asLAAT
+        {
+            displayName = "[42nd] Base";
+            scope = 2;
+            author = "HoundaCivic";
+            textures[] = {
+                "\42nd_para\42nd\addons\Vehicles\42nd_LAAT\42nd_3as_LAAT_Hull_co.paa",
+                "\42nd_para\42nd\addons\Vehicles\42nd_LAAT\42nd_3as_Laat_Wings.paa",
+                "\3AS\3AS_Laat\LAATI\data\Weapons_CO.paa",
+                "\3AS\3AS_Laat\LAATI\data\Weapon_Details_CO.paa",
+                "\3AS\3AS_Laat\LAATI\data\Interior_CO.paa"
+            };
+            factions[] = {"Fac42nd"};
+        };
+    };
+    textureList[] = {"Base42nd3asLAAT",1};
+};
+
+class 42nd_3as_LAAT_Mk1_Fast: 42nd_3as_LAAT_Mk1
+{
+    author = "HoundaCivic";
+    scope = 2;
+    scopeCurator = 2;
+    displayName = "[42nd] LAAT/I MK1 (Fast)";
+    faction = "Fac42nd";
+    editorSubcategory = "SUB42ndAir";
+    side = 1;
+    crew = "42nd_Trooper";
+    typicalCargo[] = {"42nd_Trooper"};
+    maxSpeed = 850;
+    acceleration = 650;
+    liftForceCoef = 3.35;
+    bodyFrictionCoef = 1.7;
+    cyclicForwardForceCoef = 2.5;
+    tas_max_impulse = 1000;
+};
+
+class 42nd_3as_LAAT_Mk2_NoTurrets: 42nd_3as_LAAT
+{
+    author = "HoundaCivic";
+    scope = 2;
+    scopeCurator = 2;
+    displayName = "[42nd] LAAT/I MK2 (No Turrets)";
+    faction = "Fac42nd";
+    editorSubcategory = "SUB42ndAir";
+    side = 1;
+    crew = "42nd_Trooper";
+    typicalCargo[] = {"42nd_Trooper"};
+    class Turrets {};
+    class AnimationSources: AnimationSources
+    {
+        class Turrets
+        {
+            source = "user";
+            initPhase = 0;
+            animPeriod = 0.001;
+        };
+    };
+};
+
+class 42nd_3as_LAAT_Mk3_HeavyTurrets: 42nd_3as_LAAT
+{
+    author = "HoundaCivic";
+    scope = 2;
+    scopeCurator = 2;
+    displayName = "[42nd] LAAT/I MK3 (Heavy)";
+    faction = "Fac42nd";
+    editorSubcategory = "SUB42ndAir";
+    side = 1;
+    crew = "42nd_Trooper";
+    typicalCargo[] = {"42nd_Trooper"};
+    maxSpeed = 500;
+    acceleration = 350;
+    armor = 300;
+    armorStructural = 1.2;
+    class Turrets: Turrets
+    {
+        class Copilot: Copilot
+        {
+            weapons[] = {"ParticleBeamCannon","SmokeLauncher"};
+            magazines[] = {"Laser_Battery_F","Laser_Battery_F"};
+        };
+    };
+};

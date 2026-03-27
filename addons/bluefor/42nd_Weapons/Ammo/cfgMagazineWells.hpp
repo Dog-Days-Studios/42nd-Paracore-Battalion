@@ -49,6 +49,7 @@
                 "42nd_40mm_green_smoke",
                 "42nd_40mm_orange_smoke",
                 "42nd_40mm_red_smoke",
+                "42nd_40mm_Grapple",
                 "42nd_IDA_HEGL_Shell"
             };
         };

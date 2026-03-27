@@ -325,3 +325,207 @@ class 42nd_EOD_Vet_Helmet: 42nd_Helmet_base
         "\42nd_para\42nd\addons\Bluefor\42nd_Helmets\EOD\42nd_EOD_Vet_Helmet.paa"
     };
 };
+
+class 42nd_EOD_Squad_Helmet: 42nd_Helmet_base
+{
+    scope = 2;
+    scopeArsenal = 2;
+    author = "HoundaCivic";
+    displayName = "[42nd] EOD Squad Helmet";
+    hiddenSelectionsTextures[] = {
+        "\42nd_para\42nd\addons\Bluefor\42nd_Helmets\EOD\42nd_EOD_Squad_Helmet_co.paa",
+        "\42nd_para\42nd\addons\Bluefor\42nd_Helmets\EOD\42nd_EOD_Squad_Helmet_co.paa"
+    };
+};
+
+class 42nd_EOD_Senior_Helmet: 42nd_Helmet_base
+{
+    scope = 2;
+    scopeArsenal = 2;
+    author = "HoundaCivic";
+    displayName = "[42nd] EOD Senior Helmet";
+    hiddenSelectionsTextures[] = {
+        "\42nd_para\42nd\addons\Bluefor\42nd_Helmets\EOD\42nd_EOD_Senior_Helmet_co.paa",
+        "\42nd_para\42nd\addons\Bluefor\42nd_Helmets\EOD\42nd_EOD_Senior_Helmet_co.paa"
+    };
+};
+
+class 42nd_Marksman_P2_Helmet: 42nd_Helmet_base
+{
+    scope = 2;
+    scopeArsenal = 2;
+    author = "HoundaCivic";
+    displayName = "[42nd] Marksman P2 Helmet";
+    hiddenSelectionsTextures[] = {
+        "\42nd_para\42nd\addons\Bluefor\42nd_Helmets\Marksman\42nd_Marksman_Helmet_co.paa",
+        "\42nd_para\42nd\addons\Bluefor\42nd_Helmets\Marksman\42nd_Marksman_Helmet_co.paa"
+    };
+};
+
+class 42nd_Marksman_Vet_Helmet: 42nd_Helmet_base
+{
+    scope = 2;
+    scopeArsenal = 2;
+    author = "HoundaCivic";
+    displayName = "[42nd] Marksman Veteran Helmet";
+    hiddenSelectionsTextures[] = {
+        "\42nd_para\42nd\addons\Bluefor\42nd_Helmets\Marksman\42nd_marksman_vet_helmet_co.paa",
+        "\42nd_para\42nd\addons\Bluefor\42nd_Helmets\Marksman\42nd_marksman_vet_helmet_co.paa"
+    };
+};
+
+class 42nd_Marksman_Squad_Helmet: 42nd_Helmet_base
+{
+    scope = 2;
+    scopeArsenal = 2;
+    author = "HoundaCivic";
+    displayName = "[42nd] Marksman Squad Helmet";
+    hiddenSelectionsTextures[] = {
+        "\42nd_para\42nd\addons\Bluefor\42nd_Helmets\Marksman\42nd_Marksman_Squad_Helmet_co.paa",
+        "\42nd_para\42nd\addons\Bluefor\42nd_Helmets\Marksman\42nd_Marksman_Squad_Helmet_co.paa"
+    };
+};
+
+class 42nd_Marksman_Senior_Helmet: 42nd_Helmet_base
+{
+    scope = 2;
+    scopeArsenal = 2;
+    author = "HoundaCivic";
+    displayName = "[42nd] Marksman Senior Helmet";
+    hiddenSelectionsTextures[] = {
+        "\42nd_para\42nd\addons\Bluefor\42nd_Helmets\Marksman\42nd_Marksman_Senior_Helmet_co.paa",
+        "\42nd_para\42nd\addons\Bluefor\42nd_Helmets\Marksman\42nd_Marksman_Senior_Helmet_co.paa"
+    };
+};
+
+class SEA_Helmet_SpecOps_SR_NonShine_Base;
+class 42nd_SpecOps_SR_Helmet_base: SEA_Helmet_SpecOps_SR_NonShine_Base
+{
+    scope = 1;
+    scopeArsenal = 1;
+    author = "HoundaCivic";
+    hiddenSelections[] = {"Camo1","Camo2","Visor"};
+    class ItemInfo: HeadgearItem
+    {
+        mass = 10;
+        uniformModel = "JLTS_AE\SEA_Helmet_SpecOps_SR.p3d";
+        hiddenSelections[] = {"Camo1","Camo2","Visor"};
+        class HitpointsProtectionInfo
+        {
+            class Head
+            {
+                hitpointName = "HitHead";
+                armor = 15;
+                passThrough = 0.1;
+                explosiveShielding = 6;
+            };
+            class Face
+            {
+                hitpointName = "HitFace";
+                armor = 15;
+                passThrough = 0.1;
+                explosiveShielding = 6;
+            };
+            class Neck
+            {
+                hitpointName = "HitNeck";
+                armor = 15;
+                passThrough = 0.2;
+                explosiveShielding = 12;
+            };
+        };
+    };
+};
+class 42nd_SpecOps_SR_Helmet: 42nd_SpecOps_SR_Helmet_base
+{
+    scope = 2;
+    scopeArsenal = 2;
+    author = "HoundaCivic";
+    displayName = "[42nd] RTO SR Helmet";
+    hiddenSelections[] = {"Camo1","Camo2","Visor"};
+    hiddenSelectionsTextures[] = {
+        "\42nd_para\42nd\addons\Bluefor\42nd_Helmets\RTO\42nd_RTO_Helmet_co.paa",
+        "\JLTS_AE\Data\BaseTextures\SpecOps\Antennas\SR_Antenna_co.paa",
+        "\42nd_para\42nd\addons\Bluefor\42nd_Helmets\RTO\42nd_RTO_Helmet_co.paa",
+    };
+    
+};
+
+class 42nd_SpecOps_SR_Vet_Helmet: 42nd_SpecOps_SR_Helmet_base
+{
+    scope = 2;
+    scopeArsenal = 2;
+    author = "HoundaCivic";
+    displayName = "[42nd] Veteran RTO SR Helmet";
+    hiddenSelections[] = {"Camo1","Camo2","Visor"};
+    hiddenSelectionsTextures[] = {
+        "\42nd_para\42nd\addons\Bluefor\42nd_Helmets\RTO\42nd_Vet_RTO_Helmet_co.paa",
+        "\JLTS_AE\Data\BaseTextures\SpecOps\Antennas\SR_Antenna_co.paa",
+        "\42nd_para\42nd\addons\Bluefor\42nd_Helmets\RTO\42nd_Vet_RTO_Helmet_co.paa",
+    };
+};
+
+class SEA_Helmet_SpecOps_LR_Base;
+class 42nd_SpecOps_LR_Helmet_base: SEA_Helmet_SpecOps_LR_Base
+{
+    scope = 1;
+    scopeArsenal = 1;
+    author = "HoundaCivic";
+     class ItemInfo: HeadgearItem
+    {
+        mass = 10;
+        uniformModel = "JLTS_AE\SEA_Helmet_SpecOps_SR.p3d";
+        hiddenSelections[] = {"Camo1","Camo2","Visor"};
+        class HitpointsProtectionInfo
+        {
+            class Head
+            {
+                hitpointName = "HitHead";
+                armor = 15;
+                passThrough = 0.1;
+                explosiveShielding = 6;
+            };
+            class Face
+            {
+                hitpointName = "HitFace";
+                armor = 15;
+                passThrough = 0.1;
+                explosiveShielding = 6;
+            };
+            class Neck
+            {
+                hitpointName = "HitNeck";
+                armor = 15;
+                passThrough = 0.2;
+                explosiveShielding = 12;
+            };
+        };
+    };
+};
+class 42nd_SpecOps_LR_Helmet: 42nd_SpecOps_LR_Helmet_base
+{
+    scope = 2;
+    scopeArsenal = 2;
+    author = "HoundaCivic";
+    displayName = "[42nd] RTO LR Helmet";
+    hiddenSelections[] = {"Camo1","Camo2","Visor"};
+    hiddenSelectionsTextures[] = {
+        "\42nd_para\42nd\addons\Bluefor\42nd_Helmets\RTO\42nd_RTO_Helmet_co.paa",
+        "\JLTS_AE\Data\BaseTextures\SpecOps\Antennas\LR_Antenna_co.paa",
+        "\42nd_para\42nd\addons\Bluefor\42nd_Helmets\RTO\42nd_RTO_Helmet_co.paa",
+    };
+};
+
+class 42nd_SpecOps_LR_Vet_Helmet: 42nd_SpecOps_LR_Helmet_base
+{
+    scope = 2;
+    scopeArsenal = 2;
+    author = "HoundaCivic";
+    displayName = "[42nd] Veteran RTO LR Helmet";
+    hiddenSelections[] = {"Camo1","Camo2","Visor"};
+    hiddenSelectionsTextures[] = {
+        "\42nd_para\42nd\addons\Bluefor\42nd_Helmets\RTO\42nd_Vet_RTO_Helmet_co.paa",
+        "\JLTS_AE\Data\BaseTextures\SpecOps\Antennas\LR_Antenna_co.paa",
+        "\42nd_para\42nd\addons\Bluefor\42nd_Helmets\RTO\42nd_Vet_RTO_Helmet_co.paa",
+    };
+};

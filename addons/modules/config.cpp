@@ -374,6 +374,17 @@ class RscTitles
 
         class controls
         {
+            class InteriorVisor: RscPicture
+            {
+                idc = 9001;
+                x = "safezoneX";
+                y = "safezoneY";
+                w = "safezoneW";
+                h = "safezoneH";
+                text = "";
+                colorText[] = {1, 1, 1, 1};
+            };
+
             class WeaponInfoBg: RscText
             {
                 idc = 1000;
@@ -532,3 +543,4 @@ class RscTitles
         };
     };
 };
+

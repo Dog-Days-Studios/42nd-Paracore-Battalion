@@ -1,10 +1,7 @@
 class CfgPatches {
     class Aux_42nd {
         requiredVersion = 2.10;
-        requiredAddons[] = {
-            "A3_Weapons_F_Ammoboxes",
-            "ace_main",
-        };
+        requiredAddons[] = {"ace_main", "cba_xeh", "IDA_Ammo", "Indecisive_Armoury_units", "3AS_ARC_170"};
         units[] = {
             "42nd_Trooper",
             "42nd_CPLTL_Trooper",
@@ -20,11 +17,44 @@ class CfgPatches {
             "42nd_NCO_Trooper",
             "42nd_EOD_Trooper",
             "42nd_EOD_Vet_Trooper",
+            "42nd_EOD_Squad_Trooper",
+            "42nd_EOD_Senior_Trooper",
+            "42nd_Marksman_Trooper",
+            "42nd_Marksman_Squad_Trooper",
+            "42nd_Marksman_Senior_Trooper",
+            "42nd_Marksman_Vet_Trooper",
             "42nd_Trainee_Pilot",
             "42nd_WO1_Pilot",
             "42nd_WO2_Pilot",
             "42nd_WO3_Pilot",
+            "42nd_Portable_Shield_Backpack",
+            "42nd_JT12",
+            "42nd_Grenade_rig",
+            "42nd_Standard_Backpack",
+            "42nd_IDA_Backpack",
+            "42nd_Rocket_Backpack",
+            "42nd_Radio_Backpack",
+            "42nd_Medic_Backpack",
+            "42nd_Heavy_Backpack",
+            "42nd_Ammo_Backpack",
+            "42nd_MiniLR_Backpack",
+            "42nd_Rucksack",
+            "42nd_ChestRig",
+            "42nd_ChestRig_Pouch",
+            "42nd_BeltBag",
+            "42nd_BeltBag_Belt",
+            "42nd_BeltBag_Leg",
+            "42nd_LR_Attachment",
+            "42nd_BeltBag_Attachment",
             "42nd_LAAT",
+            "42nd_3as_LAAT_Mk1",
+            "42nd_3as_LAAT_Mk1_Fast",
+            "42nd_3as_LAAT_Mk1Lights",
+            "42nd_3as_LAAT",
+            "42nd_3as_LAAT_Mk2_NoTurrets",
+            "42nd_3as_LAAT_Mk3_HeavyTurrets",
+            "42nd_3as_LAAT_Mk2Lights",
+            "42nd_ARC170",
             "42nd_Gozanti_Republic",
             "42nd_Arsenal_Box",
             "42nd_Arsenal_Supply",
@@ -53,6 +83,19 @@ class CfgPatches {
             "42nd_Holster",
             "42nd_Hidden_Vest",
             "42nd_Hidden_Medical_Vest",
+            "42nd_KamaCW_Vest",
+            "42nd_Basic_KamaCW_Vest",
+            "42nd_EOD_KamaCW_Vest",
+            "42nd_EOD_Kama_Vest",
+            "42nd_Marksman_Kama_Vest",
+            "42nd_Medic_Kama_Vest",
+            "42nd_Medic_KamaCW_Vest",
+            "42nd_Rose_Kama_Vest",
+            "42nd_Officer_PauldronCW_L_Vest",
+            "42nd_Officer_PauldronCW_R_Vest",
+            "42nd_Officer_PauldronEp3_L_Vest",
+            "42nd_Officer_PauldronEp3_R_Vest",
+            "42nd_Officer_Pauldron_Vest",
             "42nd_Trooper_Uniform",
             "42nd_CPLTL_Trooper_Uniform",
             "42nd_CSGT_Trooper_Uniform",
@@ -67,6 +110,12 @@ class CfgPatches {
             "42nd_NCO_Trooper_Uniform",
             "42nd_EOD_Trooper_Uniform",
             "42nd_EOD_Vet_Trooper_Uniform",
+            "42nd_EOD_Squad_Trooper_Uniform",
+            "42nd_EOD_Senior_Trooper_Uniform",
+            "42nd_Marksman_Trooper_Uniform",
+            "42nd_Marksman_Squad_Trooper_Uniform",
+            "42nd_Marksman_Senior_Trooper_Uniform",
+            "42nd_Marksman_Vet_Trooper_Uniform",
             "42nd_CT_P2_Helmet",
             "42nd_CPLTL_P2_Helmet",
             "42nd_CSGT_P2_Helmet",
@@ -85,6 +134,20 @@ class CfgPatches {
             "42nd_WO3_Pilot_Helmet",
             "42nd_EOD_P2_Helmet",
             "42nd_EOD_Vet_Helmet",
+            "42nd_EOD_Squad_Helmet",
+            "42nd_EOD_Senior_Helmet",
+            "42nd_Marksman_P2_Helmet",
+            "42nd_Marksman_Squad_Helmet",
+            "42nd_Marksman_Senior_Helmet",
+            "42nd_Marksman_Vet_Helmet",
+            "42nd_SpecOps_SR_Helmet",
+            "42nd_SpecOps_SR_Vet_Helmet",
+            "42nd_SpecOps_LR_Helmet",
+            "42nd_SpecOps_LR_Vet_Helmet",
+            "42nd_NVG",
+            "42nd_NVG_flipped",
+            "42nd_Rangefinder",
+            "42nd_Tanker_Gunner",
             "42nd_RPS6",
             "42nd_ls_weapon_dc15ac",
             "42nd_ls_weapon_dc15br_wooden",
@@ -118,8 +181,18 @@ class CfgPatches {
             "42nd_3AS_FusionCutter_F"
         };
         magazines[] = {
+            "42nd_IDA_HEGL_Shell",
+            "42nd_40mm_Blue",
+            "42nd_40mm_red_smoke",
+            "42nd_40mm_orange_smoke",
+            "42nd_40mm_green_smoke",
+            "42nd_40mm_red",
+            "42nd_40mm_Grapple",
+            "42nd_40mm_Grapple_Traverse"
         };
         ammo[] = {
+            "42nd_Grapple_40mm_Ammo",
+            "42nd_Traversal_Grapple_40mm_Ammo"
         };
     };
 };
@@ -196,17 +269,47 @@ class CBA_DisposableLaunchers
 	IDA_RPS6_Base[] = {"IDA_RPS6_Disposable","IDA_RPS6_Used"};
 
 };
+class CfgFunctions
+{
+    class Para42
+    {
+        class Grapple
+        {
+            file = "\42nd_para\42nd\addons\main\functions";
+            class autoEngageGrappleClient {};
+            class canUseGrappleAction {};
+            class climbGrapple {};
+            class climbGrappleLedge {};
+            class deployGrappleServer {};
+            class drawGrappleRopes {};
+            class findNearestGrappleAnchor {};
+            class handleGrappleRoundFired {};
+            class registerGrappleClient
+            {
+                postInit = 1;
+            };
+            class removeGrappleServer {};
+            class startGrapplePull {};
+            class stopGrapplePull {};
+            class trackGrappleProjectile {};
+            class useGrappleAction {};
+        };
+    };
+};
 class CfgWeapons
 {
 #include "/addons/Bluefor/42nd_Helmets/cfgWeapons.hpp"
 #include "/addons/Bluefor/42nd_Vests/cfgWeapons.hpp"
 #include "/addons/Bluefor/42nd_Uniforms/cfgWeapons.hpp"
 #include "/addons/Bluefor/42nd_Weapons/Weapons/Weapon.hpp"
+#include "/addons/bluefor/42nd_NVG/NVG.hpp"
 };
 class CfgVehicles
 {
 #include "/addons/Bluefor/42nd_Uniforms/cfgVehicles.hpp"
+#include "/addons/Bluefor/42nd_backpacks/backpack.hpp"
 #include "/addons/main/42nd_Objects.hpp"
+#include "/addons/Vehicles/42nd_ARC170/cfgvehicles.hpp"
 #include "/addons/Vehicles/42nd_Gozanti/cfgvehicles.hpp"
 #include "/addons/Vehicles/42nd_LAAT/cfgvehicles.hpp"
 };
@@ -221,4 +324,8 @@ class CfgMagazines
 class CfgMagazineWells
 {
     #include "/addons/Bluefor/42nd_Weapons/Ammo/cfgMagazineWells.hpp"
+};
+class cfgGlasses
+{
+    #include "/addons/Bluefor/42nd_vests/cfgGlasses.hpp"
 };
