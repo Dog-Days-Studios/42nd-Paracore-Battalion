@@ -1,4 +1,0 @@
-hemtt=1.18.2
-version=2.4.1.0
-git=31cda904b05fa82105c49d0cc8284cfc4149d17a
-author=HoundaCivic
