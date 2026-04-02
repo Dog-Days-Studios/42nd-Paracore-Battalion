@@ -15,6 +15,9 @@ class IDA_DLT19D;
 class IDA_Z6;
 class JLTS_Z6;
 class ls_weapon_z6;
+class ls_cannon_120mm;
+class ls_gmg_40mm;
+class ls_weapon_lmg_127mm;
 class 3AS_DLT19;
 class IDA_DC15S_UGL;
 class IDA_DC15LE;
@@ -113,7 +116,7 @@ class 42nd_GL_Muzzle: JLTS_stun_muzzle
 		canShootInWater=1;
 		displayname="[42nd] RPS-6 Launcher";
 		scope = 2;
-		magazineWell[] = {"42nd_RPS_MagWell"};
+		magazineWell[] = {"42nd_RPS_Magwell"};
 		baseweapon = "42nd_RPS6";
 	};
 // Sniper Config Section //
@@ -391,6 +394,33 @@ class 42nd_3AS_DLT19: 3AS_DLT19
 	baseWeapon = "42nd_3AS_DLT19";
 };
 
+class 42nd_ARC170_105mm_Laser_Cannon: ls_cannon_120mm
+{
+	author = "HoundaCivic";
+	scope = 1;
+	displayName = "[42nd] ARC-170 105mm Laser Cannon";
+	displayNameShort = "105mm";
+	magazines[] = {"ls_magazine_120mm_30Rnd_HE_blue"};
+};
+
+class 42nd_ARC170_40mm_Laser_Bofors: ls_gmg_40mm
+{
+	author = "HoundaCivic";
+	scope = 1;
+	displayName = "[42nd] ARC-170 40mm Laser Bofors";
+	displayNameShort = "40mm";
+	magazines[] = {"ls_magazine_40mm_50Rnd_G_blue"};
+};
+
+class 42nd_ARC170_Laser_Minigun: ls_weapon_lmg_127mm
+{
+	author = "HoundaCivic";
+	scope = 1;
+	displayName = "[42nd] ARC-170 Laser Minigun";
+	displayNameShort = "Minigun";
+	magazines[] = {"ls_magazine_127x99_500Rnd_blue"};
+};
+
 // Grenade Launchers
 class 42nd_DC15S_UGL: IDA_DC15S_UGL
 {
@@ -503,7 +533,7 @@ class 42nd_DC15P: IDA_DC15P
 	author = "HoundaCivic";
 	displayName = "[42nd] DC-15P";
 	magazines[] = {"IDA_Blaster_Cell_Power5_5Rnd_Blue"};
-	magazineWell[] = {};
+	magazineWell[] = {"42nd_Pistol_Magwell"};
 	baseWeapon = "42nd_DC15P";
 };
 class 42nd_DC17: IDA_DC17
@@ -511,7 +541,7 @@ class 42nd_DC17: IDA_DC17
 	author = "HoundaCivic";
 	displayName = "[42nd] DC-17";
 	magazines[] = {"IDA_Blaster_Cell_Power5_5Rnd_Blue"};
-	magazineWell[] = {};
+	magazineWell[] = {"42nd_Pistol_Magwell"};
 	baseWeapon = "42nd_DC17";
 };
 class 42nd_ls_weapon_dc15sa: ls_weapon_dc15sa
@@ -519,7 +549,7 @@ class 42nd_ls_weapon_dc15sa: ls_weapon_dc15sa
 	author = "HoundaCivic";
 	displayName = "[42nd] LS DC-15SA";
 	magazines[] = {"IDA_Blaster_Cell_Power5_5Rnd_Blue"};
-	magazineWell[] = {};
+	magazineWell[] = {"42nd_Pistol_Magwell"};
 	baseWeapon = "42nd_ls_weapon_dc15sa";
 };
 class 42nd_ls_weapon_dc17s: ls_weapon_dc17s
@@ -527,7 +557,7 @@ class 42nd_ls_weapon_dc17s: ls_weapon_dc17s
 	author = "HoundaCivic";
 	displayName = "[42nd] LS DC-17S";
 	magazines[] = {"IDA_Blaster_Cell_Power5_5Rnd_Blue"};
-	magazineWell[] = {};
+	magazineWell[] = {"42nd_Pistol_Magwell"};
 	baseWeapon = "42nd_ls_weapon_dc17s";
 };
 class 42nd_ls_weapon_dc17s_dual: ls_weapon_dc17s_dual
@@ -535,7 +565,7 @@ class 42nd_ls_weapon_dc17s_dual: ls_weapon_dc17s_dual
 	author = "HoundaCivic";
 	displayName = "[42nd] LS DC-17S Dual";
 	magazines[] = {"IDA_Blaster_Cell_Power5_5Rnd_Blue"};
-	magazineWell[] = {};
+	magazineWell[] = {"42nd_Pistol_Magwell"};
 	baseWeapon = "42nd_ls_weapon_dc17s_dual";
 };
 class 42nd_3AS_DC17S_F: 3AS_DC17S_F
@@ -543,7 +573,7 @@ class 42nd_3AS_DC17S_F: 3AS_DC17S_F
 	author = "HoundaCivic";
 	displayName = "[42nd] 3AS DC-17S";
 	magazines[] = {"IDA_Blaster_Cell_Power5_5Rnd_Blue"};
-	magazineWell[] = {};
+	magazineWell[] = {"42nd_Pistol_Magwell"};
 	baseWeapon = "42nd_3AS_DC17S_F";
 };
 class 42nd_3AS_DC17S_Dual_F: 3AS_DC17S_Dual_F
@@ -551,7 +581,7 @@ class 42nd_3AS_DC17S_Dual_F: 3AS_DC17S_Dual_F
 	author = "HoundaCivic";
 	displayName = "[42nd] 3AS DC-17S Dual";
 	magazines[] = {"IDA_Blaster_Cell_Power5_5Rnd_Blue"};
-	magazineWell[] = {};
+	magazineWell[] = {"42nd_Pistol_Magwell"};
 	baseWeapon = "42nd_3AS_DC17S_Dual_F";
 };
 class 42nd_3AS_FusionCutter_F: 3AS_FusionCutter_F
@@ -559,7 +589,7 @@ class 42nd_3AS_FusionCutter_F: 3AS_FusionCutter_F
 	author = "HoundaCivic";
 	displayName = "[42nd] 3AS Fusion Cutter";
 	magazines[] = {"IDA_Blaster_Cell_Power5_5Rnd_Blue"};
-	magazineWell[] = {};
+	magazineWell[] = {"42nd_Pistol_Magwell"};
 	baseWeapon = "42nd_3AS_FusionCutter_F";
 };
  

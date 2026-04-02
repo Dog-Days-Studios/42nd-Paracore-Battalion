@@ -9,7 +9,11 @@ missionNamespace setVariable [
 ];
 missionNamespace setVariable [
     "CTHUD_enemyMaxDistance",
-    ((missionNamespace getVariable ["CTHUD_enemyMaxDistance", 100]) max 0) min 100
+    ((missionNamespace getVariable ["CTHUD_enemyMaxDistance", 150]) max 0) min 150
+];
+missionNamespace setVariable [
+    "CTHUD_pilotEnemyMaxDistance",
+    ((missionNamespace getVariable ["CTHUD_pilotEnemyMaxDistance", 1000]) max 0) min 1000
 ];
 missionNamespace setVariable [
     "CTHUD_friendlyMaxDistance",
@@ -17,9 +21,15 @@ missionNamespace setVariable [
 ];
 missionNamespace setVariable ["CTHUD_showMiniMap", missionNamespace getVariable ["CTHUD_showMiniMap", true]];
 missionNamespace setVariable ["CTHUD_showInteriorVisor", missionNamespace getVariable ["CTHUD_showInteriorVisor", true]];
+missionNamespace setVariable ["CTHUD_textScalePreset", missionNamespace getVariable ["CTHUD_textScalePreset", "default"]];
+missionNamespace setVariable [
+    "CTHUD_interiorVisorOpacity",
+    ((missionNamespace getVariable ["CTHUD_interiorVisorOpacity", 100]) max 0) min 100
+];
+missionNamespace setVariable ["CTHUD_powerSounds", missionNamespace getVariable ["CTHUD_powerSounds", true]];
 missionNamespace setVariable ["CTHUD_colorPreset", missionNamespace getVariable ["CTHUD_colorPreset", "default"]];
 missionNamespace setVariable ["CTHUD_customColor", missionNamespace getVariable ["CTHUD_customColor", [0.15, 0.65, 1, 1]]];
-missionNamespace setVariable ["CTHUD_enemyColor", missionNamespace getVariable ["CTHUD_enemyColor", [1, 0.2, 0.2, 1]]];
+missionNamespace setVariable ["CTHUD_enemyColor", missionNamespace getVariable ["CTHUD_enemyColor", [1, 0.05, 0.05, 1]]];
 missionNamespace setVariable ["CTHUD_friendlyColor", missionNamespace getVariable ["CTHUD_friendlyColor", [0.15, 1, 0.35, 1]]];
 missionNamespace setVariable ["CTHUD_runtimeEnabled", missionNamespace getVariable ["CTHUD_runtimeEnabled", false]];
 
@@ -57,7 +67,16 @@ if (!isNil "CBA_fnc_addSetting") then
     "SLIDER",
     ["Enemy Marker Distance", "Maximum range for enemy diamond markers."],
     ["Clone Trooper HUD", "Markers"],
-    [0, 100, 100, 0],
+    [0, 150, 150, 0],
+    1
+] call CBA_fnc_addSetting;
+
+[
+    "CTHUD_pilotEnemyMaxDistance",
+    "SLIDER",
+    ["Pilot Enemy Marker Distance", "Maximum range for enemy markers while using the pilot HUD profile."],
+    ["Clone Trooper HUD", "Markers"],
+    [0, 1000, 1000, 0],
     1
 ] call CBA_fnc_addSetting;
 
@@ -89,6 +108,33 @@ if (!isNil "CBA_fnc_addSetting") then
 ] call CBA_fnc_addSetting;
 
 [
+    "CTHUD_textScalePreset",
+    "LIST",
+    ["HUD Text Preset", "Adjusts HUD text size and swaps to a matching layout preset."],
+    ["Clone Trooper HUD", "Layout"],
+    [["compact", "default", "large", "xlarge"], ["Compact", "Default", "Large", "Extra Large"], 1],
+    1
+] call CBA_fnc_addSetting;
+
+[
+    "CTHUD_interiorVisorOpacity",
+    "SLIDER",
+    ["Interior Visor Opacity", "Adjusts the opacity of the P2 interior visor overlay while the HUD is active."],
+    ["Clone Trooper HUD", "Layout"],
+    [0, 100, 100, 0],
+    1
+] call CBA_fnc_addSetting;
+
+[
+    "CTHUD_powerSounds",
+    "CHECKBOX",
+    ["Power Effects Sounds", "Plays local helmet power-up and power-down sounds when the HUD turns on or off."],
+    ["Clone Trooper HUD", "Audio"],
+    true,
+    1
+] call CBA_fnc_addSetting;
+
+[
     "CTHUD_colorPreset",
     "LIST",
     ["HUD Color Preset", "Choose a standard or colorblind preset."],
@@ -114,7 +160,7 @@ if (!isNil "CBA_fnc_addSetting") then
     "COLOR",
     ["Enemy Marker Color", "Color used for enemy HUD markers."],
     ["Clone Trooper HUD", "Colors"],
-    [1, 0.2, 0.2, 1],
+    [1, 0.05, 0.05, 1],
     1
 ] call CBA_fnc_addSetting;
 

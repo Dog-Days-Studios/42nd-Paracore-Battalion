@@ -35,11 +35,11 @@ class CfgFunctions
             class initPlayerHUD {};
             class drawHUD {};
             class getHudColor {};
+            class getHudLayout {};
             class setColorPreset {};
-            class isEnemy {};
-            class isFriendly {};
-            class getWeaponDisplay {};
-            class getAmmoData {};
+            class getIFF {};
+            class hasDirectLineOfSight {};
+            class isPilotHudHelmet {};
             class canShowHUD {};
             class hasHudHelmet {};
             class joinGroupLocal {};
@@ -355,6 +355,29 @@ class CfgSettings
     };
 };
 
+class CfgSounds
+{
+    sounds[] =
+    {
+        "CTHUD_PowerOn",
+        "CTHUD_PowerOff"
+    };
+
+    class CTHUD_PowerOn
+    {
+        name = "CTHUD_PowerOn";
+        sound[] = {"\42nd_para\42nd\addons\modules\42nd_Scripts\CloneTrooperHUD_Addon\CloneTrooperHUD_Addon\sounds\cthud_power_on.wav", 1, 1};
+        titles[] = {};
+    };
+
+    class CTHUD_PowerOff
+    {
+        name = "CTHUD_PowerOff";
+        sound[] = {"\42nd_para\42nd\addons\modules\42nd_Scripts\CloneTrooperHUD_Addon\CloneTrooperHUD_Addon\sounds\cthud_power_off.wav", 1, 1};
+        titles[] = {};
+    };
+};
+
 class RscText;
 class RscMapControl;
 class RscPicture;
@@ -362,7 +385,7 @@ class RscStructuredText;
 
 class RscTitles
 {
-    class CTHUD_Main
+    class CTHUD_Main_Base
     {
         idd = 9000;
         movingEnable = 0;
@@ -383,6 +406,72 @@ class RscTitles
                 h = "safezoneH";
                 text = "";
                 colorText[] = {1, 1, 1, 1};
+            };
+
+            class PilotBannerBg: RscText
+            {
+                idc = 1600;
+                x = "0.34 * safezoneW + safezoneX";
+                y = "0.084 * safezoneH + safezoneY";
+                w = "0.32 * safezoneW";
+                h = "0.028 * safezoneH";
+                colorBackground[] = {0, 0, 0, 0};
+            };
+
+            class PilotBannerText: RscText
+            {
+                idc = 1601;
+                x = "0.35 * safezoneW + safezoneX";
+                y = "0.087 * safezoneH + safezoneY";
+                w = "0.30 * safezoneW";
+                h = "0.022 * safezoneH";
+                style = 2;
+                sizeEx = 0.026;
+                font = "EtelkaMonospacePro";
+                text = "";
+                colorBackground[] = {0, 0, 0, 0};
+            };
+
+            class PilotTelemetryLeftBg: RscText
+            {
+                idc = 1602;
+                x = "0.038 * safezoneW + safezoneX";
+                y = "0.592 * safezoneH + safezoneY";
+                w = "0.164 * safezoneW";
+                h = "0.048 * safezoneH";
+                colorBackground[] = {0, 0, 0, 0};
+            };
+
+            class PilotTelemetryLeft: RscStructuredText
+            {
+                idc = 1603;
+                x = "0.046 * safezoneW + safezoneX";
+                y = "0.599 * safezoneH + safezoneY";
+                w = "0.148 * safezoneW";
+                h = "0.034 * safezoneH";
+                size = 0.024;
+                text = "";
+            };
+
+            class PilotTelemetryRightBg: RscText
+            {
+                idc = 1604;
+                x = "0.776 * safezoneW + safezoneX";
+                y = "0.648 * safezoneH + safezoneY";
+                w = "0.204 * safezoneW";
+                h = "0.048 * safezoneH";
+                colorBackground[] = {0, 0, 0, 0};
+            };
+
+            class PilotTelemetryRight: RscStructuredText
+            {
+                idc = 1605;
+                x = "0.784 * safezoneW + safezoneX";
+                y = "0.655 * safezoneH + safezoneY";
+                w = "0.188 * safezoneW";
+                h = "0.034 * safezoneH";
+                size = 0.024;
+                text = "";
             };
 
             class WeaponInfoBg: RscText
@@ -528,7 +617,7 @@ class RscTitles
                 y = "0.768 * safezoneH + safezoneY";
                 w = "0.164 * safezoneW";
                 h = "0.164 * safezoneH";
-                text = "\A3\weapons_f\acc\Data\scope_inside_sharp_ca.paa";
+                text = "";
             };
 
             class MiniMapFrame: RscPicture
@@ -538,7 +627,260 @@ class RscTitles
                 y = "0.768 * safezoneH + safezoneY";
                 w = "0.164 * safezoneW";
                 h = "0.164 * safezoneH";
-                text = "\a3\weapons_f\acc\data\collimdot_circle_red_ca.paa";
+                text = "";
+            };
+
+            class StartupBlackout: RscText
+            {
+                idc = 1505;
+                x = "safezoneX";
+                y = "safezoneY";
+                w = "safezoneW";
+                h = "safezoneH";
+                colorBackground[] = {0, 0, 0, 0};
+            };
+
+            class StartupPanel: RscText
+            {
+                idc = 1500;
+                x = "0.29 * safezoneW + safezoneX";
+                y = "0.44 * safezoneH + safezoneY";
+                w = "0.42 * safezoneW";
+                h = "0.11 * safezoneH";
+                colorBackground[] = {0.02, 0.05, 0.07, 0};
+            };
+
+            class StartupMainText: RscText
+            {
+                idc = 1501;
+                x = "0.31 * safezoneW + safezoneX";
+                y = "0.462 * safezoneH + safezoneY";
+                w = "0.38 * safezoneW";
+                h = "0.03 * safezoneH";
+                style = 2;
+                sizeEx = 0.04;
+                font = "EtelkaMonospacePro";
+                text = "";
+                colorBackground[] = {0, 0, 0, 0};
+            };
+
+            class StartupStatusText: RscText
+            {
+                idc = 1502;
+                x = "0.31 * safezoneW + safezoneX";
+                y = "0.497 * safezoneH + safezoneY";
+                w = "0.38 * safezoneW";
+                h = "0.022 * safezoneH";
+                style = 2;
+                sizeEx = 0.026;
+                font = "EtelkaMonospacePro";
+                text = "";
+                colorBackground[] = {0, 0, 0, 0};
+            };
+
+            class StartupBarBg: RscText
+            {
+                idc = 1503;
+                x = "0.33 * safezoneW + safezoneX";
+                y = "0.531 * safezoneH + safezoneY";
+                w = "0.34 * safezoneW";
+                h = "0.012 * safezoneH";
+                colorBackground[] = {0, 0, 0, 0};
+            };
+
+            class StartupBarFill: RscText
+            {
+                idc = 1504;
+                x = "0.33 * safezoneW + safezoneX";
+                y = "0.531 * safezoneH + safezoneY";
+                w = "0";
+                h = "0.012 * safezoneH";
+                colorBackground[] = {0, 0, 0, 0};
+            };
+        };
+    };
+
+    class CTHUD_Main: CTHUD_Main_Base {};
+
+    class CTHUD_Main_Compact: CTHUD_Main_Base
+    {
+        class controls: controls
+        {
+            class PilotBannerText: PilotBannerText
+            {
+                sizeEx = 0.023;
+            };
+
+            class PilotTelemetryLeft: PilotTelemetryLeft
+            {
+                size = 0.021;
+            };
+
+            class PilotTelemetryRight: PilotTelemetryRight
+            {
+                size = 0.021;
+            };
+
+            class WeaponText: WeaponText
+            {
+                sizeEx = 0.025;
+            };
+
+            class MagText: MagText
+            {
+                sizeEx = 0.025;
+            };
+
+            class FireModeText: FireModeText
+            {
+                sizeEx = 0.022;
+            };
+
+            class CompassText: CompassText
+            {
+                sizeEx = 0.036;
+            };
+
+            class BearingText: BearingText
+            {
+                sizeEx = 0.031;
+            };
+
+            class SquadListText: SquadListText
+            {
+                size = 0.025;
+            };
+
+            class StartupMainText: StartupMainText
+            {
+                sizeEx = 0.036;
+            };
+
+            class StartupStatusText: StartupStatusText
+            {
+                sizeEx = 0.023;
+            };
+        };
+    };
+
+    class CTHUD_Main_Large: CTHUD_Main_Base
+    {
+        class controls: controls
+        {
+            class PilotBannerText: PilotBannerText
+            {
+                sizeEx = 0.03;
+            };
+
+            class PilotTelemetryLeft: PilotTelemetryLeft
+            {
+                size = 0.028;
+            };
+
+            class PilotTelemetryRight: PilotTelemetryRight
+            {
+                size = 0.028;
+            };
+
+            class WeaponText: WeaponText
+            {
+                sizeEx = 0.032;
+            };
+
+            class MagText: MagText
+            {
+                sizeEx = 0.032;
+            };
+
+            class FireModeText: FireModeText
+            {
+                sizeEx = 0.028;
+            };
+
+            class CompassText: CompassText
+            {
+                sizeEx = 0.046;
+            };
+
+            class BearingText: BearingText
+            {
+                sizeEx = 0.039;
+            };
+
+            class SquadListText: SquadListText
+            {
+                size = 0.032;
+            };
+
+            class StartupMainText: StartupMainText
+            {
+                sizeEx = 0.046;
+            };
+
+            class StartupStatusText: StartupStatusText
+            {
+                sizeEx = 0.03;
+            };
+        };
+    };
+
+    class CTHUD_Main_XLarge: CTHUD_Main_Base
+    {
+        class controls: controls
+        {
+            class PilotBannerText: PilotBannerText
+            {
+                sizeEx = 0.034;
+            };
+
+            class PilotTelemetryLeft: PilotTelemetryLeft
+            {
+                size = 0.031;
+            };
+
+            class PilotTelemetryRight: PilotTelemetryRight
+            {
+                size = 0.031;
+            };
+
+            class WeaponText: WeaponText
+            {
+                sizeEx = 0.036;
+            };
+
+            class MagText: MagText
+            {
+                sizeEx = 0.036;
+            };
+
+            class FireModeText: FireModeText
+            {
+                sizeEx = 0.031;
+            };
+
+            class CompassText: CompassText
+            {
+                sizeEx = 0.052;
+            };
+
+            class BearingText: BearingText
+            {
+                sizeEx = 0.044;
+            };
+
+            class SquadListText: SquadListText
+            {
+                size = 0.036;
+            };
+
+            class StartupMainText: StartupMainText
+            {
+                sizeEx = 0.052;
+            };
+
+            class StartupStatusText: StartupStatusText
+            {
+                sizeEx = 0.034;
             };
         };
     };

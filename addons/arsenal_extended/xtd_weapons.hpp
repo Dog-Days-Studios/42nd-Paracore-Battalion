@@ -320,42 +320,44 @@ class XtdGearModels
         {
             label = "[42nd] Rifles";
             author = "HoundaCivic";
-            options[] = {"weapon", "tag"};
+            options[] = {"weapon"};
 
             class weapon
             {
                 label = "Rifle";
                 values[] =
                 {
-                    "w_dc15a",
-                    "w_dc15a_plastic",
-                    "w_dc15a_wooden",
-                    "w_dc15ac",
-                    "w_dc15br",
-                    "w_dc15br_wooden",
-                    "w_dc15c",
-                    "w_dc15s",
-                    "w_fa11"
+                    "w_dc15a_3as",
+                    "w_dc15a_ida",
+                    "w_dc15a_jlts",
+                    "w_dc15a_ls",
+                    "w_dc15a_jlts_plastic",
+                    "w_dc15a_ls_wooden",
+                    "w_dc15ac_ls",
+                    "w_dc15br_ls",
+                    "w_dc15br_ls_wooden",
+                    "w_dc15c_3as",
+                    "w_dc15s_3as",
+                    "w_dc15s_ida",
+                    "w_dc15s_jlts",
+                    "w_dc15s_ls",
+                    "w_fa11_ida"
                 };
-                class w_dc15a { label = "DC15A"; };
-                class w_dc15a_plastic { label = "DC15A PLASTIC"; };
-                class w_dc15a_wooden { label = "DC15A WOODEN"; };
-                class w_dc15ac { label = "DC15AC"; };
-                class w_dc15br { label = "DC15BR"; };
-                class w_dc15br_wooden { label = "DC15BR WOODEN"; };
-                class w_dc15c { label = "DC15C"; };
-                class w_dc15s { label = "DC15S"; };
-                class w_fa11 { label = "FA11"; };
-            };
-
-            class tag
-            {
-                label = "Source";
-                values[] = {"as3", "jlts", "ls", "ida"};
-                class as3 { label = "3AS"; };
-                class jlts { label = "JLTS"; };
-                class ls { label = "LS"; };
-                class ida { label = "IDA"; };
+                class w_dc15a_3as { label = "DC15A (3AS)"; };
+                class w_dc15a_ida { label = "DC15A (IDA)"; };
+                class w_dc15a_jlts { label = "DC15A (JLTS)"; };
+                class w_dc15a_ls { label = "DC15A (LS)"; };
+                class w_dc15a_jlts_plastic { label = "DC15A Plastic (JLTS)"; };
+                class w_dc15a_ls_wooden { label = "DC15A Wooden (LS)"; };
+                class w_dc15ac_ls { label = "DC15AC (LS)"; };
+                class w_dc15br_ls { label = "DC15BR (LS)"; };
+                class w_dc15br_ls_wooden { label = "DC15BR Wooden (LS)"; };
+                class w_dc15c_3as { label = "DC15C (3AS)"; };
+                class w_dc15s_3as { label = "DC15S (3AS)"; };
+                class w_dc15s_ida { label = "DC15S (IDA)"; };
+                class w_dc15s_jlts { label = "DC15S (JLTS)"; };
+                class w_dc15s_ls { label = "DC15S (LS)"; };
+                class w_fa11_ida { label = "FA11 (IDA)"; };
             };
         };
 
@@ -363,32 +365,28 @@ class XtdGearModels
         {
             label = "[42nd] LMGs";
             author = "HoundaCivic";
-            options[] = {"weapon", "tag"};
+            options[] = {"weapon"};
 
             class weapon
             {
                 label = "LMG";
                 values[] =
                 {
-                    "w_dlt15",
-                    "w_dlt19",
-                    "w_dlt19d",
-                    "w_z6"
+                    "w_dlt15_ida",
+                    "w_dlt19_3as",
+                    "w_dlt19_ida",
+                    "w_dlt19d_ida",
+                    "w_z6_ida",
+                    "w_z6_jlts",
+                    "w_z6_ls"
                 };
-                class w_dlt15 { label = "DLT15"; };
-                class w_dlt19 { label = "DLT19"; };
-                class w_dlt19d { label = "DLT19D"; };
-                class w_z6 { label = "Z6"; };
-            };
-
-            class tag
-            {
-                label = "Source";
-                values[] = {"as3", "jlts", "ls", "ida"};
-                class as3 { label = "3AS"; };
-                class jlts { label = "JLTS"; };
-                class ls { label = "LS"; };
-                class ida { label = "IDA"; };
+                class w_dlt15_ida { label = "DLT15 (IDA)"; };
+                class w_dlt19_3as { label = "DLT19 (3AS)"; };
+                class w_dlt19_ida { label = "DLT19 (IDA)"; };
+                class w_dlt19d_ida { label = "DLT19D (IDA)"; };
+                class w_z6_ida { label = "Z6 (IDA)"; };
+                class w_z6_jlts { label = "Z6 (JLTS)"; };
+                class w_z6_ls { label = "Z6 (LS)"; };
             };
         };
 
@@ -396,40 +394,34 @@ class XtdGearModels
         {
             label = "[42nd] Snipers";
             author = "HoundaCivic";
-            options[] = {"weapon", "tag"};
+            options[] = {"weapon"};
 
             class weapon
             {
                 label = "Sniper";
                 values[] =
                 {
-                    "w_773firepuncher",
-                    "w_774cx",
-                    "w_dc15x",
-                    "w_dw32s",
-                    "w_firepuncher",
-                    "w_galaar90",
-                    "w_iqa11",
-                    "w_valken38x"
+                    "w_773firepuncher_ida",
+                    "w_774cx_ida",
+                    "w_dc15x_ida",
+                    "w_dc15x_jlts",
+                    "w_dc15x_ls",
+                    "w_dw32s_jlts",
+                    "w_firepuncher_ls",
+                    "w_galaar90_ida",
+                    "w_iqa11_ida",
+                    "w_valken38x_3as"
                 };
-                class w_773firepuncher { label = "773FIREPUNCHER"; };
-                class w_774cx { label = "774CX"; };
-                class w_dc15x { label = "DC15X"; };
-                class w_dw32s { label = "DW32S"; };
-                class w_firepuncher { label = "FIREPUNCHER"; };
-                class w_galaar90 { label = "GALAAR90"; };
-                class w_iqa11 { label = "IQA11"; };
-                class w_valken38x { label = "VALKEN38X"; };
-            };
-
-            class tag
-            {
-                label = "Source";
-                values[] = {"as3", "jlts", "ls", "ida"};
-                class as3 { label = "3AS"; };
-                class jlts { label = "JLTS"; };
-                class ls { label = "LS"; };
-                class ida { label = "IDA"; };
+                class w_773firepuncher_ida { label = "773FIREPUNCHER (IDA)"; };
+                class w_774cx_ida { label = "774CX (IDA)"; };
+                class w_dc15x_ida { label = "DC15X (IDA)"; };
+                class w_dc15x_jlts { label = "DC15X (JLTS)"; };
+                class w_dc15x_ls { label = "DC15X (LS)"; };
+                class w_dw32s_jlts { label = "DW32S (JLTS)"; };
+                class w_firepuncher_ls { label = "FIREPUNCHER (LS)"; };
+                class w_galaar90_ida { label = "GALAAR90 (IDA)"; };
+                class w_iqa11_ida { label = "IQA11 (IDA)"; };
+                class w_valken38x_3as { label = "VALKEN38X (3AS)"; };
             };
         };
 
@@ -437,26 +429,16 @@ class XtdGearModels
         {
             label = "[42nd] Launchers";
             author = "HoundaCivic";
-            options[] = {"weapon", "tag"};
+            options[] = {"weapon"};
 
             class weapon
             {
                 label = "Launcher";
                 values[] =
                 {
-                    "w_rps6"
+                    "w_rps6_ida"
                 };
-                class w_rps6 { label = "RPS6"; };
-            };
-
-            class tag
-            {
-                label = "Source";
-                values[] = {"as3", "jlts", "ls", "ida"};
-                class as3 { label = "3AS"; };
-                class jlts { label = "JLTS"; };
-                class ls { label = "LS"; };
-                class ida { label = "IDA"; };
+                class w_rps6_ida { label = "RPS6 (IDA)"; };
             };
         };
 
@@ -464,36 +446,30 @@ class XtdGearModels
         {
             label = "[42nd] Grenade Launchers";
             author = "HoundaCivic";
-            options[] = {"weapon", "tag"};
+            options[] = {"weapon"};
 
             class weapon
             {
                 label = "Grenade Launcher";
                 values[] =
                 {
-                    "w_dc15a_gl",
-                    "w_dc15a_gl_plastic",
-                    "w_dc15c_gl",
-                    "w_dc15le",
-                    "w_dc15s_gl",
-                    "w_dp23_gl"
+                    "w_dc15a_gl_3as",
+                    "w_dc15a_gl_jlts",
+                    "w_dc15a_gl_jlts_plastic",
+                    "w_dc15c_gl_3as",
+                    "w_dc15le_ida",
+                    "w_dc15s_gl_3as",
+                    "w_dc15s_gl_ida",
+                    "w_dp23_gl_3as"
                 };
-                class w_dc15a_gl { label = "DC15A GL"; };
-                class w_dc15a_gl_plastic { label = "DC15A GL PLASTIC"; };
-                class w_dc15c_gl { label = "DC15C GL"; };
-                class w_dc15le { label = "DC15LE"; };
-                class w_dc15s_gl { label = "DC15S GL"; };
-                class w_dp23_gl { label = "DP23 GL"; };
-            };
-
-            class tag
-            {
-                label = "Source";
-                values[] = {"as3", "jlts", "ls", "ida"};
-                class as3 { label = "3AS"; };
-                class jlts { label = "JLTS"; };
-                class ls { label = "LS"; };
-                class ida { label = "IDA"; };
+                class w_dc15a_gl_3as { label = "DC15A GL (3AS)"; };
+                class w_dc15a_gl_jlts { label = "DC15A GL (JLTS)"; };
+                class w_dc15a_gl_jlts_plastic { label = "DC15A GL Plastic (JLTS)"; };
+                class w_dc15c_gl_3as { label = "DC15C GL (3AS)"; };
+                class w_dc15le_ida { label = "DC15LE (IDA)"; };
+                class w_dc15s_gl_3as { label = "DC15S GL (3AS)"; };
+                class w_dc15s_gl_ida { label = "DC15S GL (IDA)"; };
+                class w_dp23_gl_3as { label = "DP23 GL (3AS)"; };
             };
         };
 
@@ -862,38 +838,32 @@ class XtdGearInfos
         class 42nd_3AS_DC15A_F
         {
             model = "Para42_Rifles";
-            weapon = "w_dc15a";
-            tag = "as3";
+            weapon = "w_dc15a_3as";
         };
         class 42nd_3AS_DC15A_GL
         {
             model = "Para42_GrenadeLaunchers";
-            weapon = "w_dc15a_gl";
-            tag = "as3";
+            weapon = "w_dc15a_gl_3as";
         };
         class 42nd_3AS_DC15C_F
         {
             model = "Para42_Rifles";
-            weapon = "w_dc15c";
-            tag = "as3";
+            weapon = "w_dc15c_3as";
         };
         class 42nd_3AS_DC15C_GL
         {
             model = "Para42_GrenadeLaunchers";
-            weapon = "w_dc15c_gl";
-            tag = "as3";
+            weapon = "w_dc15c_gl_3as";
         };
         class 42nd_3AS_DC15S_F
         {
             model = "Para42_Rifles";
-            weapon = "w_dc15s";
-            tag = "as3";
+            weapon = "w_dc15s_3as";
         };
         class 42nd_3AS_DC15S_GL
         {
             model = "Para42_GrenadeLaunchers";
-            weapon = "w_dc15s_gl";
-            tag = "as3";
+            weapon = "w_dc15s_gl_3as";
         };
         class 42nd_3AS_DC17S_Dual_F
         {
@@ -908,14 +878,12 @@ class XtdGearInfos
         class 42nd_3AS_DLT19
         {
             model = "Para42_LMGs";
-            weapon = "w_dlt19";
-            tag = "as3";
+            weapon = "w_dlt19_3as";
         };
         class 42nd_3AS_DP23_GL
         {
             model = "Para42_GrenadeLaunchers";
-            weapon = "w_dp23_gl";
-            tag = "as3";
+            weapon = "w_dp23_gl_3as";
         };
         class 42nd_3AS_FusionCutter_F
         {
@@ -925,26 +893,22 @@ class XtdGearInfos
         class 42nd_773Firepuncher
         {
             model = "Para42_Snipers";
-            weapon = "w_773firepuncher";
-            tag = "ida";
+            weapon = "w_773firepuncher_ida";
         };
         class 42nd_774CX
         {
             model = "Para42_Snipers";
-            weapon = "w_774cx";
-            tag = "ida";
+            weapon = "w_774cx_ida";
         };
         class 42nd_DC15A
         {
             model = "Para42_Rifles";
-            weapon = "w_dc15a";
-            tag = "ida";
+            weapon = "w_dc15a_ida";
         };
         class 42nd_DC15LE
         {
             model = "Para42_GrenadeLaunchers";
-            weapon = "w_dc15le";
-            tag = "ida";
+            weapon = "w_dc15le_ida";
         };
         class 42nd_DC15P
         {
@@ -954,20 +918,17 @@ class XtdGearInfos
         class 42nd_DC15S
         {
             model = "Para42_Rifles";
-            weapon = "w_dc15s";
-            tag = "ida";
+            weapon = "w_dc15s_ida";
         };
         class 42nd_DC15S_UGL
         {
             model = "Para42_GrenadeLaunchers";
-            weapon = "w_dc15s_gl";
-            tag = "ida";
+            weapon = "w_dc15s_gl_ida";
         };
         class 42nd_DC15X
         {
             model = "Para42_Snipers";
-            weapon = "w_dc15x";
-            tag = "ida";
+            weapon = "w_dc15x_ida";
         };
         class 42nd_DC17
         {
@@ -977,122 +938,102 @@ class XtdGearInfos
         class 42nd_DLT15
         {
             model = "Para42_LMGs";
-            weapon = "w_dlt15";
-            tag = "ida";
+            weapon = "w_dlt15_ida";
         };
         class 42nd_DLT19
         {
             model = "Para42_LMGs";
-            weapon = "w_dlt19";
-            tag = "ida";
+            weapon = "w_dlt19_ida";
         };
         class 42nd_DLT19D
         {
             model = "Para42_LMGs";
-            weapon = "w_dlt19d";
-            tag = "ida";
+            weapon = "w_dlt19d_ida";
         };
         class 42nd_FA11
         {
             model = "Para42_Rifles";
-            weapon = "w_fa11";
-            tag = "ida";
+            weapon = "w_fa11_ida";
         };
         class 42nd_Galaar90
         {
             model = "Para42_Snipers";
-            weapon = "w_galaar90";
-            tag = "ida";
+            weapon = "w_galaar90_ida";
         };
         class 42nd_IQA11
         {
             model = "Para42_Snipers";
-            weapon = "w_iqa11";
-            tag = "ida";
+            weapon = "w_iqa11_ida";
         };
         class 42nd_JLTS_DC15A
         {
             model = "Para42_Rifles";
-            weapon = "w_dc15a";
-            tag = "jlts";
+            weapon = "w_dc15a_jlts";
         };
         class 42nd_JLTS_DC15A_plastic
         {
             model = "Para42_Rifles";
-            weapon = "w_dc15a_plastic";
-            tag = "jlts";
+            weapon = "w_dc15a_jlts_plastic";
         };
         class 42nd_JLTS_DC15A_ugl
         {
             model = "Para42_GrenadeLaunchers";
-            weapon = "w_dc15a_gl";
-            tag = "jlts";
+            weapon = "w_dc15a_gl_jlts";
         };
         class 42nd_JLTS_DC15A_ugl_plastic
         {
             model = "Para42_GrenadeLaunchers";
-            weapon = "w_dc15a_gl_plastic";
-            tag = "jlts";
+            weapon = "w_dc15a_gl_jlts_plastic";
         };
         class 42nd_JLTS_DC15S
         {
             model = "Para42_Rifles";
-            weapon = "w_dc15s";
-            tag = "jlts";
+            weapon = "w_dc15s_jlts";
         };
         class 42nd_JLTS_DC15X
         {
             model = "Para42_Snipers";
-            weapon = "w_dc15x";
-            tag = "jlts";
+            weapon = "w_dc15x_jlts";
         };
         class 42nd_JLTS_DW32S
         {
             model = "Para42_Snipers";
-            weapon = "w_dw32s";
-            tag = "jlts";
+            weapon = "w_dw32s_jlts";
         };
         class 42nd_JLTS_Z6
         {
             model = "Para42_LMGs";
-            weapon = "w_z6";
-            tag = "jlts";
+            weapon = "w_z6_jlts";
         };
         class 42nd_ls_weapon_dc15a
         {
             model = "Para42_Rifles";
-            weapon = "w_dc15a";
-            tag = "ls";
+            weapon = "w_dc15a_ls";
         };
         class 42nd_ls_weapon_dc15a_wooden
         {
             model = "Para42_Rifles";
-            weapon = "w_dc15a_wooden";
-            tag = "ls";
+            weapon = "w_dc15a_ls_wooden";
         };
         class 42nd_ls_weapon_dc15ac
         {
             model = "Para42_Rifles";
-            weapon = "w_dc15ac";
-            tag = "ls";
+            weapon = "w_dc15ac_ls";
         };
         class 42nd_ls_weapon_dc15br
         {
             model = "Para42_Rifles";
-            weapon = "w_dc15br";
-            tag = "ls";
+            weapon = "w_dc15br_ls";
         };
         class 42nd_ls_weapon_dc15br_wooden
         {
             model = "Para42_Rifles";
-            weapon = "w_dc15br_wooden";
-            tag = "ls";
+            weapon = "w_dc15br_ls_wooden";
         };
         class 42nd_ls_weapon_dc15s
         {
             model = "Para42_Rifles";
-            weapon = "w_dc15s";
-            tag = "ls";
+            weapon = "w_dc15s_ls";
         };
         class 42nd_ls_weapon_dc15sa
         {
@@ -1102,8 +1043,7 @@ class XtdGearInfos
         class 42nd_ls_weapon_dc15x
         {
             model = "Para42_Snipers";
-            weapon = "w_dc15x";
-            tag = "ls";
+            weapon = "w_dc15x_ls";
         };
         class 42nd_ls_weapon_dc17s
         {
@@ -1118,32 +1058,27 @@ class XtdGearInfos
         class 42nd_ls_weapon_firepuncher
         {
             model = "Para42_Snipers";
-            weapon = "w_firepuncher";
-            tag = "ls";
+            weapon = "w_firepuncher_ls";
         };
         class 42nd_ls_weapon_z6
         {
             model = "Para42_LMGs";
-            weapon = "w_z6";
-            tag = "ls";
+            weapon = "w_z6_ls";
         };
         class 42nd_RPS6
         {
             model = "Para42_Launchers";
-            weapon = "w_rps6";
-            tag = "ida";
+            weapon = "w_rps6_ida";
         };
         class 42nd_Valken38X
         {
             model = "Para42_Snipers";
-            weapon = "w_valken38x";
-            tag = "as3";
+            weapon = "w_valken38x_3as";
         };
         class 42nd_Z6
         {
             model = "Para42_LMGs";
-            weapon = "w_z6";
-            tag = "ida";
+            weapon = "w_z6_ida";
         };
     };
 

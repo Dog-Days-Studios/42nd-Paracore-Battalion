@@ -1,7 +1,4 @@
 class ls_vehicle_laati;
-class AnimationSources;
-class Turrets;
-class Copilot;
 
     class 42nd_LAAT: ls_vehicle_laati
     {
@@ -156,6 +153,11 @@ class 42nd_3as_LAAT: 3AS_LAAT_Mk2
         "\3AS\3AS_Laat\LAATI\data\Weapons_CO.paa",
         "\3AS\3AS_Laat\LAATI\data\Weapon_Details_CO.paa",
         "\3AS\3AS_Laat\LAATI\data\Interior_CO.paa"
+    };
+    class AnimationSources;
+    class Turrets
+    {
+        class Copilot;
     };
     class TextureSources
     {

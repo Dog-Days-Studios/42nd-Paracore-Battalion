@@ -1,7 +1,7 @@
 class CfgPatches {
     class Aux_42nd {
         requiredVersion = 2.10;
-        requiredAddons[] = {"ace_main", "cba_xeh", "IDA_Ammo", "Indecisive_Armoury_units", "3AS_ARC_170"};
+        requiredAddons[] = {"ace_main", "cba_main", "cba_settings", "cba_xeh", "IDA_Ammo", "Indecisive_Armoury_units", "3AS_ARC_170", "ls_vehicles", "A3_Air_F_Heli_Light_01"};
         units[] = {
             "42nd_Trooper",
             "42nd_CPLTL_Trooper",
@@ -55,7 +55,10 @@ class CfgPatches {
             "42nd_3as_LAAT_Mk3_HeavyTurrets",
             "42nd_3as_LAAT_Mk2Lights",
             "42nd_ARC170",
+            "42nd_ARC170_Gunship",
             "42nd_Gozanti_Republic",
+            "42nd_LSV_Armed",
+            "42nd_LSV_Unarmed",
             "42nd_Arsenal_Box",
             "42nd_Arsenal_Supply",
             "42nd_Arsenal_Weapon_Crate"
@@ -84,18 +87,18 @@ class CfgPatches {
             "42nd_Hidden_Vest",
             "42nd_Hidden_Medical_Vest",
             "42nd_KamaCW_Vest",
-            "42nd_Basic_KamaCW_Vest",
-            "42nd_EOD_KamaCW_Vest",
-            "42nd_EOD_Kama_Vest",
-            "42nd_Marksman_Kama_Vest",
-            "42nd_Medic_Kama_Vest",
-            "42nd_Medic_KamaCW_Vest",
-            "42nd_Rose_Kama_Vest",
-            "42nd_Officer_PauldronCW_L_Vest",
-            "42nd_Officer_PauldronCW_R_Vest",
-            "42nd_Officer_PauldronEp3_L_Vest",
-            "42nd_Officer_PauldronEp3_R_Vest",
-            "42nd_Officer_Pauldron_Vest",
+            "42nd_Heavy_Vest",
+            "42nd_Recon_Vest",
+            "42nd_Suspender_Vest",
+            "42nd_Recon_Officer_Vest",
+            "42nd_Recon_NCO_Vest",
+            "42nd_Officer2_Vest",
+            "42nd_Officer_Vest",
+            "42nd_Lieutenant_Vest",
+            "42nd_Kama_Vest",
+            "42nd_Holster_Vest",
+            "42nd_Commander_Vest",
+            "42nd_Airborne_NCO_Vest",
             "42nd_Trooper_Uniform",
             "42nd_CPLTL_Trooper_Uniform",
             "42nd_CSGT_Trooper_Uniform",
@@ -181,6 +184,7 @@ class CfgPatches {
             "42nd_3AS_FusionCutter_F"
         };
         magazines[] = {
+            "42nd_MultiUse_Smoke_Grenade",
             "42nd_IDA_HEGL_Shell",
             "42nd_40mm_Blue",
             "42nd_40mm_red_smoke",
@@ -241,6 +245,10 @@ class CfgEditorSubcategories {
     {
         displayName = "Objects";
     };
+    class Sub42ndLightVic
+    {
+        displayName = "Light Vehicles";
+    };
 };
 class CfgFaces
 {
@@ -294,6 +302,21 @@ class CfgFunctions
             class trackGrappleProjectile {};
             class useGrappleAction {};
         };
+        class PlayerTracker
+        {
+            file = "\42nd_para\42nd\addons\main\functions";
+            class preInitPlayerTracker
+            {
+                preInit = 1;
+            };
+            class registerPlayerTracker
+            {
+                postInit = 1;
+            };
+            class loadPlayerTrackerData {};
+            class persistPlayerTrackerData {};
+            class recordPlayerTrackerEvent {};
+        };
     };
 };
 class CfgWeapons
@@ -303,15 +326,28 @@ class CfgWeapons
 #include "/addons/Bluefor/42nd_Uniforms/cfgWeapons.hpp"
 #include "/addons/Bluefor/42nd_Weapons/Weapons/Weapon.hpp"
 #include "/addons/bluefor/42nd_NVG/NVG.hpp"
+    class GrenadeLauncher;
+    class Throw: GrenadeLauncher
+    {
+        class ThrowMuzzle;
+        muzzles[] += {"42nd_MultiUse_Smoke_Muzzle"};
+
+        class 42nd_MultiUse_Smoke_Muzzle: ThrowMuzzle
+        {
+            displayName = "[42nd] Multi-Use Smoke";
+            magazines[] = {"42nd_MultiUse_Smoke_Grenade"};
+        };
+    };
 };
 class CfgVehicles
 {
 #include "/addons/Bluefor/42nd_Uniforms/cfgVehicles.hpp"
 #include "/addons/Bluefor/42nd_backpacks/backpack.hpp"
 #include "/addons/main/42nd_Objects.hpp"
-#include "/addons/Vehicles/42nd_ARC170/cfgvehicles.hpp"
+#include "/addons/Vehicles/42nd_ARC170/cfgVehicles.hpp"
 #include "/addons/Vehicles/42nd_Gozanti/cfgvehicles.hpp"
 #include "/addons/Vehicles/42nd_LAAT/cfgvehicles.hpp"
+#include "/addons/Vehicles/LSV/cfgVehicles.hpp"
 };
 class CfgAmmo
 {

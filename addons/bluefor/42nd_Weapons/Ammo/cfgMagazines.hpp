@@ -115,8 +115,22 @@ class 42nd_Sniper_Cell_20Round_Blue: IDA_Blaster_Cell_Power5_5Rnd_Blue
         mass = 15;
     };
 
+	class SmokeShell;
 	class IDA_HE_LauncherGrenade;
 	class ls_magazine_rd4_6Rnd;
+	class 42nd_MultiUse_Smoke_Grenade: SmokeShell
+	{
+		scope = 2;
+		author = "Hound";
+		displayName = "[42nd] Multi-Use Smoke Grenade";
+		displayNameShort = "Smoke x3";
+		descriptionShort = "Smoke grenade<br/>Uses: 3<br/>";
+		ammo = "SmokeShell";
+		count = 3;
+		mass = 8;
+		initSpeed = 22;
+		maxLeadSpeed = 7;
+	};
 	class 42nd_IDA_HEGL_Shell: IDA_HE_LauncherGrenade
 	{
 		scope = 2;

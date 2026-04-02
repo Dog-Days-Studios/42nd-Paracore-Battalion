@@ -3,7 +3,18 @@ class IDA_KnifeHolster;
 class IDA_Holster_1;
 class IDA_vest_base;
 class VestItem;
-
+class JLTS_CloneVestAirborne;
+class JLTS_CloneVestRecon;
+class JLTS_CloneVestSuspender;
+class JLTS_CloneVestReconOfficer;
+class JLTS_CloneVestReconNCO;
+class JLTS_CloneVestOfficer2;
+class JLTS_CloneVestOfficer;
+class JLTS_CloneVestLieutenant;
+class JLTS_CloneVestKama;
+class JLTS_CloneVestHolster;
+class JLTS_CloneVestCommander;
+class JLTS_CloneVestAirborneNCO;
 class 42nd_Dual_Holsters: IDA_Holster_2
 {
     author = "Hound";
@@ -138,7 +149,7 @@ class 42nd_Holster: IDA_Holster_1
         uniformModel = "\Indecisive_Armoury_units\REPUBLIC\Vests\IDA_Holster_1.p3d";
         containerClass = "Supply150";
         mass = 80;
-        hiddenSelections[] = {"camo1"};
+        hiddenSelections[] = {"camo"};
         class HitpointsProtectionInfo
         {
             class Diaphragm
@@ -352,7 +363,7 @@ class 42nd_KamaCW_Vest: IDA_vest_base
     {
         "",
         "",
-        "\addons\bluefor\42nd_Vests\42nd_kama.paa",
+        "\42nd_para\42nd\addons\bluefor\42nd_Vests\42nd_kama.paa",
         "",
         "",
         "",
@@ -440,348 +451,82 @@ class 42nd_KamaCW_Vest: IDA_vest_base
     };
 };
 
-class 42nd_Basic_KamaCW_Vest: 42nd_KamaCW_Vest
-{
-    displayName = "[42nd] Basic Kama CW Vest";
-    hiddenSelectionsTextures[] =
-    {
-        "",
-        "",
-        "\addons\bluefor\42nd_Vests\42nd_Basic_Kama_CW.paa",
-        "",
-        "",
-        "",
-        "",
-        "",
-        "",
-        "",
-        "",
-        "",
-        "",
-        "",
-        "",
-        ""
+#define C42_JLTS_VEST_ITEMINFO \
+    class ItemInfo: VestItem \
+    { \
+        containerClass = "Supply250"; \
+        mass = 25; \
+        vestType = "Rebreather"; \
+        class HitpointsProtectionInfo \
+        { \
+            class Chest \
+            { \
+                hitpointName = "HitChest"; \
+                armor = 15; \
+                passThrough = 0.1; \
+                explosiveShielding = 6; \
+            }; \
+            class Diaphragm \
+            { \
+                hitpointName = "HitDiaphragm"; \
+                armor = 15; \
+                passThrough = 0.1; \
+                explosiveShielding = 6; \
+            }; \
+            class Abdomen \
+            { \
+                hitpointName = "HitAbdomen"; \
+                armor = 15; \
+                passThrough = 0.1; \
+                explosiveShielding = 6; \
+            }; \
+            class Body \
+            { \
+                hitpointName = "HitBody"; \
+                armor = 15; \
+                passThrough = 0.1; \
+                explosiveShielding = 6; \
+            }; \
+            class Arms \
+            { \
+                hitpointName = "HitArms"; \
+                armor = 15; \
+                passThrough = 0.1; \
+                explosiveShielding = 6; \
+            }; \
+            class Legs \
+            { \
+                hitpointName = "HitLegs"; \
+                armor = 15; \
+                passThrough = 0.1; \
+                explosiveShielding = 6; \
+            }; \
+        }; \
     };
+
+#define C42_DEFINE_JLTS_VEST(CLASSNAME, BASECLASS, DISPLAYNAME) \
+class CLASSNAME: BASECLASS \
+{ \
+    author = "Hound"; \
+    scope = 2; \
+    scopeArsenal = 2; \
+    scopeCurator = 2; \
+    displayName = DISPLAYNAME; \
+    C42_JLTS_VEST_ITEMINFO \
 };
 
-class 42nd_EOD_KamaCW_Vest: 42nd_KamaCW_Vest
-{
-    displayName = "[42nd] EOD Kama CW Vest";
-    hiddenSelectionsTextures[] =
-    {
-        "",
-        "",
-        "\addons\bluefor\42nd_Vests\42nd_EOD_Kama_CW_Co.paa",
-        "",
-        "",
-        "",
-        "",
-        "",
-        "",
-        "",
-        "",
-        "",
-        "",
-        "",
-        "",
-        ""
-    };
-};
+C42_DEFINE_JLTS_VEST(42nd_Heavy_Vest,JLTS_CloneVestAirborne,"[42nd] Heavy Vest")
+C42_DEFINE_JLTS_VEST(42nd_Recon_Vest,JLTS_CloneVestRecon,"[42nd] Recon Vest")
+C42_DEFINE_JLTS_VEST(42nd_Suspender_Vest,JLTS_CloneVestSuspender,"[42nd] Suspender Vest")
+C42_DEFINE_JLTS_VEST(42nd_Recon_Officer_Vest,JLTS_CloneVestReconOfficer,"[42nd] Recon Officer Vest")
+C42_DEFINE_JLTS_VEST(42nd_Recon_NCO_Vest,JLTS_CloneVestReconNCO,"[42nd] Recon NCO Vest")
+C42_DEFINE_JLTS_VEST(42nd_Officer2_Vest,JLTS_CloneVestOfficer2,"[42nd] Officer 2 Vest")
+C42_DEFINE_JLTS_VEST(42nd_Officer_Vest,JLTS_CloneVestOfficer,"[42nd] Officer Vest")
+C42_DEFINE_JLTS_VEST(42nd_Lieutenant_Vest,JLTS_CloneVestLieutenant,"[42nd] Lieutenant Vest")
+C42_DEFINE_JLTS_VEST(42nd_Kama_Vest,JLTS_CloneVestKama,"[42nd] Kama Vest")
+C42_DEFINE_JLTS_VEST(42nd_Holster_Vest,JLTS_CloneVestHolster,"[42nd] Holster Vest")
+C42_DEFINE_JLTS_VEST(42nd_Commander_Vest,JLTS_CloneVestCommander,"[42nd] Commander Vest")
+C42_DEFINE_JLTS_VEST(42nd_Airborne_NCO_Vest,JLTS_CloneVestAirborneNCO,"[42nd] Airborne NCO Vest")
 
-class 42nd_EOD_Kama_Vest: 42nd_KamaCW_Vest
-{
-    displayName = "[42nd] EOD Kama Vest";
-    hiddenSelectionsTextures[] =
-    {
-        "",
-        "",
-        "\addons\bluefor\42nd_Vests\42nd_EOD_Kama_ep3.paa",
-        "",
-        "",
-        "",
-        "",
-        "",
-        "",
-        "",
-        "",
-        "",
-        "",
-        "",
-        "",
-        ""
-    };
-};
-
-class 42nd_Marksman_Kama_Vest: 42nd_KamaCW_Vest
-{
-    displayName = "[42nd] Marksman Kama Vest";
-    hiddenSelectionsTextures[] =
-    {
-        "",
-        "",
-        "\addons\bluefor\42nd_Vests\42nd_Marksman_Kama.paa",
-        "",
-        "",
-        "",
-        "",
-        "",
-        "",
-        "",
-        "",
-        "",
-        "",
-        "",
-        "",
-        ""
-    };
-};
-
-class 42nd_Medic_Kama_Vest: 42nd_KamaCW_Vest
-{
-    displayName = "[42nd] Medic Kama Vest";
-    hiddenSelectionsTextures[] =
-    {
-        "",
-        "",
-        "\addons\bluefor\42nd_Vests\42nd_Medic_Kama.paa",
-        "",
-        "",
-        "",
-        "",
-        "",
-        "",
-        "",
-        "",
-        "",
-        "",
-        "",
-        "",
-        ""
-    };
-};
-
-class 42nd_Medic_KamaCW_Vest: 42nd_KamaCW_Vest
-{
-    displayName = "[42nd] Medic Kama CW Vest";
-    hiddenSelectionsTextures[] =
-    {
-        "",
-        "",
-        "\addons\bluefor\42nd_Vests\42nd_Medic_Kama_CW.paa",
-        "",
-        "",
-        "",
-        "",
-        "",
-        "",
-        "",
-        "",
-        "",
-        "",
-        "",
-        "",
-        ""
-    };
-};
-
-class 42nd_Rose_Kama_Vest: 42nd_KamaCW_Vest
-{
-    displayName = "[42nd] Rose Kama Vest";
-    hiddenSelectionsTextures[] =
-    {
-        "",
-        "",
-        "\addons\bluefor\42nd_Vests\42nd_Rose_Kama_co.paa",
-        "",
-        "",
-        "",
-        "",
-        "",
-        "",
-        "",
-        "",
-        "",
-        "",
-        "",
-        "",
-        ""
-    };
-};
-
-class 42nd_Officer_Pauldron_Vest_Base: IDA_vest_base
-{
-    author = "Hound";
-    scope = 0;
-    scopeArsenal = 0;
-    scopeCurator = 0;
-    displayName = "[42nd] Officer Pauldron";
-    model = "\Indecisive_Armoury_units\REPUBLIC\Vests\IDA_Vests.p3d";
-    picture = "\Indecisive_Armoury_Units\REPUBLIC\Vests\pauldronCW_ui.paa";
-    hiddenSelections[] =
-    {
-        "Recon_Harness",
-        "GrenadeBag",
-        "KamaCW",
-        "KamaEp3",
-        "PauldronCW_L",
-        "PauldronCW_R",
-        "PauldronEp3_L",
-        "PauldronEp3_R",
-        "PauldronAccessory",
-        "ArmPouches_L",
-        "ArmPouches_R",
-        "SuspenderL",
-        "SuspenderR",
-        "ChestPadR",
-        "ShoulderPadR",
-        "PauldronARC"
-    };
-    class ItemInfo: VestItem
-    {
-        uniformModel = "\Indecisive_Armoury_units\REPUBLIC\Vests\IDA_Vests.p3d";
-        containerClass = "Supply220";
-        mass = 25;
-        hiddenSelections[] =
-        {
-            "Recon_Harness",
-            "GrenadeBag",
-            "KamaCW",
-            "KamaEp3",
-            "PauldronCW_L",
-            "PauldronCW_R",
-            "PauldronEp3_L",
-            "PauldronEp3_R",
-            "PauldronAccessory",
-            "ArmPouches_L",
-            "ArmPouches_R",
-            "SuspenderL",
-            "SuspenderR",
-            "ChestPadR",
-            "ShoulderPadR",
-            "PauldronARC"
-        };
-        vestType = "Rebreather";
-        class HitpointsProtectionInfo
-        {
-            class Chest { hitpointName = "HitChest"; armor = 15; passThrough = 0.1; explosiveShielding = 6; };
-            class Diaphragm { hitpointName = "HitDiaphragm"; armor = 15; passThrough = 0.1; explosiveShielding = 6; };
-            class Abdomen { hitpointName = "HitAbdomen"; armor = 15; passThrough = 0.1; explosiveShielding = 6; };
-            class Body { hitpointName = "HitBody"; armor = 15; passThrough = 0.1; explosiveShielding = 6; };
-            class Arms { hitpointName = "HitArms"; armor = 15; passThrough = 0.1; explosiveShielding = 6; };
-            class Legs { hitpointName = "HitLegs"; armor = 15; passThrough = 0.1; explosiveShielding = 6; };
-        };
-    };
-};
-
-class 42nd_Officer_PauldronCW_L_Vest: 42nd_Officer_Pauldron_Vest_Base
-{
-    scope = 2;
-    scopeArsenal = 2;
-    scopeCurator = 2;
-    displayName = "[42nd] Officer Pauldron CW (L) Vest";
-    hiddenSelectionsTextures[] =
-    {
-        "",
-        "",
-        "\Indecisive_Armoury_Units\REPUBLIC\Vests\IDA_KamaCW\IDA_KamaCW_co.paa",
-        "",
-        "\Indecisive_Armoury_Units\REPUBLIC\Vests\IDA_PauldronCW\IDA_PauldronCW_co.paa",
-        "",
-        "",
-        "",
-        "",
-        "",
-        "",
-        "",
-        "",
-        "",
-        "",
-        ""
-    };
-};
-
-class 42nd_Officer_PauldronCW_R_Vest: 42nd_Officer_Pauldron_Vest_Base
-{
-    scope = 2;
-    scopeArsenal = 2;
-    scopeCurator = 2;
-    displayName = "[42nd] Officer Pauldron CW (R) Vest";
-    hiddenSelectionsTextures[] =
-    {
-        "",
-        "",
-        "\Indecisive_Armoury_Units\REPUBLIC\Vests\IDA_KamaCW\IDA_KamaCW_co.paa",
-        "",
-        "",
-        "\Indecisive_Armoury_Units\REPUBLIC\Vests\IDA_PauldronCW\IDA_PauldronCW_co.paa",
-        "",
-        "",
-        "",
-        "",
-        "",
-        "",
-        "",
-        "",
-        "",
-        ""
-    };
-};
-
-class 42nd_Officer_PauldronEp3_L_Vest: 42nd_Officer_Pauldron_Vest_Base
-{
-    scope = 2;
-    scopeArsenal = 2;
-    scopeCurator = 2;
-    displayName = "[42nd] Officer Pauldron Ep3 (L) Vest";
-    hiddenSelectionsTextures[] =
-    {
-        "",
-        "",
-        "\Indecisive_Armoury_Units\REPUBLIC\Vests\IDA_KamaCW\IDA_KamaCW_co.paa",
-        "",
-        "",
-        "",
-        "\Indecisive_Armoury_Units\REPUBLIC\Vests\IDA_PauldronEp3\IDA_PauldronEp3_co.paa",
-        "",
-        "",
-        "",
-        "",
-        "",
-        "",
-        "",
-        "",
-        ""
-    };
-};
-
-class 42nd_Officer_PauldronEp3_R_Vest: 42nd_Officer_Pauldron_Vest_Base
-{
-    scope = 2;
-    scopeArsenal = 2;
-    scopeCurator = 2;
-    displayName = "[42nd] Officer Pauldron Ep3 (R) Vest";
-    hiddenSelectionsTextures[] =
-    {
-        "",
-        "",
-        "\Indecisive_Armoury_Units\REPUBLIC\Vests\IDA_KamaCW\IDA_KamaCW_co.paa",
-        "",
-        "",
-        "",
-        "",
-        "\Indecisive_Armoury_Units\REPUBLIC\Vests\IDA_PauldronEp3\IDA_PauldronEp3_co.paa",
-        "",
-        "",
-        "",
-        "",
-        "",
-        "",
-        "",
-        ""
-    };
-};
-
-class 42nd_Officer_Pauldron_Vest: 42nd_Officer_PauldronEp3_L_Vest
-{
-    displayName = "[42nd] Officer Pauldron Vest";
-};
+#undef C42_DEFINE_JLTS_VEST
+#undef C42_JLTS_VEST_ITEMINFO

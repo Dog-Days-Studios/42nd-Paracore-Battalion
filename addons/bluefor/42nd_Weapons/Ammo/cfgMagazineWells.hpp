@@ -29,6 +29,14 @@
                 "42nd_Sniper_Cell_20Round_Blue"
             };
         };
+    class 42nd_Pistol_Magwell
+        {
+            // Magazines defined
+            42nd_Pistol_Magazines[] =
+            {
+                "IDA_Blaster_Cell_Power5_5Rnd_Blue"
+            };
+        };
     class 42nd_GL_Magwell
         {
             // Magazines defined 

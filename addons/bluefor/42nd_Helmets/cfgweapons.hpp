@@ -46,6 +46,7 @@ class 42nd_Pilot_Helmet_base: ls_gar_phase2Pilot_helmet
     scope = 1;
     scopeArsenal = 1;
     42nd_cloneHud = 1;
+    42nd_hudProfile = "pilot";
     ace_hearing_protection = 0.95;
     ace_hearing_lowervolume = 0.2;
     displayName = "[42nd] Pilot Helmet";
