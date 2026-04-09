@@ -35,6 +35,16 @@ private _colorRootAction = [
 
 ["CAManBase", 1, ["ACE_SelfActions", "CTHUD_Root"], _colorRootAction, true] call ace_interact_menu_fnc_addActionToClass;
 
+private _sensorRootAction = [
+    "CTHUD_SensorRoot",
+    "Sensor Pane",
+    "",
+    {},
+    {true}
+] call ace_interact_menu_fnc_createAction;
+
+["CAManBase", 1, ["ACE_SelfActions", "CTHUD_Root"], _sensorRootAction, true] call ace_interact_menu_fnc_addActionToClass;
+
 {
     _x params ["_id", "_label", "_preset"];
 
@@ -58,6 +68,28 @@ private _colorRootAction = [
     ["CTHUD_Color_Amber", "Amber", "amber"],
     ["CTHUD_Color_Red", "Red", "red"],
     ["CTHUD_Color_Mono", "Monochrome", "mono"]
+];
+
+{
+    _x params ["_id", "_label", "_mode"];
+
+    private _sensorAction = [
+        _id,
+        _label,
+        "",
+        {
+            params ["", "", "_params"];
+            missionNamespace setVariable ["CTHUD_sensorPaneMode", _params select 0];
+        },
+        {true},
+        {},
+        [_mode]
+    ] call ace_interact_menu_fnc_createAction;
+
+    ["CAManBase", 1, ["ACE_SelfActions", "CTHUD_Root", "CTHUD_SensorRoot"], _sensorAction, true] call ace_interact_menu_fnc_addActionToClass;
+} forEach [
+    ["CTHUD_Sensor_Display", "Sensor Display", "sensor"],
+    ["CTHUD_Sensor_Map", "Minimap", "minimap"]
 ];
 
 private _joinGroupAction = [

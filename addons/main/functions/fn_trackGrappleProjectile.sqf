@@ -13,29 +13,12 @@ if !(_grappleMode in ["vertical", "traverse", "universal"]) then {
     _grappleMode = "universal";
 };
 
-if (_maxLength <= 0) then {
-    _maxLength = 30;
-};
-
-if (_lifetime <= 0) then {
-    _lifetime = 600;
-};
-
-if (_traceDistance <= 0) then {
-    _traceDistance = 60;
-};
-
-if (_traverseMinDistance < 0) then {
-    _traverseMinDistance = 0;
-};
-
-if (_traverseMaxDistance <= 0) then {
-    _traverseMaxDistance = _traceDistance;
-};
-
-if (_timeToLive <= 0) then {
-    _timeToLive = 8;
-};
+if (_maxLength <= 0) then {_maxLength = 30};
+if (_lifetime <= 0) then {_lifetime = 600};
+if (_traceDistance <= 0) then {_traceDistance = 60};
+if (_traverseMinDistance < 0) then {_traverseMinDistance = 0};
+if (_traverseMaxDistance <= 0) then {_traverseMaxDistance = _traceDistance};
+if (_timeToLive <= 0) then {_timeToLive = 8};
 
 private _sampleInterval = 0.01;
 private _timeoutAt = diag_tickTime + _timeToLive + 0.25;

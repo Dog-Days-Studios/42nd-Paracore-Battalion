@@ -1,5 +1,10 @@
-private _preset = missionNamespace getVariable ["CTHUD_colorPreset", "default"];
+private _preset = (missionNamespace getVariable ["CTHUD_colorPreset", "default"]) call CTHUD_fnc_normalizeColorPreset;
 private _custom = missionNamespace getVariable ["CTHUD_customColor", [0.15, 0.65, 1, 1]];
+
+if (_preset isNotEqualTo (missionNamespace getVariable ["CTHUD_colorPreset", "default"])) then
+{
+    missionNamespace setVariable ["CTHUD_colorPreset", _preset];
+};
 
 switch (toLower _preset) do
 {

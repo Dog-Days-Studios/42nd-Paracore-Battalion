@@ -100,7 +100,7 @@ class CfgEditorSubcategories
     };
 };
 
-#define C42_LINKED_ITEMS "IDA_vest_attachment_base","JLTS_NVG_droid_chip_2","IDA_Electrobinoculars_Rep","JLTS_droid_comlink"
+#define C42_LINKED_ITEMS "JLTS_NVG_droid_chip_2","IDA_Electrobinoculars_Rep","JLTS_droid_comlink"
 #define C42_B1_UNIT(CLASS,PARENT,NAME,UNIFORM,SUBCAT,TEXTURE) class CLASS: PARENT { scope = 2; scopeCurator = 2; displayName = NAME; uniformClass = UNIFORM; editorSubcategory = SUBCAT; hiddenSelectionsTextures[] = {TEXTURE}; };
 #define C42_GROUP_UNIT(NUM,VEHICLE,RANKNAME,POSX,POSY) class Unit##NUM { side = 0; vehicle = VEHICLE; rank = RANKNAME; position[] = {POSX,POSY,0}; };
 #define C42_GROUP_SENTRY(CLASS,NAME,RIFLE) class CLASS { name = NAME; faction = "FacCIS_42nd"; side = 0; C42_GROUP_UNIT(0,RIFLE,"SERGEANT",1,0) C42_GROUP_UNIT(1,RIFLE,"PRIVATE",1,-1) };
@@ -174,11 +174,18 @@ class CfgVehicles
     class JLTS_Droid_B1_AR;
     class JLTS_Droid_B1_Sniper;
     class JLTS_Droid_B1_AT;
-    class B_AAA_System_01_F
+    class AAA_System_01_base_F
     {
         class Turrets
         {
             class MainTurret;
+        };
+    };
+    class B_AAA_System_01_F: AAA_System_01_base_F
+    {
+        class Turrets: Turrets
+        {
+            class MainTurret: MainTurret {};
         };
     };
 
@@ -189,13 +196,14 @@ class CfgVehicles
         scopeCurator = 0;
         side = 0;
         faction = "FacCIS_42nd";
+        vehicleClass = "Men";
         backpack = "JLTS_B1_backpack";
         weapons[] = {"IDA_E5", "Throw", "Put"};
         respawnWeapons[] = {"IDA_E5", "Throw", "Put"};
         linkedItems[] = {C42_LINKED_ITEMS};
         respawnLinkedItems[] = {C42_LINKED_ITEMS};
-        magazines[] = {"IDA_blaster_cell_red", "IDA_blaster_cell_red", "IDA_blaster_cell_red", "IDA_blaster_cell_red", "IDA_blaster_cell_red", "IDA_grenade_Penetrator_mag", "IDA_grenade_Penetrator_mag"};
-        respawnMagazines[] = {"IDA_blaster_cell_red", "IDA_blaster_cell_red", "IDA_blaster_cell_red", "IDA_blaster_cell_red", "IDA_blaster_cell_red", "IDA_grenade_Penetrator_mag", "IDA_grenade_Penetrator_mag"};
+        magazines[] = {"IDA_Blaster_Cell_Power3_40Rnd_red", "IDA_Blaster_Cell_Power3_40Rnd_red", "IDA_Blaster_Cell_Power3_40Rnd_red", "IDA_Blaster_Cell_Power3_40Rnd_red", "IDA_Blaster_Cell_Power3_40Rnd_red", "IDA_grenade_Penetrator_mag", "IDA_grenade_Penetrator_mag"};
+        respawnMagazines[] = {"IDA_Blaster_Cell_Power3_40Rnd_red", "IDA_Blaster_Cell_Power3_40Rnd_red", "IDA_Blaster_Cell_Power3_40Rnd_red", "IDA_Blaster_Cell_Power3_40Rnd_red", "IDA_Blaster_Cell_Power3_40Rnd_red", "IDA_grenade_Penetrator_mag", "IDA_grenade_Penetrator_mag"};
     };
 
     class 42nd_CIS_Flame_Base: 42nd_CIS_Rifleman_Base
@@ -213,6 +221,7 @@ class CfgVehicles
         scopeCurator = 0;
         side = 0;
         faction = "FacCIS_42nd";
+        vehicleClass = "Men";
         backpack = "JLTS_B1_backpack";
         weapons[] = {"IDA_E5C_Stock", "Throw", "Put"};
         respawnWeapons[] = {"IDA_E5C_Stock", "Throw", "Put"};
@@ -229,6 +238,7 @@ class CfgVehicles
         scopeCurator = 0;
         side = 0;
         faction = "FacCIS_42nd";
+        vehicleClass = "Men";
         backpack = "JLTS_B1_backpack";
         weapons[] = {"IDA_E5S", "Throw", "Put"};
         respawnWeapons[] = {"IDA_E5S", "Throw", "Put"};
@@ -245,13 +255,14 @@ class CfgVehicles
         scopeCurator = 0;
         side = 0;
         faction = "FacCIS_42nd";
+        vehicleClass = "Men";
         backpack = "JLTS_B1_backpack";
         weapons[] = {"IDA_E5", "IDA_RPS6HP", "Throw", "Put"};
         respawnWeapons[] = {"IDA_E5", "IDA_RPS6HP", "Throw", "Put"};
         linkedItems[] = {C42_LINKED_ITEMS};
         respawnLinkedItems[] = {C42_LINKED_ITEMS};
-        magazines[] = {"IDA_blaster_cell_red", "IDA_blaster_cell_red", "IDA_blaster_cell_red", "IDA_blaster_cell_red", "IDA_blaster_cell_red", "IDA_RPS6_rocket", "IDA_RPS6_rocket", "IDA_grenade_Penetrator_mag", "IDA_grenade_Penetrator_mag"};
-        respawnMagazines[] = {"IDA_blaster_cell_red", "IDA_blaster_cell_red", "IDA_blaster_cell_red", "IDA_blaster_cell_red", "IDA_blaster_cell_red", "IDA_RPS6_rocket", "IDA_RPS6_rocket", "IDA_grenade_Penetrator_mag", "IDA_grenade_Penetrator_mag"};
+        magazines[] = {"IDA_Blaster_Cell_Power3_40Rnd_red", "IDA_Blaster_Cell_Power3_40Rnd_red", "IDA_Blaster_Cell_Power3_40Rnd_red", "IDA_Blaster_Cell_Power3_40Rnd_red", "IDA_Blaster_Cell_Power3_40Rnd_red", "IDA_RPS6_rocket", "IDA_RPS6_rocket", "IDA_grenade_Penetrator_mag", "IDA_grenade_Penetrator_mag"};
+        respawnMagazines[] = {"IDA_Blaster_Cell_Power3_40Rnd_red", "IDA_Blaster_Cell_Power3_40Rnd_red", "IDA_Blaster_Cell_Power3_40Rnd_red", "IDA_Blaster_Cell_Power3_40Rnd_red", "IDA_Blaster_Cell_Power3_40Rnd_red", "IDA_RPS6_rocket", "IDA_RPS6_rocket", "IDA_grenade_Penetrator_mag", "IDA_grenade_Penetrator_mag"};
     };
 
     class 42nd_CIS_HeavyAT_Base: JLTS_Droid_B1_AT
@@ -261,13 +272,14 @@ class CfgVehicles
         scopeCurator = 0;
         side = 0;
         faction = "FacCIS_42nd";
+        vehicleClass = "Men";
         backpack = "JLTS_B1_backpack";
         weapons[] = {"IDA_E5", "3AS_E60R_F", "Throw", "Put"};
         respawnWeapons[] = {"IDA_E5", "3AS_E60R_F", "Throw", "Put"};
         linkedItems[] = {C42_LINKED_ITEMS};
         respawnLinkedItems[] = {C42_LINKED_ITEMS};
-        magazines[] = {"IDA_blaster_cell_red", "IDA_blaster_cell_red", "IDA_blaster_cell_red", "IDA_blaster_cell_red", "IDA_blaster_cell_red", "3AS_E60R_AT", "3AS_E60R_AT", "IDA_grenade_Penetrator_mag", "IDA_grenade_Penetrator_mag"};
-        respawnMagazines[] = {"IDA_blaster_cell_red", "IDA_blaster_cell_red", "IDA_blaster_cell_red", "IDA_blaster_cell_red", "IDA_blaster_cell_red", "3AS_E60R_AT", "3AS_E60R_AT", "IDA_grenade_Penetrator_mag", "IDA_grenade_Penetrator_mag"};
+        magazines[] = {"IDA_Blaster_Cell_Power3_40Rnd_red", "IDA_Blaster_Cell_Power3_40Rnd_red", "IDA_Blaster_Cell_Power3_40Rnd_red", "IDA_Blaster_Cell_Power3_40Rnd_red", "IDA_Blaster_Cell_Power3_40Rnd_red", "3AS_E60R_AT", "3AS_E60R_AT", "IDA_grenade_Penetrator_mag", "IDA_grenade_Penetrator_mag"};
+        respawnMagazines[] = {"IDA_Blaster_Cell_Power3_40Rnd_red", "IDA_Blaster_Cell_Power3_40Rnd_red", "IDA_Blaster_Cell_Power3_40Rnd_red", "IDA_Blaster_Cell_Power3_40Rnd_red", "IDA_Blaster_Cell_Power3_40Rnd_red", "3AS_E60R_AT", "3AS_E60R_AT", "IDA_grenade_Penetrator_mag", "IDA_grenade_Penetrator_mag"};
     };
 
     C42_B1_UNIT(42nd_Woodland_B1_Droid,42nd_CIS_Rifleman_Base,"[42nd] B1 Droid","42nd_CIS_DroidB1_Woodland","Sub42ndCISWoodland","\42nd_para\42nd\addons\Opfor\42nd_CIS\B1\612thABD_B1_Woodland_co.paa")
@@ -312,6 +324,7 @@ class CfgVehicles
         scopeCurator = 2;
         side = 0;
         faction = "FacCIS_42nd";
+        vehicleClass = "Autonomous";
         editorSubcategory = "Sub42ndCISEmplacements";
         crew = "O_UAV_AI";
         typicalCargo[] = {"O_UAV_AI"};
@@ -320,6 +333,7 @@ class CfgVehicles
         {
             class MainTurret: MainTurret
             {
+                primaryGunner = 1;
                 weapons[] = {"42nd_CIWIS_Cannon"};
                 magazines[] = {"42nd_CIWIS_Magazine", "42nd_CIWIS_Magazine"};
             };

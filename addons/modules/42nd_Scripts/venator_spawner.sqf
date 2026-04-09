@@ -1,9 +1,9 @@
 /*
-    Usage:
-    [] execVM "\42nd_para\42nd\addons\modules\42nd_Scripts\venator_spawner.sqf";
+    Venator Warp-In Spawner
+    Uses the Capital Ship Jump-In system for hyperspace entry animation.
 
-    Manual usage:
-    [player, "ls_staticShip_venator"] call para42_fnc_spawnVenatorServer;
+    Usage on any unit's init or via execVM:
+    [] execVM "\42nd_para\42nd\addons\modules\42nd_Scripts\venator_spawner.sqf";
 */
 
 if (isNil "para42_venatorVariants") then {
@@ -34,11 +34,13 @@ if (isNil "para42_fnc_spawnVenatorServer") then {
     para42_fnc_spawnVenatorServer = {
         params [
             ["_caller", objNull, [objNull]],
-            ["_className", "", [""]]
+            ["_className", "", [""]],
+            ["_spawnHeight", 2000, [0]],
+            ["_cruiseSpeed", 40, [0]]
         ];
 
         if (!isServer) exitWith {
-            [_caller, _className] remoteExecCall ["para42_fnc_spawnVenatorServer", 2];
+            [_caller, _className, _spawnHeight, _cruiseSpeed] remoteExecCall ["para42_fnc_spawnVenatorServer", 2];
         };
 
         if (isNull _caller || {_className isEqualTo ""}) exitWith {};
@@ -48,27 +50,20 @@ if (isNil "para42_fnc_spawnVenatorServer") then {
             [_caller, format ["%1 is not loaded.", _className]] call para42_fnc_venatorNotify;
         };
 
-        private _dir = getDirVisual _caller;
-        private _spawnPosASL = (getPosASL _caller) vectorAdd [1500 * sin _dir, 1500 * cos _dir, 300];
-        private _spawnPosATL = ASLToATL _spawnPosASL;
-        private _venator = createVehicle [_className, _spawnPosATL, [], 0, "CAN_COLLIDE"];
-
-        if (isNull _venator) exitWith {
-            [_caller, "Venator spawn failed."] call para42_fnc_venatorNotify;
-        };
-
-        _venator setDir _dir;
-        _venator setPosASL _spawnPosASL;
-        _venator setVectorDirAndUp [[sin _dir, cos _dir, 0], [0, 0, 1]];
-        _venator allowDamage false;
-        _venator setVariable ["42nd_spawnedVenator", true, true];
-
         private _displayName = getText (_cfg >> "displayName");
-        if (_displayName isEqualTo "") then {
-            _displayName = _className;
+        if (_displayName isEqualTo "") then {_displayName = _className};
+
+        private _logic = createVehicle ["Logic", getPosATL _caller, [], 0, "CAN_COLLIDE"];
+        if (isNull _logic) exitWith {
+            [_caller, format ["Failed to spawn %1.", _displayName]] call para42_fnc_venatorNotify;
         };
 
-        [_caller, format ["Spawned %1 1500m ahead.", _displayName]] call para42_fnc_venatorNotify;
+        _logic setDir getDirVisual _caller;
+        _logic setPosASL getPosASL _caller;
+
+        [_caller, format ["%1 dropping out of hyperspace...", _displayName]] call para42_fnc_venatorNotify;
+
+        [_logic, _className, _spawnHeight, -1, _cruiseSpeed, false] call Para42_fnc_spawnCapitalShipJumpInServer;
     };
 };
 
@@ -92,7 +87,7 @@ private _utilityRoot = [
 
 private _venatorRoot = [
     "Para42_VenatorRoot",
-    "Venator Spawner",
+    "Venator Warp-In",
     "",
     {},
     {true}

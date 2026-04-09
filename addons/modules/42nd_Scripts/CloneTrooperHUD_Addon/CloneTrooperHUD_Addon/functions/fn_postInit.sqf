@@ -1,4 +1,6 @@
 if (!hasInterface) exitWith {};
+if (missionNamespace getVariable ["CTHUD_postInitRan", false]) exitWith {};
+missionNamespace setVariable ["CTHUD_postInitRan", true];
 missionNamespace setVariable ["CTHUD_runtimeEnabled", false];
 missionNamespace setVariable ["CTHUD_defaultHudHidden", false];
 missionNamespace setVariable ["CTHUD_savedHudState", []];
@@ -7,5 +9,8 @@ missionNamespace setVariable ["CTHUD_startupStartedAt", -1];
 missionNamespace setVariable ["CTHUD_startupDuration", 1.35];
 missionNamespace setVariable ["CTHUD_startupFadeDuration", 0.32];
 missionNamespace setVariable ["CTHUD_activeDisplayClass", ""];
+missionNamespace setVariable ["CTHUD_displayRequestAt", -1];
+missionNamespace setVariable ["CTHUD_trackerContacts", []];
+missionNamespace setVariable ["CTHUD_trackerNextUpdate", -1];
 [] call CTHUD_fnc_registerAceActions;
 [] spawn CTHUD_fnc_initPlayerHUD;

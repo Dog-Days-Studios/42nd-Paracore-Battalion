@@ -34,7 +34,22 @@
             // Magazines defined
             42nd_Pistol_Magazines[] =
             {
-                "IDA_Blaster_Cell_Power5_5Rnd_Blue"
+                "IDA_Blaster_Cell_Power5_5Rnd_Blue",
+                "42nd_Pistol_Cell_10Round_Blue",
+                "42nd_Pistol_Cell_15Round_Blue",
+                "42nd_Pistol_Cell_20Round_Blue"
+            };
+        };
+    class 42nd_Shotgun_Magwell
+        {
+            // Magazines defined
+            42nd_Shotgun_Magazines[] =
+            {
+                "3AS_8Rnd_ESlugY_Mag",
+                "3AS_8Rnd_EY30_Pellets",
+                "ls_magazine_dp20",
+                "ls_magazine_dp20_slug",
+                "JLTS_SBB3_mag"
             };
         };
     class 42nd_GL_Magwell
@@ -58,7 +73,14 @@
                 "42nd_40mm_orange_smoke",
                 "42nd_40mm_red_smoke",
                 "42nd_40mm_Grapple",
-                "42nd_IDA_HEGL_Shell"
+                "42nd_IDA_HEGL_Shell",
+                "ls_weapon_rd4",
+                "ls_magazine_rd4_6Rnd",
+                "ls_magazine_3Rnd_40mw_IM304D",
+                "ls_magazine_2Rnd_40mw_IM334K",
+                "ls_magazine_3Rnd_40mw_IM41",
+                "ls_magazine_3Rnd_40mw_IM92F",
+                "ls_magazine_2Rnd_40mw_IM973B"
             };
         };
     class 42nd_RPS_Magwell

@@ -1,7 +1,7 @@
 class CfgPatches {
     class Aux_42nd {
         requiredVersion = 2.10;
-        requiredAddons[] = {"ace_main", "cba_main", "cba_settings", "cba_xeh", "IDA_Ammo", "Indecisive_Armoury_units", "3AS_ARC_170", "ls_vehicles", "A3_Air_F_Heli_Light_01"};
+        requiredAddons[] = {"ace_main", "cba_main", "cba_xeh", "IDA_Ammo", "Indecisive_Armoury_units", "3AS_ARC_170", "ls_vehicles", "A3_Air_F_Heli_Light_01", "A3_Soft_F_Exp_LSV_01"};
         units[] = {
             "42nd_Trooper",
             "42nd_CPLTL_Trooper",
@@ -59,6 +59,9 @@ class CfgPatches {
             "42nd_Gozanti_Republic",
             "42nd_LSV_Armed",
             "42nd_LSV_Unarmed",
+            "42nd_Ammo_Resupply_Crate",
+            "42nd_Medical_Resupply_Crate",
+            "42nd_Engineer_Resupply_Crate",
             "42nd_Arsenal_Box",
             "42nd_Arsenal_Supply",
             "42nd_Arsenal_Weapon_Crate"
@@ -166,6 +169,15 @@ class CfgPatches {
             "42nd_JLTS_Z6",
             "42nd_ls_weapon_z6",
             "42nd_3AS_DLT19",
+            "42nd_3AS_DC15L_F",
+            "42nd_3AS_DP23_F",
+            "42nd_sgun_HunterShotgun_01_F",
+            "42nd_sgun_HunterShotgun_01_sawedoff_F",
+            "42nd_ls_weapon_dp20",
+            "42nd_JLTS_DP23",
+            "42nd_IDA_DC23",
+            "42nd_JLTS_SBB3",
+            "42nd_3AS_ScatterGun_F",
             "42nd_DC15S_UGL",
             "42nd_DC15LE",
             "42nd_JLTS_DC15A_ugl_plastic",
@@ -184,7 +196,13 @@ class CfgPatches {
             "42nd_3AS_FusionCutter_F"
         };
         magazines[] = {
-            "42nd_MultiUse_Smoke_Grenade",
+            "42nd_Smoke_Grenade",
+            "42nd_Smoke_Grenade_blue",
+            "42nd_Smoke_Grenade_Red",
+            "42nd_Smoke_Grenade_Green",
+            "42nd_Smoke_Grenade_Orange",
+            "42nd_Smoke_Grenade_Purple",
+            "42nd_Smoke_Grenade_Yellow",
             "42nd_IDA_HEGL_Shell",
             "42nd_40mm_Blue",
             "42nd_40mm_red_smoke",
@@ -192,6 +210,9 @@ class CfgPatches {
             "42nd_40mm_green_smoke",
             "42nd_40mm_red",
             "42nd_40mm_Grapple",
+            "42nd_Pistol_Cell_10Round_Blue",
+            "42nd_Pistol_Cell_15Round_Blue",
+            "42nd_Pistol_Cell_20Round_Blue",
             "42nd_40mm_Grapple_Traverse"
         };
         ammo[] = {
@@ -302,21 +323,6 @@ class CfgFunctions
             class trackGrappleProjectile {};
             class useGrappleAction {};
         };
-        class PlayerTracker
-        {
-            file = "\42nd_para\42nd\addons\main\functions";
-            class preInitPlayerTracker
-            {
-                preInit = 1;
-            };
-            class registerPlayerTracker
-            {
-                postInit = 1;
-            };
-            class loadPlayerTrackerData {};
-            class persistPlayerTrackerData {};
-            class recordPlayerTrackerEvent {};
-        };
     };
 };
 class CfgWeapons
@@ -335,16 +341,66 @@ class CfgWeapons
         class 42nd_MultiUse_Smoke_Muzzle: ThrowMuzzle
         {
             displayName = "[42nd] Multi-Use Smoke";
-            magazines[] = {"42nd_MultiUse_Smoke_Grenade"};
+            magazines[] = {
+                "42nd_Smoke_Grenade",
+                "42nd_Smoke_Grenade_blue",
+                "42nd_Smoke_Grenade_Red",
+                "42nd_Smoke_Grenade_Green",
+                "42nd_Smoke_Grenade_Orange",
+                "42nd_Smoke_Grenade_Purple",
+                "42nd_Smoke_Grenade_Yellow"
+            };
         };
     };
+};
+class SensorTemplatePassiveRadar;
+class SensorTemplateAntiRadiation;
+class SensorTemplateActiveRadar;
+class SensorTemplateIR;
+class SensorTemplateVisual;
+class SensorTemplateMan;
+class SensorTemplateLaser;
+class SensorTemplateNV;
+class SensorTemplateDataLink;
+class DefaultVehicleSystemsDisplayManagerLeft
+{
+	class components;
+};
+class DefaultVehicleSystemsDisplayManagerRight
+{
+	class components;
+};
+class Optics_Armored;
+class Optics_Commander_01: Optics_Armored
+{
+	class Wide;
+	class Medium;
+	class Narrow;
+};
+class Optics_Gunner_MBT_01: Optics_Armored
+{
+	class Wide;
+	class Medium;
+	class Narrow;
+};
+class Optics_Commander_02: Optics_Armored
+{
+	class Wide;
+	class Medium;
+	class Narrow;
+};
+class Optics_Gunner_MBT_03: Optics_Armored
+{
+	class Wide;
+	class Medium;
+	class Narrow;
 };
 class CfgVehicles
 {
 #include "/addons/Bluefor/42nd_Uniforms/cfgVehicles.hpp"
 #include "/addons/Bluefor/42nd_backpacks/backpack.hpp"
 #include "/addons/main/42nd_Objects.hpp"
-#include "/addons/Vehicles/42nd_ARC170/cfgVehicles.hpp"
+#include "/addons/Vehicles/42nd_ARC170/42nd_Arc170.hpp"
 #include "/addons/Vehicles/42nd_Gozanti/cfgvehicles.hpp"
 #include "/addons/Vehicles/42nd_LAAT/cfgvehicles.hpp"
 #include "/addons/Vehicles/LSV/cfgVehicles.hpp"

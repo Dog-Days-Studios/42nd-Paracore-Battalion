@@ -1,4 +1,9 @@
-private _preset = toLower (missionNamespace getVariable ["CTHUD_textScalePreset", "default"]);
+private _preset = (missionNamespace getVariable ["CTHUD_textScalePreset", "default"]) call CTHUD_fnc_normalizeTextScalePreset;
+
+if (_preset isNotEqualTo (missionNamespace getVariable ["CTHUD_textScalePreset", "default"])) then
+{
+    missionNamespace setVariable ["CTHUD_textScalePreset", _preset];
+};
 
 switch (_preset) do
 {

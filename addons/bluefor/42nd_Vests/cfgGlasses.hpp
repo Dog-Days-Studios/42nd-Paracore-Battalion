@@ -3,13 +3,6 @@ class IDA_PauldronCW_L;
 class IDA_PauldronCW_R;
 class IDA_PauldronEp3_L;
 class IDA_PauldronEp3_R;
-class IDA_Recon_Harness;
-class IDA_Recon_Harness_Kama;
-class IDA_Scout_Harness;
-class IDA_Suspender_L;
-class IDA_Suspender_R;
-class IDA_Suspenders;
-class IDA_Suspenders_KamaEp3;
 
 // Base variant
 class 42nd_KamaCW_Glasses: IDA_KamaCW

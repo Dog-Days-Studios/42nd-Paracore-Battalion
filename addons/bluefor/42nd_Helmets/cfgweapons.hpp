@@ -466,8 +466,8 @@ class 42nd_SpecOps_SR_Vet_Helmet: 42nd_SpecOps_SR_Helmet_base
     };
 };
 
-class SEA_Helmet_SpecOps_LR_Base;
-class 42nd_SpecOps_LR_Helmet_base: SEA_Helmet_SpecOps_LR_Base
+class SEA_Helmet_SpecOps_LR_IllumBase;
+class 42nd_SpecOps_LR_Helmet_base: SEA_Helmet_SpecOps_LR_IllumBase
 {
     scope = 1;
     scopeArsenal = 1;
@@ -475,7 +475,7 @@ class 42nd_SpecOps_LR_Helmet_base: SEA_Helmet_SpecOps_LR_Base
      class ItemInfo: HeadgearItem
     {
         mass = 10;
-        uniformModel = "JLTS_AE\SEA_Helmet_SpecOps_SR.p3d";
+        uniformModel = "JLTS_AE\SEA_Helmet_SpecOps_LR.p3d";
         hiddenSelections[] = {"Camo1","Camo2","Visor"};
         class HitpointsProtectionInfo
         {

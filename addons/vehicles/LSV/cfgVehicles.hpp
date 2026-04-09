@@ -1,4 +1,4 @@
-class B_T_LSV_01_armed_F
+class B_LSV_01_armed_F
 {
     class Turrets
     {
@@ -24,13 +24,15 @@ class B_LSV_01_unarmed_F;
         factions[] = {"Fac42nd"}; \
     };
 
-class 42nd_LSV_Armed: B_T_LSV_01_armed_F
+class 42nd_LSV_Armed: B_LSV_01_armed_F
 {
     author = "HoundaCivic";
     scope = 2;
     scopeCurator = 2;
     displayName = "[42nd] LRATV (Z-6)";
+    side = 1;
     faction = "Fac42nd";
+    vehicleClass = "Car";
     editorSubcategory = "Sub42ndLightVic";
     crew = "42nd_Trooper";
     transportSoldier = 4;
@@ -94,7 +96,9 @@ class 42nd_LSV_Unarmed: B_LSV_01_unarmed_F
     scope = 2;
     scopeCurator = 2;
     displayName = "[42nd] LRATV";
+    side = 1;
     faction = "Fac42nd";
+    vehicleClass = "Car";
     editorSubcategory = "Sub42ndLightVic";
     crew = "42nd_Trooper";
     transportSoldier = 4;

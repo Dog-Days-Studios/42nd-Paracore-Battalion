@@ -10,21 +10,15 @@ if (!isNil "CTHUD_Draw3DEH") then
 if (!isNil "CTHUD_EachFrameEH") then
 {
     removeMissionEventHandler ["EachFrame", CTHUD_EachFrameEH];
+    CTHUD_EachFrameEH = nil;
 };
 
 CTHUD_Draw3DEH = addMissionEventHandler
 [
     "Draw3D",
     {
-        [] call CTHUD_fnc_drawHUD;
-    }
-];
-
-CTHUD_EachFrameEH = addMissionEventHandler
-[
-    "EachFrame",
-    {
         [] call CTHUD_fnc_syncHudState;
+        [true] call CTHUD_fnc_drawHUD;
     }
 ];
 

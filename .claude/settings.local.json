@@ -1,0 +1,10 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(grep -r \"params \\\\[\" /p/42nd_para/addons/main/functions/*.sqf)",
+      "Bash(wc -l fn_*.sqf)",
+      "Bash(ls \"p:/42nd_para/addons/modules/42nd_Scripts/\"*.hpp)",
+      "Bash(ls \"p:/42nd_para/addons/modules/\"*.hpp)"
+    ]
+  }
+}

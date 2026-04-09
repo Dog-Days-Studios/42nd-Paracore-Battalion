@@ -14,6 +14,9 @@ if (!isServer) exitWith
 };
 
 if (isNull _logic || {_shipClass isEqualTo ""}) exitWith {objNull};
+if (_logic getVariable ["42nd_capitalShipJumpQueued", false]) exitWith {objNull};
+
+_logic setVariable ["42nd_capitalShipJumpQueued", true, true];
 
 if !(isClass (configFile >> "CfgVehicles" >> _shipClass)) exitWith
 {
@@ -35,8 +38,9 @@ _jumpSettings params [
     ["_dirOffset", 0, [0]]
 ];
 
-private _displayDir = _travelDir + _dirOffset;
+private _displayDir = (_travelDir + _dirOffset + 360) % 360;
 private _travelVector = [sin _travelDir, cos _travelDir, 0];
+private _displayVector = [sin _displayDir, cos _displayDir, 0];
 private _startPosASL = _anchorPosASL vectorDiff (_travelVector vectorMultiply _startDistance);
 private _jumpPosASL = _anchorPosASL vectorDiff (_travelVector vectorMultiply _jumpDistance);
 private _animationDuration = _jumpDuration + _driftDuration;
@@ -76,6 +80,8 @@ private _safeCruiseSpeed = _cruiseSpeed max 0;
         "_animationDuration"
     ];
 
+    private _displayVector = [sin _displayDir, cos _displayDir, 0];
+
     sleep _animationDuration;
 
     private _ship = createVehicle [_shipClass, ASLToATL _anchorPosASL, [], 0, "CAN_COLLIDE"];
@@ -94,6 +100,7 @@ private _safeCruiseSpeed = _cruiseSpeed max 0;
     _ship setVariable ["42nd_capitalShipMoveForever", _moveForever, true];
     _ship setPosASL _anchorPosASL;
     _ship setDir _displayDir;
+    _ship setVectorDirAndUp [_displayVector, [0, 0, 1]];
     _ship setVelocity [0, 0, 0];
 
     {
@@ -121,6 +128,7 @@ private _safeCruiseSpeed = _cruiseSpeed max 0;
         _holdPosASL = _holdPosASL vectorAdd (_travelVector vectorMultiply (_cruiseSpeed * _delta));
         _ship setPosASL _holdPosASL;
         _ship setDir _displayDir;
+        _ship setVectorDirAndUp [_displayVector, [0, 0, 1]];
         _ship setVelocity [0, 0, 0];
 
         if (!_moveForever && {(_now - _cruiseStart) >= _defaultCruiseDuration}) exitWith {};
@@ -131,6 +139,7 @@ private _safeCruiseSpeed = _cruiseSpeed max 0;
     {
         _ship setPosASL _holdPosASL;
         _ship setDir _displayDir;
+        _ship setVectorDirAndUp [_displayVector, [0, 0, 1]];
         _ship setVelocity [0, 0, 0];
     };
 };

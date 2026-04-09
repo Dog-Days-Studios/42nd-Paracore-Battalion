@@ -79,8 +79,42 @@ class 42nd_LMG_Cell_1000Round_Blue: IDA_Blaster_Cell_Power3_40Rnd_Blue
     count = 1000;
     mass = 40;
 };
-/// Sniper Magazines
+/// Pistol Magazines
 class IDA_Blaster_Cell_Power5_5Rnd_Blue;
+class 42nd_Pistol_Cell_10Round_Blue: IDA_Blaster_Cell_Power5_5Rnd_Blue
+	{
+		displayName = "10 round Pistol Cell";
+		descriptionShort = "Pistol cell<br/>Rounds: 10<br/>";
+		displayNameShort = "Standard capacity energy";
+		JLTS_hasEMPProtection = 1;
+		author = "Hound";
+		ammo = "IDA_Blasterbolt_Power5_Blue";
+		count = 10;
+		mass = 4;
+	};
+class 42nd_Pistol_Cell_15Round_Blue: IDA_Blaster_Cell_Power5_5Rnd_Blue
+	{
+		displayName = "15 round Medium Pistol Cell";
+		descriptionShort = "Pistol cell<br/>Rounds: 15<br/>";
+		displayNameShort = "Medium capacity energy";
+		JLTS_hasEMPProtection = 1;
+		author = "Hound";
+		ammo = "IDA_Blasterbolt_Power5_Blue";
+		count = 15;
+		mass = 6;
+	};
+class 42nd_Pistol_Cell_20Round_Blue: IDA_Blaster_Cell_Power5_5Rnd_Blue
+    {
+        displayName = "20 round Extended Pistol Cell";
+        descriptionShort = "Pistol cell<br/>Rounds: 20<br/>";
+        displayNameShort = "High capacity energy";
+        JLTS_hasEMPProtection = 1;
+        author = "Hound";
+        ammo = "IDA_Blasterbolt_Power5_Blue";
+        count = 20;
+        mass = 8;
+    };
+/// Sniper Magazines
 class 42nd_Sniper_Cell_10Round_Blue: IDA_Blaster_Cell_Power5_5Rnd_Blue
 	{
 		displayName = "10 round Sniper Cell";
@@ -114,18 +148,105 @@ class 42nd_Sniper_Cell_20Round_Blue: IDA_Blaster_Cell_Power5_5Rnd_Blue
         count = 20;
         mass = 15;
     };
-
+	class SmokeShellBlue;
+	class SmokeShellRed;
+	class SmokeShellGreen;
+	class SmokeShellOrange;
+	class SmokeShellYellow;
 	class SmokeShell;
+	class SmokeShellPurple;
 	class IDA_HE_LauncherGrenade;
 	class ls_magazine_rd4_6Rnd;
-	class 42nd_MultiUse_Smoke_Grenade: SmokeShell
+	class 3Rnd_SmokeOrange_Grenade_shell;
+	class 3Rnd_SmokeRed_Grenade_shell;
+	class 3Rnd_SmokeGreen_Grenade_shell;
+	class 3Rnd_SmokeBlue_Grenade_shell;
+	class 42nd_Smoke_Grenade: SmokeShell
 	{
 		scope = 2;
 		author = "Hound";
-		displayName = "[42nd] Multi-Use Smoke Grenade";
+		displayName = "[42nd] Multi-Use Smoke Grenade(White)";
 		displayNameShort = "Smoke x3";
 		descriptionShort = "Smoke grenade<br/>Uses: 3<br/>";
 		ammo = "SmokeShell";
+		count = 3;
+		mass = 8;
+		initSpeed = 22;
+		maxLeadSpeed = 7;
+	};
+	class 42nd_Smoke_Grenade_blue: SmokeShellBlue
+	{
+		scope = 2;
+		author = "Hound";
+		displayName = "[42nd] Multi-Use Smoke Grenade(Blue)";
+		displayNameShort = "Smoke x3";
+		descriptionShort = "Smoke grenade<br/>Uses: 3<br/>";
+		ammo = "SmokeShellBlue";
+		count = 3;
+		mass = 8;
+		initSpeed = 22;
+		maxLeadSpeed = 7;
+	};
+	class 42nd_Smoke_Grenade_Red: SmokeShellRed
+	{
+		scope = 2;
+		author = "Hound";
+		displayName = "[42nd] Multi-Use Smoke Grenade(Red)";
+		displayNameShort = "Smoke x3";
+		descriptionShort = "Smoke grenade<br/>Uses: 3<br/>";
+		ammo = "SmokeShellRed";
+		count = 3;
+		mass = 8;
+		initSpeed = 22;
+		maxLeadSpeed = 7;
+	};
+	class 42nd_Smoke_Grenade_Green: SmokeShellGreen
+	{
+		scope = 2;
+		author = "Hound";
+		displayName = "[42nd] Multi-Use Smoke Grenade(Green)";
+		displayNameShort = "Smoke x3";
+		descriptionShort = "Smoke grenade<br/>Uses: 3<br/>";
+		ammo = "SmokeShellGreen";
+		count = 3;
+		mass = 8;
+		initSpeed = 22;
+		maxLeadSpeed = 7;
+	};
+	class 42nd_Smoke_Grenade_Orange: SmokeShellOrange
+	{
+		scope = 2;
+		author = "Hound";
+		displayName = "[42nd] Multi-Use Smoke Grenade(Orange)";
+		displayNameShort = "Smoke x3";
+		descriptionShort = "Smoke grenade<br/>Uses: 3<br/>";
+		ammo = "SmokeShellOrange";
+		count = 3;
+		mass = 8;
+		initSpeed = 22;
+		maxLeadSpeed = 7;
+	};
+	class 42nd_Smoke_Grenade_Purple: SmokeShellPurple
+	{
+		scope = 2;
+		author = "Hound";
+		displayName = "[42nd] Multi-Use Smoke Grenade(Purple)";
+		displayNameShort = "Smoke x3";
+		descriptionShort = "Smoke grenade<br/>Uses: 3<br/>";
+		ammo = "SmokeShellPurple";
+		count = 3;
+		mass = 8;
+		initSpeed = 22;
+		maxLeadSpeed = 7;
+	};
+	class 42nd_Smoke_Grenade_Yellow: SmokeShellYellow
+	{
+		scope = 2;
+		author = "Hound";
+		displayName = "[42nd] Multi-Use Smoke Grenade(Yellow)";
+		displayNameShort = "Smoke x3";
+		descriptionShort = "Smoke grenade<br/>Uses: 3<br/>";
+		ammo = "SmokeShellYellow";
 		count = 3;
 		mass = 8;
 		initSpeed = 22;
@@ -141,7 +262,7 @@ class 42nd_Sniper_Cell_20Round_Blue: IDA_Blaster_Cell_Power5_5Rnd_Blue
 		ammo = "IDA_HE_LauncherGrenade";
 		mass = 8;
 	};
-	class 42nd_40mm_Blue : ls_magazine_rd4_6Rnd
+	class 42nd_40mm_Blue : 3Rnd_SmokeBlue_Grenade_shell
 	{
 		scope = 2;
 		displayName = "3rd 40mm GL (Blue)";
@@ -153,7 +274,7 @@ class 42nd_Sniper_Cell_20Round_Blue: IDA_Blaster_Cell_Power5_5Rnd_Blue
 		count = 3;
 		mass = 20;
 	};
-	class 42nd_40mm_red_smoke : ls_magazine_rd4_6Rnd
+	class 42nd_40mm_red_smoke : 3Rnd_SmokeRed_Grenade_shell
 	{
 		scope = 2;
 		displayName = "3rd 40mm Smoke (Red)";
@@ -163,7 +284,7 @@ class 42nd_Sniper_Cell_20Round_Blue: IDA_Blaster_Cell_Power5_5Rnd_Blue
 		count = 3;
 		mass = 20;
 	};
-	class 42nd_40mm_orange_smoke : ls_magazine_rd4_6Rnd
+	class 42nd_40mm_orange_smoke : 3Rnd_SmokeOrange_Grenade_shell
 	{
 		scope = 2;
 		displayName = "3rd 40mm Smoke (Orange)";
@@ -173,7 +294,7 @@ class 42nd_Sniper_Cell_20Round_Blue: IDA_Blaster_Cell_Power5_5Rnd_Blue
 		count = 3;
 		mass = 20;
 	};
-	class 42nd_40mm_green_smoke : ls_magazine_rd4_6Rnd
+	class 42nd_40mm_green_smoke : 3Rnd_SmokeGreen_Grenade_shell
 	{
 		scope = 2;
 		displayName = "3rd 40mm Smoke (Green)";

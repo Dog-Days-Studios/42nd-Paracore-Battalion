@@ -82,6 +82,9 @@ class CfgAmmo
         ace_frag_enabled = 0;
         Para42_isTxaGas = 1;
         Para42_txaRadius = 10;
+        Para42_txaCloudDuration = 12;
+        Para42_txaTickInterval = 0.5;
+        Para42_txaExposureTime = 4;
     };
 };
 
@@ -95,7 +98,7 @@ class CfgMagazines
         scope = 2;
         displayName = "[42nd] TXA Gas Grenade";
         displayNameShort = "TXA Gas";
-        descriptionShort = "Gas grenade that applies TXA to nearby units on detonation.";
+        descriptionShort = "Gas grenade that applies TXA after sustained exposure.";
         ammo = "42nd_TXAGas_Ammo";
         model = "\3AS\3AS_Equipment\model\3AS_smokegrenade.p3d";
         picture = "\3AS\3AS_Equipment\UI\Nacht5_Smoke_UI_ca.paa";

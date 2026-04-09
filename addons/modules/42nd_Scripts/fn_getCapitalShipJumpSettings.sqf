@@ -54,7 +54,7 @@ private _startDistance = 5000;
 private _jumpDistance = 1000;
 private _jumpDuration = 0.4;
 private _driftDuration = 6.5;
-private _dirOffset = 0;
+private _dirOffset = 180;
 
 switch (true) do
 {

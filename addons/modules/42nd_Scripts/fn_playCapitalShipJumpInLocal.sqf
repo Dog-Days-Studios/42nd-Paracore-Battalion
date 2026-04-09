@@ -35,11 +35,14 @@ if !(isClass (configFile >> "CfgVehicles" >> _shipClass)) exitWith {false};
     private _ship = createVehicleLocal [_shipClass, ASLToATL _startPosASL, [], 0, "CAN_COLLIDE"];
     if (isNull _ship) exitWith {};
 
+    private _displayVector = [sin _displayDir, cos _displayDir, 0];
+
     _ship allowDamage false;
     _ship enableSimulation false;
     _ship setFeatureType 2;
     _ship setPosASL _startPosASL;
     _ship setDir _displayDir;
+    _ship setVectorDirAndUp [_displayVector, [0, 0, 1]];
 
     private _animateSegment =
     {

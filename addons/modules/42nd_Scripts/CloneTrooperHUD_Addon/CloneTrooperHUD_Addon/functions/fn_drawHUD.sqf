@@ -1,7 +1,16 @@
-if !(call CTHUD_fnc_canShowHUD) exitWith {};
 disableSerialization;
 
-private _disp = uiNamespace getVariable ["CTHUD_Display", displayNull];
+params [["_drawWorldMarkers", true, [true]]];
+
+private _disp = uiNamespace getVariable ["CTHUD_Display", findDisplay 9000];
+if (isNull _disp) then
+{
+    _disp = findDisplay 9000;
+};
+if (!isNull _disp) then
+{
+    uiNamespace setVariable ["CTHUD_Display", _disp];
+};
 if (isNull _disp) exitWith {};
 
 private _weaponBgCtrl = _disp displayCtrl 1000;
@@ -9,10 +18,20 @@ private _weaponPreviewCtrl = _disp displayCtrl 1004;
 private _weaponCtrl = _disp displayCtrl 1001;
 private _magCtrl = _disp displayCtrl 1002;
 private _modeCtrl = _disp displayCtrl 1003;
+private _visorCtrl = _disp displayCtrl 9001;
 private _mapCtrl = _disp displayCtrl 1200;
 private _mapFrameCtrl = _disp displayCtrl 1201;
 private _mapBgCtrl = _disp displayCtrl 1202;
-private _mapMaskCtrl = _disp displayCtrl 1203;
+private _trackerPanelCtrl = _disp displayCtrl 1210;
+private _trackerVerticalCtrl = _disp displayCtrl 1211;
+private _trackerHorizontalCtrl = _disp displayCtrl 1212;
+private _trackerCenterCtrl = _disp displayCtrl 1213;
+private _trackerSweepCtrl = _disp displayCtrl 1214;
+private _trackerTitleCtrl = _disp displayCtrl 1215;
+private _trackerStatusCtrl = _disp displayCtrl 1216;
+private _trackerOuterRingCtrl = _disp displayCtrl 1217;
+private _trackerMidRingCtrl = _disp displayCtrl 1218;
+private _trackerInnerRingCtrl = _disp displayCtrl 1219;
 private _compassCtrl = _disp displayCtrl 1300;
 private _bearingCtrl = _disp displayCtrl 1301;
 private _compassBgCtrl = _disp displayCtrl 1302;
@@ -30,9 +49,141 @@ private _pilotTelemetryLeftBgCtrl = _disp displayCtrl 1602;
 private _pilotTelemetryLeftCtrl = _disp displayCtrl 1603;
 private _pilotTelemetryRightBgCtrl = _disp displayCtrl 1604;
 private _pilotTelemetryRightCtrl = _disp displayCtrl 1605;
+private _trackerBlipCtrls = [];
+for "_idc" from 1220 to 1231 do {
+    _trackerBlipCtrls pushBack (_disp displayCtrl _idc);
+};
+
+private _hideCtrl = {
+    params ["_ctrl"];
+    if (!isNull _ctrl) then {
+        _ctrl ctrlShow false;
+    };
+};
+
+private _resetTextCtrl = {
+    params ["_ctrl"];
+    if (!isNull _ctrl) then {
+        _ctrl ctrlSetText "";
+        _ctrl ctrlShow false;
+    };
+};
+
+private _resetStructuredCtrl = {
+    params ["_ctrl"];
+    if (!isNull _ctrl) then {
+        _ctrl ctrlSetStructuredText parseText "";
+        _ctrl ctrlShow false;
+    };
+};
+
+private _resetPictureCtrl = {
+    params ["_ctrl"];
+    if (!isNull _ctrl) then {
+        _ctrl ctrlSetText "";
+        _ctrl ctrlSetTextColor [1, 1, 1, 0];
+        _ctrl ctrlShow false;
+    };
+};
+
+private _resetTrackerBlipCtrl = {
+    params ["_ctrl"];
+    if (!isNull _ctrl) then {
+        _ctrl ctrlSetPosition [0, 0, 0, 0];
+        _ctrl ctrlSetBackgroundColor [0, 0, 0, 0];
+        _ctrl ctrlCommit 0;
+        _ctrl ctrlShow false;
+    };
+};
+
+private _resetHudDisplay = {
+    [_visorCtrl] call _resetPictureCtrl;
+    [_weaponPreviewCtrl] call _resetPictureCtrl;
+
+    {
+        [_x] call _hideCtrl;
+    } forEach [
+        _weaponBgCtrl,
+        _mapCtrl,
+        _mapFrameCtrl,
+        _mapBgCtrl,
+        _trackerPanelCtrl,
+        _trackerOuterRingCtrl,
+        _trackerMidRingCtrl,
+        _trackerInnerRingCtrl,
+        _startupPanelCtrl,
+        _startupBarBgCtrl,
+        _startupBarFillCtrl,
+        _startupBlackoutCtrl,
+        _pilotBannerBgCtrl,
+        _pilotTelemetryLeftBgCtrl,
+        _pilotTelemetryRightBgCtrl,
+        _compassBgCtrl,
+        _squadListBgCtrl
+    ];
+
+    {
+        [_x] call _resetTextCtrl;
+    } forEach [
+        _weaponCtrl,
+        _magCtrl,
+        _modeCtrl,
+        _compassCtrl,
+        _bearingCtrl,
+        _trackerTitleCtrl,
+        _trackerStatusCtrl,
+        _startupMainCtrl,
+        _startupStatusCtrl,
+        _pilotBannerCtrl
+    ];
+
+    {
+        [_x] call _resetStructuredCtrl;
+    } forEach [
+        _squadListCtrl,
+        _pilotTelemetryLeftCtrl,
+        _pilotTelemetryRightCtrl
+    ];
+
+    {
+        if (!isNull _x) then {
+            _x ctrlSetBackgroundColor [0, 0, 0, 0];
+            _x ctrlShow false;
+        };
+    } forEach [
+        _trackerVerticalCtrl,
+        _trackerHorizontalCtrl,
+        _trackerCenterCtrl,
+        _trackerSweepCtrl
+    ];
+
+    {
+        [_x] call _resetTrackerBlipCtrl;
+    } forEach _trackerBlipCtrls;
+
+    if (!isNull _startupBarBgCtrl && {!isNull _startupBarFillCtrl}) then {
+        private _startupBarPos = ctrlPosition _startupBarBgCtrl;
+        private _startupFillPos = +_startupBarPos;
+        _startupFillPos set [2, 0];
+        _startupBarFillCtrl ctrlSetPosition _startupFillPos;
+        _startupBarFillCtrl ctrlCommit 0;
+    };
+};
+
+if !(call CTHUD_fnc_canShowHUD) exitWith {
+    call _resetHudDisplay;
+};
 
 private _color = call CTHUD_fnc_getHudColor;
 private _isPilotHud = call CTHUD_fnc_isPilotHudHelmet;
+private _cameraView = toUpper cameraView;
+private _useInteriorVisor = missionNamespace getVariable ["CTHUD_showInteriorVisor", true];
+private _wantsOverlay = _useInteriorVisor && {_cameraView in ["INTERNAL", "GUNNER", "OPTICS"]};
+private _overlayTexture = [
+    "\42nd_para\42nd\addons\modules\42nd_Scripts\CloneTrooperHUD_Addon\CloneTrooperHUD_Addon\ui\p2_hud_ca.paa",
+    "\42nd_para\42nd\addons\modules\42nd_Scripts\CloneTrooperHUD_Addon\CloneTrooperHUD_Addon\ui\pilot_hud_ca.paa"
+] select _isPilotHud;
+private _visorOpacity = (((missionNamespace getVariable ["CTHUD_interiorVisorOpacity", 100]) max 0) min 100) / 100;
 private _startupStartedAt = missionNamespace getVariable ["CTHUD_startupStartedAt", -1];
 private _startupDuration = missionNamespace getVariable ["CTHUD_startupDuration", 1.35];
 private _startupFadeDuration = missionNamespace getVariable ["CTHUD_startupFadeDuration", 0.32];
@@ -58,11 +209,25 @@ private _hudTextColor = [_color select 0, _color select 1, _color select 2, _hud
 private _weaponBgColor = [0.18, 0.18, 0.18, 0.45 * _hudRevealAlpha];
 private _panelBgColor = [0.12, 0.12, 0.12, 0.35 * _hudRevealAlpha];
 private _mapBgColor = [0.08, 0.08, 0.08, 0.35 * _hudRevealAlpha];
+private _trackerPanelColor = [0, 0, 0, 0];
+private _trackerLineColor = [_color select 0, _color select 1, _color select 2, 0.16 * _hudRevealAlpha];
+private _trackerCenterColor = [_color select 0, _color select 1, _color select 2, 0.85 * _hudRevealAlpha];
+// Colors already validated in preInit — no per-frame normalization needed
 private _enemyColor = missionNamespace getVariable ["CTHUD_enemyColor", [1, 0.05, 0.05, 1]];
 private _friendlyColor = missionNamespace getVariable ["CTHUD_friendlyColor", [0.15, 1, 0.35, 1]];
 private _hudLayout = call CTHUD_fnc_getHudLayout;
 private _textScale = _hudLayout select 1;
 private _maxSquadLines = _hudLayout select 2;
+
+if (!isNull _visorCtrl) then
+{
+    private _finalVisorAlpha = _visorOpacity * _startupFadeProgress;
+    _visorCtrl ctrlSetText _overlayTexture;
+    _visorCtrl ctrlSetTextColor [1, 1, 1, _finalVisorAlpha];
+    _visorCtrl ctrlSetFade ([1, 0] select _wantsOverlay);
+    _visorCtrl ctrlCommit 0;
+    _visorCtrl ctrlShow _wantsOverlay;
+};
 
 _weaponCtrl ctrlSetTextColor _hudTextColor;
 _magCtrl ctrlSetTextColor _hudTextColor;
@@ -70,53 +235,98 @@ _modeCtrl ctrlSetTextColor _hudTextColor;
 _compassCtrl ctrlSetTextColor _hudTextColor;
 _bearingCtrl ctrlSetTextColor _hudTextColor;
 _mapFrameCtrl ctrlSetTextColor _hudTextColor;
+_trackerTitleCtrl ctrlSetTextColor _hudTextColor;
+_trackerStatusCtrl ctrlSetTextColor _hudTextColor;
 _weaponBgCtrl ctrlSetBackgroundColor _weaponBgColor;
 _compassBgCtrl ctrlSetBackgroundColor _panelBgColor;
 _squadListBgCtrl ctrlSetBackgroundColor _panelBgColor;
 _mapBgCtrl ctrlSetBackgroundColor _mapBgColor;
+_trackerPanelCtrl ctrlSetBackgroundColor _trackerPanelColor;
+_trackerVerticalCtrl ctrlSetBackgroundColor _trackerLineColor;
+_trackerHorizontalCtrl ctrlSetBackgroundColor _trackerLineColor;
+_trackerCenterCtrl ctrlSetBackgroundColor _trackerCenterColor;
+_trackerOuterRingCtrl ctrlSetTextColor [_color select 0, _color select 1, _color select 2, 0.18 * _hudRevealAlpha];
+_trackerMidRingCtrl ctrlSetTextColor [_color select 0, _color select 1, _color select 2, 0.12 * _hudRevealAlpha];
+_trackerInnerRingCtrl ctrlSetTextColor [_color select 0, _color select 1, _color select 2, 0.1 * _hudRevealAlpha];
+_weaponBgCtrl ctrlShow true;
+_weaponCtrl ctrlShow true;
+_magCtrl ctrlShow true;
+_modeCtrl ctrlShow true;
+_compassBgCtrl ctrlShow true;
+_compassCtrl ctrlShow true;
+_bearingCtrl ctrlShow true;
 
 private _weaponClass = currentWeapon player;
 private _weaponName = "UNARMED";
 private _weaponMode = "SAFE";
 private _loadedRounds = 0;
 private _reserveRounds = 0;
+private _weaponPicture = "";
 if (_weaponClass != "") then
 {
-    _weaponName = getText (configFile >> "CfgWeapons" >> _weaponClass >> "displayName");
-    if (_weaponName isEqualTo "") then {_weaponName = _weaponClass;};
-
     _weaponMode = currentWeaponMode player;
-    if (_weaponMode isEqualTo "") then {_weaponMode = "SAFE";};
+    if (_weaponMode isEqualTo "") then {_weaponMode = "SAFE"};
 
     private _magClass = currentMagazine player;
+    _loadedRounds = player ammo _weaponClass;
     private _magCountCfg = (getNumber (configFile >> "CfgMagazines" >> _magClass >> "count")) max 0;
     private _reserveMags = ((count (magazines player select {_x isEqualTo _magClass})) - 1) max 0;
-    _loadedRounds = player ammo _weaponClass;
     _reserveRounds = _reserveMags * _magCountCfg;
+
+    // Cache weapon name + picture per classname to avoid config traversal every frame
+    private _weaponCache = missionNamespace getVariable ["CTHUD_weaponInfoCache", createHashMap];
+    private _cached = _weaponCache getOrDefault [_weaponClass, []];
+    if (_cached isEqualTo []) then {
+        private _cachedName = "";
+        private _cachedPic = "";
+        private _weaponCfg = configFile >> "CfgWeapons" >> _weaponClass;
+        if (isClass _weaponCfg) then {
+            _cachedName = getText (_weaponCfg >> "displayName");
+            _cachedPic = getText (_weaponCfg >> "picture");
+            if (_cachedPic isEqualTo "") then {_cachedPic = getText (_weaponCfg >> "UiPicture")};
+            if (_cachedPic isEqualTo "") then {
+                private _baseWeaponClass = getText (_weaponCfg >> "baseWeapon");
+                if (_baseWeaponClass isNotEqualTo "" && {_baseWeaponClass isNotEqualTo _weaponClass}) then {
+                    private _baseWeaponCfg = configFile >> "CfgWeapons" >> _baseWeaponClass;
+                    if (isClass _baseWeaponCfg) then {
+                        _cachedPic = getText (_baseWeaponCfg >> "picture");
+                        if (_cachedPic isEqualTo "") then {_cachedPic = getText (_baseWeaponCfg >> "UiPicture")};
+                    };
+                };
+            };
+        };
+        _cached = [_cachedName, _cachedPic];
+        _weaponCache set [_weaponClass, _cached];
+        missionNamespace setVariable ["CTHUD_weaponInfoCache", _weaponCache];
+    };
+
+    _weaponName = _cached select 0;
+    if (_weaponName isEqualTo "") then {_weaponName = _weaponClass};
+    _weaponPicture = _cached select 1;
+
+    // Fallback to magazine picture if weapon has none
+    if (_weaponPicture isEqualTo "") then {
+        private _magClass = currentMagazine player;
+        if (_magClass isNotEqualTo "") then {
+            _weaponPicture = getText (configFile >> "CfgMagazines" >> _magClass >> "picture");
+        };
+    };
 };
 
 _weaponCtrl ctrlSetText ("WEAPON: " + _weaponName);
 _modeCtrl ctrlSetText ("MODE: " + toUpper _weaponMode);
 _magCtrl ctrlSetText (("MAG: " + str _loadedRounds) + (" | RES: " + str _reserveRounds));
 
-private _weaponPicture = "";
-if (_weaponClass != "") then
-{
-    private _weaponCfg = configFile >> "CfgWeapons" >> _weaponClass;
-    if (isClass _weaponCfg) then
-    {
-        _weaponPicture = getText (_weaponCfg >> "picture");
-    };
-};
-
 if (_weaponPicture != "") then
 {
     _weaponPreviewCtrl ctrlSetText _weaponPicture;
+    _weaponPreviewCtrl ctrlSetTextColor [1, 1, 1, _hudRevealAlpha];
     _weaponPreviewCtrl ctrlShow true;
 }
 else
 {
     _weaponPreviewCtrl ctrlSetText "";
+    _weaponPreviewCtrl ctrlSetTextColor [1, 1, 1, 0];
     _weaponPreviewCtrl ctrlShow false;
 };
 
@@ -162,10 +372,11 @@ private _friendlyColorHex = format [
 ];
 
 private _groupMembers = units group player select {alive _x};
-if (_startupProgress < 0.68 || {_groupMembers isEqualTo []}) then
+if (_startupProgress < 0.68 || {_groupMembers isEqualTo []}) then // squad list appears at 68% startup
 {
     _squadListBgCtrl ctrlShow false;
     _squadListCtrl ctrlShow false;
+    _squadListCtrl ctrlSetStructuredText parseText "";
 }
 else
 {
@@ -192,100 +403,234 @@ else
     _squadListCtrl ctrlSetStructuredText parseText (_squadLines joinString "<br/>");
 };
 
-private _showMap = (missionNamespace getVariable ["CTHUD_showMiniMap", true]) && {_startupProgress >= 0.58};
-_mapCtrl ctrlShow _showMap;
-_mapFrameCtrl ctrlShow _showMap;
-_mapBgCtrl ctrlShow _showMap;
-_mapMaskCtrl ctrlShow _showMap;
-if (_showMap) then
+// Sensor pane settings already validated in preInit + CBA callbacks
+private _showSensorPane = missionNamespace getVariable ["CTHUD_showMiniMap", true];
+private _sensorPaneMode = missionNamespace getVariable ["CTHUD_sensorPaneMode", "sensor"];
+
+private _sensorPaneVisible = _showSensorPane && {_startupProgress >= 0.58}; // sensor pane appears at 58% startup
+
+private _sensorVehicle = objectParent player;
+private _sensorObject = if (isNull _sensorVehicle) then {player} else {_sensorVehicle};
+private _isRadarMode = _isPilotHud && {!isNull _sensorVehicle};
+private _showMiniMapPane = _sensorPaneVisible && {_sensorPaneMode isEqualTo "minimap"};
+private _showTrackerPane = _sensorPaneVisible && {_sensorPaneMode isEqualTo "sensor"};
+
+_mapCtrl ctrlShow _showMiniMapPane;
+_mapFrameCtrl ctrlShow _showMiniMapPane;
+_mapBgCtrl ctrlShow _sensorPaneVisible;
+_trackerPanelCtrl ctrlShow _showTrackerPane;
+_trackerVerticalCtrl ctrlShow _showTrackerPane;
+_trackerHorizontalCtrl ctrlShow _showTrackerPane;
+_trackerCenterCtrl ctrlShow _showTrackerPane;
+_trackerSweepCtrl ctrlShow _showTrackerPane;
+_trackerTitleCtrl ctrlShow _showTrackerPane;
+_trackerStatusCtrl ctrlShow _showTrackerPane;
+_trackerOuterRingCtrl ctrlShow _showTrackerPane;
+_trackerMidRingCtrl ctrlShow _showTrackerPane;
+_trackerInnerRingCtrl ctrlShow _showTrackerPane;
 {
-    _mapCtrl ctrlMapAnimAdd [0, 0.04, getPosVisual player];
+    _x ctrlShow false;
+} forEach _trackerBlipCtrls;
+
+if (_showMiniMapPane) then
+{
+    private _mapFocus = _sensorObject;
+    private _mapScale = [0.05, 0.12] select _isRadarMode;
+    _mapCtrl ctrlMapAnimAdd [0, _mapScale, getPosVisual _mapFocus];
     ctrlMapAnimCommit _mapCtrl;
+};
+
+if (_showTrackerPane) then
+{
+    private _trackerContacts = call CTHUD_fnc_updateTrackerContacts;
+    private _activeTrackerContacts = _trackerContacts select {(_x select 6) isEqualTo "active"};
+    private _trackerRange = if (_isRadarMode) then {
+        ((missionNamespace getVariable ["CTHUD_trackerPilotRange", 450]) max 100) min 1500
+    } else {
+        ((missionNamespace getVariable ["CTHUD_trackerRange", 60]) max 15) min 150
+    };
+    private _trackerAreaPos = ctrlPosition _trackerPanelCtrl;
+    private _trackerX = _trackerAreaPos select 0;
+    private _trackerY = _trackerAreaPos select 1;
+    private _trackerW = _trackerAreaPos select 2;
+    private _trackerH = _trackerAreaPos select 3;
+    private _trackerCenterX = _trackerX + (_trackerW / 2);
+    private _trackerCenterY = _trackerY + (_trackerH / 2);
+    private _trackerRadius = ((_trackerW min _trackerH) / 2) * 0.78;
+    private _sweepLength = _trackerRadius * 0.98;
+    private _sweepThickness = (_trackerW min _trackerH) * 0.01;
+    private _sweepSpeed = [145, 95] select _isRadarMode;
+    private _sweepAngle = (diag_tickTime * _sweepSpeed) mod 360;
+    private _sweepAlpha = [0.18, 0.12] select _isRadarMode;
+    private _sweepColor = [_color select 0, _color select 1, _color select 2, _sweepAlpha * _hudRevealAlpha];
+    private _contactCount = count _activeTrackerContacts;
+    private _trackerTitle = ["MOTION TRACKER", "TACTICAL RADAR"] select _isRadarMode;
+    private _contactLabel = ["CONTACT", "TRACK"] select _isRadarMode;
+    private _contactSuffix = ["S", ""] select (_contactCount isEqualTo 1);
+
+    _trackerTitleCtrl ctrlSetText _trackerTitle;
+    _trackerStatusCtrl ctrlSetText format ["RNG %1M // %2 %3%4", round _trackerRange, _contactCount, _contactLabel, _contactSuffix];
+    _trackerSweepCtrl ctrlSetBackgroundColor _sweepColor;
+    _trackerSweepCtrl ctrlSetPosition [
+        _trackerCenterX,
+        _trackerCenterY - (_sweepThickness / 2),
+        _sweepLength,
+        _sweepThickness
+    ];
+    _trackerSweepCtrl ctrlCommit 0;
+    _trackerSweepCtrl ctrlSetAngle [_sweepAngle, 0, 0.5];
+
+    {
+        if (_forEachIndex >= count _trackerContacts) then {
+            continue;
+        };
+
+        private _contact = _trackerContacts select _forEachIndex;
+        _contact params ["", "_contactType", "_localRight", "_localForward", "", "", "_contactState", ["_contactCategory", "man"]];
+
+        private _normalizedRight = (_localRight / _trackerRange) max -1 min 1;
+        private _normalizedForward = (_localForward / _trackerRange) max -1 min 1;
+        private _blipSize = (_trackerW min _trackerH) * 0.032;
+        private _blipAlpha = 0.95 * _hudRevealAlpha;
+        private _blipColor = +_hudTextColor;
+
+        if (_contactCategory isEqualTo "vehicle") then {
+            _blipSize = _blipSize * 1.45;
+        };
+
+        switch (_contactType) do {
+            case "enemy": {
+                _blipSize = _blipSize * 1.1;
+                _blipColor = [_enemyColor select 0, _enemyColor select 1, _enemyColor select 2, _blipAlpha];
+            };
+            case "friendly": {
+                _blipSize = _blipSize * 0.9;
+                _blipColor = [_friendlyColor select 0, _friendlyColor select 1, _friendlyColor select 2, _blipAlpha];
+            };
+            default {
+                _blipColor = [_color select 0, _color select 1, _color select 2, 0.8 * _hudRevealAlpha];
+            };
+        };
+
+        if (_contactState isEqualTo "lost") then {
+            _blipSize = _blipSize * 0.8;
+            _blipColor set [3, (_blipColor param [3, 1]) * 0.35];
+        };
+
+        private _vectorLength = sqrt ((_normalizedRight * _normalizedRight) + (_normalizedForward * _normalizedForward));
+        if (_vectorLength > 1) then {
+            _normalizedRight = _normalizedRight / _vectorLength;
+            _normalizedForward = _normalizedForward / _vectorLength;
+        };
+
+        private _blipPos = [
+            _trackerCenterX + (_normalizedRight * _trackerRadius) - (_blipSize / 2),
+            _trackerCenterY - (_normalizedForward * _trackerRadius) - (_blipSize / 2),
+            _blipSize,
+            _blipSize
+        ];
+
+        _x ctrlSetPosition _blipPos;
+        _x ctrlSetBackgroundColor _blipColor;
+        _x ctrlCommit 0;
+        _x ctrlShow true;
+    } forEach _trackerBlipCtrls;
+};
+if (!_showTrackerPane) then
+{
+    _trackerTitleCtrl ctrlSetText "";
+    _trackerStatusCtrl ctrlSetText "";
+    _trackerSweepCtrl ctrlSetBackgroundColor [0, 0, 0, 0];
 };
 
 private _defaultEnemyMaxDist = ((missionNamespace getVariable ["CTHUD_enemyMaxDistance", 150]) max 0) min 150;
 private _pilotEnemyMaxDist = ((missionNamespace getVariable ["CTHUD_pilotEnemyMaxDistance", 1000]) max 0) min 1000;
 private _enemyMaxDist = [_defaultEnemyMaxDist, _pilotEnemyMaxDist] select _isPilotHud;
 private _friendlyMaxDist = ((missionNamespace getVariable ["CTHUD_friendlyMaxDistance", 1000]) max 0) min 1000;
-private _markersReady = _startupProgress >= 0.72;
-private _enemyMarkerMinAlpha = [0.35, 0.18] select _isPilotHud;
+private _markersReady = _startupProgress >= 0.72; // IFF markers appear at 72% of startup sequence
+private _enemyMarkerMinAlpha = [0.35, 0.18] select _isPilotHud; // pilot markers fade more at distance
 private _enemyMarkerSize = [0.75, 0.58] select _isPilotHud;
 private _enemyMarkerTextSize = ([0.028, 0.022] select _isPilotHud) * _textScale;
 private _enemyMarkerIconTextSize = ([0.035, 0.028] select _isPilotHud) * _textScale;
+private _enemyMarkerIcon = "\42nd_para\42nd\addons\modules\42nd_Scripts\CloneTrooperHUD_Addon\CloneTrooperHUD_Addon\ui\IFF_Enemy_Diamond.paa";
+private _enemyVehicleAirIcon = "\42nd_para\42nd\addons\modules\42nd_Scripts\CloneTrooperHUD_Addon\CloneTrooperHUD_Addon\ui\IFF_Vehicle_enemy_Aircraft _Icon.paa";
+private _enemyVehicleCarIcon = "\42nd_para\42nd\addons\modules\42nd_Scripts\CloneTrooperHUD_Addon\CloneTrooperHUD_Addon\ui\IFF_Vehicle_enemy_Car _Icon.paa";
+private _enemyVehicleArmorIcon = "\42nd_para\42nd\addons\modules\42nd_Scripts\CloneTrooperHUD_Addon\CloneTrooperHUD_Addon\ui\IFF_Vehicle_Tank_Icon.paa";
+private _getVehicleMarkerIcon = {
+    params ["_vehicle"];
+    if (_vehicle isKindOf "Air") exitWith {_enemyVehicleAirIcon};
+    if (_vehicle isKindOf "Tank" || {_vehicle isKindOf "Wheeled_APC_F"} || {_vehicle isKindOf "Tracked_APC_F"}) exitWith {_enemyVehicleArmorIcon};
+    _enemyVehicleCarIcon
+};
 
+// Shared helper: draw an IFF icon + distance label above a world position
+private _drawIFFMarker = {
+    params ["_pos", "_drawColor", "_icon", "_iconSize", "_distText", "_iconTextSize", "_distTextSize"];
+    drawIcon3D [_icon, _drawColor, _pos, _iconSize, _iconSize, 0, "", 1, _iconTextSize, "RobotoCondensed"];
+    if (_distText isNotEqualTo "") then {
+        drawIcon3D ["", _drawColor, [_pos select 0, _pos select 1, (_pos select 2) + 0.2], 0, 0, 0, _distText, 1, _distTextSize, "RobotoCondensed"];
+    };
+};
+
+if (_drawWorldMarkers) then
 {
-    private _unit = _x;
-    private _iff = [_unit] call CTHUD_fnc_getIFF;
-
-    if (_markersReady && _enemyMaxDist > 0 && {_iff isEqualTo "enemy"}) then
     {
-        private _dist = player distance _unit;
-        if (_dist <= _enemyMaxDist && {[_unit] call CTHUD_fnc_hasDirectLineOfSight}) then
+        private _unit = _x;
+        private _iff = [_unit] call CTHUD_fnc_getIFF;
+
+        if (_markersReady && _enemyMaxDist > 0 && {_iff isEqualTo "enemy"}) then
         {
-            private _pos = ASLToAGL eyePos _unit;
-            _pos set [2, (_pos select 2) + 0.55];
+            private _dist = player distance _unit;
+            if (_dist <= _enemyMaxDist && {[_unit] call CTHUD_fnc_hasDirectLineOfSight}) then
+            {
+                private _pos = ASLToAGL eyePos _unit;
+                _pos set [2, (_pos select 2) + 0.55]; // offset above head for enemy diamond
+                private _alpha = (1 - (_dist / _enemyMaxDist)) max _enemyMarkerMinAlpha;
+                private _drawColor = [_enemyColor select 0, _enemyColor select 1, _enemyColor select 2, _alpha];
+                [_pos, _drawColor, _enemyMarkerIcon, _enemyMarkerSize, (str (round _dist)) + "m", _enemyMarkerIconTextSize, _enemyMarkerTextSize] call _drawIFFMarker;
+            };
+        };
 
-            private _alpha = 1 - (_dist / _enemyMaxDist);
-            if (_alpha < _enemyMarkerMinAlpha) then {_alpha = _enemyMarkerMinAlpha;};
+        if (_markersReady && _friendlyMaxDist > 0 && {_iff isEqualTo "friendly"}) then
+        {
+            private _dist = player distance _unit;
+            if (_dist <= _friendlyMaxDist && {[_unit] call CTHUD_fnc_hasDirectLineOfSight}) then
+            {
+                private _pos = ASLToAGL eyePos _unit;
+                _pos set [2, (_pos select 2) + 0.35]; // offset above head for friendly triangle (lower than enemy)
+                private _alpha = (1 - (_dist / _friendlyMaxDist)) max 0.2;
+                private _drawColor = [_friendlyColor select 0, _friendlyColor select 1, _friendlyColor select 2, _alpha];
+                [_pos, _drawColor, "\A3\ui_f\data\map\markers\military\warning_CA.paa", 0.5, "", 0.025, 0.025] call _drawIFFMarker;
+            };
+        };
+    } forEach allUnits;
 
+    // Pilot HUD: draw enemy vehicle markers with type-specific icons
+    if (_markersReady && {_isPilotHud} && {_enemyMaxDist > 0}) then
+    {
+        {
+            if (!alive _x) then {continue};
+            if (_x isEqualTo _sensorObject) then {continue};
+
+            private _iff = [_x] call CTHUD_fnc_getIFF;
+            if (_iff isNotEqualTo "enemy") then {continue};
+
+            private _dist = player distance _x;
+            if (_dist > _enemyMaxDist) then {continue};
+
+            private _hasLos = lineIntersectsSurfaces [eyePos player, visiblePositionASL _x, player, _x, true, 1, "GEOM", "NONE"] isEqualTo [];
+            if (!_hasLos) then {continue};
+
+            private _alpha = (1 - (_dist / _enemyMaxDist)) max _enemyMarkerMinAlpha;
             private _drawColor = [_enemyColor select 0, _enemyColor select 1, _enemyColor select 2, _alpha];
-
-            drawIcon3D [
-                "\A3\ui_f\data\igui\cfg\Cursors\select_ca.paa",
-                _drawColor,
-                _pos,
-                _enemyMarkerSize,
-                _enemyMarkerSize,
-                45,
-                "",
-                1,
-                _enemyMarkerIconTextSize,
-                "RobotoCondensed"
-            ];
-
-            drawIcon3D [
-                "",
-                _drawColor,
-                [_pos select 0, _pos select 1, (_pos select 2) + 0.2],
-                0,
-                0,
-                0,
-                (str (round _dist)) + "m",
-                1,
-                _enemyMarkerTextSize,
-                "RobotoCondensed"
-            ];
-        };
+            private _icon = [_x] call _getVehicleMarkerIcon;
+            private _markerHeight = (((sizeOf typeOf _x) * 0.08) max 1.2) min 4; // scale marker height by vehicle bounding box
+            private _vehiclePos = ASLToAGL (visiblePositionASL _x);
+            _vehiclePos set [2, (_vehiclePos select 2) + _markerHeight];
+            [_vehiclePos, _drawColor, _icon, _enemyMarkerSize * 0.92, (str (round _dist)) + "m", _enemyMarkerIconTextSize, _enemyMarkerTextSize] call _drawIFFMarker;
+        } forEach (vehicles select {!(_x isKindOf "Man")});
     };
-
-    if (_markersReady && _friendlyMaxDist > 0 && {_iff isEqualTo "friendly"}) then
-    {
-        private _dist = player distance _unit;
-        if (_dist <= _friendlyMaxDist && {[_unit] call CTHUD_fnc_hasDirectLineOfSight}) then
-        {
-            private _pos = ASLToAGL eyePos _unit;
-            _pos set [2, (_pos select 2) + 0.35];
-
-            private _alpha = 1 - (_dist / _friendlyMaxDist);
-            if (_alpha < 0.2) then {_alpha = 0.2;};
-
-            private _drawColor = [_friendlyColor select 0, _friendlyColor select 1, _friendlyColor select 2, _alpha];
-
-            drawIcon3D [
-                "\A3\ui_f\data\map\markers\military\warning_CA.paa",
-                _drawColor,
-                _pos,
-                0.5,
-                0.5,
-                0,
-                "",
-                1,
-                0.025,
-                "RobotoCondensed"
-            ];
-        };
-    };
-} forEach allUnits;
+};
 
 if (_isPilotHud && {_hudRevealAlpha > 0.01}) then
 {
@@ -335,6 +680,9 @@ else
     _pilotTelemetryLeftCtrl ctrlShow false;
     _pilotTelemetryRightBgCtrl ctrlShow false;
     _pilotTelemetryRightCtrl ctrlShow false;
+    _pilotBannerCtrl ctrlSetText "";
+    _pilotTelemetryLeftCtrl ctrlSetStructuredText parseText "";
+    _pilotTelemetryRightCtrl ctrlSetStructuredText parseText "";
 };
 
 if (_startupActive) then
@@ -405,4 +753,12 @@ else
     _startupStatusCtrl ctrlShow false;
     _startupBarBgCtrl ctrlShow false;
     _startupBarFillCtrl ctrlShow false;
+    _startupMainCtrl ctrlSetText "";
+    _startupStatusCtrl ctrlSetText "";
+
+    private _startupBarPos = ctrlPosition _startupBarBgCtrl;
+    private _startupFillPos = +_startupBarPos;
+    _startupFillPos set [2, 0];
+    _startupBarFillCtrl ctrlSetPosition _startupFillPos;
+    _startupBarFillCtrl ctrlCommit 0;
 };

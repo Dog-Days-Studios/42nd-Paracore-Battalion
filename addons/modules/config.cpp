@@ -5,8 +5,8 @@ class CfgPatches
         name = "42nd Modules";
         author = "HoundaCivic";
         requiredVersion = 2.10;
-        requiredAddons[] = {"Aux_42nd", "cba_main", "cba_settings", "cba_keybinding", "cba_xeh", "A3_UI_F", "A3_Data_F", "A3_Modules_F", "ls_props_staticships"};
-        units[] = {"Para42_Module_CapitalShipJumpIn"};
+        requiredAddons[] = {"Aux_42nd", "cba_main", "cba_settings", "cba_keybinding", "cba_xeh", "A3_UI_F", "A3_Data_F", "A3_Modules_F", "A3_Modules_F_Curator", "A3_UI_F_Curator", "ls_props_staticships"};
+        units[] = {"Para42_Module_CapitalShipJumpIn", "Para42_Module_GozantiResupply", "Para42_Module_LaatResupply"};
         weapons[] = {};
     };
 };
@@ -18,10 +18,69 @@ class CfgFunctions
         class Modules
         {
             file = "\42nd_para\42nd\addons\modules\42nd_Scripts";
-            class getCapitalShipJumpSettings {};
-            class moduleCapitalShipJumpIn {};
+            class getCapitalShipJumpSettings
+            {
+                file = "\42nd_para\42nd\addons\modules\42nd_Scripts\fn_getCapitalShipJumpSettings.sqf";
+            };
+            class moduleCapitalShipJumpIn
+            {
+                file = "\42nd_para\42nd\addons\modules\42nd_Scripts\fn_moduleCapitalShipJumpIn.sqf";
+            };
+            class moduleGozantiResupply
+            {
+                file = "\42nd_para\42nd\addons\modules\42nd_Scripts\resupply\fn_moduleGozantiResupply.sqf";
+            };
+            class moduleLaatResupply
+            {
+                file = "\42nd_para\42nd\addons\modules\42nd_Scripts\resupply\fn_moduleLaatResupply.sqf";
+            };
+            class postInitGozantiResupply
+            {
+                file = "\42nd_para\42nd\addons\modules\42nd_Scripts\resupply\fn_postInitGozantiResupply.sqf";
+                postInit = 1;
+            };
+            class postInitLaatResupply
+            {
+                file = "\42nd_para\42nd\addons\modules\42nd_Scripts\resupply\fn_postInitLaatResupply.sqf";
+                postInit = 1;
+            };
             class playCapitalShipJumpInLocal {};
-            class spawnCapitalShipJumpInServer {};
+            class registerGozantiResupplyActions
+            {
+                file = "\42nd_para\42nd\addons\modules\42nd_Scripts\resupply\fn_registerGozantiResupplyActions.sqf";
+            };
+            class registerLaatResupplyActions
+            {
+                file = "\42nd_para\42nd\addons\modules\42nd_Scripts\resupply\fn_registerLaatResupplyActions.sqf";
+            };
+            class requestGozantiAiResupply
+            {
+                file = "\42nd_para\42nd\addons\modules\42nd_Scripts\resupply\fn_requestGozantiAiResupply.sqf";
+            };
+            class requestLaatAiResupply
+            {
+                file = "\42nd_para\42nd\addons\modules\42nd_Scripts\resupply\fn_requestLaatAiResupply.sqf";
+            };
+            class hasResupplyAccess
+            {
+                file = "\42nd_para\42nd\addons\modules\42nd_Scripts\resupply\fn_hasResupplyAccess.sqf";
+            };
+            class beginGuidedAirdrop
+            {
+                file = "\42nd_para\42nd\addons\modules\42nd_Scripts\resupply\fn_beginGuidedAirdrop.sqf";
+            };
+            class spawnGozantiResupplyServer
+            {
+                file = "\42nd_para\42nd\addons\modules\42nd_Scripts\resupply\fn_spawnGozantiResupplyServer.sqf";
+            };
+            class spawnLaatResupplyServer
+            {
+                file = "\42nd_para\42nd\addons\modules\42nd_Scripts\resupply\fn_spawnLaatResupplyServer.sqf";
+            };
+            class spawnCapitalShipJumpInServer
+            {
+                file = "\42nd_para\42nd\addons\modules\42nd_Scripts\fn_spawnCapitalShipJumpInServer.sqf";
+            };
         };
     };
 
@@ -34,9 +93,13 @@ class CfgFunctions
             class postInit {};
             class initPlayerHUD {};
             class drawHUD {};
+            class updateTrackerContacts {};
             class getHudColor {};
+            class normalizeColorPreset {};
+            class normalizeTextScalePreset {};
             class getHudLayout {};
             class setColorPreset {};
+            class setTextScalePreset {};
             class getIFF {};
             class hasDirectLineOfSight {};
             class isPilotHudHelmet {};
@@ -63,6 +126,16 @@ class CfgFactionClasses
 class Logic;
 class Module_F: Logic
 {
+    class AttributesBase
+    {
+        class Default;
+        class Edit;
+        class Combo;
+        class Checkbox;
+        class CheckboxNumber;
+        class ModuleDescription;
+        class Units;
+    };
     class ModuleDescription;
 };
 
@@ -84,10 +157,221 @@ class CfgVehicles
         isGlobal = 0;
         isTriggerActivated = 0;
         isDisposable = 1;
+        is3DEN = 1;
         curatorCanAttach = 0;
+        curatorInfoType = "RscDisplayAttributeModuleNuke";
         canSetArea = 0;
         canSetAreaShape = 0;
         canSetAreaHeight = 0;
+
+        class Attributes: AttributesBase
+        {
+            class ShipClass: Combo
+            {
+                property = "Para42_Module_CapitalShipJumpIn_ShipClass";
+                displayName = "Capital Ship";
+                tooltip = "Ship variant to spawn at this module position.";
+                typeName = "STRING";
+                defaultValue = """ls_staticShip_venator_zeus""";
+
+                class Values
+                {
+                    class RepublicVenatorZeus
+                    {
+                        name = "[Republic] Venator (Zeus)";
+                        value = """ls_staticShip_venator_zeus""";
+                        default = 1;
+                    };
+                    class RepublicVenatorClosed
+                    {
+                        name = "[Republic] Venator";
+                        value = """ls_staticShip_venator""";
+                    };
+                    class RepublicVenatorClosedHollow
+                    {
+                        name = "[Republic] Venator Hollow";
+                        value = """ls_staticShip_venator_hollow""";
+                    };
+                    class RepublicVenatorFullHollow
+                    {
+                        name = "[Republic] Venator Full Hollow";
+                        value = """ls_staticShip_venator_fullHollow""";
+                    };
+                    class RepublicVenatorOpen
+                    {
+                        name = "[Republic] Venator Open";
+                        value = """ls_staticShip_venator_open""";
+                    };
+                    class RepublicVenatorOpenHollow
+                    {
+                        name = "[Republic] Venator Open Hollow";
+                        value = """ls_staticShip_venator_open_hollow""";
+                    };
+                    class RepublicVenatorOpenFullHollow
+                    {
+                        name = "[Republic] Venator Open Full Hollow";
+                        value = """ls_staticShip_venator_open_fullHollow""";
+                    };
+                    class RepublicAcclamator
+                    {
+                        name = "[Republic] Acclamator";
+                        value = """ls_staticShip_acclamator""";
+                    };
+                    class RepublicAcclamatorHollow
+                    {
+                        name = "[Republic] Acclamator Hollow";
+                        value = """ls_staticShip_acclamator_hollow""";
+                    };
+                    class RepublicC9LightCruiser
+                    {
+                        name = "[Republic] C-9 Light Cruiser";
+                        value = """ls_staticShip_c9LightCruiser_republic""";
+                    };
+                    class RepublicFg40SupportFrigate
+                    {
+                        name = "[Republic] FG-40 Support Frigate";
+                        value = """ls_staticShip_fg40SupportFrigate""";
+                    };
+                    class RepublicQuasar
+                    {
+                        name = "[Republic] Quasar";
+                        value = """ls_staticShip_quasar""";
+                    };
+                    class RepublicMandator
+                    {
+                        name = "[Republic] Mandator";
+                        value = """ls_staticShip_mandator""";
+                    };
+                    class CisProvidenceZeus
+                    {
+                        name = "[CIS] Providence (Zeus)";
+                        value = """ls_staticShip_providence_zeus""";
+                    };
+                    class CisProvidence
+                    {
+                        name = "[CIS] Providence";
+                        value = """ls_staticShip_providence""";
+                    };
+                    class CisProvidenceHollow
+                    {
+                        name = "[CIS] Providence Hollow";
+                        value = """ls_staticShip_providence_hollow""";
+                    };
+                    class CisProvidenceDreadnoughtZeus
+                    {
+                        name = "[CIS] Providence Dreadnought (Zeus)";
+                        value = """ls_staticShip_providence_dreadnought_zeus""";
+                    };
+                    class CisProvidenceDreadnought
+                    {
+                        name = "[CIS] Providence Dreadnought";
+                        value = """ls_staticShip_providence_dreadnought""";
+                    };
+                    class CisProvidenceDreadnoughtHollow
+                    {
+                        name = "[CIS] Providence Dreadnought Hollow";
+                        value = """ls_staticShip_providence_dreadnought_hollow""";
+                    };
+                    class CisRecusantZeus
+                    {
+                        name = "[CIS] Recusant (Zeus)";
+                        value = """ls_staticShip_recusant_zeus""";
+                    };
+                    class CisRecusant
+                    {
+                        name = "[CIS] Recusant";
+                        value = """ls_staticShip_recusant""";
+                    };
+                    class CisRecusantDreadnoughtZeus
+                    {
+                        name = "[CIS] Recusant Dreadnought (Zeus)";
+                        value = """ls_staticShip_recusant_zeus_dreadnought""";
+                    };
+                    class CisRecusantDreadnought
+                    {
+                        name = "[CIS] Recusant Dreadnought";
+                        value = """ls_staticShip_recusant_dreadnought""";
+                    };
+                    class CisMunificent
+                    {
+                        name = "[CIS] Munificent";
+                        value = """ls_staticShip_munificent""";
+                    };
+                    class CisLucrehulk
+                    {
+                        name = "[CIS] Lucrehulk";
+                        value = """ls_staticShip_lucrehulk""";
+                    };
+                    class CisHardcell
+                    {
+                        name = "[CIS] Hardcell";
+                        value = """ls_staticShip_hardcell""";
+                    };
+                    class CisCoreShip
+                    {
+                        name = "[CIS] Core Ship";
+                        value = """ls_staticShip_coreShip""";
+                    };
+                    class CisDiamondCruiser
+                    {
+                        name = "[CIS] Diamond-Class Cruiser";
+                        value = """ls_staticShip_diamondClassCruiser_cis""";
+                    };
+                    class CisDby827
+                    {
+                        name = "[CIS] DBY-827";
+                        value = """ls_staticShip_dby827""";
+                    };
+                    class CisSubjugator
+                    {
+                        name = "[CIS] Subjugator";
+                        value = """ls_staticShip_subjugator""";
+                    };
+                    class CisStealthShip
+                    {
+                        name = "[CIS] SDS Stealth Ship";
+                        value = """ls_staticShip_sdsStealthShip""";
+                    };
+                };
+            };
+
+            class SpawnHeight: Edit
+            {
+                property = "Para42_Module_CapitalShipJumpIn_SpawnHeight";
+                displayName = "Spawn Height";
+                tooltip = "Meters above the module position where the ship settles after the jump-in.";
+                typeName = "NUMBER";
+                defaultValue = "2000";
+            };
+
+            class Heading: Edit
+            {
+                property = "Para42_Module_CapitalShipJumpIn_Heading";
+                displayName = "Heading";
+                tooltip = "Facing in degrees. Use -1 to inherit the module rotation.";
+                typeName = "NUMBER";
+                defaultValue = -1;
+            };
+
+            class CruiseSpeed: Edit
+            {
+                property = "Para42_Module_CapitalShipJumpIn_CruiseSpeed";
+                displayName = "Cruise Speed";
+                tooltip = "Forward movement speed in meters per second after the jump-in. Use 0 to hold position.";
+                typeName = "NUMBER";
+                defaultValue = "40";
+            };
+
+            class MoveForever: CheckboxNumber
+            {
+                property = "Para42_Module_CapitalShipJumpIn_MoveForever";
+                displayName = "Move Forever";
+                tooltip = "If enabled, the ship keeps cruising along its facing direction indefinitely.";
+                defaultValue = "0";
+            };
+
+            class ModuleDescription: ModuleDescription {};
+        };
 
         class Arguments
         {
@@ -311,6 +595,302 @@ class CfgVehicles
             description = "Spawns a Republic or CIS Legion Studios capital ship at the chosen altitude, plays a local jump-in approach into the module position, then leaves a persistent ship holding or cruising in the chosen direction.";
         };
     };
+
+    class Para42_Module_GozantiResupply: Module_F
+    {
+        author = "HoundaCivic";
+        scope = 2;
+        scopeCurator = 2;
+        displayName = "[42nd] Gozanti Resupply Drop";
+        category = "Para42_Modules";
+        model = "\a3\Modules_F_Curator\Ordnance\surfaceMortar.p3d";
+        icon = "\a3\Modules_F_Curator\Data\portraitSmoke_ca.paa";
+        portrait = "\a3\Modules_F_Curator\Data\portraitSmoke_ca.paa";
+        simulation = "house";
+        function = "Para42_fnc_moduleGozantiResupply";
+        functionPriority = 1;
+        isGlobal = 0;
+        isTriggerActivated = 0;
+        isDisposable = 1;
+        is3DEN = 1;
+        curatorCanAttach = 0;
+        curatorInfoType = "RscDisplayAttributeModuleNuke";
+        canSetArea = 0;
+        canSetAreaShape = 0;
+        canSetAreaHeight = 0;
+
+        class Attributes: AttributesBase
+        {
+            class CargoClass: Combo
+            {
+                property = "Para42_Module_GozantiResupply_CargoClass";
+                displayName = "Cargo";
+                tooltip = "Cargo variant for the AI Gozanti to airdrop at this module position.";
+                typeName = "STRING";
+                defaultValue = """42nd_Ammo_Resupply_Crate""";
+
+                class Values
+                {
+                    class AmmoCrate
+                    {
+                        name = "Ammo Resupply Crate";
+                        value = """42nd_Ammo_Resupply_Crate""";
+                        default = 1;
+                    };
+                    class MedicalCrate
+                    {
+                        name = "Medical Resupply Crate";
+                        value = """42nd_Medical_Resupply_Crate""";
+                    };
+                    class EngineerCrate
+                    {
+                        name = "Engineer Resupply Crate";
+                        value = """42nd_Engineer_Resupply_Crate""";
+                    };
+                    class ArsenalCrate
+                    {
+                        name = "Arsenal Supply Crate";
+                        value = """42nd_Arsenal_Supply""";
+                    };
+                    class Lratv
+                    {
+                        name = "LRATV";
+                        value = """42nd_LSV_Unarmed""";
+                    };
+                    class LratvZ6
+                    {
+                        name = "LRATV (Z-6)";
+                        value = """42nd_LSV_Armed""";
+                    };
+                    class LaatGunship
+                    {
+                        name = "LAAT/I Gunship";
+                        value = """42nd_LAAT""";
+                    };
+                };
+            };
+
+            class ApproachHeading: Edit
+            {
+                property = "Para42_Module_GozantiResupply_ApproachHeading";
+                displayName = "Approach Heading";
+                tooltip = "Direction in degrees for the drop run. Use -1 to inherit the module rotation.";
+                typeName = "NUMBER";
+                defaultValue = -1;
+            };
+
+            class ModuleDescription: ModuleDescription {};
+        };
+
+        class Arguments
+        {
+            class CargoClass
+            {
+                displayName = "Cargo";
+                description = "Cargo variant for the AI Gozanti to airdrop at this module position.";
+                typeName = "STRING";
+
+                class values
+                {
+                    class AmmoCrate
+                    {
+                        name = "Ammo Resupply Crate";
+                        value = "42nd_Ammo_Resupply_Crate";
+                        default = 1;
+                    };
+                    class MedicalCrate
+                    {
+                        name = "Medical Resupply Crate";
+                        value = "42nd_Medical_Resupply_Crate";
+                    };
+                    class EngineerCrate
+                    {
+                        name = "Engineer Resupply Crate";
+                        value = "42nd_Engineer_Resupply_Crate";
+                    };
+                    class ArsenalCrate
+                    {
+                        name = "Arsenal Supply Crate";
+                        value = "42nd_Arsenal_Supply";
+                    };
+                    class Lratv
+                    {
+                        name = "LRATV";
+                        value = "42nd_LSV_Unarmed";
+                    };
+                    class LratvZ6
+                    {
+                        name = "LRATV (Z-6)";
+                        value = "42nd_LSV_Armed";
+                    };
+                    class LaatGunship
+                    {
+                        name = "LAAT/I Gunship";
+                        value = "42nd_LAAT";
+                    };
+                };
+            };
+
+            class ApproachHeading
+            {
+                displayName = "Approach Heading";
+                description = "Direction in degrees for the drop run. Use -1 to inherit the module rotation.";
+                typeName = "NUMBER";
+                defaultValue = -1;
+            };
+        };
+
+        class ModuleDescription: ModuleDescription
+        {
+            position = 1;
+            direction = 1;
+            sync[] = {"AnyPerson", "AnyVehicle"};
+            description = "Calls an AI Gozanti to drop the selected supply crate or vehicle at this module position. If synced to a player or occupied vehicle, that unit receives delivery status hints.";
+        };
+    };
+
+    class Para42_Module_LaatResupply: Module_F
+    {
+        author = "HoundaCivic";
+        scope = 2;
+        scopeCurator = 2;
+        displayName = "[42nd] LAAT Resupply Drop";
+        category = "Para42_Modules";
+        model = "\a3\Modules_F_Curator\Ordnance\surfaceMortar.p3d";
+        icon = "\a3\Modules_F_Curator\Data\portraitSmoke_ca.paa";
+        portrait = "\a3\Modules_F_Curator\Data\portraitSmoke_ca.paa";
+        simulation = "house";
+        function = "Para42_fnc_moduleLaatResupply";
+        functionPriority = 1;
+        isGlobal = 0;
+        isTriggerActivated = 0;
+        isDisposable = 1;
+        is3DEN = 1;
+        curatorCanAttach = 0;
+        curatorInfoType = "RscDisplayAttributeModuleNuke";
+        canSetArea = 0;
+        canSetAreaShape = 0;
+        canSetAreaHeight = 0;
+
+        class Attributes: AttributesBase
+        {
+            class CargoClass: Combo
+            {
+                property = "Para42_Module_LaatResupply_CargoClass";
+                displayName = "Cargo";
+                tooltip = "Cargo variant for the AI LAAT to airdrop at this module position.";
+                typeName = "STRING";
+                defaultValue = """42nd_Ammo_Resupply_Crate""";
+
+                class Values
+                {
+                    class AmmoCrate
+                    {
+                        name = "Ammo Resupply Crate";
+                        value = """42nd_Ammo_Resupply_Crate""";
+                        default = 1;
+                    };
+                    class MedicalCrate
+                    {
+                        name = "Medical Resupply Crate";
+                        value = """42nd_Medical_Resupply_Crate""";
+                    };
+                    class EngineerCrate
+                    {
+                        name = "Engineer Resupply Crate";
+                        value = """42nd_Engineer_Resupply_Crate""";
+                    };
+                    class ArsenalCrate
+                    {
+                        name = "Arsenal Supply Crate";
+                        value = """42nd_Arsenal_Supply""";
+                    };
+                    class Lratv
+                    {
+                        name = "LRATV";
+                        value = """42nd_LSV_Unarmed""";
+                    };
+                    class LratvZ6
+                    {
+                        name = "LRATV (Z-6)";
+                        value = """42nd_LSV_Armed""";
+                    };
+                };
+            };
+
+            class ApproachHeading: Edit
+            {
+                property = "Para42_Module_LaatResupply_ApproachHeading";
+                displayName = "Approach Heading";
+                tooltip = "Direction in degrees for the drop run. Use -1 to inherit the module rotation.";
+                typeName = "NUMBER";
+                defaultValue = -1;
+            };
+
+            class ModuleDescription: ModuleDescription {};
+        };
+
+        class Arguments
+        {
+            class CargoClass
+            {
+                displayName = "Cargo";
+                description = "Cargo variant for the AI LAAT to airdrop at this module position.";
+                typeName = "STRING";
+
+                class values
+                {
+                    class AmmoCrate
+                    {
+                        name = "Ammo Resupply Crate";
+                        value = "42nd_Ammo_Resupply_Crate";
+                        default = 1;
+                    };
+                    class MedicalCrate
+                    {
+                        name = "Medical Resupply Crate";
+                        value = "42nd_Medical_Resupply_Crate";
+                    };
+                    class EngineerCrate
+                    {
+                        name = "Engineer Resupply Crate";
+                        value = "42nd_Engineer_Resupply_Crate";
+                    };
+                    class ArsenalCrate
+                    {
+                        name = "Arsenal Supply Crate";
+                        value = "42nd_Arsenal_Supply";
+                    };
+                    class Lratv
+                    {
+                        name = "LRATV";
+                        value = "42nd_LSV_Unarmed";
+                    };
+                    class LratvZ6
+                    {
+                        name = "LRATV (Z-6)";
+                        value = "42nd_LSV_Armed";
+                    };
+                };
+            };
+
+            class ApproachHeading
+            {
+                displayName = "Approach Heading";
+                description = "Direction in degrees for the drop run. Use -1 to inherit the module rotation.";
+                typeName = "NUMBER";
+                defaultValue = -1;
+            };
+        };
+
+        class ModuleDescription: ModuleDescription
+        {
+            position = 1;
+            direction = 1;
+            sync[] = {"AnyPerson", "AnyVehicle"};
+            description = "Calls an AI LAAT to drop the selected supply crate or light vehicle at this module position. If synced to a player or occupied vehicle, that unit receives delivery status hints.";
+        };
+    };
 };
 
 class Extended_PreInit_EventHandlers
@@ -335,14 +915,14 @@ class Extended_InitPost_EventHandlers
     {
         class para42_gozantiSpawner
         {
-            init = "[_this select 0] execVM '\42nd_para\42nd\addons\modules\42nd_Scripts\gozanti_spawner.sqf'";
+            init = "[_this select 0] execVM '\42nd_para\42nd\addons\modules\42nd_Scripts\resupply\gozanti_spawner.sqf'";
         };
     };
     class 42nd_LAAT
     {
         class para42_laatColumnDrop
         {
-            init = "[_this select 0] execVM '\42nd_para\42nd\addons\modules\42nd_Scripts\laat_column_drop.sqf'";
+            init = "[_this select 0] execVM '\42nd_para\42nd\addons\modules\42nd_Scripts\resupply\laat_spawner.sqf'";
         };
     };
 };
@@ -404,6 +984,7 @@ class RscTitles
                 y = "safezoneY";
                 w = "safezoneW";
                 h = "safezoneH";
+                style = 48;
                 text = "";
                 colorText[] = {1, 1, 1, 1};
             };
@@ -590,45 +1171,170 @@ class RscTitles
             class MiniMapBg: RscText
             {
                 idc = 1202;
-                x = "0.038 * safezoneW + safezoneX";
-                y = "0.768 * safezoneH + safezoneY";
-                w = "0.164 * safezoneW";
-                h = "0.164 * safezoneH";
+                x = "0.026 * safezoneW + safezoneX";
+                y = "0.756 * safezoneH + safezoneY";
+                w = "0.19 * safezoneW";
+                h = "0.19 * safezoneH";
                 colorBackground[] = {0.08, 0.08, 0.08, 0.35};
             };
 
             class MiniMap: RscMapControl
             {
                 idc = 1200;
-                x = "0.038 * safezoneW + safezoneX";
-                y = "0.768 * safezoneH + safezoneY";
-                w = "0.164 * safezoneW";
-                h = "0.164 * safezoneH";
+                x = "0.026 * safezoneW + safezoneX";
+                y = "0.756 * safezoneH + safezoneY";
+                w = "0.19 * safezoneW";
+                h = "0.19 * safezoneH";
                 showCountourInterval = 0;
                 scaleDefault = 0.08;
                 alphaFadeStartScale = 10;
                 alphaFadeEndScale = 10;
             };
 
-            class MiniMapMask: RscPicture
-            {
-                idc = 1203;
-                x = "0.038 * safezoneW + safezoneX";
-                y = "0.768 * safezoneH + safezoneY";
-                w = "0.164 * safezoneW";
-                h = "0.164 * safezoneH";
-                text = "";
-            };
-
             class MiniMapFrame: RscPicture
             {
                 idc = 1201;
-                x = "0.038 * safezoneW + safezoneX";
-                y = "0.768 * safezoneH + safezoneY";
-                w = "0.164 * safezoneW";
-                h = "0.164 * safezoneH";
-                text = "";
+                x = "0.026 * safezoneW + safezoneX";
+                y = "0.756 * safezoneH + safezoneY";
+                w = "0.19 * safezoneW";
+                h = "0.19 * safezoneH";
+                text = "\A3\ui_f\data\map\markers\military\circle_CA.paa";
+                colorText[] = {1, 1, 1, 1};
             };
+
+            class TrackerTitle: RscText
+            {
+                idc = 1215;
+                x = "0.032 * safezoneW + safezoneX";
+                y = "0.764 * safezoneH + safezoneY";
+                w = "0.178 * safezoneW";
+                h = "0.015 * safezoneH";
+                style = 2;
+                sizeEx = 0.021;
+                font = "EtelkaMonospacePro";
+                text = "";
+                colorBackground[] = {0, 0, 0, 0};
+            };
+
+            class TrackerPanel: RscText
+            {
+                idc = 1210;
+                x = "0.042 * safezoneW + safezoneX";
+                y = "0.784 * safezoneH + safezoneY";
+                w = "0.158 * safezoneW";
+                h = "0.13 * safezoneH";
+                colorBackground[] = {0, 0, 0, 0};
+            };
+
+            class TrackerCrossVertical: RscText
+            {
+                idc = 1211;
+                x = "0.1204 * safezoneW + safezoneX";
+                y = "0.784 * safezoneH + safezoneY";
+                w = "0.0012 * safezoneW";
+                h = "0.13 * safezoneH";
+                colorBackground[] = {0, 0, 0, 0};
+            };
+
+            class TrackerCrossHorizontal: RscText
+            {
+                idc = 1212;
+                x = "0.042 * safezoneW + safezoneX";
+                y = "0.8482 * safezoneH + safezoneY";
+                w = "0.158 * safezoneW";
+                h = "0.0016 * safezoneH";
+                colorBackground[] = {0, 0, 0, 0};
+            };
+
+            class TrackerCenterDot: RscText
+            {
+                idc = 1213;
+                x = "0.1189 * safezoneW + safezoneX";
+                y = "0.8462 * safezoneH + safezoneY";
+                w = "0.0042 * safezoneW";
+                h = "0.0056 * safezoneH";
+                colorBackground[] = {0, 0, 0, 0};
+            };
+
+            class TrackerSweepLine: RscText
+            {
+                idc = 1214;
+                x = "0.121 * safezoneW + safezoneX";
+                y = "0.847 * safezoneH + safezoneY";
+                w = "0.07 * safezoneW";
+                h = "0.0015 * safezoneH";
+                colorBackground[] = {0, 0, 0, 0};
+            };
+
+            class TrackerStatus: RscText
+            {
+                idc = 1216;
+                x = "0.032 * safezoneW + safezoneX";
+                y = "0.918 * safezoneH + safezoneY";
+                w = "0.178 * safezoneW";
+                h = "0.015 * safezoneH";
+                style = 2;
+                sizeEx = 0.019;
+                font = "EtelkaMonospacePro";
+                text = "";
+                colorBackground[] = {0, 0, 0, 0};
+            };
+
+            class TrackerRingOuter: RscPicture
+            {
+                idc = 1217;
+                x = "0.042 * safezoneW + safezoneX";
+                y = "0.784 * safezoneH + safezoneY";
+                w = "0.158 * safezoneW";
+                h = "0.13 * safezoneH";
+                text = "\A3\ui_f\data\map\markers\military\circle_CA.paa";
+                colorText[] = {1, 1, 1, 1};
+            };
+
+            class TrackerRingMid: RscPicture
+            {
+                idc = 1218;
+                x = "0.067 * safezoneW + safezoneX";
+                y = "0.805 * safezoneH + safezoneY";
+                w = "0.108 * safezoneW";
+                h = "0.088 * safezoneH";
+                text = "\A3\ui_f\data\map\markers\military\circle_CA.paa";
+                colorText[] = {1, 1, 1, 1};
+            };
+
+            class TrackerRingInner: RscPicture
+            {
+                idc = 1219;
+                x = "0.092 * safezoneW + safezoneX";
+                y = "0.826 * safezoneH + safezoneY";
+                w = "0.058 * safezoneW";
+                h = "0.046 * safezoneH";
+                text = "\A3\ui_f\data\map\markers\military\circle_CA.paa";
+                colorText[] = {1, 1, 1, 1};
+            };
+
+            class TrackerBlip01: RscText
+            {
+                idc = 1220;
+                x = "0";
+                y = "0";
+                w = "0";
+                h = "0";
+                text = "";
+                colorBackground[] = {0, 0, 0, 0};
+            };
+
+            class TrackerBlip02: TrackerBlip01 { idc = 1221; };
+            class TrackerBlip03: TrackerBlip01 { idc = 1222; };
+            class TrackerBlip04: TrackerBlip01 { idc = 1223; };
+            class TrackerBlip05: TrackerBlip01 { idc = 1224; };
+            class TrackerBlip06: TrackerBlip01 { idc = 1225; };
+            class TrackerBlip07: TrackerBlip01 { idc = 1226; };
+            class TrackerBlip08: TrackerBlip01 { idc = 1227; };
+            class TrackerBlip09: TrackerBlip01 { idc = 1228; };
+            class TrackerBlip10: TrackerBlip01 { idc = 1229; };
+            class TrackerBlip11: TrackerBlip01 { idc = 1230; };
+            class TrackerBlip12: TrackerBlip01 { idc = 1231; };
 
             class StartupBlackout: RscText
             {
