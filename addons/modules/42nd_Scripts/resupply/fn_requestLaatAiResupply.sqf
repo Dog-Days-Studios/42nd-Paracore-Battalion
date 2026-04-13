@@ -73,7 +73,7 @@ missionNamespace setVariable ["para42_laatAiResupplyInProgress", true, true];
 
 if (_approachDir < 0) then {
     _approachDir = if (!isNull _caller) then {
-        getDirVisual (vehicle _caller)
+        getDir (vehicle _caller)
     } else {
         random 360
     };

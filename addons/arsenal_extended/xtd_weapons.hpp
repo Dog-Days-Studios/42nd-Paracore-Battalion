@@ -340,8 +340,7 @@ class XtdGearModels
                     "w_dc15s_3as",
                     "w_dc15s_ida",
                     "w_dc15s_jlts",
-                    "w_dc15s_ls",
-                    "w_fa11_ida"
+                    "w_dc15s_ls"
                 };
                 class w_dc15a_3as { label = "DC15A (3AS)"; };
                 class w_dc15a_ida { label = "DC15A (IDA)"; };
@@ -357,7 +356,6 @@ class XtdGearModels
                 class w_dc15s_ida { label = "DC15S (IDA)"; };
                 class w_dc15s_jlts { label = "DC15S (JLTS)"; };
                 class w_dc15s_ls { label = "DC15S (LS)"; };
-                class w_fa11_ida { label = "FA11 (IDA)"; };
             };
         };
 
@@ -376,7 +374,6 @@ class XtdGearModels
                     "w_dlt15_ida",
                     "w_dlt19_3as",
                     "w_dlt19_ida",
-                    "w_dlt19d_ida",
                     "w_z6_ida",
                     "w_z6_jlts",
                     "w_z6_ls"
@@ -385,7 +382,6 @@ class XtdGearModels
                 class w_dlt15_ida { label = "DLT15 (IDA)"; };
                 class w_dlt19_3as { label = "DLT19 (3AS)"; };
                 class w_dlt19_ida { label = "DLT19 (IDA)"; };
-                class w_dlt19d_ida { label = "DLT19D (IDA)"; };
                 class w_z6_ida { label = "Z6 (IDA)"; };
                 class w_z6_jlts { label = "Z6 (JLTS)"; };
                 class w_z6_ls { label = "Z6 (LS)"; };
@@ -493,7 +489,9 @@ class XtdGearModels
                     "w_dc15le_ida",
                     "w_dc15s_gl_3as",
                     "w_dc15s_gl_ida",
-                    "w_dp23_gl_3as"
+                    "w_dlt19d_ida",
+                    "w_dp23_gl_3as",
+                    "w_fa11_ida"
                 };
                 class w_dc15a_gl_3as { label = "DC15A GL (3AS)"; };
                 class w_dc15a_gl_jlts { label = "DC15A GL (JLTS)"; };
@@ -502,7 +500,9 @@ class XtdGearModels
                 class w_dc15le_ida { label = "DC15LE (IDA)"; };
                 class w_dc15s_gl_3as { label = "DC15S GL (3AS)"; };
                 class w_dc15s_gl_ida { label = "DC15S GL (IDA)"; };
+                class w_dlt19d_ida { label = "DLT19D (IDA)"; };
                 class w_dp23_gl_3as { label = "DP23 GL (3AS)"; };
+                class w_fa11_ida { label = "FA11 (IDA)"; };
             };
         };
 
@@ -995,12 +995,12 @@ class XtdGearInfos
         };
         class 42nd_DLT19D
         {
-            model = "Para42_LMGs_v2";
+            model = "Para42_GrenadeLaunchers_v2";
             weapon = "w_dlt19d_ida";
         };
         class 42nd_FA11
         {
-            model = "Para42_Rifles_v2";
+            model = "Para42_GrenadeLaunchers_v2";
             weapon = "w_fa11_ida";
         };
         class 42nd_Galaar90

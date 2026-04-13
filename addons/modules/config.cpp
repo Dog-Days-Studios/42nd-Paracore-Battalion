@@ -1058,31 +1058,32 @@ class RscTitles
             class WeaponInfoBg: RscText
             {
                 idc = 1000;
-                x = "0.72 * safezoneW + safezoneX";
-                y = "0.865 * safezoneH + safezoneY";
-                w = "0.26 * safezoneW";
-                h = "0.12 * safezoneH";
-                colorBackground[] = {0.18, 0.18, 0.18, 0.45};
+                x = "0.782 * safezoneW + safezoneX";
+                y = "0.764 * safezoneH + safezoneY";
+                w = "0.198 * safezoneW";
+                h = "0.145 * safezoneH";
+                colorBackground[] = {0.08, 0.08, 0.08, 0.26};
             };
 
             class WeaponPreview: RscPicture
             {
                 idc = 1004;
-                x = "0.726 * safezoneW + safezoneX";
-                y = "0.885 * safezoneH + safezoneY";
-                w = "0.055 * safezoneW";
-                h = "0.075 * safezoneH";
+                x = "0.892 * safezoneW + safezoneX";
+                y = "0.803 * safezoneH + safezoneY";
+                w = "0.072 * safezoneW";
+                h = "0.082 * safezoneH";
                 text = "";
             };
 
             class WeaponText: RscText
             {
                 idc = 1001;
-                x = "0.79 * safezoneW + safezoneX";
-                y = "0.885 * safezoneH + safezoneY";
-                w = "0.175 * safezoneW";
-                h = "0.03 * safezoneH";
-                sizeEx = 0.028;
+                x = "0.794 * safezoneW + safezoneX";
+                y = "0.781 * safezoneH + safezoneY";
+                w = "0.172 * safezoneW";
+                h = "0.024 * safezoneH";
+                sizeEx = 0.022;
+                font = "EtelkaMonospacePro";
                 text = "WEAPON";
                 colorBackground[] = {0, 0, 0, 0};
             };
@@ -1090,11 +1091,12 @@ class RscTitles
             class MagText: RscText
             {
                 idc = 1002;
-                x = "0.79 * safezoneW + safezoneX";
-                y = "0.915 * safezoneH + safezoneY";
-                w = "0.175 * safezoneW";
-                h = "0.03 * safezoneH";
-                sizeEx = 0.028;
+                x = "0.794 * safezoneW + safezoneX";
+                y = "0.812 * safezoneH + safezoneY";
+                w = "0.096 * safezoneW";
+                h = "0.038 * safezoneH";
+                sizeEx = 0.04;
+                font = "EtelkaMonospacePro";
                 text = "MAG: 0 | RES: 0";
                 colorBackground[] = {0, 0, 0, 0};
             };
@@ -1102,11 +1104,12 @@ class RscTitles
             class FireModeText: RscText
             {
                 idc = 1003;
-                x = "0.79 * safezoneW + safezoneX";
-                y = "0.945 * safezoneH + safezoneY";
-                w = "0.175 * safezoneW";
-                h = "0.025 * safezoneH";
-                sizeEx = 0.024;
+                x = "0.794 * safezoneW + safezoneX";
+                y = "0.86 * safezoneH + safezoneY";
+                w = "0.096 * safezoneW";
+                h = "0.022 * safezoneH";
+                sizeEx = 0.022;
+                font = "EtelkaMonospacePro";
                 text = "MODE: SAFE";
                 colorBackground[] = {0, 0, 0, 0};
             };
@@ -1114,36 +1117,78 @@ class RscTitles
             class CompassBg: RscText
             {
                 idc = 1302;
-                x = "0.37 * safezoneW + safezoneX";
-                y = "0.014 * safezoneH + safezoneY";
-                w = "0.26 * safezoneW";
-                h = "0.06 * safezoneH";
-                colorBackground[] = {0.12, 0.12, 0.12, 0.35};
+                x = "0.215 * safezoneW + safezoneX";
+                y = "0.018 * safezoneH + safezoneY";
+                w = "0.57 * safezoneW";
+                h = "0.072 * safezoneH";
+                colorBackground[] = {0.05, 0.07, 0.09, 0.26};
             };
 
             class CompassText: RscText
             {
                 idc = 1300;
-                x = "0.38 * safezoneW + safezoneX";
-                y = "0.016 * safezoneH + safezoneY";
-                w = "0.24 * safezoneW";
-                h = "0.026 * safezoneH";
+                x = "0.233 * safezoneW + safezoneX";
+                y = "0.024 * safezoneH + safezoneY";
+                w = "0.534 * safezoneW";
+                h = "0.022 * safezoneH";
                 style = 2;
-                sizeEx = 0.04;
-                text = "COMPASS";
+                sizeEx = 0.026;
+                font = "EtelkaMonospacePro";
+                text = "";
                 colorBackground[] = {0, 0, 0, 0};
+            };
+
+            class CompassCenterMark: RscText
+            {
+                idc = 1303;
+                x = "0.499 * safezoneW + safezoneX";
+                y = "0.049 * safezoneH + safezoneY";
+                w = "0.002 * safezoneW";
+                h = "0.013 * safezoneH";
+                colorBackground[] = {1, 1, 1, 0.8};
             };
 
             class BearingText: RscText
             {
                 idc = 1301;
-                x = "0.38 * safezoneW + safezoneX";
-                y = "0.043 * safezoneH + safezoneY";
-                w = "0.24 * safezoneW";
-                h = "0.022 * safezoneH";
+                x = "0.438 * safezoneW + safezoneX";
+                y = "0.056 * safezoneH + safezoneY";
+                w = "0.124 * safezoneW";
+                h = "0.016 * safezoneH";
                 style = 2;
-                sizeEx = 0.034;
-                text = "000";
+                sizeEx = 0.028;
+                font = "EtelkaMonospacePro";
+                text = "";
+                colorBackground[] = {0, 0, 0, 0};
+            };
+
+            class HealthBarBg: RscText
+            {
+                idc = 1310;
+                x = "0.302 * safezoneW + safezoneX";
+                y = "0.076 * safezoneH + safezoneY";
+                w = "0.396 * safezoneW";
+                h = "0.006 * safezoneH";
+                colorBackground[] = {0, 0, 0, 0};
+            };
+
+            class HealthBarFill: HealthBarBg
+            {
+                idc = 1311;
+                w = "0";
+            };
+
+            class HealthText: RscText
+            {
+                idc = 1312;
+                x = "0.41 * safezoneW + safezoneX";
+                y = "0.081 * safezoneH + safezoneY";
+                w = "0.18 * safezoneW";
+                h = "0.016 * safezoneH";
+                style = 2;
+                sizeEx = 0.018;
+                font = "EtelkaMonospacePro";
+                text = "";
                 colorBackground[] = {0, 0, 0, 0};
             };
 
@@ -1198,8 +1243,8 @@ class RscTitles
                 y = "0.756 * safezoneH + safezoneY";
                 w = "0.19 * safezoneW";
                 h = "0.19 * safezoneH";
-                text = "\A3\ui_f\data\map\markers\military\circle_CA.paa";
-                colorText[] = {1, 1, 1, 1};
+                text = "";
+                colorText[] = {1, 1, 1, 0};
             };
 
             class TrackerTitle: RscText
@@ -1429,27 +1474,32 @@ class RscTitles
 
             class WeaponText: WeaponText
             {
-                sizeEx = 0.025;
+                sizeEx = 0.02;
             };
 
             class MagText: MagText
             {
-                sizeEx = 0.025;
+                sizeEx = 0.034;
             };
 
             class FireModeText: FireModeText
             {
-                sizeEx = 0.022;
+                sizeEx = 0.019;
             };
 
             class CompassText: CompassText
             {
-                sizeEx = 0.036;
+                sizeEx = 0.024;
             };
 
             class BearingText: BearingText
             {
-                sizeEx = 0.031;
+                sizeEx = 0.025;
+            };
+
+            class HealthText: HealthText
+            {
+                sizeEx = 0.016;
             };
 
             class SquadListText: SquadListText
@@ -1490,27 +1540,32 @@ class RscTitles
 
             class WeaponText: WeaponText
             {
-                sizeEx = 0.032;
+                sizeEx = 0.024;
             };
 
             class MagText: MagText
             {
-                sizeEx = 0.032;
+                sizeEx = 0.046;
             };
 
             class FireModeText: FireModeText
             {
-                sizeEx = 0.028;
+                sizeEx = 0.024;
             };
 
             class CompassText: CompassText
             {
-                sizeEx = 0.046;
+                sizeEx = 0.03;
             };
 
             class BearingText: BearingText
             {
-                sizeEx = 0.039;
+                sizeEx = 0.032;
+            };
+
+            class HealthText: HealthText
+            {
+                sizeEx = 0.02;
             };
 
             class SquadListText: SquadListText
@@ -1551,27 +1606,32 @@ class RscTitles
 
             class WeaponText: WeaponText
             {
-                sizeEx = 0.036;
+                sizeEx = 0.027;
             };
 
             class MagText: MagText
             {
-                sizeEx = 0.036;
+                sizeEx = 0.05;
             };
 
             class FireModeText: FireModeText
             {
-                sizeEx = 0.031;
+                sizeEx = 0.026;
             };
 
             class CompassText: CompassText
             {
-                sizeEx = 0.052;
+                sizeEx = 0.034;
             };
 
             class BearingText: BearingText
             {
-                sizeEx = 0.044;
+                sizeEx = 0.036;
+            };
+
+            class HealthText: HealthText
+            {
+                sizeEx = 0.023;
             };
 
             class SquadListText: SquadListText
@@ -1591,4 +1651,3 @@ class RscTitles
         };
     };
 };
-

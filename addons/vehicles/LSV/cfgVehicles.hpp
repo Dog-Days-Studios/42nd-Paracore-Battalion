@@ -21,7 +21,7 @@ class B_LSV_01_unarmed_F;
         author = "HoundaCivic"; \
         scope = 2; \
         textures[] = {C42_LSV_TEXTURES}; \
-        factions[] = {"Fac42nd"}; \
+        factions[] = {"Fac42nd_Ground"}; \
     };
 
 class 42nd_LSV_Armed: B_LSV_01_armed_F
@@ -31,7 +31,7 @@ class 42nd_LSV_Armed: B_LSV_01_armed_F
     scopeCurator = 2;
     displayName = "[42nd] LRATV (Z-6)";
     side = 1;
-    faction = "Fac42nd";
+    faction = "Fac42nd_Ground";
     vehicleClass = "Car";
     editorSubcategory = "Sub42ndLightVic";
     crew = "42nd_Trooper";
@@ -97,7 +97,7 @@ class 42nd_LSV_Unarmed: B_LSV_01_unarmed_F
     scopeCurator = 2;
     displayName = "[42nd] LRATV";
     side = 1;
-    faction = "Fac42nd";
+    faction = "Fac42nd_Ground";
     vehicleClass = "Car";
     editorSubcategory = "Sub42ndLightVic";
     crew = "42nd_Trooper";

@@ -168,7 +168,6 @@ class 42nd_Sniper_Cell_20Round_Blue: IDA_Blaster_Cell_Power5_5Rnd_Blue
 		displayName = "[42nd] Multi-Use Smoke Grenade(White)";
 		displayNameShort = "Smoke x3";
 		descriptionShort = "Smoke grenade<br/>Uses: 3<br/>";
-		ammo = "SmokeShell";
 		count = 3;
 		mass = 8;
 		initSpeed = 22;
@@ -181,7 +180,6 @@ class 42nd_Sniper_Cell_20Round_Blue: IDA_Blaster_Cell_Power5_5Rnd_Blue
 		displayName = "[42nd] Multi-Use Smoke Grenade(Blue)";
 		displayNameShort = "Smoke x3";
 		descriptionShort = "Smoke grenade<br/>Uses: 3<br/>";
-		ammo = "SmokeShellBlue";
 		count = 3;
 		mass = 8;
 		initSpeed = 22;
@@ -194,7 +192,6 @@ class 42nd_Sniper_Cell_20Round_Blue: IDA_Blaster_Cell_Power5_5Rnd_Blue
 		displayName = "[42nd] Multi-Use Smoke Grenade(Red)";
 		displayNameShort = "Smoke x3";
 		descriptionShort = "Smoke grenade<br/>Uses: 3<br/>";
-		ammo = "SmokeShellRed";
 		count = 3;
 		mass = 8;
 		initSpeed = 22;
@@ -207,7 +204,6 @@ class 42nd_Sniper_Cell_20Round_Blue: IDA_Blaster_Cell_Power5_5Rnd_Blue
 		displayName = "[42nd] Multi-Use Smoke Grenade(Green)";
 		displayNameShort = "Smoke x3";
 		descriptionShort = "Smoke grenade<br/>Uses: 3<br/>";
-		ammo = "SmokeShellGreen";
 		count = 3;
 		mass = 8;
 		initSpeed = 22;
@@ -220,7 +216,6 @@ class 42nd_Sniper_Cell_20Round_Blue: IDA_Blaster_Cell_Power5_5Rnd_Blue
 		displayName = "[42nd] Multi-Use Smoke Grenade(Orange)";
 		displayNameShort = "Smoke x3";
 		descriptionShort = "Smoke grenade<br/>Uses: 3<br/>";
-		ammo = "SmokeShellOrange";
 		count = 3;
 		mass = 8;
 		initSpeed = 22;
@@ -233,7 +228,6 @@ class 42nd_Sniper_Cell_20Round_Blue: IDA_Blaster_Cell_Power5_5Rnd_Blue
 		displayName = "[42nd] Multi-Use Smoke Grenade(Purple)";
 		displayNameShort = "Smoke x3";
 		descriptionShort = "Smoke grenade<br/>Uses: 3<br/>";
-		ammo = "SmokeShellPurple";
 		count = 3;
 		mass = 8;
 		initSpeed = 22;
@@ -246,7 +240,6 @@ class 42nd_Sniper_Cell_20Round_Blue: IDA_Blaster_Cell_Power5_5Rnd_Blue
 		displayName = "[42nd] Multi-Use Smoke Grenade(Yellow)";
 		displayNameShort = "Smoke x3";
 		descriptionShort = "Smoke grenade<br/>Uses: 3<br/>";
-		ammo = "SmokeShellYellow";
 		count = 3;
 		mass = 8;
 		initSpeed = 22;
@@ -280,7 +273,6 @@ class 42nd_Sniper_Cell_20Round_Blue: IDA_Blaster_Cell_Power5_5Rnd_Blue
 		displayName = "3rd 40mm Smoke (Red)";
 		JLTS_hasEMPProtection = 1;
 		author = "Hound";
-		ammo = "M319_Smoke_Red";
 		count = 3;
 		mass = 20;
 	};
@@ -290,7 +282,6 @@ class 42nd_Sniper_Cell_20Round_Blue: IDA_Blaster_Cell_Power5_5Rnd_Blue
 		displayName = "3rd 40mm Smoke (Orange)";
 		JLTS_hasEMPProtection = 1;
 		author = "Hound";
-		ammo = "M319_Smoke_Orange";
 		count = 3;
 		mass = 20;
 	};
@@ -300,7 +291,6 @@ class 42nd_Sniper_Cell_20Round_Blue: IDA_Blaster_Cell_Power5_5Rnd_Blue
 		displayName = "3rd 40mm Smoke (Green)";
 		JLTS_hasEMPProtection = 1;
 		author = "Hound";
-		ammo = "M319_Smoke_Green";
 		count = 3;
 		mass = 20;
 	};

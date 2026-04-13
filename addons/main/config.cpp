@@ -193,7 +193,9 @@ class CfgPatches {
             "42nd_ls_weapon_dc17s_dual",
             "42nd_3AS_DC17S_F",
             "42nd_3AS_DC17S_Dual_F",
-            "42nd_3AS_FusionCutter_F"
+            "42nd_3AS_FusionCutter_F",
+            "42nd_Heavy_Hidden_Vest",
+            "42nd_Heavy_Hidden_Medical_Vest",
         };
         magazines[] = {
             "42nd_Smoke_Grenade",
@@ -223,9 +225,17 @@ class CfgPatches {
 };
 class CfgFactionClasses
 {
-    class Fac42nd
+    class Fac42nd_INF
     {
-        displayName = "42nd Paracore Battalion";
+        displayName = "42nd Paracore Battalion Infantry";
+    };
+    class Fac42nd_AIR
+    {
+        displayName = "42nd Paracore Battalion Air";
+    };
+    class Fac42nd_Ground
+    {
+        displayName = "42nd Paracore Battalion Ground Vehicles";
     };
 };
 zeusCompositionScriptLevel = 2;
@@ -236,19 +246,23 @@ class CfgEditorCategories
     {
         displayName = "[42nd] Objects";
     };
-    class 42nd_Objects
-    {
-        displayName = "[42nd] Objects";
-    };
-    class Fac42nd
-    {
-        displayName = "[42nd] Objects";
-    };
 };
 class CfgEditorSubcategories {
-    class Sub42ndMen
+    class Sub42ndBasic_Squad
     {
-        displayName = "Infantry";
+        displayName = "Basic Infantry";
+    };
+    class Sub42ndMarksman
+    {
+        displayName = "Marksmen";
+    };
+    class Sub42ndEOD
+    {
+        displayName = "EOD Specialists";
+    };
+    class Sub42ndMedics
+    {
+        displayName = "Medics";
     };
     class Sub42ndCustom
     {

@@ -2176,7 +2176,7 @@
 		scopeCurator = 2;
 		crew = "42nd_WO1_Pilot";
 		side = 1;
-		faction = "Fac42nd";
+		faction = "Fac42nd_AIR";
 		editorSubcategory = "SUB42ndAir";
 		hiddenselectionstextures[] = {"\42nd_para\42nd\addons\vehicles\42nd_ARC170\42nd_Main_Frame_CO.paa",
                 "\42nd_para\42nd\addons\vehicles\42nd_ARC170\42nd_Wings_Engines_CO.paa",
@@ -2190,7 +2190,7 @@
 				textures[] = {"\42nd_para\42nd\addons\vehicles\42nd_ARC170\42nd_Main_Frame_CO.paa",
                 "\42nd_para\42nd\addons\vehicles\42nd_ARC170\42nd_Wings_Engines_CO.paa",
                 "\3AS\3AS_ARC170\Data\Guns_CO.paa"};
-				factions[] = {"Fac42nd"};
+				factions[] = {"Fac42nd_AIR"};
 			};
 
 		};
@@ -2205,7 +2205,7 @@
 		scopeCurator = 2;
 		crew = "42nd_WO1_Pilot";
 		side = 1;
-		faction = "Fac42nd";
+		faction = "Fac42nd_AIR";
 		editorSubcategory = "SUB42ndAir";
 		hiddenselectionstextures[] = {"\42nd_para\42nd\addons\Vehicles\42nd_ARC170\42nd_Main_Frame_CO.paa",
                 "\42nd_para\42nd\addons\Vehicles\42nd_ARC170\42nd_Wings_Engines_CO.paa",

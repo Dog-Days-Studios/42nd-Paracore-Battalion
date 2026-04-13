@@ -6,7 +6,7 @@ class ls_vehicle_laati;
         scope = 2;
         scopeCurator = 2;
         displayName = "[42nd] LAAT/I Gunship (Pylons)";
-        faction = "Fac42nd";
+        faction = "Fac42nd_AIR";
         editorSubcategory = "SUB42ndAir";
         crew = "42nd_Trooper";
         ls_hasImpulse = 1;
@@ -56,7 +56,7 @@ class ls_vehicle_laati;
                             "\ls\core\addons\vehicles_laati\data\cockpits_co.paa",
                             "\ls\core\addons\vehicles_laati\data\glass_ca.paa"
                         };
-                factions[] = {"Fac42nd"};
+                factions[] = {"Fac42nd_AIR"};
             };
         };
         textureList[] = {"Base42ndLAAT",1};
@@ -72,7 +72,7 @@ class 42nd_3as_LAAT_Mk1: 3AS_LAAT_Mk1
     scope = 2;
     scopeCurator = 2;
     displayName = "[42nd] LAAT/I MK1";
-    faction = "Fac42nd";
+    faction = "Fac42nd_AIR";
     editorSubcategory = "SUB42ndAir";
     crew = "42nd_Trooper";
     hiddenSelectionsTextures[] = {
@@ -96,7 +96,7 @@ class 42nd_3as_LAAT_Mk1: 3AS_LAAT_Mk1
                 "\3AS\3AS_Laat\LAATI\data\Weapon_Details_CO.paa",
                 "\3AS\3AS_Laat\LAATI\data\Interior_CO.paa"
             };
-            factions[] = {"Fac42nd"};
+            factions[] = {"Fac42nd_AIR"};
         };
     };
     textureList[] = {"Base42nd3asLAAT",1};
@@ -108,7 +108,7 @@ class 42nd_3as_LAAT_Mk1Lights: 3AS_LAAT_Mk1Lights
     scope = 2;
     scopeCurator = 2;
     displayName = "[42nd] LAAT/I MK1 (Lamps)";
-    faction = "Fac42nd";
+    faction = "Fac42nd_AIR";
     editorSubcategory = "SUB42ndAir";
     crew = "42nd_Trooper";
     hiddenSelectionsTextures[] = {
@@ -132,7 +132,7 @@ class 42nd_3as_LAAT_Mk1Lights: 3AS_LAAT_Mk1Lights
                 "\3AS\3AS_Laat\LAATI\data\Weapon_Details_CO.paa",
                 "\3AS\3AS_Laat\LAATI\data\Interior_CO.paa"
             };
-            factions[] = {"Fac42nd"};
+            factions[] = {"Fac42nd_AIR"};
         };
     };
     textureList[] = {"Base42nd3asLAAT",1};
@@ -144,7 +144,7 @@ class 42nd_3as_LAAT: 3AS_LAAT_Mk2
     scope = 2;
     scopeCurator = 2;
     displayName = "[42nd] LAAT/I MK2";
-    faction = "Fac42nd";
+    faction = "Fac42nd_AIR";
     editorSubcategory = "SUB42ndAir";
     crew = "42nd_Trooper";
     hiddenSelectionsTextures[] = {
@@ -173,7 +173,7 @@ class 42nd_3as_LAAT: 3AS_LAAT_Mk2
                 "\3AS\3AS_Laat\LAATI\data\Weapon_Details_CO.paa",
                 "\3AS\3AS_Laat\LAATI\data\Interior_CO.paa"
             };
-            factions[] = {"Fac42nd"};
+            factions[] = {"Fac42nd_AIR"};
         };
     };
     textureList[] = {"Base42nd3asLAAT",1};
@@ -185,7 +185,7 @@ class 42nd_3as_LAAT_Mk2Lights: 3AS_LAAT_Mk2Lights
     scope = 2;
     scopeCurator = 2;
     displayName = "[42nd] LAAT/I MK2 (Lamps)";
-    faction = "Fac42nd";
+    faction = "Fac42nd_AIR";
     editorSubcategory = "SUB42ndAir";
     crew = "42nd_Trooper";
     hiddenSelectionsTextures[] = {
@@ -209,7 +209,7 @@ class 42nd_3as_LAAT_Mk2Lights: 3AS_LAAT_Mk2Lights
                 "\3AS\3AS_Laat\LAATI\data\Weapon_Details_CO.paa",
                 "\3AS\3AS_Laat\LAATI\data\Interior_CO.paa"
             };
-            factions[] = {"Fac42nd"};
+            factions[] = {"Fac42nd_AIR"};
         };
     };
     textureList[] = {"Base42nd3asLAAT",1};
@@ -221,7 +221,7 @@ class 42nd_3as_LAAT_Mk1_Fast: 42nd_3as_LAAT_Mk1
     scope = 2;
     scopeCurator = 2;
     displayName = "[42nd] LAAT/I MK1 (Fast)";
-    faction = "Fac42nd";
+    faction = "Fac42nd_AIR";
     editorSubcategory = "SUB42ndAir";
     side = 1;
     crew = "42nd_Trooper";
@@ -240,7 +240,7 @@ class 42nd_3as_LAAT_Mk2_NoTurrets: 42nd_3as_LAAT
     scope = 2;
     scopeCurator = 2;
     displayName = "[42nd] LAAT/I MK2 (No Turrets)";
-    faction = "Fac42nd";
+    faction = "Fac42nd_AIR";
     editorSubcategory = "SUB42ndAir";
     side = 1;
     crew = "42nd_Trooper";
@@ -263,7 +263,7 @@ class 42nd_3as_LAAT_Mk3_HeavyTurrets: 42nd_3as_LAAT
     scope = 2;
     scopeCurator = 2;
     displayName = "[42nd] LAAT/I MK3 (Heavy)";
-    faction = "Fac42nd";
+    faction = "Fac42nd_AIR";
     editorSubcategory = "SUB42ndAir";
     side = 1;
     crew = "42nd_Trooper";

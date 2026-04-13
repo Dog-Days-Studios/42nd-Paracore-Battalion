@@ -207,7 +207,7 @@ if (_climbTopPosASL isEqualTo []) then {
     _ledgePosASL = [];
 };
 
-private _anchor = createVehicle ["Land_Can_V2_F", [0, 0, 0], [], 0, "CAN_COLLIDE"];
+private _anchor = createVehicle ["Logic", [0, 0, 0], [], 0, "CAN_COLLIDE"];
 _anchor allowDamage false;
 _anchor enableSimulationGlobal false;
 _anchor hideObjectGlobal true;
@@ -218,7 +218,7 @@ if !(isNull _impactObject) then {
     _anchor attachTo [_impactObject, _modelSpacePosition];
 };
 
-private _startHelper = createVehicle ["Land_Can_V2_F", [0, 0, 0], [], 0, "CAN_COLLIDE"];
+private _startHelper = createVehicle ["Logic", [0, 0, 0], [], 0, "CAN_COLLIDE"];
 _startHelper allowDamage false;
 _startHelper enableSimulationGlobal false;
 _startHelper hideObjectGlobal true;

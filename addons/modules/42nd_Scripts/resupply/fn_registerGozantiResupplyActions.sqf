@@ -1,7 +1,11 @@
 if (!hasInterface) exitWith {};
-if (isNil "ace_interact_menu_fnc_createAction") exitWith {};
-if (isNil "ace_interact_menu_fnc_addActionToClass") exitWith {};
 if (missionNamespace getVariable ["para42_gozantiResupplyActionsAdded", false]) exitWith {};
+
+if (!canSuspend) exitWith {
+    _this spawn Para42_fnc_registerGozantiResupplyActions;
+};
+
+waitUntil {sleep 0.5; !isNil "ace_interact_menu_fnc_createAction" && {!isNil "ace_interact_menu_fnc_addActionToClass"}};
 
 missionNamespace setVariable ["para42_gozantiResupplyActionsAdded", true];
 

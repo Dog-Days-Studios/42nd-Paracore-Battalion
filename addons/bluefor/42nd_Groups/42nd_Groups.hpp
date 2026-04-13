@@ -1,9 +1,9 @@
 class West
     {
         name = "BLUFOR";
-        class Fac42nd
+        class Fac42nd_INF
         {
-            name = "[42nd] Paracore Battalion";
+            name = "[42nd] Paracore Battalion Infantry";
             class Infantry
             {
                 name = "Infantry";
@@ -11,7 +11,7 @@ class West
                 {
                     name = "[42nd] Fireteam";
                     side = 1;
-                    faction = "Fac42nd";
+                    faction = "Fac42nd_INF";
                     class Unit0
                     {
                         side = 1;
@@ -45,7 +45,7 @@ class West
                 {
                     name = "[42nd] Rifle Squad";
                     side = 1;
-                    faction = "Fac42nd";
+                    faction = "Fac42nd_INF";
                     class Unit0
                     {
                         side = 1;
@@ -107,7 +107,7 @@ class West
                 {
                     name = "[42nd] Medical Team";
                     side = 1;
-                    faction = "Fac42nd";
+                    faction = "Fac42nd_INF";
                     class Unit0
                     {
                         side = 1;
@@ -134,7 +134,7 @@ class West
                 {
                     name = "[42nd] Command Element";
                     side = 1;
-                    faction = "Fac42nd";
+                    faction = "Fac42nd_INF";
                     class Unit0
                     {
                         side = 1;
@@ -165,6 +165,10 @@ class West
                     };
                 };
             };
+        };
+        class Fac42nd_AIR
+        {
+            name = "[42nd] Paracore Battalion Air";
             class Air
             {
                 name = "Air";
@@ -172,7 +176,7 @@ class West
                 {
                     name = "[42nd] Pilot Element";
                     side = 1;
-                    faction = "Fac42nd";
+                    faction = "Fac42nd_AIR";
                     class Unit0
                     {
                         side = 1;

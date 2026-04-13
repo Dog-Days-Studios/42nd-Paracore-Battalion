@@ -6,18 +6,18 @@ class B_supplyCrate_F;
     scopeEditor = 2; \
     scopeCurator = 2; \
     side = 1; \
-    faction = "Fac42nd"; \
+    faction = "Fac42nd_INF"; \
     vehicleClass = "Ammo"; \
     editorCategory = "EdCat_42ndObjects"; \
     editorSubcategory = "SUB42ndOBJ";
 
     class ls_carrybox_base;
-	class 42nd_Arsenal_Box: ls_carrybox_base     // full arsenal box
+	class 42nd_Arsenal_Box: B_supplyCrate_F     // full arsenal box
 	{
         author = "Hound";
         scopecurator = 2;
         displayName = "[42nd] Full Arsenal Box";
-		editorCategory = "42nd_Objects";
+		editorCategory = "EdCat_42ndObjects";
         editorSubcategory = "SUB42ndOBJ";
 		class UserActions
 		{
@@ -88,7 +88,7 @@ class B_supplyCrate_F;
         author = "Hound";
         scopecurator = 2;
         displayName = "[42nd] Full Arsenal Supply Crate";
-		editorCategory = "42nd_Objects";
+		editorCategory = "EdCat_42ndObjects";
         editorSubcategory = "SUB42ndOBJ";
 		class UserActions
 		{
@@ -160,7 +160,7 @@ class B_supplyCrate_F;
         author = "Hound";
         scopecurator = 2;
         displayName = "[42nd] Full Arsenal Weapons Crate";
-		editorCategory = "42nd_Objects";
+		editorCategory = "EdCat_42ndObjects";
         editorSubcategory = "SUB42ndOBJ";
 		class UserActions
 		{
