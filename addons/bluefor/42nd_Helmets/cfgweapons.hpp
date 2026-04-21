@@ -97,8 +97,8 @@ class 42nd_CPLTL_P2_Helmet: 42nd_Helmet_base
     author = "HoundaCivic";
     displayName = "[42nd] Platoon Lead P2 Helmet";
     hiddenSelectionsTextures[] = {
-        "\42nd_para\42nd\addons\Bluefor\42nd_Helmets\CPLTL\42nd_Platoon_Lead_Helmet.paa",
-        "\42nd_para\42nd\addons\Bluefor\42nd_Helmets\CPLTL\42nd_Platoon_Lead_Helmet.paa"
+        "\42nd_para\42nd\addons\Bluefor\42nd_Helmets\Ground\42nd_Platoon_Lead_Helmet.paa",
+        "\42nd_para\42nd\addons\Bluefor\42nd_Helmets\Ground\42nd_Platoon_Lead_Helmet.paa"
     };
 };
 
@@ -109,8 +109,8 @@ class 42nd_CSGT_P2_Helmet: 42nd_Helmet_base
     author = "HoundaCivic";
     displayName = "[42nd] Squad Lead P2 Helmet";
     hiddenSelectionsTextures[] = {
-        "\42nd_para\42nd\addons\Bluefor\42nd_Helmets\CSGT\42nd_Squad_Lead_Helmet_co.paa",
-        "\42nd_para\42nd\addons\Bluefor\42nd_Helmets\CSGT\42nd_Squad_Lead_Helmet_co.paa"
+        "\42nd_para\42nd\addons\Bluefor\42nd_Helmets\Ground\42nd_Squad_Lead_Helmet_co.paa",
+        "\42nd_para\42nd\addons\Bluefor\42nd_Helmets\Ground\42nd_Squad_Lead_Helmet_co.paa"
     };
 };
 
@@ -121,8 +121,8 @@ class 42nd_CST_P2_Helmet: 42nd_Helmet_base
     author = "HoundaCivic";
     displayName = "[42nd] Senior Trooper P2 Helmet";
     hiddenSelectionsTextures[] = {
-        "\42nd_para\42nd\addons\Bluefor\42nd_Helmets\CST\42nd_CST_Helmet_co.paa",
-        "\42nd_para\42nd\addons\Bluefor\42nd_Helmets\CST\42nd_CST_Helmet_co.paa"
+        "\42nd_para\42nd\addons\Bluefor\42nd_Helmets\Ground\42nd_CST_Helmet_co.paa",
+        "\42nd_para\42nd\addons\Bluefor\42nd_Helmets\Ground\42nd_CST_Helmet_co.paa"
     };
 };
 
@@ -133,8 +133,8 @@ class 42nd_CT_P2_Helmet: 42nd_Helmet_base
     author = "HoundaCivic";
     displayName = "[42nd] P2 Helmet";
     hiddenSelectionsTextures[] = {
-        "\42nd_para\42nd\addons\Bluefor\42nd_Helmets\CT\42nd_CT_Helmet.paa",
-        "\42nd_para\42nd\addons\Bluefor\42nd_Helmets\CT\42nd_CT_Helmet.paa"
+        "\42nd_para\42nd\addons\Bluefor\42nd_Helmets\Ground\42nd_CT_Helmet.paa",
+        "\42nd_para\42nd\addons\Bluefor\42nd_Helmets\Ground\42nd_CT_Helmet.paa"
     };
 };
 
@@ -146,7 +146,7 @@ class 42nd_Trainee_Pilot_Helmet: 42nd_Pilot_Helmet_base
     displayName = "[42nd] Pilot Trainee Helmet";
     hiddenSelectionsTextures[] =
     {
-        "\42nd_para\42nd\addons\Bluefor\42nd_Helmets\Pilot\42nd_Trainee_Pilot_Helmet.paa",
+        "\42nd_para\42nd\addons\Bluefor\42nd_Helmets\Ground\42nd_Trainee_Pilot_Helmet.paa",
         "\ls\core\addons\characters_clone_legacy\helmets\phase2Pilot\data\visor_co.paa"
     };
 };
@@ -159,7 +159,7 @@ class 42nd_WO1_Pilot_Helmet: 42nd_Pilot_Helmet_base
     displayName = "[42nd] Pilot WO1 Helmet";
     hiddenSelectionsTextures[] =
     {
-        "\42nd_para\42nd\addons\Bluefor\42nd_Helmets\Pilot\42nd_Wo1_Pilot_Helmet_co.paa",
+        "\42nd_para\42nd\addons\Bluefor\42nd_Helmets\Ground\42nd_Wo1_Pilot_Helmet_co.paa",
         "\ls\core\addons\characters_clone_legacy\helmets\phase2Pilot\data\visor_co.paa"
     };
 };
@@ -172,7 +172,7 @@ class 42nd_WO2_Pilot_Helmet: 42nd_Pilot_Helmet_base
     displayName = "[42nd] Pilot WO2 Helmet";
     hiddenSelectionsTextures[] =
     {
-        "\42nd_para\42nd\addons\Bluefor\42nd_Helmets\Pilot\42nd_wo2_Pilot_Helmet_co.paa",
+        "\42nd_para\42nd\addons\Bluefor\42nd_Helmets\Ground\42nd_wo2_Pilot_Helmet_co.paa",
         "\ls\core\addons\characters_clone_legacy\helmets\phase2Pilot\data\visor_co.paa"
     };
 };
@@ -185,7 +185,7 @@ class 42nd_WO3_Pilot_Helmet: 42nd_Pilot_Helmet_base
     displayName = "[42nd] Pilot WO3 Helmet";
     hiddenSelectionsTextures[] =
     {
-        "\42nd_para\42nd\addons\Bluefor\42nd_Helmets\Pilot\42nd_W03_Pilot_Helmet_co.paa",
+        "\42nd_para\42nd\addons\Bluefor\42nd_Helmets\Ground\42nd_W03_Pilot_Helmet_co.paa",
         "\ls\core\addons\characters_clone_legacy\helmets\phase2Pilot\data\visor_co.paa"
     };
 };
@@ -197,7 +197,7 @@ class 42nd_ARF_Helmet: 42nd_Arf_Helmet_base
     author = "HoundaCivic";
     displayName = "[42nd] ARF Helmet";
     hiddenSelectionsTextures[] = {
-        "\42nd_para\42nd\addons\Bluefor\42nd_Helmets\CT_ARF\42nd_ARF_Helmet_co.paa",
+        "\42nd_para\42nd\addons\Bluefor\42nd_Helmets\Ground\42nd_ARF_Helmet_co.paa",
         "\JLTS_AE\Data\BaseTextures\ARF\Plates_CO.paa",
 		"\JLTS_AE\Data\BaseTextures\ARF\ARF_Visor_CO.paa"
 	};
@@ -210,8 +210,8 @@ class 42nd_Medic_P2_Helmet: 42nd_Helmet_base
     author = "HoundaCivic";
     displayName = "[42nd] P2 Medic Helmet";
     hiddenSelectionsTextures[] = {
-        "\42nd_para\42nd\addons\Bluefor\42nd_Helmets\Medic\42nd_CT_Medic_Helmet_co.paa",
-        "\42nd_para\42nd\addons\Bluefor\42nd_Helmets\Medic\42nd_CT_Medic_Helmet_co.paa"
+        "\42nd_para\42nd\addons\Bluefor\42nd_Helmets\Ground\42nd_CT_Medic_Helmet_co.paa",
+        "\42nd_para\42nd\addons\Bluefor\42nd_Helmets\Ground\42nd_CT_Medic_Helmet_co.paa"
     };
 };
 
@@ -222,8 +222,8 @@ class 42nd_CVT_Medic_P2_Helmet: 42nd_Helmet_base
     author = "HoundaCivic";
     displayName = "[42nd] CVT Medic Helmet";
     hiddenSelectionsTextures[] = {
-        "\42nd_para\42nd\addons\Bluefor\42nd_Helmets\Medic\42nd_CVT_Medic_Helmet.paa",
-        "\42nd_para\42nd\addons\Bluefor\42nd_Helmets\Medic\42nd_CVT_Medic_Helmet.paa"
+        "\42nd_para\42nd\addons\Bluefor\42nd_Helmets\Ground\42nd_CVT_Medic_Helmet.paa",
+        "\42nd_para\42nd\addons\Bluefor\42nd_Helmets\Ground\42nd_CVT_Medic_Helmet.paa"
     };
 };
 
@@ -234,8 +234,8 @@ class 42nd_Squad_Medic_P2_Helmet: 42nd_Helmet_base
     author = "HoundaCivic";
     displayName = "[42nd] Squad Medic Helmet";
     hiddenSelectionsTextures[] = {
-        "\42nd_para\42nd\addons\Bluefor\42nd_Helmets\Medic\42nd_Squad_Medic_helmet_co.paa",
-        "\42nd_para\42nd\addons\Bluefor\42nd_Helmets\Medic\42nd_Squad_Medic_helmet_co.paa"
+        "\42nd_para\42nd\addons\Bluefor\42nd_Helmets\Ground\42nd_Squad_Medic_helmet_co.paa",
+        "\42nd_para\42nd\addons\Bluefor\42nd_Helmets\Ground\42nd_Squad_Medic_helmet_co.paa"
     };
 };
 
@@ -286,8 +286,8 @@ class 42nd_CVT_P2_Helmet: 42nd_Helmet_base
     author = "HoundaCivic";
     displayName = "[42nd] CVT P2 Helmet";
     hiddenSelectionsTextures[] = {
-        "\42nd_para\42nd\addons\Bluefor\42nd_Helmets\CVT\42nd_CVT_Helmet_co.paa",
-        "\42nd_para\42nd\addons\Bluefor\42nd_Helmets\CVT\42nd_CVT_Helmet_co.paa"
+        "\42nd_para\42nd\addons\Bluefor\42nd_Helmets\Ground\42nd_CVT_Helmet_co.paa",
+        "\42nd_para\42nd\addons\Bluefor\42nd_Helmets\Ground\42nd_CVT_Helmet_co.paa"
     };
 };
 
@@ -298,8 +298,8 @@ class 42nd_NCO_P2_Helmet: 42nd_Helmet_base
     author = "HoundaCivic";
     displayName = "[42nd] NCO P2 Helmet";
     hiddenSelectionsTextures[] = {
-        "\42nd_para\42nd\addons\Bluefor\42nd_Helmets\NCO\42nd_NCO_Helmet_co.paa",
-        "\42nd_para\42nd\addons\Bluefor\42nd_Helmets\NCO\42nd_NCO_Helmet_co.paa"
+        "\42nd_para\42nd\addons\Bluefor\42nd_Helmets\Ground\42nd_NCO_Helmet_co.paa",
+        "\42nd_para\42nd\addons\Bluefor\42nd_Helmets\Ground\42nd_NCO_Helmet_co.paa"
     };
 };
 
@@ -310,8 +310,8 @@ class 42nd_EOD_P2_Helmet: 42nd_Helmet_base
     author = "HoundaCivic";
     displayName = "[42nd] EOD P2 Helmet";
     hiddenSelectionsTextures[] = {
-        "\42nd_para\42nd\addons\Bluefor\42nd_Helmets\EOD\42nd_EOD_Helmet_co.paa",
-        "\42nd_para\42nd\addons\Bluefor\42nd_Helmets\EOD\42nd_EOD_Helmet_co.paa"
+        "\42nd_para\42nd\addons\Bluefor\42nd_Helmets\Ground\42nd_EOD_Helmet_co.paa",
+        "\42nd_para\42nd\addons\Bluefor\42nd_Helmets\Ground\42nd_EOD_Helmet_co.paa"
     };
 };
 
@@ -322,8 +322,8 @@ class 42nd_EOD_Vet_Helmet: 42nd_Helmet_base
     author = "HoundaCivic";
     displayName = "[42nd] EOD Veteran Helmet";
     hiddenSelectionsTextures[] = {
-        "\42nd_para\42nd\addons\Bluefor\42nd_Helmets\EOD\42nd_EOD_Vet_Helmet.paa",
-        "\42nd_para\42nd\addons\Bluefor\42nd_Helmets\EOD\42nd_EOD_Vet_Helmet.paa"
+        "\42nd_para\42nd\addons\Bluefor\42nd_Helmets\Ground\42nd_EOD_Vet_Helmet.paa",
+        "\42nd_para\42nd\addons\Bluefor\42nd_Helmets\Ground\42nd_EOD_Vet_Helmet.paa"
     };
 };
 
@@ -334,8 +334,8 @@ class 42nd_EOD_Squad_Helmet: 42nd_Helmet_base
     author = "HoundaCivic";
     displayName = "[42nd] EOD Squad Helmet";
     hiddenSelectionsTextures[] = {
-        "\42nd_para\42nd\addons\Bluefor\42nd_Helmets\EOD\42nd_EOD_Squad_Helmet_co.paa",
-        "\42nd_para\42nd\addons\Bluefor\42nd_Helmets\EOD\42nd_EOD_Squad_Helmet_co.paa"
+        "\42nd_para\42nd\addons\Bluefor\42nd_Helmets\Ground\42nd_EOD_Squad_Helmet_co.paa",
+        "\42nd_para\42nd\addons\Bluefor\42nd_Helmets\Ground\42nd_EOD_Squad_Helmet_co.paa"
     };
 };
 
@@ -346,8 +346,8 @@ class 42nd_EOD_Senior_Helmet: 42nd_Helmet_base
     author = "HoundaCivic";
     displayName = "[42nd] EOD Senior Helmet";
     hiddenSelectionsTextures[] = {
-        "\42nd_para\42nd\addons\Bluefor\42nd_Helmets\EOD\42nd_EOD_Senior_Helmet_co.paa",
-        "\42nd_para\42nd\addons\Bluefor\42nd_Helmets\EOD\42nd_EOD_Senior_Helmet_co.paa"
+        "\42nd_para\42nd\addons\Bluefor\42nd_Helmets\Ground\42nd_EOD_Senior_Helmet_co.paa",
+        "\42nd_para\42nd\addons\Bluefor\42nd_Helmets\Ground\42nd_EOD_Senior_Helmet_co.paa"
     };
 };
 
@@ -358,8 +358,8 @@ class 42nd_Marksman_P2_Helmet: 42nd_Helmet_base
     author = "HoundaCivic";
     displayName = "[42nd] Marksman P2 Helmet";
     hiddenSelectionsTextures[] = {
-        "\42nd_para\42nd\addons\Bluefor\42nd_Helmets\Marksman\42nd_Marksman_Helmet_co.paa",
-        "\42nd_para\42nd\addons\Bluefor\42nd_Helmets\Marksman\42nd_Marksman_Helmet_co.paa"
+        "\42nd_para\42nd\addons\Bluefor\42nd_Helmets\Ground\42nd_Marksman_Helmet_co.paa",
+        "\42nd_para\42nd\addons\Bluefor\42nd_Helmets\Ground\42nd_Marksman_Helmet_co.paa"
     };
 };
 
@@ -370,8 +370,8 @@ class 42nd_Marksman_Vet_Helmet: 42nd_Helmet_base
     author = "HoundaCivic";
     displayName = "[42nd] Marksman Veteran Helmet";
     hiddenSelectionsTextures[] = {
-        "\42nd_para\42nd\addons\Bluefor\42nd_Helmets\Marksman\42nd_marksman_vet_helmet_co.paa",
-        "\42nd_para\42nd\addons\Bluefor\42nd_Helmets\Marksman\42nd_marksman_vet_helmet_co.paa"
+        "\42nd_para\42nd\addons\Bluefor\42nd_Helmets\Ground\42nd_marksman_vet_helmet_co.paa",
+        "\42nd_para\42nd\addons\Bluefor\42nd_Helmets\Ground\42nd_marksman_vet_helmet_co.paa"
     };
 };
 
@@ -382,8 +382,8 @@ class 42nd_Marksman_Squad_Helmet: 42nd_Helmet_base
     author = "HoundaCivic";
     displayName = "[42nd] Marksman Squad Helmet";
     hiddenSelectionsTextures[] = {
-        "\42nd_para\42nd\addons\Bluefor\42nd_Helmets\Marksman\42nd_Marksman_Squad_Helmet_co.paa",
-        "\42nd_para\42nd\addons\Bluefor\42nd_Helmets\Marksman\42nd_Marksman_Squad_Helmet_co.paa"
+        "\42nd_para\42nd\addons\Bluefor\42nd_Helmets\Ground\42nd_Marksman_Squad_Helmet_co.paa",
+        "\42nd_para\42nd\addons\Bluefor\42nd_Helmets\Ground\42nd_Marksman_Squad_Helmet_co.paa"
     };
 };
 
@@ -394,8 +394,8 @@ class 42nd_Marksman_Senior_Helmet: 42nd_Helmet_base
     author = "HoundaCivic";
     displayName = "[42nd] Marksman Senior Helmet";
     hiddenSelectionsTextures[] = {
-        "\42nd_para\42nd\addons\Bluefor\42nd_Helmets\Marksman\42nd_Marksman_Senior_Helmet_co.paa",
-        "\42nd_para\42nd\addons\Bluefor\42nd_Helmets\Marksman\42nd_Marksman_Senior_Helmet_co.paa"
+        "\42nd_para\42nd\addons\Bluefor\42nd_Helmets\Ground\42nd_Marksman_Senior_Helmet_co.paa",
+        "\42nd_para\42nd\addons\Bluefor\42nd_Helmets\Ground\42nd_Marksman_Senior_Helmet_co.paa"
     };
 };
 
@@ -445,9 +445,9 @@ class 42nd_SpecOps_SR_Helmet: 42nd_SpecOps_SR_Helmet_base
     displayName = "[42nd] RTO SR Helmet";
     hiddenSelections[] = {"Camo1","Camo2","Visor"};
     hiddenSelectionsTextures[] = {
-        "\42nd_para\42nd\addons\Bluefor\42nd_Helmets\RTO\42nd_RTO_Helmet_co.paa",
+        "\42nd_para\42nd\addons\Bluefor\42nd_Helmets\Ground\42nd_RTO_Helmet_co.paa",
         "\JLTS_AE\Data\BaseTextures\SpecOps\Antennas\SR_Antenna_co.paa",
-        "\42nd_para\42nd\addons\Bluefor\42nd_Helmets\RTO\42nd_RTO_Helmet_co.paa",
+        "\42nd_para\42nd\addons\Bluefor\42nd_Helmets\Ground\42nd_RTO_Helmet_co.paa",
     };
     
 };
@@ -460,9 +460,9 @@ class 42nd_SpecOps_SR_Vet_Helmet: 42nd_SpecOps_SR_Helmet_base
     displayName = "[42nd] Veteran RTO SR Helmet";
     hiddenSelections[] = {"Camo1","Camo2","Visor"};
     hiddenSelectionsTextures[] = {
-        "\42nd_para\42nd\addons\Bluefor\42nd_Helmets\RTO\42nd_Vet_RTO_Helmet_co.paa",
+        "\42nd_para\42nd\addons\Bluefor\42nd_Helmets\Ground\42nd_Vet_RTO_Helmet_co.paa",
         "\JLTS_AE\Data\BaseTextures\SpecOps\Antennas\SR_Antenna_co.paa",
-        "\42nd_para\42nd\addons\Bluefor\42nd_Helmets\RTO\42nd_Vet_RTO_Helmet_co.paa",
+        "\42nd_para\42nd\addons\Bluefor\42nd_Helmets\Ground\42nd_Vet_RTO_Helmet_co.paa",
     };
 };
 
@@ -511,9 +511,9 @@ class 42nd_SpecOps_LR_Helmet: 42nd_SpecOps_LR_Helmet_base
     displayName = "[42nd] RTO LR Helmet";
     hiddenSelections[] = {"Camo1","Camo2","Visor"};
     hiddenSelectionsTextures[] = {
-        "\42nd_para\42nd\addons\Bluefor\42nd_Helmets\RTO\42nd_RTO_Helmet_co.paa",
+        "\42nd_para\42nd\addons\Bluefor\42nd_Helmets\Ground\42nd_RTO_Helmet_co.paa",
         "\JLTS_AE\Data\BaseTextures\SpecOps\Antennas\LR_Antenna_co.paa",
-        "\42nd_para\42nd\addons\Bluefor\42nd_Helmets\RTO\42nd_RTO_Helmet_co.paa",
+        "\42nd_para\42nd\addons\Bluefor\42nd_Helmets\Ground\42nd_RTO_Helmet_co.paa",
     };
 };
 
@@ -525,8 +525,8 @@ class 42nd_SpecOps_LR_Vet_Helmet: 42nd_SpecOps_LR_Helmet_base
     displayName = "[42nd] Veteran RTO LR Helmet";
     hiddenSelections[] = {"Camo1","Camo2","Visor"};
     hiddenSelectionsTextures[] = {
-        "\42nd_para\42nd\addons\Bluefor\42nd_Helmets\RTO\42nd_Vet_RTO_Helmet_co.paa",
+        "\42nd_para\42nd\addons\Bluefor\42nd_Helmets\Ground\42nd_Vet_RTO_Helmet_co.paa",
         "\JLTS_AE\Data\BaseTextures\SpecOps\Antennas\LR_Antenna_co.paa",
-        "\42nd_para\42nd\addons\Bluefor\42nd_Helmets\RTO\42nd_Vet_RTO_Helmet_co.paa",
+        "\42nd_para\42nd\addons\Bluefor\42nd_Helmets\Ground\42nd_Vet_RTO_Helmet_co.paa",
     };
 };

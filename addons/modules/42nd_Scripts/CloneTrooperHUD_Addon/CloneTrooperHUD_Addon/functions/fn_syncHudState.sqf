@@ -14,10 +14,7 @@ private _visorOpacity = (((missionNamespace getVariable ["CTHUD_interiorVisorOpa
 private _powerSoundsEnabled = missionNamespace getVariable ["CTHUD_powerSounds", true];
 private _wantsOverlay = _hudEnabled && _runtimeEnabled && _hasHelmet && _useInteriorVisor && _isFirstPerson;
 private _powerState = _hudEnabled && _runtimeEnabled && _hasHelmet && alive player;
-private _overlayTexture = [
-    "\42nd_para\42nd\addons\modules\42nd_Scripts\CloneTrooperHUD_Addon\CloneTrooperHUD_Addon\ui\p2_hud_ca.paa",
-    "\42nd_para\42nd\addons\modules\42nd_Scripts\CloneTrooperHUD_Addon\CloneTrooperHUD_Addon\ui\pilot_hud_ca.paa"
-] select _isPilotHud;
+private _overlayTexture = [_isPilotHud] call CTHUD_fnc_getVisorTexture;
 private _hudLayout = call CTHUD_fnc_getHudLayout;
 private _displayClass = _hudLayout select 0;
 

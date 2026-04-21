@@ -337,6 +337,84 @@ class 42nd_Sniper_Cell_20Round_Blue: IDA_Blaster_Cell_Power5_5Rnd_Blue
 		mass = 10;
 	};
 
+// =============================================
+// ARC-170 Gunship Magazines (AC-130 calibrated)
+// =============================================
+class ls_magazine_120mm_30Rnd_HE_blue;
+class ls_magazine_120mm_30Rnd_APFSDS_blue;
+class ls_magazine_40mm_50Rnd_G_blue;
+class ls_magazine_127x99_500Rnd_blue;
+
+// 105mm Laser Cannon - 100 rounds HE (AC-130: 100Rnd 105mm HEPD)
+class 42nd_ARC170_Mag_100Rnd_105mm_HE: ls_magazine_120mm_30Rnd_HE_blue
+{
+    scope = 2;
+    author = "HoundaCivic";
+    displayName = "[42nd] 100Rnd 105mm Laser HE";
+    displayNameShort = "105mm HE";
+    descriptionShort = "High-Explosive Plasma Rod<br/>Rounds: 100";
+    ammo = "42nd_ARC170_Ammo_105mm_HE";
+    count = 100;
+    initSpeed = 494;
+    tracersEvery = 0;
+};
+
+// 105mm Laser Cannon - 5 rounds AP (AC-130: 5Rnd 105mm SABOT)
+class 42nd_ARC170_Mag_5Rnd_105mm_AP: ls_magazine_120mm_30Rnd_APFSDS_blue
+{
+    scope = 2;
+    author = "HoundaCivic";
+    displayName = "[42nd] 5Rnd 105mm Laser AP";
+    displayNameShort = "105mm AP";
+    descriptionShort = "Armor-Piercing Plasma Rod<br/>Rounds: 5";
+    ammo = "42nd_ARC170_Ammo_105mm_AP";
+    count = 5;
+    initSpeed = 500;
+    tracersEvery = 1;
+};
+
+// 40mm Laser Bofors - 256 rounds HE (AC-130: 256Rnd 40mm HE)
+class 42nd_ARC170_Mag_256Rnd_40mm_HE: ls_magazine_40mm_50Rnd_G_blue
+{
+    scope = 2;
+    author = "HoundaCivic";
+    displayName = "[42nd] 256Rnd 40mm Laser HE";
+    displayNameShort = "40mm HE";
+    descriptionShort = "High-Explosive Plasma Grenade<br/>Rounds: 256";
+    ammo = "42nd_ARC170_Ammo_40mm_HE";
+    count = 256;
+    initSpeed = 881;
+    tracersEvery = 0;
+};
+
+// 40mm Laser Bofors - 256 rounds AP (AC-130: 256Rnd 40mm SABOT)
+class 42nd_ARC170_Mag_256Rnd_40mm_AP: ls_magazine_40mm_50Rnd_G_blue
+{
+    scope = 2;
+    author = "HoundaCivic";
+    displayName = "[42nd] 256Rnd 40mm Laser AP";
+    displayNameShort = "40mm AP";
+    descriptionShort = "Armor-Piercing Plasma Grenade<br/>Rounds: 256";
+    ammo = "42nd_ARC170_Ammo_40mm_AP";
+    count = 256;
+    initSpeed = 881;
+    tracersEvery = 0;
+};
+
+// 25mm Laser Minigun - 2000 rounds (AC-130: 2000Rnd PGU-25 HEI)
+class 42nd_ARC170_Mag_2000Rnd_25mm: ls_magazine_127x99_500Rnd_blue
+{
+    scope = 2;
+    author = "HoundaCivic";
+    displayName = "[42nd] 2000Rnd 25mm Laser HEI";
+    displayNameShort = "25mm HEI";
+    descriptionShort = "High-Explosive Incendiary Plasma Cell<br/>Rounds: 2000";
+    ammo = "42nd_ARC170_Ammo_25mm_HEI";
+    count = 2000;
+    initSpeed = 970;
+    tracersEvery = 3;
+};
+
 ///Launchers
 class 42nd_RPS_Extended_Mag: Vorona_HEAT
 	{

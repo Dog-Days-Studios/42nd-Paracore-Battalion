@@ -100,6 +100,18 @@ class 42nd_3as_LAAT_Mk1: 3AS_LAAT_Mk1
         };
     };
     textureList[] = {"Base42nd3asLAAT",1};
+
+    class VehicleTransport
+    {
+        class Carrier
+        {
+            cargoBayDimensions[] = {{-2, -3, -7}, {2, 1, -5}};
+            disableHeightLimit = 1;
+            maxLoadMass = 200000;
+            cargoAlignment[] = {"center", "front"};
+            cargoSpacing[] = {0, 0.15, 0};
+        };
+    };
 };
 
 class 42nd_3as_LAAT_Mk1Lights: 3AS_LAAT_Mk1Lights
@@ -136,6 +148,18 @@ class 42nd_3as_LAAT_Mk1Lights: 3AS_LAAT_Mk1Lights
         };
     };
     textureList[] = {"Base42nd3asLAAT",1};
+
+    class VehicleTransport
+    {
+        class Carrier
+        {
+            cargoBayDimensions[] = {{-2, -3, -7}, {2, 1, -5}};
+            disableHeightLimit = 1;
+            maxLoadMass = 200000;
+            cargoAlignment[] = {"center", "front"};
+            cargoSpacing[] = {0, 0.15, 0};
+        };
+    };
 };
 
 class 42nd_3as_LAAT: 3AS_LAAT_Mk2
@@ -177,6 +201,18 @@ class 42nd_3as_LAAT: 3AS_LAAT_Mk2
         };
     };
     textureList[] = {"Base42nd3asLAAT",1};
+
+    class VehicleTransport
+    {
+        class Carrier
+        {
+            cargoBayDimensions[] = {{-2, -3, -7}, {2, 1, -5}};
+            disableHeightLimit = 1;
+            maxLoadMass = 200000;
+            cargoAlignment[] = {"center", "front"};
+            cargoSpacing[] = {0, 0.15, 0};
+        };
+    };
 };
 
 class 42nd_3as_LAAT_Mk2Lights: 3AS_LAAT_Mk2Lights
@@ -213,6 +249,18 @@ class 42nd_3as_LAAT_Mk2Lights: 3AS_LAAT_Mk2Lights
         };
     };
     textureList[] = {"Base42nd3asLAAT",1};
+
+    class VehicleTransport
+    {
+        class Carrier
+        {
+            cargoBayDimensions[] = {{-2, -3, -7}, {2, 1, -5}};
+            disableHeightLimit = 1;
+            maxLoadMass = 200000;
+            cargoAlignment[] = {"center", "front"};
+            cargoSpacing[] = {0, 0.15, 0};
+        };
+    };
 };
 
 class 42nd_3as_LAAT_Mk1_Fast: 42nd_3as_LAAT_Mk1

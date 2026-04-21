@@ -25,6 +25,32 @@ if (isNil "para42_fnc_gozantiNotify") then {
     };
 };
 
+if (isNil "Para42_fnc_hasResupplyAccess") then {
+    Para42_fnc_hasResupplyAccess = {
+        params [["_unit", objNull, [objNull]]];
+
+        if (isNull _unit) exitWith {false};
+
+        private _rankId = rankId _unit;
+        if (_rankId < 0) then {
+            private _fallbackRanks = [
+                "PRIVATE",
+                "CORPORAL",
+                "SERGEANT",
+                "LIEUTENANT",
+                "CAPTAIN",
+                "MAJOR",
+                "COLONEL",
+                "GENERAL"
+            ];
+
+            _rankId = _fallbackRanks find (toUpper (rank _unit));
+        };
+
+        _rankId >= 2
+    };
+};
+
 if (isNil "para42_gozantiPresetCargo") then {
     para42_gozantiPresetCargo = [
         ["<t color='#9fd3ff'>Load Ammo Resupply Crate</t>", "42nd_Ammo_Resupply_Crate", "Ammo Resupply Crate"],
@@ -158,9 +184,6 @@ if (isNil "para42_fnc_gozantiLoadPresetCargo") then {
         };
 
         if (isNull _transport || {isNull _caller} || {_cargoClass isEqualTo ""}) exitWith {};
-        if !([_caller] call Para42_fnc_hasResupplyAccess) exitWith {
-            [_caller, "Resupply is restricted to Sergeant and above."] call para42_fnc_gozantiNotify;
-        };
 
         private _loadedVehicles = [_transport] call para42_fnc_gozantiGetLoadedVehicles;
         private _maxVehicles = count para42_gozantiCargoOffsets;
@@ -211,9 +234,6 @@ if (isNil "para42_fnc_gozantiLoadVehicle") then {
         };
 
         if (isNull _transport || {isNull _caller}) exitWith {};
-        if !([_caller] call Para42_fnc_hasResupplyAccess) exitWith {
-            [_caller, "Resupply is restricted to Sergeant and above."] call para42_fnc_gozantiNotify;
-        };
 
         private _loadedVehicles = [_transport] call para42_fnc_gozantiGetLoadedVehicles;
         private _maxVehicles = count para42_gozantiCargoOffsets;
@@ -248,9 +268,6 @@ if (isNil "para42_fnc_gozantiLoadAllVehicles") then {
         };
 
         if (isNull _transport || {isNull _caller}) exitWith {};
-        if !([_caller] call Para42_fnc_hasResupplyAccess) exitWith {
-            [_caller, "Resupply is restricted to Sergeant and above."] call para42_fnc_gozantiNotify;
-        };
 
         private _loadedVehicles = [_transport] call para42_fnc_gozantiGetLoadedVehicles;
         private _maxVehicles = count para42_gozantiCargoOffsets;
@@ -288,9 +305,6 @@ if (isNil "para42_fnc_gozantiDropVehicle") then {
         };
 
         if (isNull _transport || {isNull _caller}) exitWith {};
-        if !([_caller] call Para42_fnc_hasResupplyAccess) exitWith {
-            [_caller, "Resupply is restricted to Sergeant and above."] call para42_fnc_gozantiNotify;
-        };
 
         private _loadedVehicles = [_transport] call para42_fnc_gozantiGetLoadedVehicles;
         if (_loadedVehicles isEqualTo []) exitWith {
@@ -315,9 +329,6 @@ if (isNil "para42_fnc_gozantiDropAllVehicles") then {
         };
 
         if (isNull _transport || {isNull _caller}) exitWith {};
-        if !([_caller] call Para42_fnc_hasResupplyAccess) exitWith {
-            [_caller, "Resupply is restricted to Sergeant and above."] call para42_fnc_gozantiNotify;
-        };
         if (_transport getVariable ["42nd_dropAllInProgress", false]) exitWith {
             [_caller, "Airdrop all is already in progress."] call para42_fnc_gozantiNotify;
         };
@@ -588,6 +599,8 @@ if (_gozanti getVariable ["42nd_gozantiActionsAdded", false]) exitWith {};
 
 _gozanti setVariable ["42nd_gozantiActionsAdded", true];
 
+private _loadCondition = "alive _target && alive _this && ((vehicle _this isEqualTo _this && _this distance _target < 20) || (driver _target isEqualTo _this)) && isTouchingGround _target && !isEngineOn _target && !(_target getVariable ['42nd_dropAllInProgress', false]) && !(_target getVariable ['42nd_gozantiTroopDropInProgress', false]) && count (_target getVariable ['42nd_loadedVehicles', []]) < 6";
+
 _gozanti addAction [
     "<t color='#9fd3ff'>Load Nearby Vehicle</t>",
     {
@@ -599,7 +612,7 @@ _gozanti addAction [
     true,
     true,
     "",
-        "alive _target && alive _this && vehicle _this isEqualTo _target && driver _target isEqualTo _this && ([_this] call Para42_fnc_hasResupplyAccess) && !(_target getVariable ['42nd_dropAllInProgress', false]) && !(_target getVariable ['42nd_gozantiTroopDropInProgress', false]) && count (_target getVariable ['42nd_loadedVehicles', []]) < 6"
+    _loadCondition
 ];
 
 _gozanti addAction [
@@ -613,7 +626,7 @@ _gozanti addAction [
     true,
     true,
     "",
-    "alive _target && alive _this && vehicle _this isEqualTo _target && driver _target isEqualTo _this && ([_this] call Para42_fnc_hasResupplyAccess) && !(_target getVariable ['42nd_dropAllInProgress', false]) && !(_target getVariable ['42nd_gozantiTroopDropInProgress', false]) && count (_target getVariable ['42nd_loadedVehicles', []]) < 6"
+    _loadCondition
 ];
 
 {
@@ -635,7 +648,7 @@ _gozanti addAction [
         true,
         true,
         "",
-        "alive _target && alive _this && vehicle _this isEqualTo _target && driver _target isEqualTo _this && ([_this] call Para42_fnc_hasResupplyAccess) && !(_target getVariable ['42nd_dropAllInProgress', false]) && !(_target getVariable ['42nd_gozantiTroopDropInProgress', false]) && count (_target getVariable ['42nd_loadedVehicles', []]) < 6"
+        _loadCondition
     ];
 } forEach para42_gozantiPresetCargo;
 
@@ -650,7 +663,7 @@ _gozanti addAction [
     true,
     true,
     "",
-    "alive _target && alive _this && vehicle _this isEqualTo _target && driver _target isEqualTo _this && ([_this] call Para42_fnc_hasResupplyAccess) && !(_target getVariable ['42nd_dropAllInProgress', false]) && !(_target getVariable ['42nd_gozantiTroopDropInProgress', false]) && count (_target getVariable ['42nd_loadedVehicles', []]) > 0"
+    "alive _target && alive _this && vehicle _this isEqualTo _target && driver _target isEqualTo _this && !(_target getVariable ['42nd_dropAllInProgress', false]) && !(_target getVariable ['42nd_gozantiTroopDropInProgress', false]) && count (_target getVariable ['42nd_loadedVehicles', []]) > 0"
 ];
 
 _gozanti addAction [
@@ -664,7 +677,7 @@ _gozanti addAction [
     true,
     true,
     "",
-    "alive _target && alive _this && vehicle _this isEqualTo _target && driver _target isEqualTo _this && ([_this] call Para42_fnc_hasResupplyAccess) && !(_target getVariable ['42nd_dropAllInProgress', false]) && !(_target getVariable ['42nd_gozantiTroopDropInProgress', false]) && count (_target getVariable ['42nd_loadedVehicles', []]) > 0"
+    "alive _target && alive _this && vehicle _this isEqualTo _target && driver _target isEqualTo _this && !(_target getVariable ['42nd_dropAllInProgress', false]) && !(_target getVariable ['42nd_gozantiTroopDropInProgress', false]) && count (_target getVariable ['42nd_loadedVehicles', []]) > 0"
 ];
 
 _gozanti addAction [

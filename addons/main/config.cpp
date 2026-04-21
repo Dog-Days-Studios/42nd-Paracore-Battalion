@@ -3,12 +3,7 @@ class CfgPatches {
         requiredVersion = 2.10;
         requiredAddons[] = {"ace_main", "cba_main", "cba_xeh", "IDA_Ammo", "Indecisive_Armoury_units", "3AS_ARC_170", "ls_vehicles", "A3_Air_F_Heli_Light_01", "A3_Soft_F_Exp_LSV_01"};
         units[] = {
-            "42nd_Trooper",
-            "42nd_CPLTL_Trooper",
-            "42nd_CSGT_Trooper",
-            "42nd_CST_Trooper",
-            "42nd_medic_Trooper",
-            "42nd_CVT_Medic_Trooper",
+            "42nd_Trooper","42nd_CPLTL_Trooper","42nd_CSGT_Trooper","42nd_CST_Trooper","42nd_medic_Trooper","42nd_CVT_Medic_Trooper",
             "42nd_Squad_Medic_Trooper",
             "42nd_Rose_Trooper",
             "42nd_Hound_Trooper",
@@ -64,7 +59,30 @@ class CfgPatches {
             "42nd_Engineer_Resupply_Crate",
             "42nd_Arsenal_Box",
             "42nd_Arsenal_Supply",
-            "42nd_Arsenal_Weapon_Crate"
+            "42nd_Arsenal_Weapon_Crate",
+            "42nd_Supply_Misc",
+            "42nd_Supply_Medical",
+            "42nd_Supply_Tools",
+            "42nd_Supply_Explosives",
+            "42nd_Supply_Grenades",
+            "42nd_Supply_Mags_42ndCells",
+            "42nd_Supply_Mags_GL",
+            "42nd_Supply_Mags_Flares",
+            "42nd_Supply_Mags_Rockets",
+            "42nd_Supply_Mags_IDA",
+            "42nd_Supply_Mags_LS",
+            "42nd_Supply_Mags_3AS",
+            "B42nd_AH44_White",
+            "B42nd_AH44_Black",
+            "B42nd_AH44_S_White",
+            "B42nd_AH44_S_Black",
+            "42nd_TX130",
+            "42nd_Saber",
+            "42nd_Bearcat_Autocannon",
+            "42nd_Bearcat_AA",
+            "42nd_Bearcat_unarmed",
+            "42nd_Bearcat_cannon",
+            "42nd_Pilot_base"
         };
         weapons[] = {
             "42nd_CT_P2_Helmet",
@@ -84,24 +102,12 @@ class CfgPatches {
             "42nd_WO1_Pilot_Helmet",
             "42nd_WO2_Pilot_Helmet",
             "42nd_WO3_Pilot_Helmet",
+            "42nd_Hound_AB_Helmet",
             "42nd_Dual_Holsters",
             "42nd_Knife_Holster",
             "42nd_Holster",
             "42nd_Hidden_Vest",
             "42nd_Hidden_Medical_Vest",
-            "42nd_KamaCW_Vest",
-            "42nd_Heavy_Vest",
-            "42nd_Recon_Vest",
-            "42nd_Suspender_Vest",
-            "42nd_Recon_Officer_Vest",
-            "42nd_Recon_NCO_Vest",
-            "42nd_Officer2_Vest",
-            "42nd_Officer_Vest",
-            "42nd_Lieutenant_Vest",
-            "42nd_Kama_Vest",
-            "42nd_Holster_Vest",
-            "42nd_Commander_Vest",
-            "42nd_Airborne_NCO_Vest",
             "42nd_Trooper_Uniform",
             "42nd_CPLTL_Trooper_Uniform",
             "42nd_CSGT_Trooper_Uniform",
@@ -122,6 +128,11 @@ class CfgPatches {
             "42nd_Marksman_Squad_Trooper_Uniform",
             "42nd_Marksman_Senior_Trooper_Uniform",
             "42nd_Marksman_Vet_Trooper_Uniform",
+            "42nd_Pilot_Trooper_Uniform",
+            "42nd_Trainee_Pilot_Uniform",
+            "42nd_WO1_Pilot_Uniform",
+            "42nd_WO2_Pilot_Uniform",
+            "42nd_WO3_Pilot_Uniform",
             "42nd_CT_P2_Helmet",
             "42nd_CPLTL_P2_Helmet",
             "42nd_CSGT_P2_Helmet",
@@ -193,9 +204,10 @@ class CfgPatches {
             "42nd_ls_weapon_dc17s_dual",
             "42nd_3AS_DC17S_F",
             "42nd_3AS_DC17S_Dual_F",
-            "42nd_3AS_FusionCutter_F",
             "42nd_Heavy_Hidden_Vest",
-            "42nd_Heavy_Hidden_Medical_Vest",
+            "42nd_ARC170_105mm_Laser_Cannon",
+            "42nd_ARC170_40mm_Laser_Bofors",
+            "42nd_ARC170_Laser_Minigun"
         };
         magazines[] = {
             "42nd_Smoke_Grenade",
@@ -215,11 +227,21 @@ class CfgPatches {
             "42nd_Pistol_Cell_10Round_Blue",
             "42nd_Pistol_Cell_15Round_Blue",
             "42nd_Pistol_Cell_20Round_Blue",
-            "42nd_40mm_Grapple_Traverse"
+            "42nd_40mm_Grapple_Traverse",
+            "42nd_ARC170_Mag_100Rnd_105mm_HE",
+            "42nd_ARC170_Mag_5Rnd_105mm_AP",
+            "42nd_ARC170_Mag_256Rnd_40mm_HE",
+            "42nd_ARC170_Mag_256Rnd_40mm_AP",
+            "42nd_ARC170_Mag_2000Rnd_25mm"
         };
         ammo[] = {
             "42nd_Grapple_40mm_Ammo",
-            "42nd_Traversal_Grapple_40mm_Ammo"
+            "42nd_Traversal_Grapple_40mm_Ammo",
+            "42nd_ARC170_Ammo_105mm_HE",
+            "42nd_ARC170_Ammo_105mm_AP",
+            "42nd_ARC170_Ammo_40mm_HE",
+            "42nd_ARC170_Ammo_40mm_AP",
+            "42nd_ARC170_Ammo_25mm_HEI"
         };
     };
 };
@@ -284,6 +306,10 @@ class CfgEditorSubcategories {
     {
         displayName = "Light Vehicles";
     };
+    class Sub42ndHeavyVic
+    {
+        displayName = "Heavy Vehicles";
+    };
 };
 class CfgFaces
 {
@@ -319,23 +345,18 @@ class CfgFunctions
         class Grapple
         {
             file = "\42nd_para\42nd\addons\main\functions";
-            class autoEngageGrappleClient {};
-            class canUseGrappleAction {};
-            class climbGrapple {};
-            class climbGrappleLedge {};
-            class deployGrappleServer {};
-            class drawGrappleRopes {};
-            class findNearestGrappleAnchor {};
-            class handleGrappleRoundFired {};
-            class registerGrappleClient
+            class grappleInit
             {
                 postInit = 1;
             };
-            class removeGrappleServer {};
-            class startGrapplePull {};
-            class stopGrapplePull {};
-            class trackGrappleProjectile {};
-            class useGrappleAction {};
+        };
+        class Vehicles
+        {
+            file = "\42nd_para\42nd\addons\main\functions";
+            class arc170ZeroingInit
+            {
+                postInit = 1;
+            };
         };
     };
 };
@@ -346,6 +367,7 @@ class CfgWeapons
 #include "/addons/Bluefor/42nd_Uniforms/cfgWeapons.hpp"
 #include "/addons/Bluefor/42nd_Weapons/Weapons/Weapon.hpp"
 #include "/addons/bluefor/42nd_NVG/NVG.hpp"
+#include "/addons/bluefor/42nd_Helmets/airborne/cfgWeapons.hpp"
     class GrenadeLauncher;
     class Throw: GrenadeLauncher
     {
@@ -415,9 +437,13 @@ class CfgVehicles
 #include "/addons/Bluefor/42nd_backpacks/backpack.hpp"
 #include "/addons/main/42nd_Objects.hpp"
 #include "/addons/Vehicles/42nd_ARC170/42nd_Arc170.hpp"
+#include "/addons/Vehicles/42nd_AH44/42nd_AH44.hpp"
 #include "/addons/Vehicles/42nd_Gozanti/cfgvehicles.hpp"
 #include "/addons/Vehicles/42nd_LAAT/cfgvehicles.hpp"
 #include "/addons/Vehicles/LSV/cfgVehicles.hpp"
+#include "/addons/Vehicles/42nd_TC/42nd_TC.hpp"
+#include "/addons/Vehicles/42nd_TX130/42nd_TX130.hpp"
+
 };
 class CfgAmmo
 {

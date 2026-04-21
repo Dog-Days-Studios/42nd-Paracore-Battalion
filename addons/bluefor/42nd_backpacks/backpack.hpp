@@ -43,7 +43,7 @@ class 42nd_Grenade_rig: IDA_Clone_GrenadeRig
     scopecurator = 2;
     scopearsenal = 2;
     displayName = "[42nd] Grenade Rig";
-    maximumload = 100;
+    maximumload = 250;
 };
 
 class 42nd_Standard_Backpack: ls_cloneBackpack_standard
@@ -104,6 +104,7 @@ class 42nd_Medic_Backpack: ls_cloneBackpack_medic
     scope = 2;
     scopecurator = 2;
     scopearsenal = 2;
+    maximumload = 350;
     displayName = "[42nd] Medic Backpack";
     hiddenSelections[] = {"backpack","cloth","radio","rockets","medic","bacta","ammo","heavy","supplies","lower_supplies","canister","grenade"};
     hiddenSelectionsTextures[] = {"\42nd_para\42nd\addons\Bluefor\42nd_backpacks\42nd_NewMod_Backpack_co_CO.paa",
@@ -143,6 +144,7 @@ class 42nd_MiniLR_Backpack: ls_cloneBackpack_miniLR
     scopearsenal = 2;
     displayName = "[42nd] Mini LR Backpack";
     hiddenSelections[] = {"camo1"};
+    maximumload = 250;
     hiddenSelectionsTextures[] = {"\42nd_para\42nd\addons\Bluefor\42nd_backpacks\42nd_MinirLR_Module_CO.paa"};
 };
 class 42nd_Rucksack: IDA_Clone_ScoutPack
@@ -151,6 +153,7 @@ class 42nd_Rucksack: IDA_Clone_ScoutPack
     scope = 2;
     scopecurator = 2;
     scopearsenal = 2;
+    maximumload = 250;
     displayName = "[42nd] Rucksack";
 };
 class 42nd_ChestRig: ls_backpack_chestRig
@@ -160,7 +163,7 @@ class 42nd_ChestRig: ls_backpack_chestRig
     scopecurator = 2;
     scopearsenal = 2;
     displayName = "[42nd] Chest Rig";
-    maximumload = 200;
+    maximumload = 250;
 };
 class 42nd_ChestRig_Pouch: ls_backpack_chestRigPouch
 {
@@ -178,7 +181,7 @@ class 42nd_BeltBag: ls_gar_beltBag
     scopecurator = 2;
     scopearsenal = 2;
     displayName = "[42nd] Belt Bag";
-    maximumload = 100;
+    maximumload = 250;
 };
 class 42nd_BeltBag_Belt: ls_gar_beltBag_belt
 {
@@ -187,7 +190,7 @@ class 42nd_BeltBag_Belt: ls_gar_beltBag_belt
     scopecurator = 2;
     scopearsenal = 2;
     displayName = "[42nd] Belt Bag (Belt)";
-    maximumload = 100;
+    maximumload = 250;
 };
 class 42nd_BeltBag_Leg: ls_gar_beltBag_leg
 {
@@ -196,7 +199,7 @@ class 42nd_BeltBag_Leg: ls_gar_beltBag_leg
     scopecurator = 2;
     scopearsenal = 2;
     displayName = "[42nd] Belt Bag (Leg)";
-    maximumload = 100;
+    maximumload = 250;
 };
 
 class 42nd_LR_Attachment: JLTS_Clone_LR_attachment
@@ -206,7 +209,7 @@ class 42nd_LR_Attachment: JLTS_Clone_LR_attachment
     scopecurator = 2;
     scopearsenal = 2;
     displayName = "[42nd] LR Attachment";
-    maximumload = 100;
+    maximumload = 250;
 };
 class 42nd_BeltBag_Attachment: JLTS_Clone_belt_bag
 {
@@ -215,5 +218,5 @@ class 42nd_BeltBag_Attachment: JLTS_Clone_belt_bag
     scopecurator = 2;
     scopearsenal = 2;
     displayName = "[42nd] Belt Bag Attachment";
-    maximumload = 100;
+    maximumload = 250;
 };

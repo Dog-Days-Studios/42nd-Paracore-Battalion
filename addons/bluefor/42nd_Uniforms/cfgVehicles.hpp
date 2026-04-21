@@ -24,21 +24,23 @@ class 42nd_Pilot_base: ls_clone_phase2_pilot
     scope = 2;
     scopeCurator = 2;
     displayName = "[42nd] Pilot";
-    faction = "Fac42nd_INF";
+    faction = "Fac42nd_AIR";
     editorSubcategory = "Sub42ndAirCrew";
     uniformClass = "42nd_Pilot_Trooper_Uniform";
     identityTypes[] = {"42nd_Clone_Face"};
-    hiddenSelectionsTextures[] = {"\42nd_para\42nd\addons\Bluefor\42nd_Uniforms\CT\42nd_CT_Upper_co.paa","\42nd_para\42nd\addons\Bluefor\42nd_Uniforms\CT\42nd_CT_Lower_Co.paa"};
+    hiddenSelectionsTextures[] = {"\42nd_para\42nd\addons\Bluefor\42nd_Uniforms\Ground\42nd_CT_Upper_co.paa","\42nd_para\42nd\addons\Bluefor\42nd_Uniforms\Ground\42nd_CT_Lower_Co.paa"};
     backpack = "42nd_MiniLR_Backpack";
     linkedItems[] = {"42nd_Holster","42nd_WO1_Pilot_Helmet","SWLB_clone_commander_binocular","ItemMap","ItemGPS","ls_comlink_aur","ItemCompass"};
     respawnLinkedItems[] = {"42nd_Holster","42nd_WO1_Pilot_Helmet","SWLB_clone_commander_binocular","ItemMap","ItemGPS","ls_comlink_aur","ItemCompass"};
-}
+};
 class 42nd_Trainee_Pilot: 42nd_Pilot_base
 {
     scope = 2;
     scopeCurator = 2;
     displayName = "[42nd] Pilot Trainee";
     backpack = "42nd_MiniLR_Backpack";
+    uniformClass = "42nd_Trainee_Pilot_Uniform";
+    hiddenSelectionsTextures[] = {"\42nd_para\42nd\addons\Bluefor\42nd_Uniforms\Ground\42nd_CT_Upper_co.paa","\42nd_para\42nd\addons\Bluefor\42nd_Uniforms\Ground\42nd_CT_Lower_Co.paa"};
     linkedItems[] = {"42nd_Holster","42nd_Trainee_Pilot_Helmet","SWLB_clone_commander_binocular","ItemMap","ItemGPS","ls_comlink_aur","ItemCompass"};
     respawnLinkedItems[] = {"42nd_Holster","42nd_Trainee_Pilot_Helmet","SWLB_clone_commander_binocular","ItemMap","ItemGPS","ls_comlink_aur","ItemCompass"};
 };
@@ -49,6 +51,7 @@ class 42nd_WO1_Pilot: 42nd_Pilot_base
     scopeCurator = 2;
     displayName = "[42nd] Pilot WO1";
     backpack = "42nd_MiniLR_Backpack";
+    uniformClass = "42nd_WO1_Pilot_Uniform";
     linkedItems[] = {"42nd_Holster","42nd_WO1_Pilot_Helmet","SWLB_clone_commander_binocular","ItemMap","ItemGPS","ls_comlink_aur","ItemCompass"};
     respawnLinkedItems[] = {"42nd_Holster","42nd_WO1_Pilot_Helmet","SWLB_clone_commander_binocular","ItemMap","ItemGPS","ls_comlink_aur","ItemCompass"};
 };
@@ -59,6 +62,7 @@ class 42nd_WO2_Pilot: 42nd_Pilot_base
     scopeCurator = 2;
     displayName = "[42nd] Pilot WO2";
     backpack = "42nd_MiniLR_Backpack";
+    uniformClass = "42nd_WO2_Pilot_Uniform";
     linkedItems[] = {"42nd_Holster","42nd_WO2_Pilot_Helmet","SWLB_clone_commander_binocular","ItemMap","ItemGPS","ls_comlink_aur","ItemCompass"};
     respawnLinkedItems[] = {"42nd_Holster","42nd_WO2_Pilot_Helmet","SWLB_clone_commander_binocular","ItemMap","ItemGPS","ls_comlink_aur","ItemCompass"};
 };
@@ -68,6 +72,7 @@ class 42nd_WO3_Pilot: 42nd_Pilot_base
     scope = 2;
     scopeCurator = 2;
     displayName = "[42nd] Pilot WO3";
+    uniformClass = "42nd_WO3_Pilot_Uniform";
     backpack = "42nd_MiniLR_Backpack";
     linkedItems[] = {"42nd_Holster","42nd_WO3_Pilot_Helmet","SWLB_clone_commander_binocular","ItemMap","ItemGPS","ls_comlink_aur","ItemCompass"};
     respawnLinkedItems[] = {"42nd_Holster","42nd_WO3_Pilot_Helmet","SWLB_clone_commander_binocular","ItemMap","ItemGPS","ls_comlink_aur","ItemCompass"};
@@ -83,7 +88,6 @@ class 42nd_Clone_Base: IDA_Clone_DC15S
     identityTypes[] = {"42nd_Clone_Face"};
     linkedItems[] = {"42nd_Holster","42nd_CT_P2_Helmet","SWLB_clone_commander_binocular","ItemMap","ItemGPS","ls_comlink_aur","ItemCompass"};
     respawnLinkedItems[] = {"42nd_Holster","42nd_CT_P2_Helmet","SWLB_clone_commander_binocular","ItemMap","ItemGPS","ls_comlink_aur","ItemCompass"};
-}
 };
 
 class 42nd_Trooper: 42nd_Clone_Base
@@ -93,7 +97,7 @@ class 42nd_Trooper: 42nd_Clone_Base
     displayName = "[42nd] Clone Trooper";
     editorSubcategory = "Sub42ndBasic_Squad";
     uniformClass = "42nd_Trooper_Uniform";
-    hiddenSelectionsTextures[] = {"\42nd_para\42nd\addons\Bluefor\42nd_Uniforms\CT\42nd_CT_Upper_co.paa","\42nd_para\42nd\addons\Bluefor\42nd_Uniforms\CT\42nd_CT_Lower_Co.paa"};
+    hiddenSelectionsTextures[] = {"\42nd_para\42nd\addons\Bluefor\42nd_Uniforms\Ground\42nd_CT_Upper_co.paa","\42nd_para\42nd\addons\Bluefor\42nd_Uniforms\Ground\42nd_CT_Lower_Co.paa"};
     linkedItems[] = {"42nd_Holster","42nd_CT_P2_Helmet","SWLB_clone_commander_binocular","ItemMap","ItemGPS","ls_comlink_aur","ItemCompass"};
     respawnLinkedItems[] = {"42nd_Holster","42nd_CT_P2_Helmet","SWLB_clone_commander_binocular","ItemMap","ItemGPS","ls_comlink_aur","ItemCompass"};
     backpack = "42nd_Standard_Backpack";
@@ -106,7 +110,7 @@ class 42nd_CPLTL_Trooper: 42nd_Clone_Base
     displayName = "[42nd] Platoon Lead";
     editorSubcategory = "Sub42ndBasic_Squad";
     uniformClass = "42nd_CPLTL_Trooper_Uniform";
-    hiddenSelectionsTextures[] = {"\42nd_para\42nd\addons\Bluefor\42nd_Uniforms\CPLTL\42nd_Platoon_Lead_Upper_co.paa","\42nd_para\42nd\addons\Bluefor\42nd_Uniforms\CPLTL\42nd_Platoon_Lead_Lower_co.paa"};
+    hiddenSelectionsTextures[] = {"\42nd_para\42nd\addons\Bluefor\42nd_Uniforms\Ground\42nd_Platoon_Lead_Upper_co.paa","\42nd_para\42nd\addons\Bluefor\42nd_Uniforms\Ground\42nd_Platoon_Lead_Lower_co.paa"};
     linkedItems[] = {"42nd_Holster","42nd_CPLTL_P2_Helmet","SWLB_clone_commander_binocular","ItemMap","ItemGPS","ls_comlink_aur","ItemCompass"};
     respawnLinkedItems[] = {"42nd_Holster","42nd_CPLTL_P2_Helmet","SWLB_clone_commander_binocular","ItemMap","ItemGPS","ls_comlink_aur","ItemCompass"};
     backpack = "42nd_Standard_Backpack";
@@ -119,7 +123,7 @@ class 42nd_CSGT_Trooper: 42nd_Clone_Base
     displayName = "[42nd] Squad Lead";
     editorSubcategory = "Sub42ndBasic_Squad";
     uniformClass = "42nd_CSGT_Trooper_Uniform";
-    hiddenSelectionsTextures[] = {"\42nd_para\42nd\addons\Bluefor\42nd_Uniforms\CSGT\42nd_Squad_Lead_Upper_co.paa","\42nd_para\42nd\addons\Bluefor\42nd_Uniforms\CSGT\42nd_Squad_Lead_Lower_co.paa"};
+    hiddenSelectionsTextures[] = {"\42nd_para\42nd\addons\Bluefor\42nd_Uniforms\Ground\42nd_Squad_Lead_Upper_co.paa","\42nd_para\42nd\addons\Bluefor\42nd_Uniforms\Ground\42nd_Squad_Lead_Lower_co.paa"};
     linkedItems[] = {"42nd_Holster","42nd_CSGT_P2_Helmet","42nd_KamaCW_Glasses","SWLB_clone_commander_binocular","ItemMap","ItemGPS","ls_comlink_aur","ItemCompass"};
     respawnLinkedItems[] = {"42nd_Holster","42nd_CSGT_P2_Helmet","42nd_KamaCW_Glasses","SWLB_clone_commander_binocular","ItemMap","ItemGPS","ls_comlink_aur","ItemCompass"};
     backpack = "42nd_Standard_Backpack";
@@ -132,7 +136,7 @@ class 42nd_CST_Trooper: 42nd_Clone_Base
     displayName = "[42nd] Senior Trooper";
     editorSubcategory = "Sub42ndBasic_Squad";
     uniformClass = "42nd_CST_Trooper_Uniform";
-    hiddenSelectionsTextures[] = {"\42nd_para\42nd\addons\Bluefor\42nd_Uniforms\CST\42nd_CST_Upper_co.paa","\42nd_para\42nd\addons\Bluefor\42nd_Uniforms\CST\42nd_CST_Lower_co.paa"};
+    hiddenSelectionsTextures[] = {"\42nd_para\42nd\addons\Bluefor\42nd_Uniforms\Ground\42nd_CST_Upper_co.paa","\42nd_para\42nd\addons\Bluefor\42nd_Uniforms\Ground\42nd_CST_Lower_co.paa"};
     linkedItems[] = {"42nd_Holster","42nd_CST_P2_Helmet","42nd_KamaCW_Glasses","SWLB_clone_commander_binocular","ItemMap","ItemGPS","ls_comlink_aur","ItemCompass"};
     respawnLinkedItems[] = {"42nd_Holster","42nd_CST_P2_Helmet","42nd_KamaCW_Glasses","SWLB_clone_commander_binocular","ItemMap","ItemGPS","ls_comlink_aur","ItemCompass"};
     backpack = "42nd_Standard_Backpack";
@@ -145,7 +149,7 @@ class 42nd_medic_Trooper: 42nd_Clone_Base
     displayName = "[42nd] Medic";
     editorSubcategory = "Sub42ndMedics";
     uniformClass = "42nd_medic_Trooper_Uniform";
-    hiddenSelectionsTextures[] = {"\42nd_para\42nd\addons\Bluefor\42nd_Uniforms\Medic\42nd_CT_Medic_Upper_co.paa","\42nd_para\42nd\addons\Bluefor\42nd_Uniforms\Medic\42nd_CT_Medic_Lower_co.paa"};
+    hiddenSelectionsTextures[] = {"\42nd_para\42nd\addons\Bluefor\42nd_Uniforms\Ground\42nd_CT_Medic_Upper_co.paa","\42nd_para\42nd\addons\Bluefor\42nd_Uniforms\Ground\42nd_CT_Medic_Lower_co.paa"};
     linkedItems[] = {"42nd_Holster","42nd_Medic_P2_Helmet","42nd_KamaCW_Glasses","SWLB_clone_commander_binocular","ItemMap","ItemGPS","ls_comlink_aur","ItemCompass"};
     respawnLinkedItems[] = {"42nd_Holster","42nd_Medic_P2_Helmet","42nd_KamaCW_Glasses","SWLB_clone_commander_binocular","ItemMap","ItemGPS","ls_comlink_aur","ItemCompass"};
     backpack = "42nd_Medic_Backpack";
@@ -158,7 +162,7 @@ class 42nd_CVT_Medic_Trooper: 42nd_Clone_Base
     displayName = "[42nd] Veteran Medic";
     editorSubcategory = "Sub42ndMedics";
     uniformClass = "42nd_CVT_Medic_Trooper_Uniform";
-    hiddenSelectionsTextures[] = {"\42nd_para\42nd\addons\Bluefor\42nd_Uniforms\Medic\42nd_CVT_Medic_Upper.paa","\42nd_para\42nd\addons\Bluefor\42nd_Uniforms\Medic\42nd_CVT_Medic_lower.paa"};
+    hiddenSelectionsTextures[] = {"\42nd_para\42nd\addons\Bluefor\42nd_Uniforms\Ground\42nd_CVT_Medic_Upper.paa","\42nd_para\42nd\addons\Bluefor\42nd_Uniforms\Ground\42nd_CVT_Medic_lower.paa"};
     linkedItems[] = {"42nd_Holster","42nd_CVT_Medic_P2_Helmet","42nd_KamaCW_Glasses","SWLB_clone_commander_binocular","ItemMap","ItemGPS","ls_comlink_aur","ItemCompass"};
     respawnLinkedItems[] = {"42nd_Holster","42nd_CVT_Medic_P2_Helmet","42nd_KamaCW_Glasses","SWLB_clone_commander_binocular","ItemMap","ItemGPS","ls_comlink_aur","ItemCompass"};
     backpack = "42nd_Medic_Backpack";
@@ -171,7 +175,7 @@ class 42nd_Squad_Medic_Trooper: 42nd_Clone_Base
     displayName = "[42nd] Squad Medic";
     editorSubcategory = "Sub42ndMedics";
     uniformClass = "42nd_Squad_Medic_Trooper_Uniform";
-    hiddenSelectionsTextures[] = {"\42nd_para\42nd\addons\Bluefor\42nd_Uniforms\Medic\42nd_Squad_Medic_Upper_co.paa","\42nd_para\42nd\addons\Bluefor\42nd_Uniforms\Medic\42nd_Squad_Medic_Lower_co.paa"};
+    hiddenSelectionsTextures[] = {"\42nd_para\42nd\addons\Bluefor\42nd_Uniforms\Ground\42nd_Squad_Medic_Upper_co.paa","\42nd_para\42nd\addons\Bluefor\42nd_Uniforms\Ground\42nd_Squad_Medic_Lower_co.paa"};
     linkedItems[] = {"42nd_Holster","42nd_Squad_Medic_P2_Helmet","42nd_KamaCW_Glasses","SWLB_clone_commander_binocular","ItemMap","ItemGPS","ls_comlink_aur","ItemCompass"};
     respawnLinkedItems[] = {"42nd_Holster","42nd_Squad_Medic_P2_Helmet","42nd_KamaCW_Glasses","SWLB_clone_commander_binocular","ItemMap","ItemGPS","ls_comlink_aur","ItemCompass"};
     backpack = "42nd_Medic_Backpack";
@@ -234,7 +238,7 @@ class 42nd_CVT_Trooper: 42nd_Clone_Base
     displayName = "[42nd] Veteran Trooper";
     editorSubcategory = "Sub42ndBasic_Squad";
     uniformClass = "42nd_CVT_Trooper_Uniform";
-    hiddenSelectionsTextures[] = {"\42nd_para\42nd\addons\Bluefor\42nd_Uniforms\CVT\42nd_CVT_Upper_co.paa","\42nd_para\42nd\addons\Bluefor\42nd_Uniforms\CVT\42nd_CVT_Lower_co.paa"};
+    hiddenSelectionsTextures[] = {"\42nd_para\42nd\addons\Bluefor\42nd_Uniforms\Ground\42nd_CVT_Upper_co.paa","\42nd_para\42nd\addons\Bluefor\42nd_Uniforms\Ground\42nd_CVT_Lower_co.paa"};
     linkedItems[] = {"42nd_Holster","42nd_CVT_P2_Helmet","42nd_KamaCW_Glasses","SWLB_clone_commander_binocular","ItemMap","ItemGPS","ls_comlink_aur","ItemCompass"};
     respawnLinkedItems[] = {"42nd_Holster","42nd_CVT_P2_Helmet","42nd_KamaCW_Glasses","SWLB_clone_commander_binocular","ItemMap","ItemGPS","ls_comlink_aur","ItemCompass"};
 };
@@ -246,7 +250,7 @@ class 42nd_NCO_Trooper: 42nd_Clone_Base
     displayName = "[42nd] NCO";
     editorSubcategory = "Sub42ndBasic_Squad";
     uniformClass = "42nd_NCO_Trooper_Uniform";
-    hiddenSelectionsTextures[] = {"\42nd_para\42nd\addons\Bluefor\42nd_Uniforms\NCO\42nd_NCO_upper_co.paa","\42nd_para\42nd\addons\Bluefor\42nd_Uniforms\NCO\42nd_NCO_Lower_co.paa"};
+    hiddenSelectionsTextures[] = {"\42nd_para\42nd\addons\Bluefor\42nd_Uniforms\Ground\42nd_NCO_upper_co.paa","\42nd_para\42nd\addons\Bluefor\42nd_Uniforms\Ground\42nd_NCO_Lower_co.paa"};
     linkedItems[] = {"42nd_Holster","42nd_NCO_P2_Helmet","42nd_KamaCW_Glasses","SWLB_clone_commander_binocular","ItemMap","ItemGPS","ls_comlink_aur","ItemCompass"};
     respawnLinkedItems[] = {"42nd_Holster","42nd_NCO_P2_Helmet","42nd_KamaCW_Glasses","SWLB_clone_commander_binocular","ItemMap","ItemGPS","ls_comlink_aur","ItemCompass"};
 };
@@ -259,7 +263,7 @@ class 42nd_EOD_Trooper: 42nd_Clone_Base
     editorSubcategory = "Sub42ndEOD";
     uniformClass = "42nd_EOD_Trooper_Uniform";
     backpack = "42nd_Grenade_rig";
-    hiddenSelectionsTextures[] = {"\42nd_para\42nd\addons\Bluefor\42nd_Uniforms\EOD\42nd_EOD_Upper_co.paa","\42nd_para\42nd\addons\Bluefor\42nd_Uniforms\EOD\42nd_EOD_Lower_co.paa"};
+    hiddenSelectionsTextures[] = {"\42nd_para\42nd\addons\Bluefor\42nd_Uniforms\Ground\42nd_EOD_Upper_co.paa","\42nd_para\42nd\addons\Bluefor\42nd_Uniforms\Ground\42nd_EOD_Lower_co.paa"};
     linkedItems[] = {"42nd_Holster","42nd_EOD_P2_Helmet","42nd_KamaCW_Glasses","SWLB_clone_commander_binocular","ItemMap","ItemGPS","ls_comlink_aur","ItemCompass"};
     respawnLinkedItems[] = {"42nd_Holster","42nd_EOD_P2_Helmet","42nd_KamaCW_Glasses","SWLB_clone_commander_binocular","ItemMap","ItemGPS","ls_comlink_aur","ItemCompass"};
 };
@@ -272,7 +276,7 @@ class 42nd_EOD_Vet_Trooper: 42nd_Clone_Base
     editorSubcategory = "Sub42ndEOD";
     uniformClass = "42nd_EOD_Vet_Trooper_Uniform";
     backpack = "42nd_Grenade_rig";
-    hiddenSelectionsTextures[] = {"\42nd_para\42nd\addons\Bluefor\42nd_Uniforms\EOD\42nd_EOD_Vet_Upper.paa","\42nd_para\42nd\addons\Bluefor\42nd_Uniforms\EOD\42nd_EOD_Vet_Lower.paa"};
+    hiddenSelectionsTextures[] = {"\42nd_para\42nd\addons\Bluefor\42nd_Uniforms\Ground\42nd_EOD_Vet_Upper.paa","\42nd_para\42nd\addons\Bluefor\42nd_Uniforms\Ground\42nd_EOD_Vet_Lower.paa"};
     linkedItems[] = {"42nd_Holster","42nd_EOD_Vet_Helmet","42nd_KamaCW_Glasses","SWLB_clone_commander_binocular","ItemMap","ItemGPS","ls_comlink_aur","ItemCompass"};
     respawnLinkedItems[] = {"42nd_Holster","42nd_EOD_Vet_Helmet","42nd_KamaCW_Glasses","SWLB_clone_commander_binocular","ItemMap","ItemGPS","ls_comlink_aur","ItemCompass"};
 };
@@ -285,7 +289,7 @@ class 42nd_EOD_Squad_Trooper: 42nd_Clone_Base
     editorSubcategory = "Sub42ndEOD";
     uniformClass = "42nd_EOD_Squad_Trooper_Uniform";
     backpack = "42nd_Grenade_rig";
-    hiddenSelectionsTextures[] = {"\42nd_para\42nd\addons\Bluefor\42nd_Uniforms\EOD\42nd_EOD_Squad_Upper_co.paa","\42nd_para\42nd\addons\Bluefor\42nd_Uniforms\EOD\42nd_EOD_Squad_Lower_co.paa"};
+    hiddenSelectionsTextures[] = {"\42nd_para\42nd\addons\Bluefor\42nd_Uniforms\Ground\42nd_EOD_Squad_Upper_co.paa","\42nd_para\42nd\addons\Bluefor\42nd_Uniforms\Ground\42nd_EOD_Squad_Lower_co.paa"};
     linkedItems[] = {"42nd_Holster","42nd_EOD_Squad_Helmet","42nd_KamaCW_Glasses","SWLB_clone_commander_binocular","ItemMap","ItemGPS","ls_comlink_aur","ItemCompass"};
     respawnLinkedItems[] = {"42nd_Holster","42nd_EOD_Squad_Helmet","42nd_KamaCW_Glasses","SWLB_clone_commander_binocular","ItemMap","ItemGPS","ls_comlink_aur","ItemCompass"};
 };
@@ -298,7 +302,7 @@ class 42nd_EOD_Senior_Trooper: 42nd_Clone_Base
     editorSubcategory = "Sub42ndEOD";
     uniformClass = "42nd_EOD_Senior_Trooper_Uniform";
     backpack = "42nd_Grenade_rig";
-    hiddenSelectionsTextures[] = {"\42nd_para\42nd\addons\Bluefor\42nd_Uniforms\EOD\42nd_EOD_Senior_Upper_co.paa","\42nd_para\42nd\addons\Bluefor\42nd_Uniforms\EOD\42nd_EOD_Senior_Lower_co.paa"};
+    hiddenSelectionsTextures[] = {"\42nd_para\42nd\addons\Bluefor\42nd_Uniforms\Ground\42nd_EOD_Senior_Upper_co.paa","\42nd_para\42nd\addons\Bluefor\42nd_Uniforms\Ground\42nd_EOD_Senior_Lower_co.paa"};
     linkedItems[] = {"42nd_Holster","42nd_EOD_Senior_Helmet","42nd_KamaCW_Glasses","SWLB_clone_commander_binocular","ItemMap","ItemGPS","ls_comlink_aur","ItemCompass"};
     respawnLinkedItems[] = {"42nd_Holster","42nd_EOD_Senior_Helmet","42nd_KamaCW_Glasses","SWLB_clone_commander_binocular","ItemMap","ItemGPS","ls_comlink_aur","ItemCompass"};
 };
@@ -312,7 +316,7 @@ class 42nd_Marksman_Trooper: 42nd_Clone_Base
     role = "Marksman";
     uniformClass = "42nd_Marksman_Trooper_Uniform";
     backpack = "42nd_Standard_Backpack";
-    hiddenSelectionsTextures[] = {"\42nd_para\42nd\addons\Bluefor\42nd_Uniforms\Marksman\42nd_Marksman_upper_co.paa","\42nd_para\42nd\addons\Bluefor\42nd_Uniforms\Marksman\42nd_Marksman_lower_co.paa"};
+    hiddenSelectionsTextures[] = {"\42nd_para\42nd\addons\Bluefor\42nd_Uniforms\Ground\42nd_Marksman_upper_co.paa","\42nd_para\42nd\addons\Bluefor\42nd_Uniforms\Ground\42nd_Marksman_lower_co.paa"};
     linkedItems[] = {"42nd_Holster","42nd_Marksman_P2_Helmet","42nd_KamaCW_Glasses","SWLB_clone_commander_binocular","ItemMap","ItemGPS","ls_comlink_aur","ItemCompass"};
     respawnLinkedItems[] = {"42nd_Holster","42nd_Marksman_P2_Helmet","42nd_KamaCW_Glasses","SWLB_clone_commander_binocular","ItemMap","ItemGPS","ls_comlink_aur","ItemCompass"};
     weapons[] = {"42nd_DC15X","Throw","Put"};
@@ -330,7 +334,7 @@ class 42nd_Marksman_Vet_Trooper: 42nd_Clone_Base
     role = "Marksman";
     uniformClass = "42nd_Marksman_Vet_Trooper_Uniform";
     backpack = "42nd_Standard_Backpack";
-    hiddenSelectionsTextures[] = {"\42nd_para\42nd\addons\Bluefor\42nd_Uniforms\Marksman\42nd_marksman_vet_upper_co.paa","\42nd_para\42nd\addons\Bluefor\42nd_Uniforms\Marksman\42nd_Marksman_vet_lower_co.paa"};
+    hiddenSelectionsTextures[] = {"\42nd_para\42nd\addons\Bluefor\42nd_Uniforms\Ground\42nd_marksman_vet_upper_co.paa","\42nd_para\42nd\addons\Bluefor\42nd_Uniforms\Ground\42nd_Marksman_vet_lower_co.paa"};
     linkedItems[] = {"42nd_Holster","42nd_Marksman_Vet_Helmet","42nd_KamaCW_Glasses","SWLB_clone_commander_binocular","ItemMap","ItemGPS","ls_comlink_aur","ItemCompass"};
     respawnLinkedItems[] = {"42nd_Holster","42nd_Marksman_Vet_Helmet","42nd_KamaCW_Glasses","SWLB_clone_commander_binocular","ItemMap","ItemGPS","ls_comlink_aur","ItemCompass"};
     weapons[] = {"42nd_DC15X","Throw","Put"};
@@ -348,7 +352,7 @@ class 42nd_Marksman_Squad_Trooper: 42nd_Clone_Base
     role = "Marksman";
     uniformClass = "42nd_Marksman_Squad_Trooper_Uniform";
     backpack = "42nd_Standard_Backpack";
-    hiddenSelectionsTextures[] = {"\42nd_para\42nd\addons\Bluefor\42nd_Uniforms\Marksman\42nd_Marksman_Squad_Upper_co.paa","\42nd_para\42nd\addons\Bluefor\42nd_Uniforms\Marksman\42nd_Marksman_Squad_Lower_co.paa"};
+    hiddenSelectionsTextures[] = {"\42nd_para\42nd\addons\Bluefor\42nd_Uniforms\Ground\42nd_Marksman_Squad_Upper_co.paa","\42nd_para\42nd\addons\Bluefor\42nd_Uniforms\Ground\42nd_Marksman_Squad_Lower_co.paa"};
     linkedItems[] = {"42nd_Holster","42nd_Marksman_Squad_Helmet","42nd_KamaCW_Glasses","SWLB_clone_commander_binocular","ItemMap","ItemGPS","ls_comlink_aur","ItemCompass"};
     respawnLinkedItems[] = {"42nd_Holster","42nd_Marksman_Squad_Helmet","42nd_KamaCW_Glasses","SWLB_clone_commander_binocular","ItemMap","ItemGPS","ls_comlink_aur","ItemCompass"};
     weapons[] = {"42nd_DC15X","Throw","Put"};
@@ -366,7 +370,7 @@ class 42nd_Marksman_Senior_Trooper: 42nd_Clone_Base
     role = "Marksman";
     uniformClass = "42nd_Marksman_Senior_Trooper_Uniform";
     backpack = "42nd_Standard_Backpack";
-    hiddenSelectionsTextures[] = {"\42nd_para\42nd\addons\Bluefor\42nd_Uniforms\Marksman\42nd_Marksman_Senior_Upper_co.paa","\42nd_para\42nd\addons\Bluefor\42nd_Uniforms\Marksman\42nd_Marksman_Senior_Lower_co.paa"};
+    hiddenSelectionsTextures[] = {"\42nd_para\42nd\addons\Bluefor\42nd_Uniforms\Ground\42nd_Marksman_Senior_Upper_co.paa","\42nd_para\42nd\addons\Bluefor\42nd_Uniforms\Ground\42nd_Marksman_Senior_Lower_co.paa"};
     linkedItems[] = {"42nd_Holster","42nd_Marksman_Senior_Helmet","42nd_KamaCW_Glasses","SWLB_clone_commander_binocular","ItemMap","ItemGPS","ls_comlink_aur","ItemCompass"};
     respawnLinkedItems[] = {"42nd_Holster","42nd_Marksman_Senior_Helmet","42nd_KamaCW_Glasses","SWLB_clone_commander_binocular","ItemMap","ItemGPS","ls_comlink_aur","ItemCompass"};
     weapons[] = {"42nd_DC15X","Throw","Put"};

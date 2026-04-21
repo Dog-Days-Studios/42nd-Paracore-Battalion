@@ -1,4 +1,4 @@
-name = "42nd Paracore Battalion";
+name = "42nd Airborne Division";
 author = "Hound";
 /*picture = "612thABD_Patches\612th_modpicturelogo.paa";
 logoSmall = "612thABD_Patches\612th_modlogosmall.paa";

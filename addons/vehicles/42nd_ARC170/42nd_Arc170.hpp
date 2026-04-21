@@ -1,5 +1,4 @@
 	class Air;
-	class 3AS_ARC_170_base;
 	class NewTurret;
 	class Plane: Air
 	{
@@ -42,8 +41,15 @@
 		{
 			class TransportPylonsComponent;
 		};
-	}; //I have been fighting trying to make variants of this plane for a week, and I have no idea how to make it work. 
+	}; //I have been fighting trying to make variants of this plane for a week, and I have no idea how to make it work.
     //So here we are, with the base class being the ARC-170 itself. I will be adding variants of this plane as I make them, but for now, this is the only one.
+	class 3AS_ARC_170_base: Plane_Fighter_03_dynamicLoadout_base_F
+	{
+		class Components: Components
+		{
+			class TransportPylonsComponent;
+		};
+	};
 	class 42nd_ARC_170_Base: Plane_Fighter_03_dynamicLoadout_base_F
 	{
 		author = "HoundaCivic";
@@ -2169,7 +2175,7 @@
 	};
 	class 42nd_Arc170: 3AS_ARC_170_base
 	{
-		author = "$STR_3AS_Studio";
+		author = "Houndacivic";
 		displayName = "[42nd] ARC-170 "; 
 		editorPreview = "";
 		scope = 2;
@@ -2186,7 +2192,7 @@
 			class base_42nd
 			{
 				displayName = "42nd Default";
-				author = "$STR_3AS_Studio";
+				author = "Houndacivic";
 				textures[] = {"\42nd_para\42nd\addons\vehicles\42nd_ARC170\42nd_Main_Frame_CO.paa",
                 "\42nd_para\42nd\addons\vehicles\42nd_ARC170\42nd_Wings_Engines_CO.paa",
                 "\3AS\3AS_ARC170\Data\Guns_CO.paa"};
@@ -2198,8 +2204,8 @@
 	};
 	class 42nd_Arc170_Gunship: 3AS_ARC_170_base
 	{
-		author = "$STR_3AS_Studio";
-		displayName = "[42nd] ARC-170 Gunship";
+		author = "Houndacivic";
+		displayName = "[42nd] ARC-130 Gunship";
 		editorPreview = "";
 		scope = 2;
 		scopeCurator = 2;
@@ -2210,6 +2216,20 @@
 		hiddenselectionstextures[] = {"\42nd_para\42nd\addons\Vehicles\42nd_ARC170\42nd_Main_Frame_CO.paa",
                 "\42nd_para\42nd\addons\Vehicles\42nd_ARC170\42nd_Wings_Engines_CO.paa",
                 "\3AS\3AS_ARC170\Data\Guns_CO.paa"};
+		class TextureSources
+		{
+			class base_42nd
+			{
+				displayName = "42nd Default";
+				author = "Houndacivic";
+				textures[] = {"\42nd_para\42nd\addons\vehicles\42nd_ARC170\42nd_Main_Frame_CO.paa",
+                "\42nd_para\42nd\addons\vehicles\42nd_ARC170\42nd_Wings_Engines_CO.paa",
+                "\3AS\3AS_ARC170\Data\Guns_CO.paa"};
+				factions[] = {"Fac42nd_AIR"};
+			};
+
+		};
+		textureList[] = {"base_42nd",1};
 		class RenderTargets
 		{
 			class PIPGunner
@@ -2220,7 +2240,7 @@
 					pointPosition = "gunnerview2";
 					pointDirection = "gunnerview2_dir";
 					renderQuality = 2;
-					renderVisionMode = 0;
+					renderVisionMode = 2;
 					turret[] = {1};
 					fov = 0.203452;
 				};
@@ -2234,10 +2254,129 @@
 					pointPosition = "gunnerview";
 					pointDirection = "gunnerview_dir";
 					renderQuality = 2;
-					renderVisionMode = 0;
+					renderVisionMode = 2;
 					fov = 0.203452;
 				};
 				BBoxes[] = {"PIP_GUN2_TL","PIP_GUN2_TR","PIP_GUN2_BL","PIP_GUN2_BR"};
+			};
+		};
+		// Sensor suite matching AC-130 capabilities (inherits pylons from base)
+		class Components: Components
+		{
+			class SensorsManagerComponent
+			{
+				class Components
+				{
+					class IRSensorComponent: SensorTemplateIR
+					{
+						class AirTarget
+						{
+							minRange = 500;
+							maxRange = 4000;
+							objectDistanceLimitCoef = -1;
+							viewDistanceLimitCoef = -1;
+						};
+						class GroundTarget
+						{
+							minRange = 500;
+							maxRange = 6000;
+							objectDistanceLimitCoef = -1;
+							viewDistanceLimitCoef = -1;
+						};
+						maxTrackableSpeed = 175;
+						angleRangeHorizontal = 45;
+						angleRangeVertical = 35;
+						aimDown = 0;
+					};
+					class VisualSensorComponent: SensorTemplateVisual
+					{
+						class AirTarget
+						{
+							minRange = 500;
+							maxRange = 8000;
+							objectDistanceLimitCoef = -1;
+							viewDistanceLimitCoef = -1;
+						};
+						class GroundTarget
+						{
+							minRange = 500;
+							maxRange = 8000;
+							objectDistanceLimitCoef = -1;
+							viewDistanceLimitCoef = -1;
+						};
+						maxTrackableSpeed = 175;
+						angleRangeHorizontal = 45;
+						angleRangeVertical = 36;
+						aimDown = 1;
+					};
+					class ActiveRadarSensorComponent: SensorTemplateActiveRadar
+					{
+						class AirTarget
+						{
+							minRange = 6000;
+							maxRange = 8000;
+							objectDistanceLimitCoef = -1;
+							viewDistanceLimitCoef = -1;
+						};
+						class GroundTarget
+						{
+							minRange = 6000;
+							maxRange = 8000;
+							objectDistanceLimitCoef = -1;
+							viewDistanceLimitCoef = -1;
+						};
+						maxTrackableSpeed = 250;
+						angleRangeHorizontal = 360;
+						angleRangeVertical = 110;
+					};
+					class PassiveRadarSensorComponent: SensorTemplatePassiveRadar{};
+					class LaserSensorComponent: SensorTemplateLaser
+					{
+						angleRangeHorizontal = 360;
+						angleRangeVertical = 120;
+						aimDown = 30;
+					};
+					class NVSensorComponent: SensorTemplateNV
+					{
+						angleRangeHorizontal = 360;
+						angleRangeVertical = 120;
+					};
+					class DataLinkSensorComponent: SensorTemplateDataLink{};
+				};
+			};
+			class VehicleSystemsDisplayManagerComponentLeft: DefaultVehicleSystemsDisplayManagerLeft
+			{
+				class Components
+				{
+					class SensorDisplay
+					{
+						componentType = "SensorsDisplayComponent";
+						range[] = {4000,2000,16000,8000};
+						resource = "RscCustomInfoSensors";
+					};
+					class MinimapDisplay
+					{
+						componentType = "MinimapDisplayComponent";
+						resource = "RscCustomInfoMiniMap";
+					};
+					class CrewDisplay
+					{
+						componentType = "CrewDisplayComponent";
+						resource = "RscCustomInfoCrew";
+					};
+				};
+			};
+			class VehicleSystemsDisplayManagerComponentRight: DefaultVehicleSystemsDisplayManagerRight
+			{
+				class Components
+				{
+					class SensorDisplay
+					{
+						componentType = "SensorsDisplayComponent";
+						range[] = {4000,2000,16000,8000};
+						resource = "RscCustomInfoSensors";
+					};
+				};
 			};
 		};
 		class Turrets
@@ -2247,16 +2386,65 @@
 				isCopilot = 0;
 				canEject = 1;
 				startEngine = 0;
-				class OpticsIn: Optics_Commander_02
+				// AC-130 style thermal optics: Wide/Medium/Narrow with FLIR
+				class OpticsIn
 				{
-					class Wide: Wide{};
-					class Medium: Medium{};
-					class Narrow: Narrow{};
+					class Wide
+					{
+						opticsDisplayName = "W";
+						initAngleX = 0;
+						minAngleX = -90;
+						maxAngleX = 90;
+						initAngleY = 0;
+						minAngleY = -100;
+						maxAngleY = 100;
+						initFov = 0.462;
+						minFov = 0.462;
+						maxFov = 0.462;
+						directionStabilized = 1;
+						visionMode[] = {"Normal","NVG","Ti"};
+						thermalMode[] = {0,1};
+						gunnerOpticsModel = "\A3\Weapons_F_Beta\Reticle\Heli_Attack_01_Optics_Gunner_wide_F";
+					};
+					class Medium: Wide
+					{
+						opticsDisplayName = "M";
+						initFov = 0.11;
+						minFov = 0.11;
+						maxFov = 0.11;
+						gunnerOpticsModel = "\A3\Weapons_F_Beta\Reticle\Heli_Attack_01_Optics_Gunner_medium_F";
+					};
+					class Narrow: Wide
+					{
+						opticsDisplayName = "N";
+						initFov = 0.0218;
+						minFov = 0.0218;
+						maxFov = 0.0218;
+						gunnerOpticsModel = "\A3\Weapons_F_Beta\Reticle\Heli_Attack_01_Optics_Gunner_narrow_F";
+					};
 				};
-				soundServo[] = {"",0.01,1};
+				class OpticsOut
+				{
+					class Monocular
+					{
+						initAngleX = 0;
+						minAngleX = -30;
+						maxAngleX = 30;
+						initAngleY = 0;
+						minAngleY = -100;
+						maxAngleY = 100;
+						initFov = 0.7;
+						minFov = 0.25;
+						maxFov = 0.85;
+						visionMode[] = {"Normal","NVG"};
+						gunnerOpticsModel = "";
+						gunnerOpticsEffect[] = {};
+					};
+				};
+				soundServo[] = {"",0.000178,0.9};
 				outGunnerMayFire = 1;
 				commanding = -1;
-				primaryGunner = 0;
+				primaryGunner = 1;
 				gunnerGetInAction = "GetInLow";
 				gunnerGetOutAction = "GetOutLow";
 				gunnerinaction = "Plane_Fighter_03_pilot";
@@ -2266,8 +2454,8 @@
 				memorypointsgetingunnerdir = "pos gunner dir";
 				stabilizedInAxes = 3;
 				gunneraction = "Plane_Fighter_03_pilot";
-				gunnerforceoptics = 0;
-				gunnerName = "Rear Gunner";
+				gunnerforceoptics = 1;
+				gunnerName = "Fire Control Officer";
 				proxyIndex = 3;
 				proxytype = "CPGunner";
 				gunnerLeftHandAnimName = "lever_copilot";
@@ -2287,17 +2475,29 @@
 				viewGunnerShadow = 1;
 				precisegetinout = 0;
 				turretInfoType = "RscOptics_Heli_Attack_01_gunner";
-				discreteDistance[] = {100,200,300,400,500,600,700,800,1000,1200,1500,1800,2100};
-				discreteDistanceInitIndex = 5;
-				weapons[] = {"42nd_ARC170_105mm_Laser_Cannon","42nd_ARC170_40mm_Laser_Bofors","42nd_ARC170_Laser_Minigun" ,"CMFlareLauncher"};
-				magazines[] = {"ls_magazine_120mm_30Rnd_HE_blue","ls_magazine_40mm_50Rnd_G_blue","ls_magazine_40mm_50Rnd_G_blue",
-                 "ls_magazine_127x99_500Rnd_blue","ls_magazine_127x99_500Rnd_blue","ls_magazine_127x99_500Rnd_blue","ls_magazine_127x99_500Rnd_blue","240Rnd_CMFlare_Chaff_Magazine","240Rnd_CMFlare_Chaff_Magazine"};
-				minElev = -5;
-				maxturn = 270;
-				minturn = 90;
+				// AC-130 engagement ranges: 1000-4000m
+				discreteDistance[] = {1000,1500,2000,2500,3000,3500,4000};
+				discreteDistanceInitIndex = 2;
+				weapons[] = {"42nd_ARC170_105mm_Laser_Cannon","42nd_ARC170_40mm_Laser_Bofors","42nd_ARC170_Laser_Minigun","CMFlareLauncher"};
+				magazines[] = {
+					"42nd_ARC170_Mag_100Rnd_105mm_HE",
+					"42nd_ARC170_Mag_5Rnd_105mm_AP",
+					"42nd_ARC170_Mag_256Rnd_40mm_HE",
+					"42nd_ARC170_Mag_256Rnd_40mm_AP",
+					"42nd_ARC170_Mag_2000Rnd_25mm",
+					"240Rnd_CMFlare_Chaff_Magazine",
+					"240Rnd_CMFlare_Chaff_Magazine",
+					"240Rnd_CMFlare_Chaff_Magazine"
+				};
+				// Widened turret arcs for AC-130-style ground attack
+				minElev = -60;
 				maxElev = 60;
+				maxturn = 330;
+				minturn = 30;
 				initTurn = 180;
-				initElev = 0;
+				initElev = -10;
+				maxHorizontalRotSpeed = 1.8;
+				maxVerticalRotSpeed = 1.8;
 				enableManualFire = 0;
 				LODTurnedOut = 1000;
 				LODTurnedIn = 1000;
@@ -2309,35 +2509,72 @@
 			{
 				commanding = -1;
 				memorypointgunneroptics = "gunnerview2";
-				gunnerForceOptics = 0;
+				gunnerForceOptics = 1;
 				enableManualFire = 1;
 				primaryGunner = 0;
+				primaryObserver = 1;
 				body = "Mainturret2";
 				gun = "maingun2";
 				animationSourceBody = "mainturret2";
 				animationSourceGun = "maingun2";
-				weapons[] = {"42nd_ARC170_105mm_Laser_Cannon","42nd_ARC170_40mm_Laser_Bofors","42nd_ARC170_Laser_Minigun" ,"CMFlareLauncher"};
-				magazines[] = {"ls_magazine_120mm_30Rnd_HE_blue","ls_magazine_40mm_50Rnd_G_blue","ls_magazine_40mm_50Rnd_G_blue",
-                 "ls_magazine_127x99_500Rnd_blue","ls_magazine_127x99_500Rnd_blue","ls_magazine_127x99_500Rnd_blue","ls_magazine_127x99_500Rnd_blue","240Rnd_CMFlare_Chaff_Magazine","240Rnd_CMFlare_Chaff_Magazine"};
-				minElev = -5;
-				gunnerName = "Co-pilot";
+				gunnerName = "Sensor Operator";
+				// Spotter/laser designator only (matches AC-130 TV Operator role)
+				weapons[] = {"Laserdesignator_mounted","CMFlareLauncher"};
+				magazines[] = {
+					"Laserbatteries",
+					"240Rnd_CMFlare_Chaff_Magazine",
+					"240Rnd_CMFlare_Chaff_Magazine",
+					"240Rnd_CMFlare_Chaff_Magazine"
+				};
 				gunBeg = "usti hlavne b2";
 				gunEnd = "konec hlavne b2";
 				memoryPointGun = "konec hlavne b2";
 				selectionFireAnim = "zasleh4";
 				usepip = 2;
-				class OpticsIn: Optics_Gunner_MBT_03
+				class OpticsIn
 				{
-					class Wide: Wide{};
-					class Medium: Medium{};
-					class Narrow: Narrow{};
+					class Wide
+					{
+						opticsDisplayName = "W";
+						initAngleX = 0;
+						minAngleX = -90;
+						maxAngleX = 90;
+						initAngleY = 0;
+						minAngleY = -100;
+						maxAngleY = 100;
+						initFov = 0.462;
+						minFov = 0.462;
+						maxFov = 0.462;
+						directionStabilized = 1;
+						visionMode[] = {"Normal","NVG","Ti"};
+						thermalMode[] = {0,1};
+						gunnerOpticsModel = "\A3\Weapons_F_Beta\Reticle\Heli_Attack_01_Optics_Gunner_wide_F";
+					};
+					class Medium: Wide
+					{
+						opticsDisplayName = "M";
+						initFov = 0.11;
+						minFov = 0.11;
+						maxFov = 0.11;
+						gunnerOpticsModel = "\A3\Weapons_F_Beta\Reticle\Heli_Attack_01_Optics_Gunner_medium_F";
+					};
+					class Narrow: Wide
+					{
+						opticsDisplayName = "N";
+						initFov = 0.0218;
+						minFov = 0.0218;
+						maxFov = 0.0218;
+						gunnerOpticsModel = "\A3\Weapons_F_Beta\Reticle\Heli_Attack_01_Optics_Gunner_narrow_F";
+					};
 				};
 				proxyIndex = 2;
-				maxturn = 240;
-				minturn = 120;
-				maxElev = 0;
+				// Belly turret - primarily downward for ground attack
+				minElev = -90;
+				maxElev = 10;
+				maxturn = 300;
+				minturn = 60;
 				initTurn = 180;
-				initElev = -10;
+				initElev = -30;
 				maxHorizontalRotSpeed = 3;
 				maxVerticalRotSpeed = 3;
 				class HitPoints{};

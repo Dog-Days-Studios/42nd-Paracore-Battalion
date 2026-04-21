@@ -309,7 +309,67 @@ class 42nd_Pilot_Trooper_Uniform: IDA_Clone_Uniform
     class ItemInfo: uniformItem
     {
         uniformModel = "-";
-        uniformClass = "42nd_Pilot_Trooper";
+        uniformClass = "42nd_Pilot_base";
+        containerClass = "Supply250";
+        mass = 40;
+    };
+};
+
+class 42nd_Trainee_Pilot_Uniform: IDA_Clone_Uniform
+{
+    author = "Hound";
+    scope = 2;
+    scopecurator = 2;
+    displayName = "[42nd] Pilot Trainee Uniform";
+    class ItemInfo: uniformItem
+    {
+        uniformModel = "-";
+        uniformClass = "42nd_Trainee_Pilot";
+        containerClass = "Supply250";
+        mass = 40;
+    };
+};
+
+class 42nd_WO1_Pilot_Uniform: IDA_Clone_Uniform
+{
+    author = "Hound";
+    scope = 2;
+    scopecurator = 2;
+    displayName = "[42nd] Pilot WO1 Uniform";
+    class ItemInfo: uniformItem
+    {
+        uniformModel = "-";
+        uniformClass = "42nd_WO1_Pilot";
+        containerClass = "Supply250";
+        mass = 40;
+    };
+};
+
+class 42nd_WO2_Pilot_Uniform: IDA_Clone_Uniform
+{
+    author = "Hound";
+    scope = 2;
+    scopecurator = 2;
+    displayName = "[42nd] Pilot WO2 Uniform";
+    class ItemInfo: uniformItem
+    {
+        uniformModel = "-";
+        uniformClass = "42nd_WO2_Pilot";
+        containerClass = "Supply250";
+        mass = 40;
+    };
+};
+
+class 42nd_WO3_Pilot_Uniform: IDA_Clone_Uniform
+{
+    author = "Hound";
+    scope = 2;
+    scopecurator = 2;
+    displayName = "[42nd] Pilot WO3 Uniform";
+    class ItemInfo: uniformItem
+    {
+        uniformModel = "-";
+        uniformClass = "42nd_WO3_Pilot";
         containerClass = "Supply250";
         mass = 40;
     };

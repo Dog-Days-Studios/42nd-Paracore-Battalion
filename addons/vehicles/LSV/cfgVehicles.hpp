@@ -1,4 +1,7 @@
-class B_LSV_01_armed_F
+class LSV_01_armed_base_F;
+class LSV_01_unarmed_base_F;
+
+class B_LSV_01_armed_F: LSV_01_armed_base_F
 {
     class Turrets
     {
@@ -6,7 +9,7 @@ class B_LSV_01_armed_F
         class CodRiverTurret;
     };
 };
-class B_LSV_01_unarmed_F;
+class B_LSV_01_unarmed_F: LSV_01_unarmed_base_F {};
 
 #define C42_LSV_HIDDEN_SELECTIONS "Camo_1", "Camo_2", "Camo_3", "Camo_4"
 #define C42_LSV_TEXTURES \

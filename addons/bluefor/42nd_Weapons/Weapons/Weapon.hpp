@@ -70,13 +70,6 @@ class 42nd_GL_Muzzle: JLTS_stun_muzzle
         {
             "Single"
         };
-        class EventHandlers
-        {
-            class Para42_GrappleRound
-            {
-                Fired = "_this call Para42_fnc_handleGrappleRoundFired;";
-            };
-        };
         class Single: Mode_SemiAuto
         {
             sounds[]=
@@ -476,31 +469,340 @@ class 42nd_3AS_ScatterGun_F: 3AS_ScatterGun_F
 	baseWeapon = "42nd_3AS_ScatterGun_F";
 };
 
+// =============================================
+// ARC-170 Gunship Weapons (AC-130 calibrated)
+// =============================================
+class Mode_SemiAuto;
+class Mode_FullAuto;
+class MGun;
+
+// 105mm Laser Cannon - matches AC-130 M102 Howitzer
+// Semi-auto, 7s reload, heavy damage, high accuracy
 class 42nd_ARC170_105mm_Laser_Cannon: ls_cannon_120mm
 {
 	author = "HoundaCivic";
 	scope = 1;
 	displayName = "[42nd] ARC-170 105mm Laser Cannon";
 	displayNameShort = "105mm";
-	magazines[] = {"ls_magazine_120mm_30Rnd_HE_blue"};
+	cursor = "EmptyCursor";
+	cursorAim = "missile";
+	magazines[] = {
+		"42nd_ARC170_Mag_100Rnd_105mm_HE",
+		"42nd_ARC170_Mag_5Rnd_105mm_AP"
+	};
+	reloadTime = 7;
+	magazineReloadTime = 7;
+	autoReload = 1;
+	ballisticsComputer = 27;
+	FCSMaxLeadSpeed = 600;
+	maxZeroing = 8000;
+	weaponLockSystem = 15;
+	aiDispersionCoefX = 0.5;
+	aiDispersionCoefY = 0.5;
+
+	modes[] = {"player", "close", "short", "medium", "far"};
+
+	class player: Mode_SemiAuto
+	{
+		sounds[] = {"StandardSound"};
+		class StandardSound
+		{
+			begin1[] = {"\ls\core\addons\sounds\vehicles\aat\weapon\main_shot.wss", 3.1622777, 1, 1500};
+			soundBegin[] = {"begin1", 1};
+		};
+		soundContinuous = 0;
+		reloadTime = 7;
+		autoFire = 0;
+		dispersion = 0.005;
+		aiRateOfFire = 1;
+		aiRateOfFireDistance = 10;
+		minRange = 0;
+		minRangeProbab = 0.01;
+		midRange = 1;
+		midRangeProbab = 0.01;
+		maxRange = 2;
+		maxRangeProbab = 0.01;
+	};
+	class close: player
+	{
+		showToPlayer = 0;
+		burst = 1;
+		burstRangeMax = 1;
+		aiRateOfFire = 8;
+		aiRateOfFireDispersion = 1;
+		aiRateOfFireDistance = 1000;
+		minRange = 1000;
+		minRangeProbab = 0.3;
+		midRange = 2000;
+		midRangeProbab = 0.6;
+		maxRange = 3000;
+		maxRangeProbab = 0.5;
+	};
+	class short: close
+	{
+		aiRateOfFire = 10;
+		aiRateOfFireDispersion = 2;
+		aiRateOfFireDistance = 2000;
+		minRange = 2000;
+		minRangeProbab = 0.5;
+		midRange = 3000;
+		midRangeProbab = 0.6;
+		maxRange = 4000;
+		maxRangeProbab = 0.5;
+	};
+	class medium: close
+	{
+		dispersion = 0.006;
+		aiRateOfFire = 12;
+		aiRateOfFireDispersion = 4;
+		aiRateOfFireDistance = 3000;
+		minRange = 3000;
+		minRangeProbab = 0.5;
+		midRange = 4000;
+		midRangeProbab = 0.5;
+		maxRange = 6000;
+		maxRangeProbab = 0.3;
+	};
+	class far: close
+	{
+		dispersion = 0.007;
+		aiRateOfFire = 14;
+		aiRateOfFireDispersion = 6;
+		aiRateOfFireDistance = 4000;
+		minRange = 4000;
+		minRangeProbab = 0.4;
+		midRange = 5000;
+		midRangeProbab = 0.3;
+		maxRange = 6000;
+		maxRangeProbab = 0.1;
+	};
 };
 
+// 40mm Laser Bofors - matches AC-130 L60 40mm Bofors
+// Auto fire, 120 RPM (0.5s reload), medium damage
 class 42nd_ARC170_40mm_Laser_Bofors: ls_gmg_40mm
 {
 	author = "HoundaCivic";
 	scope = 1;
 	displayName = "[42nd] ARC-170 40mm Laser Bofors";
 	displayNameShort = "40mm";
-	magazines[] = {"ls_magazine_40mm_50Rnd_G_blue"};
+	cursor = "EmptyCursor";
+	cursorAim = "mg";
+	magazines[] = {
+		"42nd_ARC170_Mag_256Rnd_40mm_HE",
+		"42nd_ARC170_Mag_256Rnd_40mm_AP"
+	};
+	magazineReloadTime = 5;
+	ballisticsComputer = 27;
+	FCSMaxLeadSpeed = 600;
+	maxZeroing = 8000;
+	weaponLockSystem = 15;
+	aiDispersionCoefX = 0.5;
+	aiDispersionCoefY = 0.5;
+
+	modes[] = {"manual", "close", "short", "medium", "far"};
+
+	class manual: Mode_FullAuto
+	{
+		displayName = "Auto";
+		textureType = "fullAuto";
+		sounds[] = {"StandardSound"};
+		class StandardSound
+		{
+			begin1[] = {"\ls\core\addons\sounds\vehicles\aat\weapon\launcher_shot_ext.wss", 1.1220185, 1, 1200};
+			soundBegin[] = {"begin1", 1};
+		};
+		soundContinuous = 0;
+		soundBurst = 0;
+		reloadTime = 0.5;
+		dispersion = 0.0055;
+		aiRateOfFire = 0;
+		aiRateOfFireDistance = 10;
+		minRange = 0;
+		minRangeProbab = 0.01;
+		midRange = 1;
+		midRangeProbab = 0.01;
+		maxRange = 2;
+		maxRangeProbab = 0.01;
+	};
+	class close: manual
+	{
+		aiBurstTerminable = 1;
+		showToPlayer = 0;
+		burst = 6;
+		burstRangeMax = 10;
+		aiRateOfFire = 1;
+		aiRateOfFireDispersion = 1;
+		aiRateOfFireDistance = 500;
+		minRange = 600;
+		minRangeProbab = 1.0;
+		midRange = 1500;
+		midRangeProbab = 1.0;
+		maxRange = 2500;
+		maxRangeProbab = 0.8;
+	};
+	class short: close
+	{
+		burst = 4;
+		burstRangeMax = 8;
+		aiRateOfFire = 2;
+		aiRateOfFireDispersion = 2;
+		aiRateOfFireDistance = 1500;
+		minRange = 1500;
+		minRangeProbab = 0.8;
+		midRange = 2500;
+		midRangeProbab = 0.9;
+		maxRange = 4000;
+		maxRangeProbab = 0.7;
+	};
+	class medium: close
+	{
+		burst = 3;
+		burstRangeMax = 6;
+		aiRateOfFire = 3;
+		aiRateOfFireDispersion = 3;
+		aiRateOfFireDistance = 3000;
+		minRange = 2500;
+		minRangeProbab = 0.7;
+		midRange = 4000;
+		midRangeProbab = 0.7;
+		maxRange = 5000;
+		maxRangeProbab = 0.5;
+	};
+	class far: close
+	{
+		burst = 2;
+		burstRangeMax = 4;
+		aiRateOfFire = 4;
+		aiRateOfFireDispersion = 4;
+		aiRateOfFireDistance = 4000;
+		minRange = 4000;
+		minRangeProbab = 0.6;
+		midRange = 5000;
+		midRangeProbab = 0.5;
+		maxRange = 6000;
+		maxRangeProbab = 0.2;
+	};
 };
 
+// Laser Minigun - matches AC-130 GAU-12/U 25mm Gatling
+// Burst fire (25/50/100), ~2600 RPM, light damage, high volume
 class 42nd_ARC170_Laser_Minigun: ls_weapon_lmg_127mm
 {
 	author = "HoundaCivic";
 	scope = 1;
 	displayName = "[42nd] ARC-170 Laser Minigun";
 	displayNameShort = "Minigun";
-	magazines[] = {"ls_magazine_127x99_500Rnd_blue"};
+	cursor = "EmptyCursor";
+	cursorAim = "mg";
+	magazines[] = {"42nd_ARC170_Mag_2000Rnd_25mm"};
+	magazineReloadTime = 8;
+	ballisticsComputer = 27;
+	FCSMaxLeadSpeed = 600;
+	maxZeroing = 8000;
+	weaponLockSystem = 15;
+	aiDispersionCoefX = 0.5;
+	aiDispersionCoefY = 0.5;
+	ffMagnitude = 0.5;
+	ffFrequency = 11;
+	ffCount = 6;
+
+	modes[] = {"Burst25Rnd", "Burst50Rnd", "Burst100Rnd", "close", "short", "medium", "far"};
+
+	class Burst25Rnd: MGun
+	{
+		displayName = "Burst (25)";
+		textureType = "burst";
+		sounds[] = {"StandardSound"};
+		class StandardSound
+		{
+			begin1[] = {"\ls\core\addons\sounds\vehicles\aat\weapon\main_shot.wss", 1.5848932, 1, 2100};
+			soundBegin[] = {"begin1", 1};
+		};
+		soundContinuous = 0;
+		soundBurst = 1;
+		reloadTime = 0.023;
+		dispersion = 0.0043;
+		burst = 25;
+		aiRateOfFire = 3;
+		aiRateOfFireDistance = 10;
+		minRange = 0;
+		minRangeProbab = 0.01;
+		midRange = 1;
+		midRangeProbab = 0.01;
+		maxRange = 2;
+		maxRangeProbab = 0.01;
+	};
+	class Burst50Rnd: Burst25Rnd
+	{
+		displayName = "Burst (50)";
+		burst = 50;
+		aiRateOfFire = 3;
+	};
+	class Burst100Rnd: Burst25Rnd
+	{
+		displayName = "Burst (100)";
+		burst = 100;
+		aiRateOfFire = 6;
+	};
+	class close: Burst25Rnd
+	{
+		showToPlayer = 0;
+		burst = 30;
+		burstRangeMax = 50;
+		aiBurstTerminable = 1;
+		aiRateOfFire = 1;
+		aiRateOfFireDispersion = 1;
+		aiRateOfFireDistance = 500;
+		minRange = 600;
+		minRangeProbab = 0.2;
+		midRange = 1500;
+		midRangeProbab = 0.5;
+		maxRange = 2500;
+		maxRangeProbab = 0.4;
+	};
+	class short: close
+	{
+		burst = 50;
+		burstRangeMax = 80;
+		aiRateOfFire = 2;
+		aiRateOfFireDispersion = 2;
+		aiRateOfFireDistance = 1500;
+		minRange = 1500;
+		minRangeProbab = 0.4;
+		midRange = 3000;
+		midRangeProbab = 0.5;
+		maxRange = 4000;
+		maxRangeProbab = 0.4;
+	};
+	class medium: close
+	{
+		burst = 80;
+		burstRangeMax = 100;
+		aiRateOfFire = 3;
+		aiRateOfFireDispersion = 3;
+		aiRateOfFireDistance = 3000;
+		minRange = 3000;
+		minRangeProbab = 0.4;
+		midRange = 4000;
+		midRangeProbab = 0.4;
+		maxRange = 5000;
+		maxRangeProbab = 0.3;
+	};
+	class far: close
+	{
+		burst = 100;
+		burstRangeMax = 100;
+		aiRateOfFire = 5;
+		aiRateOfFireDispersion = 5;
+		aiRateOfFireDistance = 4000;
+		minRange = 4000;
+		minRangeProbab = 0.3;
+		midRange = 5000;
+		midRangeProbab = 0.3;
+		maxRange = 6000;
+		maxRangeProbab = 0.1;
+	};
 };
 
 // Grenade Launchers

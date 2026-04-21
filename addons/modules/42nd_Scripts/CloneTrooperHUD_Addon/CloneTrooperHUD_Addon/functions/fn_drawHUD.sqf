@@ -195,10 +195,7 @@ private _isPilotHud = call CTHUD_fnc_isPilotHudHelmet;
 private _cameraView = toUpper cameraView;
 private _useInteriorVisor = missionNamespace getVariable ["CTHUD_showInteriorVisor", true];
 private _wantsOverlay = _useInteriorVisor && {_cameraView in ["INTERNAL", "GUNNER", "OPTICS"]};
-private _overlayTexture = [
-    "\42nd_para\42nd\addons\modules\42nd_Scripts\CloneTrooperHUD_Addon\CloneTrooperHUD_Addon\ui\p2_hud_ca.paa",
-    "\42nd_para\42nd\addons\modules\42nd_Scripts\CloneTrooperHUD_Addon\CloneTrooperHUD_Addon\ui\pilot_hud_ca.paa"
-] select _isPilotHud;
+private _overlayTexture = [_isPilotHud] call CTHUD_fnc_getVisorTexture;
 private _visorOpacity = (((missionNamespace getVariable ["CTHUD_interiorVisorOpacity", 100]) max 0) min 100) / 100;
 private _startupStartedAt = missionNamespace getVariable ["CTHUD_startupStartedAt", -1];
 private _startupDuration = missionNamespace getVariable ["CTHUD_startupDuration", 1.35];
@@ -662,12 +659,29 @@ private _getVehicleMarkerIcon = {
     _enemyVehicleCarIcon
 };
 
+private _bracketsEnabled = missionNamespace getVariable ["CTHUD_iffBrackets", true];
+private _camPos = positionCameraToWorld [0, 0, 0];
+private _camForwardPos = positionCameraToWorld [0, 0, 1];
+private _camForward = vectorNormalized (_camForwardPos vectorDiff _camPos);
+private _camRight = vectorNormalized (_camForward vectorCrossProduct [0, 0, -1]);
+private _bracketPulse = 0.75 + 0.25 * (sin (diag_tickTime * 240));
+
 // Shared helper: draw an IFF icon + distance label above a world position
 private _drawIFFMarker = {
     params ["_pos", "_drawColor", "_icon", "_iconSize", "_distText", "_iconTextSize", "_distTextSize"];
     drawIcon3D [_icon, _drawColor, _pos, _iconSize, _iconSize, 0, "", 1, _iconTextSize, "RobotoCondensed"];
     if (_distText isNotEqualTo "") then {
         drawIcon3D ["", _drawColor, [_pos select 0, _pos select 1, (_pos select 2) + 0.2], 0, 0, 0, _distText, 1, _distTextSize, "RobotoCondensed"];
+    };
+
+    if (_bracketsEnabled) then {
+        private _bracketOffset = (_iconSize * 0.9) max 0.45;
+        private _leftPos = _pos vectorAdd (_camRight vectorMultiply -_bracketOffset);
+        private _rightPos = _pos vectorAdd (_camRight vectorMultiply _bracketOffset);
+        private _bracketColor = [_drawColor select 0, _drawColor select 1, _drawColor select 2, (_drawColor param [3, 1]) * _bracketPulse];
+        private _bracketSize = _iconTextSize * 1.35;
+        drawIcon3D ["", _bracketColor, _leftPos, 0, 0, 0, "[", 1, _bracketSize, "RobotoCondensed"];
+        drawIcon3D ["", _bracketColor, _rightPos, 0, 0, 0, "]", 1, _bracketSize, "RobotoCondensed"];
     };
 };
 
@@ -738,21 +752,64 @@ if (_isPilotHud && {_hudRevealAlpha > 0.01}) then
     private _pilotBannerBgColor = [0.03, 0.06, 0.08, 0.28 * _pilotPanelAlpha];
     private _pilotTextColor = [_color select 0, _color select 1, _color select 2, 0.95 * _pilotPanelAlpha];
     private _vehicle = vehicle player;
-    private _displayVehicle = if (_vehicle isEqualTo player) then {"STANDBY"} else {getText (configOf _vehicle >> "displayName")};
+    private _inVehicle = _vehicle isNotEqualTo player;
+    private _displayVehicle = if (!_inVehicle) then {"STANDBY"} else {getText (configOf _vehicle >> "displayName")};
     private _speed = round (speed _vehicle);
     private _asl = round ((getPosASL _vehicle) select 2);
     private _agl = round ((getPosATL _vehicle) select 2);
     private _rangeLabel = if (_enemyMaxDist >= 1000) then {"1.0KM"} else {format ["%1M", round _enemyMaxDist]};
+
+    private _airspeed = 0;
+    private _vertSpeed = 0;
+    if (_inVehicle) then {
+        private _velMS = velocityModelSpace _vehicle;
+        _airspeed = round ((_velMS select 1) * 3.6);
+        _vertSpeed = round ((velocity _vehicle) select 2);
+    };
+    private _vertSign = if (_vertSpeed >= 0) then {"+"} else {""};
+
+    private _armamentLine = "NO ARMAMENT";
+    private _ammoLine = "";
+    if (_inVehicle) then {
+        private _vehWeapons = weapons _vehicle select {_x isNotEqualTo "FakeWeapon" && {_x isNotEqualTo ""}};
+        private _currentWep = currentWeapon _vehicle;
+        if (_currentWep isEqualTo "" && {count _vehWeapons > 0}) then {_currentWep = _vehWeapons select 0};
+        if (_currentWep isNotEqualTo "") then {
+            private _wepCfg = configFile >> "CfgWeapons" >> _currentWep;
+            private _wepName = getText (_wepCfg >> "displayName");
+            if (_wepName isEqualTo "") then {_wepName = _currentWep};
+            if ((count _wepName) > 22) then {_wepName = (_wepName select [0, 19]) + "..."};
+            _armamentLine = toUpper _wepName;
+            private _ammo = _vehicle ammo _currentWep;
+            private _totalCount = count _vehWeapons;
+            _ammoLine = format ["AMMO %1 // ARM %2", _ammo, _totalCount];
+        };
+    };
+
+    private _speedBarWidth = 10;
+    private _speedBarMax = 600;
+    private _speedBarFilled = (round ((_speed / _speedBarMax) * _speedBarWidth)) max 0 min _speedBarWidth;
+    private _speedBar = "";
+    for "_i" from 1 to _speedBarWidth do {
+        _speedBar = _speedBar + ([".", "|"] select (_i <= _speedBarFilled));
+    };
+
     private _pilotLeftText = parseText format [
-        "<t color='%1' shadow='0'>SPD %2 km/h<br/>ASL %3 m</t>",
+        "<t color='%1' shadow='0' size='0.9'>ARM %2<br/>%3<br/>SPD %4 km/h<br/>AS %5 km/h<br/>VS %6%7 m/s<br/>[%8]</t>",
         _colorHex,
+        _armamentLine,
+        _ammoLine,
         _speed,
-        _asl
+        _airspeed,
+        _vertSign,
+        _vertSpeed,
+        _speedBar
     ];
     private _pilotRightText = parseText format [
-        "<t color='%1' shadow='0'>HDG %2<br/>AGL %3 m</t>",
+        "<t color='%1' shadow='0' size='0.9'>HDG %2<br/>ASL %3 m<br/>AGL %4 m</t>",
         _colorHex,
         _bearingText,
+        _asl,
         _agl
     ];
 

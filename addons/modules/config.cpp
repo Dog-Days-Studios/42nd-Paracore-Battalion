@@ -6,7 +6,7 @@ class CfgPatches
         author = "HoundaCivic";
         requiredVersion = 2.10;
         requiredAddons[] = {"Aux_42nd", "cba_main", "cba_settings", "cba_keybinding", "cba_xeh", "A3_UI_F", "A3_Data_F", "A3_Modules_F", "A3_Modules_F_Curator", "A3_UI_F_Curator", "ls_props_staticships"};
-        units[] = {"Para42_Module_CapitalShipJumpIn", "Para42_Module_GozantiResupply", "Para42_Module_LaatResupply"};
+        units[] = {"Para42_Module_CapitalShipJumpIn"};
         weapons[] = {};
     };
 };
@@ -26,57 +26,7 @@ class CfgFunctions
             {
                 file = "\42nd_para\42nd\addons\modules\42nd_Scripts\fn_moduleCapitalShipJumpIn.sqf";
             };
-            class moduleGozantiResupply
-            {
-                file = "\42nd_para\42nd\addons\modules\42nd_Scripts\resupply\fn_moduleGozantiResupply.sqf";
-            };
-            class moduleLaatResupply
-            {
-                file = "\42nd_para\42nd\addons\modules\42nd_Scripts\resupply\fn_moduleLaatResupply.sqf";
-            };
-            class postInitGozantiResupply
-            {
-                file = "\42nd_para\42nd\addons\modules\42nd_Scripts\resupply\fn_postInitGozantiResupply.sqf";
-                postInit = 1;
-            };
-            class postInitLaatResupply
-            {
-                file = "\42nd_para\42nd\addons\modules\42nd_Scripts\resupply\fn_postInitLaatResupply.sqf";
-                postInit = 1;
-            };
             class playCapitalShipJumpInLocal {};
-            class registerGozantiResupplyActions
-            {
-                file = "\42nd_para\42nd\addons\modules\42nd_Scripts\resupply\fn_registerGozantiResupplyActions.sqf";
-            };
-            class registerLaatResupplyActions
-            {
-                file = "\42nd_para\42nd\addons\modules\42nd_Scripts\resupply\fn_registerLaatResupplyActions.sqf";
-            };
-            class requestGozantiAiResupply
-            {
-                file = "\42nd_para\42nd\addons\modules\42nd_Scripts\resupply\fn_requestGozantiAiResupply.sqf";
-            };
-            class requestLaatAiResupply
-            {
-                file = "\42nd_para\42nd\addons\modules\42nd_Scripts\resupply\fn_requestLaatAiResupply.sqf";
-            };
-            class hasResupplyAccess
-            {
-                file = "\42nd_para\42nd\addons\modules\42nd_Scripts\resupply\fn_hasResupplyAccess.sqf";
-            };
-            class beginGuidedAirdrop
-            {
-                file = "\42nd_para\42nd\addons\modules\42nd_Scripts\resupply\fn_beginGuidedAirdrop.sqf";
-            };
-            class spawnGozantiResupplyServer
-            {
-                file = "\42nd_para\42nd\addons\modules\42nd_Scripts\resupply\fn_spawnGozantiResupplyServer.sqf";
-            };
-            class spawnLaatResupplyServer
-            {
-                file = "\42nd_para\42nd\addons\modules\42nd_Scripts\resupply\fn_spawnLaatResupplyServer.sqf";
-            };
             class spawnCapitalShipJumpInServer
             {
                 file = "\42nd_para\42nd\addons\modules\42nd_Scripts\fn_spawnCapitalShipJumpInServer.sqf";
@@ -105,6 +55,7 @@ class CfgFunctions
             class isPilotHudHelmet {};
             class canShowHUD {};
             class hasHudHelmet {};
+            class getVisorTexture {};
             class joinGroupLocal {};
             class requestJoinGroup {};
             class syncHudState {};
@@ -596,301 +547,6 @@ class CfgVehicles
         };
     };
 
-    class Para42_Module_GozantiResupply: Module_F
-    {
-        author = "HoundaCivic";
-        scope = 2;
-        scopeCurator = 2;
-        displayName = "[42nd] Gozanti Resupply Drop";
-        category = "Para42_Modules";
-        model = "\a3\Modules_F_Curator\Ordnance\surfaceMortar.p3d";
-        icon = "\a3\Modules_F_Curator\Data\portraitSmoke_ca.paa";
-        portrait = "\a3\Modules_F_Curator\Data\portraitSmoke_ca.paa";
-        simulation = "house";
-        function = "Para42_fnc_moduleGozantiResupply";
-        functionPriority = 1;
-        isGlobal = 0;
-        isTriggerActivated = 0;
-        isDisposable = 1;
-        is3DEN = 1;
-        curatorCanAttach = 0;
-        curatorInfoType = "RscDisplayAttributeModuleNuke";
-        canSetArea = 0;
-        canSetAreaShape = 0;
-        canSetAreaHeight = 0;
-
-        class Attributes: AttributesBase
-        {
-            class CargoClass: Combo
-            {
-                property = "Para42_Module_GozantiResupply_CargoClass";
-                displayName = "Cargo";
-                tooltip = "Cargo variant for the AI Gozanti to airdrop at this module position.";
-                typeName = "STRING";
-                defaultValue = """42nd_Ammo_Resupply_Crate""";
-
-                class Values
-                {
-                    class AmmoCrate
-                    {
-                        name = "Ammo Resupply Crate";
-                        value = """42nd_Ammo_Resupply_Crate""";
-                        default = 1;
-                    };
-                    class MedicalCrate
-                    {
-                        name = "Medical Resupply Crate";
-                        value = """42nd_Medical_Resupply_Crate""";
-                    };
-                    class EngineerCrate
-                    {
-                        name = "Engineer Resupply Crate";
-                        value = """42nd_Engineer_Resupply_Crate""";
-                    };
-                    class ArsenalCrate
-                    {
-                        name = "Arsenal Supply Crate";
-                        value = """42nd_Arsenal_Supply""";
-                    };
-                    class Lratv
-                    {
-                        name = "LRATV";
-                        value = """42nd_LSV_Unarmed""";
-                    };
-                    class LratvZ6
-                    {
-                        name = "LRATV (Z-6)";
-                        value = """42nd_LSV_Armed""";
-                    };
-                    class LaatGunship
-                    {
-                        name = "LAAT/I Gunship";
-                        value = """42nd_LAAT""";
-                    };
-                };
-            };
-
-            class ApproachHeading: Edit
-            {
-                property = "Para42_Module_GozantiResupply_ApproachHeading";
-                displayName = "Approach Heading";
-                tooltip = "Direction in degrees for the drop run. Use -1 to inherit the module rotation.";
-                typeName = "NUMBER";
-                defaultValue = -1;
-            };
-
-            class ModuleDescription: ModuleDescription {};
-        };
-
-        class Arguments
-        {
-            class CargoClass
-            {
-                displayName = "Cargo";
-                description = "Cargo variant for the AI Gozanti to airdrop at this module position.";
-                typeName = "STRING";
-
-                class values
-                {
-                    class AmmoCrate
-                    {
-                        name = "Ammo Resupply Crate";
-                        value = "42nd_Ammo_Resupply_Crate";
-                        default = 1;
-                    };
-                    class MedicalCrate
-                    {
-                        name = "Medical Resupply Crate";
-                        value = "42nd_Medical_Resupply_Crate";
-                    };
-                    class EngineerCrate
-                    {
-                        name = "Engineer Resupply Crate";
-                        value = "42nd_Engineer_Resupply_Crate";
-                    };
-                    class ArsenalCrate
-                    {
-                        name = "Arsenal Supply Crate";
-                        value = "42nd_Arsenal_Supply";
-                    };
-                    class Lratv
-                    {
-                        name = "LRATV";
-                        value = "42nd_LSV_Unarmed";
-                    };
-                    class LratvZ6
-                    {
-                        name = "LRATV (Z-6)";
-                        value = "42nd_LSV_Armed";
-                    };
-                    class LaatGunship
-                    {
-                        name = "LAAT/I Gunship";
-                        value = "42nd_LAAT";
-                    };
-                };
-            };
-
-            class ApproachHeading
-            {
-                displayName = "Approach Heading";
-                description = "Direction in degrees for the drop run. Use -1 to inherit the module rotation.";
-                typeName = "NUMBER";
-                defaultValue = -1;
-            };
-        };
-
-        class ModuleDescription: ModuleDescription
-        {
-            position = 1;
-            direction = 1;
-            sync[] = {"AnyPerson", "AnyVehicle"};
-            description = "Calls an AI Gozanti to drop the selected supply crate or vehicle at this module position. If synced to a player or occupied vehicle, that unit receives delivery status hints.";
-        };
-    };
-
-    class Para42_Module_LaatResupply: Module_F
-    {
-        author = "HoundaCivic";
-        scope = 2;
-        scopeCurator = 2;
-        displayName = "[42nd] LAAT Resupply Drop";
-        category = "Para42_Modules";
-        model = "\a3\Modules_F_Curator\Ordnance\surfaceMortar.p3d";
-        icon = "\a3\Modules_F_Curator\Data\portraitSmoke_ca.paa";
-        portrait = "\a3\Modules_F_Curator\Data\portraitSmoke_ca.paa";
-        simulation = "house";
-        function = "Para42_fnc_moduleLaatResupply";
-        functionPriority = 1;
-        isGlobal = 0;
-        isTriggerActivated = 0;
-        isDisposable = 1;
-        is3DEN = 1;
-        curatorCanAttach = 0;
-        curatorInfoType = "RscDisplayAttributeModuleNuke";
-        canSetArea = 0;
-        canSetAreaShape = 0;
-        canSetAreaHeight = 0;
-
-        class Attributes: AttributesBase
-        {
-            class CargoClass: Combo
-            {
-                property = "Para42_Module_LaatResupply_CargoClass";
-                displayName = "Cargo";
-                tooltip = "Cargo variant for the AI LAAT to airdrop at this module position.";
-                typeName = "STRING";
-                defaultValue = """42nd_Ammo_Resupply_Crate""";
-
-                class Values
-                {
-                    class AmmoCrate
-                    {
-                        name = "Ammo Resupply Crate";
-                        value = """42nd_Ammo_Resupply_Crate""";
-                        default = 1;
-                    };
-                    class MedicalCrate
-                    {
-                        name = "Medical Resupply Crate";
-                        value = """42nd_Medical_Resupply_Crate""";
-                    };
-                    class EngineerCrate
-                    {
-                        name = "Engineer Resupply Crate";
-                        value = """42nd_Engineer_Resupply_Crate""";
-                    };
-                    class ArsenalCrate
-                    {
-                        name = "Arsenal Supply Crate";
-                        value = """42nd_Arsenal_Supply""";
-                    };
-                    class Lratv
-                    {
-                        name = "LRATV";
-                        value = """42nd_LSV_Unarmed""";
-                    };
-                    class LratvZ6
-                    {
-                        name = "LRATV (Z-6)";
-                        value = """42nd_LSV_Armed""";
-                    };
-                };
-            };
-
-            class ApproachHeading: Edit
-            {
-                property = "Para42_Module_LaatResupply_ApproachHeading";
-                displayName = "Approach Heading";
-                tooltip = "Direction in degrees for the drop run. Use -1 to inherit the module rotation.";
-                typeName = "NUMBER";
-                defaultValue = -1;
-            };
-
-            class ModuleDescription: ModuleDescription {};
-        };
-
-        class Arguments
-        {
-            class CargoClass
-            {
-                displayName = "Cargo";
-                description = "Cargo variant for the AI LAAT to airdrop at this module position.";
-                typeName = "STRING";
-
-                class values
-                {
-                    class AmmoCrate
-                    {
-                        name = "Ammo Resupply Crate";
-                        value = "42nd_Ammo_Resupply_Crate";
-                        default = 1;
-                    };
-                    class MedicalCrate
-                    {
-                        name = "Medical Resupply Crate";
-                        value = "42nd_Medical_Resupply_Crate";
-                    };
-                    class EngineerCrate
-                    {
-                        name = "Engineer Resupply Crate";
-                        value = "42nd_Engineer_Resupply_Crate";
-                    };
-                    class ArsenalCrate
-                    {
-                        name = "Arsenal Supply Crate";
-                        value = "42nd_Arsenal_Supply";
-                    };
-                    class Lratv
-                    {
-                        name = "LRATV";
-                        value = "42nd_LSV_Unarmed";
-                    };
-                    class LratvZ6
-                    {
-                        name = "LRATV (Z-6)";
-                        value = "42nd_LSV_Armed";
-                    };
-                };
-            };
-
-            class ApproachHeading
-            {
-                displayName = "Approach Heading";
-                description = "Direction in degrees for the drop run. Use -1 to inherit the module rotation.";
-                typeName = "NUMBER";
-                defaultValue = -1;
-            };
-        };
-
-        class ModuleDescription: ModuleDescription
-        {
-            position = 1;
-            direction = 1;
-            sync[] = {"AnyPerson", "AnyVehicle"};
-            description = "Calls an AI LAAT to drop the selected supply crate or light vehicle at this module position. If synced to a player or occupied vehicle, that unit receives delivery status hints.";
-        };
-    };
 };
 
 class Extended_PreInit_EventHandlers
@@ -915,14 +571,87 @@ class Extended_InitPost_EventHandlers
     {
         class para42_gozantiSpawner
         {
-            init = "[_this select 0] execVM '\42nd_para\42nd\addons\modules\42nd_Scripts\resupply\gozanti_spawner.sqf'";
+            init = "[_this select 0] execVM '\42nd_para\42nd\addons\modules\42nd_Scripts\gozanti_spawner.sqf'";
         };
     };
+
     class 42nd_LAAT
     {
         class para42_laatColumnDrop
         {
-            init = "[_this select 0] execVM '\42nd_para\42nd\addons\modules\42nd_Scripts\resupply\laat_spawner.sqf'";
+            init = "[_this select 0] execVM '\42nd_para\42nd\addons\modules\42nd_Scripts\laat_column_drop.sqf'";
+        };
+    };
+
+    class 42nd_3as_LAAT_Mk1
+    {
+        class para42_laatColumnDrop
+        {
+            init = "[_this select 0] execVM '\42nd_para\42nd\addons\modules\42nd_Scripts\laat_column_drop.sqf'";
+        };
+    };
+
+    class 42nd_3as_LAAT_Mk1_Fast
+    {
+        class para42_laatColumnDrop
+        {
+            init = "[_this select 0] execVM '\42nd_para\42nd\addons\modules\42nd_Scripts\laat_column_drop.sqf'";
+        };
+    };
+
+    class 42nd_3as_LAAT_Mk1Lights
+    {
+        class para42_laatColumnDrop
+        {
+            init = "[_this select 0] execVM '\42nd_para\42nd\addons\modules\42nd_Scripts\laat_column_drop.sqf'";
+        };
+    };
+
+    class 42nd_3as_LAAT
+    {
+        class para42_laatColumnDrop
+        {
+            init = "[_this select 0] execVM '\42nd_para\42nd\addons\modules\42nd_Scripts\laat_column_drop.sqf'";
+        };
+    };
+
+    class 42nd_3as_LAAT_Mk2_NoTurrets
+    {
+        class para42_laatColumnDrop
+        {
+            init = "[_this select 0] execVM '\42nd_para\42nd\addons\modules\42nd_Scripts\laat_column_drop.sqf'";
+        };
+    };
+
+    class 42nd_3as_LAAT_Mk3_HeavyTurrets
+    {
+        class para42_laatColumnDrop
+        {
+            init = "[_this select 0] execVM '\42nd_para\42nd\addons\modules\42nd_Scripts\laat_column_drop.sqf'";
+        };
+    };
+
+    class 42nd_3as_LAAT_Mk2Lights
+    {
+        class para42_laatColumnDrop
+        {
+            init = "[_this select 0] execVM '\42nd_para\42nd\addons\modules\42nd_Scripts\laat_column_drop.sqf'";
+        };
+    };
+
+    class B42nd_AH44_S_White
+    {
+        class para42_ah44sColumnDrop
+        {
+            init = "[_this select 0] execVM '\42nd_para\42nd\addons\modules\42nd_Scripts\ah44s_column_drop.sqf'";
+        };
+    };
+
+    class B42nd_AH44_S_Black
+    {
+        class para42_ah44sColumnDrop
+        {
+            init = "[_this select 0] execVM '\42nd_para\42nd\addons\modules\42nd_Scripts\ah44s_column_drop.sqf'";
         };
     };
 };
