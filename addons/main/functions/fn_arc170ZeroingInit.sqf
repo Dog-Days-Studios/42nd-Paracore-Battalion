@@ -56,7 +56,7 @@ Para42_arc170_isInTurret = compileFinal str _isInArc170GunshipTurret;
     ["[42nd] ARC-170 Zeroing Up", "[42nd] ARC-170 Gunship"],
     { call Para42_fnc_arc170ZeroUp },
     {},
-    [0x21, [false, false, false]],
+    [0x4E, [false, false, false]],
     false
 ] call CBA_fnc_addKeybind;
 
@@ -66,6 +66,6 @@ Para42_arc170_isInTurret = compileFinal str _isInArc170GunshipTurret;
     ["[42nd] ARC-170 Zeroing Down", "[42nd] ARC-170 Gunship"],
     { call Para42_fnc_arc170ZeroDown },
     {},
-    [0x22, [false, false, false]],
+    [0x4A, [false, false, false]],
     false
 ] call CBA_fnc_addKeybind;

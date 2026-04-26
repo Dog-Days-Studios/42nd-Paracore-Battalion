@@ -87,11 +87,6 @@ if (_shouldShowHud) then
         };
 
         missionNamespace setVariable ["CTHUD_savedHudState", +_hudState];
-        _hudState set [1, false];
-        if ((count _hudState) > 8) then
-        {
-            _hudState set [8, false];
-        };
         showHUD _hudState;
         missionNamespace setVariable ["CTHUD_defaultHudHidden", true];
     };

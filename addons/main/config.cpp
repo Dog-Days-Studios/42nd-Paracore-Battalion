@@ -82,7 +82,8 @@ class CfgPatches {
             "42nd_Bearcat_AA",
             "42nd_Bearcat_unarmed",
             "42nd_Bearcat_cannon",
-            "42nd_Pilot_base"
+            "42nd_Pilot_base",
+            "42nd_A10"
         };
         weapons[] = {
             "42nd_CT_P2_Helmet",
@@ -443,7 +444,7 @@ class CfgVehicles
 #include "/addons/Vehicles/LSV/cfgVehicles.hpp"
 #include "/addons/Vehicles/42nd_TC/42nd_TC.hpp"
 #include "/addons/Vehicles/42nd_TX130/42nd_TX130.hpp"
-
+#include "/addons/Vehicles/42nd_Space10/Space10.hpp"
 };
 class CfgAmmo
 {

@@ -97,6 +97,12 @@ class 42nd_Radio_Backpack: ls_cloneBackpack_radio
     hiddenSelectionsTextures[] = {"\42nd_para\42nd\addons\Bluefor\42nd_backpacks\42nd_NewMod_Backpack_co_CO.paa",
     "",
     "\ls\core\addons\characters_clone\backpacks\standard\data\radio_co.paa"};
+		tf_dialog = "JLTS_clone_rto_radio_dialog";
+		tf_dialogUpdate = "call TFAR_fnc_updateLRDialogToChannel;";
+		tf_encryptionCode = "tf_west_radio_code";
+		tf_hasLRradio = 1;
+		tf_range = 50000;
+		tf_subtype = "digital_lr";
 };
 class 42nd_Medic_Backpack: ls_cloneBackpack_medic
 {
@@ -146,6 +152,12 @@ class 42nd_MiniLR_Backpack: ls_cloneBackpack_miniLR
     hiddenSelections[] = {"camo1"};
     maximumload = 250;
     hiddenSelectionsTextures[] = {"\42nd_para\42nd\addons\Bluefor\42nd_backpacks\42nd_MinirLR_Module_CO.paa"};
+		tf_dialog = "JLTS_clone_rto_radio_dialog";
+		tf_dialogUpdate = "call TFAR_fnc_updateLRDialogToChannel;";
+		tf_encryptionCode = "tf_west_radio_code";
+		tf_hasLRradio = 1;
+		tf_range = 50000;
+		tf_subtype = "digital_lr";
 };
 class 42nd_Rucksack: IDA_Clone_ScoutPack
 {
@@ -210,6 +222,12 @@ class 42nd_LR_Attachment: JLTS_Clone_LR_attachment
     scopearsenal = 2;
     displayName = "[42nd] LR Attachment";
     maximumload = 250;
+    tf_dialog = "JLTS_clone_rto_radio_dialog";
+    tf_dialogUpdate = "call TFAR_fnc_updateLRDialogToChannel;";
+	tf_encryptionCode = "tf_west_radio_code";
+	tf_hasLRradio = 1;
+	tf_range = 50000;
+	tf_subtype = "digital_lr";
 };
 class 42nd_BeltBag_Attachment: JLTS_Clone_belt_bag
 {
