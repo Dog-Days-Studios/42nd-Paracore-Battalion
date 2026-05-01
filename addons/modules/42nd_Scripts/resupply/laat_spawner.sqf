@@ -326,7 +326,7 @@ if (isNil "para42_fnc_laatLoadAllVehicles") then {
             [_caller, "Resupply is restricted to Sergeant and above."] call para42_fnc_laatNotify;
         };
 
-        private _freeSlots = if (isNull ([_transport] call para42_fnc_laatGetLoadedCargo)) then {1} else {0};
+        private _freeSlots = parseNumber (isNull ([_transport] call para42_fnc_laatGetLoadedCargo));
         if (_freeSlots <= 0) exitWith {
             [_caller, "The LAAT already has cargo loaded."] call para42_fnc_laatNotify;
         };

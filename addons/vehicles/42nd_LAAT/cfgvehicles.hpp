@@ -282,29 +282,6 @@ class 42nd_3as_LAAT_Mk1_Fast: 42nd_3as_LAAT_Mk1
     tas_max_impulse = 1000;
 };
 
-class 42nd_3as_LAAT_Mk2_NoTurrets: 42nd_3as_LAAT
-{
-    author = "HoundaCivic";
-    scope = 2;
-    scopeCurator = 2;
-    displayName = "[42nd] LAAT/I MK2 (No Turrets)";
-    faction = "Fac42nd_AIR";
-    editorSubcategory = "SUB42ndAir";
-    side = 1;
-    crew = "42nd_Trooper";
-    typicalCargo[] = {"42nd_Trooper"};
-    class Turrets {};
-    class AnimationSources: AnimationSources
-    {
-        class Turrets
-        {
-            source = "user";
-            initPhase = 0;
-            animPeriod = 0.001;
-        };
-    };
-};
-
 class 42nd_3as_LAAT_Mk3_HeavyTurrets: 42nd_3as_LAAT
 {
     author = "HoundaCivic";

@@ -10,6 +10,8 @@ class CfgPatches
             "cba_main",
             "ace_common",
             "ace_medical_treatment",
+            "ace_interaction",
+            "ace_medical_gui",
             "kat_pharma",
             "kat_vitals",
             "3AS_Equipment"
@@ -391,6 +393,106 @@ class ACE_Medical_Treatment_Actions
         displayName = "Use [42nd] Plasma IV (2000mL)";
         displayNameProgress = "Infusing [42nd] Plasma IV (2000mL)...";
         items[] = {"42nd_PlasmaIV_2000"};
+    };
+};
+
+// =============================================================
+// Clone-body image override for the ACE medical interaction menu
+// =============================================================
+class RscControlsGroupNoScrollbars;
+class RscPicture;
+class ace_medical_gui_BodyImage: RscControlsGroupNoScrollbars
+{
+    class controls
+    {
+        class Background: RscPicture
+        {
+            text = "\42nd_para\42nd\addons\medical\data\background.paa";
+        };
+        class Head: Background
+        {
+            text = "\42nd_para\42nd\addons\medical\data\head.paa";
+        };
+        class Torso: Background
+        {
+            text = "\42nd_para\42nd\addons\medical\data\torso.paa";
+        };
+        class ArmLeft: Background
+        {
+            text = "\42nd_para\42nd\addons\medical\data\arm_left.paa";
+        };
+        class ArmRight: Background
+        {
+            text = "\42nd_para\42nd\addons\medical\data\arm_right.paa";
+        };
+        class LegLeft: Background
+        {
+            text = "\42nd_para\42nd\addons\medical\data\leg_left.paa";
+        };
+        class LegRight: Background
+        {
+            text = "\42nd_para\42nd\addons\medical\data\leg_right.paa";
+        };
+        class ArmLeftB: Background
+        {
+            text = "\42nd_para\42nd\addons\medical\data\arm_left_b.paa";
+        };
+        class ArmRightB: ArmLeftB
+        {
+            text = "\42nd_para\42nd\addons\medical\data\arm_right_b.paa";
+        };
+        class LegLeftB: ArmLeftB
+        {
+            text = "\42nd_para\42nd\addons\medical\data\leg_left_b.paa";
+        };
+        class LegRightB: ArmLeftB
+        {
+            text = "\42nd_para\42nd\addons\medical\data\leg_right_b.paa";
+        };
+        class ArmLeftT: Background
+        {
+            text = "\42nd_para\42nd\addons\medical\data\arm_left_t.paa";
+            colorText[] = {};
+        };
+        class ArmRightT: ArmLeftT
+        {
+            text = "\42nd_para\42nd\addons\medical\data\arm_right_t.paa";
+            colorText[] = {};
+        };
+        class LegLeftT: ArmLeftT
+        {
+            text = "\42nd_para\42nd\addons\medical\data\leg_left_t.paa";
+            colorText[] = {};
+        };
+        class LegRightT: ArmLeftT
+        {
+            text = "\42nd_para\42nd\addons\medical\data\leg_right_t.paa";
+            colorText[] = {};
+        };
+        class HeadS: Background
+        {
+            text = "\42nd_para\42nd\addons\medical\data\head_s.paa";
+        };
+        class TorsoS: HeadS
+        {
+            text = "\42nd_para\42nd\addons\medical\data\torso_s.paa";
+        };
+        class ArmLeftS: HeadS
+        {
+            text = "\42nd_para\42nd\addons\medical\data\arm_left_s.paa";
+        };
+        class ArmRightS: HeadS
+        {
+            text = "\42nd_para\42nd\addons\medical\data\arm_right_s.paa";
+        };
+        class LegLeftS: HeadS
+        {
+            text = "\42nd_para\42nd\addons\medical\data\leg_left_s.paa";
+        };
+        class LegRightS: HeadS
+        {
+            text = "\42nd_para\42nd\addons\medical\data\leg_right_s.paa";
+        };
     };
 };
 

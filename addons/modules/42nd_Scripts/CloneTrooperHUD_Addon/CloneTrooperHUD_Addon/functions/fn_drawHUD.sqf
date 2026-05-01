@@ -766,14 +766,14 @@ if (_isPilotHud && {_hudRevealAlpha > 0.01}) then
         _airspeed = round ((_velMS select 1) * 3.6);
         _vertSpeed = round ((velocity _vehicle) select 2);
     };
-    private _vertSign = if (_vertSpeed >= 0) then {"+"} else {""};
+    private _vertSign = ["", "+"] select (_vertSpeed >= 0);
 
     private _armamentLine = "NO ARMAMENT";
     private _ammoLine = "";
     if (_inVehicle) then {
         private _vehWeapons = weapons _vehicle select {_x isNotEqualTo "FakeWeapon" && {_x isNotEqualTo ""}};
         private _currentWep = currentWeapon _vehicle;
-        if (_currentWep isEqualTo "" && {count _vehWeapons > 0}) then {_currentWep = _vehWeapons select 0};
+        if (_currentWep isEqualTo "" && {_vehWeapons isNotEqualTo []}) then {_currentWep = _vehWeapons select 0};
         if (_currentWep isNotEqualTo "") then {
             private _wepCfg = configFile >> "CfgWeapons" >> _currentWep;
             private _wepName = getText (_wepCfg >> "displayName");
