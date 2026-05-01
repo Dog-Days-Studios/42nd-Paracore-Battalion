@@ -190,7 +190,7 @@ Para42_fnc_grappleUseAnchor = {
 
     private _dStart = _caller distance (ASLToAGL _startASL);
     private _dEnd = _caller distance (ASLToAGL _endASL);
-    private _targetASL = if (_dStart < _dEnd) then { _endASL } else { _startASL };
+    private _targetASL = [_startASL, _endASL] select (_dStart < _dEnd);
 
     [_caller, _targetASL] call Para42_fnc_grappleClimb;
 };

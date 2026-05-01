@@ -16,9 +16,8 @@
 #define item_xx(a,b) class _xx_##a {name = a; count = b;}
 
 class IDA_Clone_DC15S;
-class ls_clone_phase2_pilot;
 
-class 42nd_Pilot_base: ls_clone_phase2_pilot
+class 42nd_Pilot_base: IDA_Clone_DC15S
 {
     author = "Hound";
     scope = 2;
@@ -52,6 +51,7 @@ class 42nd_WO1_Pilot: 42nd_Pilot_base
     displayName = "[42nd] Pilot WO1";
     backpack = "42nd_MiniLR_Backpack";
     uniformClass = "42nd_WO1_Pilot_Uniform";
+    hiddenSelectionsTextures[] = {"\42nd_para\42nd\addons\Bluefor\42nd_Uniforms\Ground\42nd_WO1_Pilot_Uniform_Upper.paa","\42nd_para\42nd\addons\Bluefor\42nd_Uniforms\Ground\42nd_WO1_Pilot_Uniform_Lower.paa"};
     linkedItems[] = {"42nd_Holster","42nd_WO1_Pilot_Helmet","SWLB_clone_commander_binocular","ItemMap","ItemGPS","ls_comlink_aur","ItemCompass"};
     respawnLinkedItems[] = {"42nd_Holster","42nd_WO1_Pilot_Helmet","SWLB_clone_commander_binocular","ItemMap","ItemGPS","ls_comlink_aur","ItemCompass"};
 };
@@ -63,6 +63,7 @@ class 42nd_WO2_Pilot: 42nd_Pilot_base
     displayName = "[42nd] Pilot WO2";
     backpack = "42nd_MiniLR_Backpack";
     uniformClass = "42nd_WO2_Pilot_Uniform";
+    hiddenSelectionsTextures[] = {"\42nd_para\42nd\addons\Bluefor\42nd_Uniforms\Ground\42nd_WO2_Pilot_Upper_Uniform_co.paa","\42nd_para\42nd\addons\Bluefor\42nd_Uniforms\Ground\42nd_WO2_Pilot_Lower_Uniform_co.paa"};
     linkedItems[] = {"42nd_Holster","42nd_WO2_Pilot_Helmet","SWLB_clone_commander_binocular","ItemMap","ItemGPS","ls_comlink_aur","ItemCompass"};
     respawnLinkedItems[] = {"42nd_Holster","42nd_WO2_Pilot_Helmet","SWLB_clone_commander_binocular","ItemMap","ItemGPS","ls_comlink_aur","ItemCompass"};
 };
@@ -211,6 +212,7 @@ class 42nd_Hound_Trooper: 42nd_Clone_Base
         "\42nd_para\42nd\addons\Bluefor\42nd_Uniforms\customs\42nd_Hound_Upper.rvmat",
         "\42nd_para\42nd\addons\Bluefor\42nd_Uniforms\customs\42nd_Hound_Lower.rvmat"
     };
+    backpack = "42nd_Hound_LR_Rucksack";
     linkedItems[] = {"42nd_Holster","42nd_Hound_P2_Helmet","42nd_KamaCW_Glasses","SWLB_clone_commander_binocular","ItemMap","ItemGPS","ls_comlink_aur","ItemCompass"};
     respawnLinkedItems[] = {"42nd_Holster","42nd_Hound_P2_Helmet","42nd_KamaCW_Glasses","SWLB_clone_commander_binocular","ItemMap","ItemGPS","ls_comlink_aur","ItemCompass"};
 };

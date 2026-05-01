@@ -57,7 +57,7 @@ class RscDisplayMain
         {
             idc = 42422;
             text = "JOIN 42ND SERVER";
-            tooltip = "Connect to 167.160.93.167:2316";
+            tooltip = "Connect to 51.222.108.22:2302";
             x = "safezoneX + safezoneW * 0.015";
             y = "safezoneY + safezoneH * 0.02 + 0.12 * safezoneH + 0.01 * safezoneH";
             w = "0.12 * safezoneH";
@@ -74,7 +74,8 @@ class RscDisplayMain
             soundPush[] = {"\A3\ui_f\data\sound\RscButton\soundPush", 0.09, 1};
             soundClick[] = {"\A3\ui_f\data\sound\RscButton\soundClick", 0.09, 1};
             soundEscape[] = {"\A3\ui_f\data\sound\RscButton\soundEscape", 0.09, 1};
-            action = "connectToServer ['167.160.93.167', 2316, '42nd'];";
+            action = "connectToServer ['51.222.108.22', 2302, '42nd'];";
+
         };
     };
 };

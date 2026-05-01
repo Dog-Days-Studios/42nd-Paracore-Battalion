@@ -55,7 +55,7 @@ class 42nd_Medic_KamaCW_Glasses: 42nd_KamaCW_Glasses
 class 42nd_Rose_Kama_Glasses: 42nd_KamaCW_Glasses
 {
     displayName = "[42nd] Rose Kama Glasses";
-    hiddenSelectionsTextures[] = {"","","\42nd_para\42nd\addons\bluefor\42nd_Vests\42nd_Rose_Kama_co.paa","","","","","","","","","","","",""};
+    hiddenSelectionsTextures[] = {"","","\42nd_para\42nd\addons\bluefor\42nd_Vests\42nd_Rose_Kama.paa","","","","","","","","","","","",""};
 };
 
 

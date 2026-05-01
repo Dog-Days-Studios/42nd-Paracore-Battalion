@@ -23,7 +23,9 @@
 	class Plane_CAS_01_dynamicLoadout_base_F: Plane_CAS_01_base_F
 	{};
 	class B_Plane_CAS_01_dynamicLoadout_F: Plane_CAS_01_dynamicLoadout_base_F
-	{};
+	{
+		class Components;
+	};
 
 	class 42nd_A10 :B_Plane_CAS_01_dynamicLoadout_F
 	{
@@ -49,8 +51,8 @@
 		peakTorque = 8000;
 		altNoForce = 90000;
 		accuracy=10000;
-		lockDetectionSystem="2+4+8+16";
-        incomingMissileDetectionSystem="2+4+8+16";
+		lockDetectionSystem=30;
+        incomingMissileDetectionSystem=30;
         allowTabLock = 1;
         driverCanSee=31;
 		draconicForceYCoef = 2;
@@ -60,7 +62,7 @@
 		magazines[] = {"1000Rnd_Gatling_30mm_Plane_CAS_01_F","Laserbatteries","120Rnd_CMFlare_Chaff_Magazine"};
 		thrustCoef[] = {1.8,1.9,1.95,2,2.5,3,3.5,2.5,2,1.7,1.5,1.1,1,1,1};
 		availableForSupportTypes[] = {"CAS_Bombing"};
-		faction="Fac42nd";
+		faction="Fac42nd_AIR";
 		editorSubcategory = "Sub42ndAir";
 		crew = "42nd_P1_Pilot_Unit";
 		class Components: Components
@@ -68,25 +70,72 @@
 			class TransportPylonsComponent
             {
                 UIPicture="3as\3as_arc170\data\plane_arc_pylon_ca.paa";
+                // 10-pylon layout matching vanilla A-10 (B_Plane_CAS_01_dynamicLoadout_F).
+                // Hardpoints expanded to accept the Star-Wars-mod weapon mix.
                 class pylons
                 {
+                    // Outer left wingtip - light AA only (300 kg)
                     class pylons1
                     {
                         hardpoints[]=
                         {
-                            "B_BIM9X_DUAL_RAIL"
+                            "B_BIM9X_DUAL_RAIL",
+                            "B_MISSILE_PYLON"
                         };
-                        attachment="PylonRack_Missile_BIM9X_x2";
-                        priority=10;
+                        attachment="PylonRack_Missile_BIM9X_x1";
+                        priority=5;
                         maxweight=300;
-                        UIposition[]={0.5,0.25};
+                        UIposition[]={0.35,0.0};
                     };
+                    // Light pylon - rockets / AA (500 kg)
                     class pylons2: pylons1
                     {
-                        UIposition[]={0.15000001,0.25};
-                        mirroredMissilePos=1;
+                        hardpoints[]=
+                        {
+                            "B_BIM9X_DUAL_RAIL",
+                            "B_MISSILE_PYLON",
+                            "B_ROCKET_PYLON"
+                        };
+                        attachment="PylonRack_7Rnd_Rocket_04_HE_F";
+                        priority=4;
+                        maxweight=500;
+                        UIposition[]={0.345,0.05};
                     };
+                    // Medium pylon - AGM / rockets (1050 kg)
                     class pylons3: pylons1
+                    {
+                        hardpoints[]=
+                        {
+                            "B_AGM65_RAIL",
+                            "B_AGM65_DUAL_RAIL",
+                            "ARC_AGM_PYLON",
+                            "B_MISSILE_PYLON",
+                            "B_ROCKET_PYLON"
+                        };
+                        attachment="PylonRack_3Rnd_Missile_AGM_02_F";
+                        priority=3;
+                        maxweight=1050;
+                        UIposition[]={0.34,0.1};
+                    };
+                    // Heavy pylon - bombs / AGM / AMRAAM (1200 kg)
+                    class pylons4: pylons1
+                    {
+                        hardpoints[]=
+                        {
+                            "B_AMRAAM_D_RAIL",
+                            "B_AGM65_RAIL",
+                            "B_AGM65_DUAL_RAIL",
+                            "ARC_AGM_PYLON",
+                            "B_BOMB_PYLON",
+                            "B_MISSILE_PYLON"
+                        };
+                        attachment="PylonMissile_1Rnd_Bomb_04_F";
+                        priority=2;
+                        maxweight=1200;
+                        UIposition[]={0.33,0.2};
+                    };
+                    // Innermost left - heaviest stores (1200 kg)
+                    class pylons5: pylons1
                     {
                         hardpoints[]=
                         {
@@ -94,38 +143,41 @@
                             "B_AMRAAM_D_DUAL_RAIL",
                             "B_AGM65_RAIL",
                             "B_AGM65_DUAL_RAIL",
+                            "B_HARM_RAIL",
                             "ARC_AGM_PYLON",
-                            "B_BOMB_PYLON"
+                            "B_BOMB_PYLON",
+                            "B_MISSILE_PYLON"
                         };
                         attachment="PylonMissile_1Rnd_Bomb_04_F";
-                        priority=9;
-                        maxweight=2500;
-                        UIposition[]={0.55000001,0.34999999};
-                    };
-                    class pylons4: pylons3
-                    {
-                        UIposition[]={0.1,0.34999999};
-                        mirroredMissilePos=3;
-                    };
-                    class pylons5: pylons1
-                    {
-                        hardpoints[]=
-                        {
-                            "B_AMRAAM_D_RAIL",
-                            "B_AGM65_RAIL",
-                            "B_AGM65_DUAL_RAIL",
-                            "B_HARM_RAIL",
-                            "ARC_AGM_PYLON"
-                        };
-                        attachment="PylonRack_Missile_AMRAAM_D_x1";
-                        priority=7;
-                        maxweight=5000;
-                        UIposition[]={0.60000002,0.44999999};
+                        priority=1;
+                        maxweight=1200;
+                        UIposition[]={0.33,0.25};
                     };
                     class pylons6: pylons5
                     {
-                        UIposition[]={0.050000001,0.44999999};
+                        UIposition[]={0.33,0.3};
                         mirroredMissilePos=5;
+                    };
+                    class pylons7: pylons4
+                    {
+                        UIposition[]={0.33,0.35};
+                        mirroredMissilePos=4;
+                    };
+                    class pylons8: pylons3
+                    {
+                        UIposition[]={0.34,0.45};
+                        mirroredMissilePos=3;
+                    };
+                    class pylons9: pylons2
+                    {
+                        attachment="PylonRack_7Rnd_Rocket_04_AP_F";
+                        UIposition[]={0.345,0.5};
+                        mirroredMissilePos=2;
+                    };
+                    class pylons10: pylons1
+                    {
+                        UIposition[]={0.35,0.55};
+                        mirroredMissilePos=1;
                     };
                 };
                 class presets
@@ -142,10 +194,14 @@
                         {
                             "PylonRack_Missile_BIM9X_x1",
                             "PylonRack_Missile_BIM9X_x1",
-                            "3as_PylonRack_ARC_6Rnd_Missile_AGM",
-                            "3as_PylonRack_ARC_6Rnd_Missile_AGM",
                             "PylonRack_Missile_AMRAAM_D_x1",
-                            "PylonRack_Missile_AMRAAM_D_x1"
+                            "PylonRack_Missile_AMRAAM_D_x1",
+                            "PylonRack_Missile_AMRAAM_D_x1",
+                            "PylonRack_Missile_AMRAAM_D_x1",
+                            "PylonRack_Missile_AMRAAM_D_x1",
+                            "PylonRack_Missile_AMRAAM_D_x1",
+                            "PylonRack_Missile_BIM9X_x1",
+                            "PylonRack_Missile_BIM9X_x1"
                         };
                     };
                     class CAS
@@ -155,10 +211,14 @@
                         {
                             "PylonRack_Missile_BIM9X_x1",
                             "PylonRack_Missile_BIM9X_x1",
+                            "3as_PylonRack_ARC_6Rnd_Missile_AGM",
+                            "PylonMissile_1Rnd_Bomb_04_F",
+                            "PylonMissile_1Rnd_Bomb_04_F",
                             "PylonMissile_1Rnd_Bomb_04_F",
                             "PylonMissile_1Rnd_Bomb_04_F",
                             "3as_PylonRack_ARC_6Rnd_Missile_AGM",
-                            "3as_PylonRack_ARC_6Rnd_Missile_AGM"
+                            "PylonRack_Missile_BIM9X_x1",
+                            "PylonRack_Missile_BIM9X_x1"
                         };
                     };
 					class AT

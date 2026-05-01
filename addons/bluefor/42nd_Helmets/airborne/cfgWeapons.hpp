@@ -49,3 +49,11 @@
 		hiddenSelectionsMaterials[] = {"","a3\characters_f_bootcamp\common\data\vrarmoremmisive.rvmat"};
 		hiddenSelectionsTextures[] = {"\42nd_para\42nd\addons\Bluefor\42nd_Helmets\airborne\42nd_Hound_AB_Helmet_co.paa","\42nd_para\42nd\addons\Bluefor\42nd_Helmets\airborne\42nd_Hound_AB_Helmet_co.paa"};
 	};
+	class 42nd_Veteran_AB_Helmet: 42nd_Airborne_Base
+	{
+		scope = 2;
+		scopeArsenal = 2;
+		displayname = "[42nd] Airborne Veteran Helmet";
+		hiddenSelectionsMaterials[] = {"","a3\characters_f_bootcamp\common\data\vrarmoremmisive.rvmat"};
+		hiddenSelectionsTextures[] = {"\42nd_para\42nd\addons\Bluefor\42nd_Helmets\airborne\42nd_Airborne_Helmet_Vet.paa","\42nd_para\42nd\addons\Bluefor\42nd_Helmets\airborne\42nd_Airborne_Helmet_Vet.paa"};
+	};

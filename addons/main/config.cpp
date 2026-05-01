@@ -34,6 +34,7 @@ class CfgPatches {
             "42nd_Ammo_Backpack",
             "42nd_MiniLR_Backpack",
             "42nd_Rucksack",
+            "42nd_Hound_LR_Rucksack",
             "42nd_ChestRig",
             "42nd_ChestRig_Pouch",
             "42nd_BeltBag",
@@ -46,7 +47,6 @@ class CfgPatches {
             "42nd_3as_LAAT_Mk1_Fast",
             "42nd_3as_LAAT_Mk1Lights",
             "42nd_3as_LAAT",
-            "42nd_3as_LAAT_Mk2_NoTurrets",
             "42nd_3as_LAAT_Mk3_HeavyTurrets",
             "42nd_3as_LAAT_Mk2Lights",
             "42nd_ARC170",
@@ -83,7 +83,8 @@ class CfgPatches {
             "42nd_Bearcat_unarmed",
             "42nd_Bearcat_cannon",
             "42nd_Pilot_base",
-            "42nd_A10"
+            "42nd_A10",
+            "42nd_YWing"
         };
         weapons[] = {
             "42nd_CT_P2_Helmet",
@@ -109,6 +110,7 @@ class CfgPatches {
             "42nd_Holster",
             "42nd_Hidden_Vest",
             "42nd_Hidden_Medical_Vest",
+            "42nd_Hidden_EOD_Vest",
             "42nd_Trooper_Uniform",
             "42nd_CPLTL_Trooper_Uniform",
             "42nd_CSGT_Trooper_Uniform",
@@ -142,6 +144,7 @@ class CfgPatches {
             "42nd_Medic_P2_Helmet",
             "42nd_CVT_Medic_P2_Helmet",
             "42nd_Squad_Medic_P2_Helmet",
+            "42nd_Veteran_AB_Helmet",
             "42nd_Rose_P2_Helmet",
             "42nd_Hound_P2_Helmet",
             "42nd_CVT_P2_Helmet",
@@ -358,6 +361,10 @@ class CfgFunctions
             {
                 postInit = 1;
             };
+            class arc170GunshipAPInit
+            {
+                postInit = 1;
+            };
         };
     };
 };
@@ -438,6 +445,7 @@ class CfgVehicles
 #include "/addons/Bluefor/42nd_backpacks/backpack.hpp"
 #include "/addons/main/42nd_Objects.hpp"
 #include "/addons/Vehicles/42nd_ARC170/42nd_Arc170.hpp"
+#include "/addons/Vehicles/42nd_ARC170/42nd_ARC170_Gunship.hpp"
 #include "/addons/Vehicles/42nd_AH44/42nd_AH44.hpp"
 #include "/addons/Vehicles/42nd_Gozanti/cfgvehicles.hpp"
 #include "/addons/Vehicles/42nd_LAAT/cfgvehicles.hpp"
@@ -445,6 +453,7 @@ class CfgVehicles
 #include "/addons/Vehicles/42nd_TC/42nd_TC.hpp"
 #include "/addons/Vehicles/42nd_TX130/42nd_TX130.hpp"
 #include "/addons/Vehicles/42nd_Space10/Space10.hpp"
+#include "/addons/Vehicles/42nd_YWing/42nd_Ywing.hpp"
 };
 class CfgAmmo
 {

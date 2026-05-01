@@ -168,6 +168,21 @@ class 42nd_Rucksack: IDA_Clone_ScoutPack
     maximumload = 250;
     displayName = "[42nd] Rucksack";
 };
+class 42nd_Hound_LR_Rucksack: IDA_Clone_ScoutPack
+{
+    author = "Hound";
+    scope = 2;
+    scopecurator = 2;
+    scopearsenal = 2;
+    maximumload = 250;
+    displayName = "[42nd] LR Rucksack";
+		tf_dialog = "JLTS_clone_rto_radio_dialog";
+		tf_dialogUpdate = "call TFAR_fnc_updateLRDialogToChannel;";
+		tf_encryptionCode = "tf_west_radio_code";
+		tf_hasLRradio = 1;
+		tf_range = 50000;
+		tf_subtype = "digital_lr";
+};
 class 42nd_ChestRig: ls_backpack_chestRig
 {
     author = "Hound";

@@ -504,6 +504,9 @@ class 42nd_ARC170_105mm_Laser_Cannon: ls_cannon_120mm
 
 	class player: Mode_SemiAuto
 	{
+		displayName = "Semi";
+		textureType = "semi";
+		showToPlayer = 1;
 		sounds[] = {"StandardSound"};
 		class StandardSound
 		{
